@@ -1,0 +1,25 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.530
+In this video, you live-migrate a running virtual machine to another node in a SUSE Virtualization cluster, and watch it keep running while it moves.
+
+00:00:11.530 --> 00:00:18.920
+The virtual machine demo-migrate is running. The Node column shows that it runs on ser5-blue.
+
+00:00:18.920 --> 00:00:23.030
+Open the actions menu for the virtual machine,
+
+00:00:23.030 --> 00:00:26.550
+and select Virtual Machine Migration.
+
+00:00:26.550 --> 00:00:33.490
+Choose the target node, here ser5-green. The virtual machine moves to this node.
+
+00:00:33.490 --> 00:00:38.500
+Select Apply to start the migration.
+
+00:00:38.500 --> 00:00:49.260
+SUSE Virtualization copies the memory to the new node while the guest keeps running. The Node column now shows ser5-green.
+
+00:00:49.260 --> 00:00:58.112
+The virtual machine now runs on a different node and never stopped. Next, you provision a guest cluster from Rancher.

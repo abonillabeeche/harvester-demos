@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.960
+In this video, you create a cluster network, a dedicated path for virtual machine traffic, and attach a spare network interface of the host to it.
+
+00:00:10.960 --> 00:00:19.840
+Under Networks, Cluster Network Configuration, the built-in mgmt network carries management traffic on every host.
+
+00:00:19.840 --> 00:00:25.540
+To separate virtual machine traffic, select Create a Cluster Network.
+
+00:00:25.540 --> 00:00:27.890
+Name the cluster network.
+
+00:00:27.890 --> 00:00:30.350
+Select Create.
+
+00:00:30.350 --> 00:00:37.750
+The new cluster network has no network configuration yet, so no host interface carries its traffic.
+
+00:00:37.750 --> 00:00:41.340
+Select Create Network Configuration.
+
+00:00:41.340 --> 00:00:44.160
+Name the network configuration.
+
+00:00:44.160 --> 00:00:50.990
+On the Node Selector tab, keep Select all nodes, so every host joins this cluster network.
+
+00:00:50.990 --> 00:00:56.480
+On the Uplink tab, choose the host interfaces for the cluster network.
+
+00:00:56.480 --> 00:01:04.800
+Select a spare network interface. The list only shows interfaces that are free on all selected nodes.
+
+00:01:04.800 --> 00:01:12.130
+The interface becomes a bond, active-backup by default. Add a second NIC later for redundancy.
+
+00:01:12.130 --> 00:01:15.000
+Select Create.
+
+00:01:15.000 --> 00:01:25.400
+The network configuration is active. The cluster network now has an uplink on every host and is ready for VLAN networks.
+
+00:01:25.400 --> 00:01:32.543
+The cluster network is ready. Next, you create a VLAN virtual machine network on it.

@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.450
+In this video, you back up a running virtual machine to the S3 backup target and then restore that backup as a new virtual machine.
+
+00:00:10.450 --> 00:00:16.960
+On the Virtual Machines page, open the action menu of the running virtual machine.
+
+00:00:16.960 --> 00:00:19.690
+Select Take Backup.
+
+00:00:19.690 --> 00:00:21.740
+Name the backup.
+
+00:00:21.740 --> 00:00:28.960
+The guest file system is frozen for at most one second while the snapshot is taken. Keep the default.
+
+00:00:28.960 --> 00:00:31.400
+Select Create.
+
+00:00:31.400 --> 00:00:38.110
+SUSE Virtualization starts the backup. In the menu, open Backup and Snapshots,
+
+00:00:38.110 --> 00:00:41.500
+and select Virtual Machine Backups.
+
+00:00:41.500 --> 00:00:48.520
+The backup is Ready. Its data is stored in the S3 bucket of the backup target, outside the cluster.
+
+00:00:48.520 --> 00:00:52.050
+To restore it, select Restore Backup.
+
+00:00:52.050 --> 00:00:59.180
+Create new restores the backup as a separate virtual machine and leaves the original untouched.
+
+00:00:59.180 --> 00:01:02.170
+Choose the namespace,
+
+00:01:02.170 --> 00:01:04.780
+name the new virtual machine,
+
+00:01:04.780 --> 00:01:08.460
+and pick the backup to restore from.
+
+00:01:08.460 --> 00:01:15.030
+Leave both options cleared, so the copy gets a new MAC address and starts after the restore.
+
+00:01:15.030 --> 00:01:19.030
+Select Create.
+
+00:01:19.030 --> 00:01:28.860
+SUSE Virtualization restores the volumes from the backup, and the new virtual machine is running next to the original.
+
+00:01:28.860 --> 00:01:35.230
+You restored a virtual machine from a backup. Next, you create a storage class.

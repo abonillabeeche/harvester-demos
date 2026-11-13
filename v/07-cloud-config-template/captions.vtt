@@ -1,0 +1,64 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.500
+In this video, you save cloud-init user data as a cloud configuration template and apply it to a new virtual machine, so every machine starts with the same settings.
+
+00:00:12.500 --> 00:00:19.480
+Under Advanced, Cloud Configuration Templates lists your saved templates. Select Create.
+
+00:00:19.480 --> 00:00:22.500
+Choose the namespace.
+
+00:00:22.500 --> 00:00:24.810
+Give the template a name.
+
+00:00:24.810 --> 00:00:31.770
+Keep the template type User Data. Network Data templates configure guest networking instead.
+
+00:00:31.770 --> 00:00:41.360
+Enter the cloud-init user data. It sets a password for the default user, allows password login, and installs the htop package.
+
+00:00:41.360 --> 00:00:43.840
+Select Create.
+
+00:00:43.840 --> 00:00:50.120
+Now create a virtual machine that uses the template. Go to Virtual Machines
+
+00:00:50.120 --> 00:00:52.640
+and select Create.
+
+00:00:52.640 --> 00:00:55.800
+Choose the same namespace,
+
+00:00:55.800 --> 00:00:57.540
+a name,
+
+00:00:57.540 --> 00:00:59.750
+one CPU,
+
+00:00:59.750 --> 00:01:02.340
+and two gigabytes of memory.
+
+00:01:02.340 --> 00:01:04.720
+On the Volumes tab,
+
+00:01:04.720 --> 00:01:08.690
+select the openSUSE Leap image.
+
+00:01:08.690 --> 00:01:11.560
+Open the Advanced Options tab.
+
+00:01:11.560 --> 00:01:18.870
+Under Cloud Configuration, open User Data Template and select the template you created.
+
+00:01:18.870 --> 00:01:26.260
+The editor now holds the template's user data. You can still adjust it for this virtual machine only.
+
+00:01:26.260 --> 00:01:30.250
+Select Create.
+
+00:01:30.250 --> 00:01:39.230
+The virtual machine is running. On first boot, cloud-init applies the password and installs the package.
+
+00:01:39.230 --> 00:01:48.956
+Every virtual machine that uses this template starts with the same configuration. Next, you create a virtual machine template.

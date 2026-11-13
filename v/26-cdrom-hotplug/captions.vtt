@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.460
+In this video, you insert an ISO image into the CD-ROM drive of a running virtual machine and eject it again, without restarting the virtual machine.
+
+00:00:12.460 --> 00:00:17.100
+The virtual machine demo-cdrom is running. Open it.
+
+00:00:17.100 --> 00:00:20.030
+Select the Volumes tab.
+
+00:00:20.030 --> 00:00:27.980
+Below the root disk, the virtual machine has a CD-ROM drive on the SATA bus. It shows No media.
+
+00:00:27.980 --> 00:00:30.790
+Select Insert Image.
+
+00:00:30.790 --> 00:00:37.010
+Keep the drive name, cdrom, and choose the Alpine Linux ISO image.
+
+00:00:37.010 --> 00:00:41.030
+Select Apply.
+
+00:00:41.030 --> 00:00:48.960
+The drive now holds the Alpine ISO image. It was attached live, and the virtual machine is still running.
+
+00:00:48.960 --> 00:00:53.480
+When you no longer need the media, select Eject Image.
+
+00:00:53.480 --> 00:00:58.360
+Confirm that you want to eject the image from the cdrom drive.
+
+00:00:58.360 --> 00:01:04.890
+The drive shows No media again. The drive itself stays in place, ready for the next image.
+
+00:01:04.890 --> 00:01:10.740
+Throughout both changes, the virtual machine kept running.
+
+00:01:10.740 --> 00:01:21.223
+You inserted and ejected an ISO image while the virtual machine kept running. Next, you work with volume snapshots and images.

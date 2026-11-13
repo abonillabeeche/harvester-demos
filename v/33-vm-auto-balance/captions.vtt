@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.560
+In this video, you review the virtual machine auto balance add-on, which uses the Kubernetes Descheduler to move virtual machines away from busy hosts.
+
+00:00:11.560 --> 00:00:19.740
+On the Add-ons page, the virtual-machine-auto-balance add-on is enabled. It runs the Kubernetes Descheduler.
+
+00:00:19.740 --> 00:00:22.400
+Open the add-on,
+
+00:00:22.400 --> 00:00:26.680
+and select Show Configuration to view its settings.
+
+00:00:26.680 --> 00:00:33.220
+The descheduler policy is in the valuesContent field, further down in the YAML.
+
+00:00:34.880 --> 00:00:40.090
+The valuesContent field holds the descheduler settings and its policy.
+
+00:00:40.090 --> 00:00:43.370
+The descheduler runs every five minutes.
+
+00:00:43.370 --> 00:00:47.040
+Each run evicts at most five pods from a host.
+
+00:00:47.040 --> 00:00:56.910
+The label selector limits evictions to virt-launcher pods, so only virtual machines move. Each eviction becomes a live migration.
+
+00:00:56.910 --> 00:01:00.680
+System namespaces are excluded from eviction.
+
+00:01:00.680 --> 00:01:10.490
+The LowNodeUtilization plugin compares reserved CPU and memory. A host below thirty percent of both counts as underutilized.
+
+00:01:10.490 --> 00:01:20.720
+A host above fifty percent counts as overutilized. The descheduler evicts virtual machines from it, so they move to underutilized hosts.
+
+00:01:20.720 --> 00:01:23.160
+Close the panel.
+
+00:01:23.160 --> 00:01:29.450
+Open the Hosts page to compare these thresholds with the reserved resources.
+
+00:01:29.450 --> 00:01:39.620
+Every host reserves more than thirty percent of its CPU. No host is underutilized, so the descheduler moves nothing.
+
+00:01:39.620 --> 00:01:52.662
+The descheduler checks the hosts every five minutes and live-migrates virtual machines only when a host crosses the thresholds. Next, you connect the cluster to SUSE Observability.

@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.940
+In this video, you take a snapshot of a running virtual machine and restore it as a new one. Snapshots give you a quick way back to a known state.
+
+00:00:10.940 --> 00:00:17.090
+On the Virtual Machines page, open the action menu of the running virtual machine.
+
+00:00:17.090 --> 00:00:20.620
+Select Take Virtual Machine Snapshot.
+
+00:00:20.620 --> 00:00:22.790
+Name the snapshot.
+
+00:00:22.790 --> 00:00:30.970
+Keep the default file system freeze deadline, the longest time the guest file system may stay frozen for the snapshot.
+
+00:00:30.970 --> 00:00:33.960
+Select Create.
+
+00:00:33.960 --> 00:00:40.300
+Under Backup and Snapshots, Virtual Machine Snapshots, the snapshot is ready to use.
+
+00:00:40.300 --> 00:00:43.970
+To restore it, open the snapshot's action menu.
+
+00:00:43.970 --> 00:00:49.940
+Select Restore New, which leaves the original virtual machine untouched.
+
+00:00:49.940 --> 00:00:53.510
+Enter a name for the restored virtual machine.
+
+00:00:53.510 --> 00:00:59.430
+Leave Keep powered off cleared, so the new virtual machine starts after the restore.
+
+00:00:59.430 --> 00:01:03.060
+Select Create.
+
+00:01:03.060 --> 00:01:11.640
+The restored virtual machine is running next to the original, with the disk contents from the snapshot.
+
+00:01:11.640 --> 00:01:20.735
+You can now return to this point in time whenever you need to. Next, you configure a backup target for off-cluster copies.

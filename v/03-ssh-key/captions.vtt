@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.790
+In this video, you add an SSH public key to SUSE Virtualization. Virtual machines that use the key let you log in without a password.
+
+00:00:11.790 --> 00:00:15.740
+In the navigation menu, expand Advanced,
+
+00:00:15.740 --> 00:00:18.970
+and select SSH Keys.
+
+00:00:18.970 --> 00:00:21.450
+Select Create.
+
+00:00:21.450 --> 00:00:27.380
+Choose the namespace. Virtual machines in this namespace can use the key.
+
+00:00:27.380 --> 00:00:29.500
+Give the key a name.
+
+00:00:29.500 --> 00:00:34.850
+Paste the public key. You can also load it from a file with Read from File.
+
+00:00:34.850 --> 00:00:37.290
+Select Create.
+
+00:00:37.290 --> 00:00:42.450
+SUSE Virtualization validates the key and shows its fingerprint.
+
+00:00:42.450 --> 00:00:45.900
+To use the key, go to Virtual Machines
+
+00:00:45.900 --> 00:00:48.400
+and select Create.
+
+00:00:48.400 --> 00:00:51.440
+In the same namespace,
+
+00:00:51.440 --> 00:00:57.060
+open the SSH key list on the Basics tab and pick the key.
+
+00:00:57.060 --> 00:01:05.310
+When the virtual machine starts, cloud-init adds this key to the default user's authorized keys.
+
+00:01:05.310 --> 00:01:12.826
+Your SSH key is stored and ready to use. Next, you create a Linux virtual machine.

@@ -1,0 +1,61 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.770
+In this video, you move the disk of a running virtual machine from Longhorn to Portworx with storage migration. The guest keeps running while its data moves.
+
+00:00:11.770 --> 00:00:21.580
+The running virtual machine demo-smig boots from demo-smig-disk-0. Its storage class is a Longhorn class, made for the image.
+
+00:00:21.580 --> 00:00:25.910
+First, create the target volume. Select Create.
+
+00:00:25.910 --> 00:00:30.340
+Use the same namespace as the virtual machine,
+
+00:00:30.340 --> 00:00:33.470
+and name the volume demo-smig-px.
+
+00:00:33.470 --> 00:00:38.760
+Choose the Portworx storage class px-csi-replicated.
+
+00:00:38.760 --> 00:00:43.390
+Set the size to ten gigabytes, the same as the source volume.
+
+00:00:43.390 --> 00:00:45.880
+Select Create.
+
+00:00:45.880 --> 00:00:50.730
+The new volume is ready and not attached to any virtual machine.
+
+00:00:50.730 --> 00:00:54.080
+Now open the Virtual Machines page.
+
+00:00:54.080 --> 00:00:57.620
+Open the actions menu for demo-smig,
+
+00:00:57.620 --> 00:01:00.870
+and select Storage Migration.
+
+00:01:00.870 --> 00:01:05.630
+For the source volume, choose demo-smig-disk-0.
+
+00:01:05.630 --> 00:01:14.600
+For the target volume, choose demo-smig-px. The list shows only volumes that no virtual machine uses.
+
+00:01:14.600 --> 00:01:17.750
+Select Apply.
+
+00:01:17.750 --> 00:01:27.430
+SUSE Virtualization live-migrates the virtual machine to another node and copies the disk to the new volume.
+
+00:01:27.430 --> 00:01:34.170
+The migration is complete. The virtual machine kept running and now runs on a different node.
+
+00:01:34.170 --> 00:01:36.990
+Check the Volumes page.
+
+00:01:36.990 --> 00:01:44.380
+demo-smig-px, on the Portworx storage class, is now the disk of demo-smig.
+
+00:01:44.380 --> 00:01:52.578
+The virtual machine now runs from a Portworx volume and never stopped. Next, you hot-plug a CD-ROM.

@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.580
+In this video, you tour the SUSE Virtualization dashboard and learn where to find hosts, virtual machines, images, volumes, networks, and settings.
+
+00:00:11.580 --> 00:00:17.460
+The dashboard opens after you log in. It shows the cluster name and version.
+
+00:00:17.460 --> 00:00:24.000
+Summary cards count the hosts, virtual machines, networks, images, volumes, and disks.
+
+00:00:24.000 --> 00:00:29.780
+Capacity shows how much CPU, memory, and storage is reserved and used.
+
+00:00:29.780 --> 00:00:33.970
+The Events table lists recent activity in the cluster.
+
+00:00:33.970 --> 00:00:39.240
+The menu on the left leads to every resource. Select Hosts.
+
+00:00:39.240 --> 00:00:45.940
+Each host shows its state, IP address, and resource usage. This cluster has one host.
+
+00:00:45.940 --> 00:00:52.450
+Virtual Machines lists each virtual machine with its state, node, and IP address.
+
+00:00:52.450 --> 00:00:58.950
+Images holds the operating system images that virtual machines boot from.
+
+00:00:58.950 --> 00:01:02.210
+Volumes lists the virtual disks.
+
+00:01:02.210 --> 00:01:09.520
+Networks groups virtual machine networks, cluster network configuration, and load balancers.
+
+00:01:09.520 --> 00:01:17.590
+Advanced holds templates, SSH keys, cloud configuration templates, storage classes, and devices.
+
+00:01:17.590 --> 00:01:24.140
+Settings holds cluster-wide options, such as the backup target.
+
+00:01:24.140 --> 00:01:31.320
+You now know where everything lives in the dashboard. Next, you upload a virtual machine image.

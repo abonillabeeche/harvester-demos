@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.310
+In this video, you create a two gigabyte volume and hot-plug it into a running virtual machine, adding storage without any downtime.
+
+00:00:10.310 --> 00:00:15.460
+First, create the volume. On the Volumes page, select Create.
+
+00:00:15.460 --> 00:00:19.420
+Choose the namespace of the virtual machine.
+
+00:00:19.420 --> 00:00:21.510
+Name the volume.
+
+00:00:21.510 --> 00:00:27.280
+Keep the source set to New, an empty volume, and keep the default storage class.
+
+00:00:27.280 --> 00:00:30.000
+Set the size to two gigabytes.
+
+00:00:30.000 --> 00:00:32.950
+Select Create.
+
+00:00:32.950 --> 00:00:39.040
+On the Virtual Machines page, open the action menu of the running virtual machine.
+
+00:00:39.040 --> 00:00:41.760
+Select Add Volume.
+
+00:00:41.760 --> 00:00:45.780
+Enter a name for the disk inside the virtual machine.
+
+00:00:45.780 --> 00:00:49.120
+Choose the volume you created.
+
+00:00:49.120 --> 00:00:51.590
+Select Apply.
+
+00:00:51.590 --> 00:00:55.430
+Open the virtual machine to check the result.
+
+00:00:55.430 --> 00:00:58.950
+It is still running. Nothing was restarted.
+
+00:00:58.950 --> 00:01:01.860
+Select the Volumes tab.
+
+00:01:01.860 --> 00:01:09.970
+Below the root disk, the new two gigabyte volume named data is attached and ready.
+
+00:01:09.970 --> 00:01:16.558
+The volume is attached to the running virtual machine. Next, you expand a disk.

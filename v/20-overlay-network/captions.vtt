@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.860
+In this video, you create an overlay virtual machine network and a Kube-OVN subnet for it. Overlay traffic is tunneled between hosts, so the switches need no VLANs.
+
+00:00:12.860 --> 00:00:17.480
+Under Networks, Virtual Machine Networks, select Create.
+
+00:00:17.480 --> 00:00:20.470
+Choose the namespace,
+
+00:00:20.470 --> 00:00:22.910
+and give the network a name.
+
+00:00:22.910 --> 00:00:31.200
+Set the type to OverlayNetwork. An overlay network needs no VLAN ID and no cluster network.
+
+00:00:31.200 --> 00:00:33.710
+Select Create.
+
+00:00:33.710 --> 00:00:40.310
+The network exists, but it has no IP range yet. A Kube-OVN subnet provides one.
+
+00:00:40.310 --> 00:00:43.160
+Open Overlay Networks,
+
+00:00:43.160 --> 00:00:50.910
+and select Virtual Private Cloud. The default VPC, ovn-cluster, holds the built-in subnets.
+
+00:00:50.910 --> 00:00:55.500
+In the ovn-cluster VPC, select Create Subnet.
+
+00:00:55.500 --> 00:00:57.520
+Name the subnet.
+
+00:00:57.520 --> 00:01:02.510
+Enter a CIDR block that does not overlap with other networks.
+
+00:01:02.510 --> 00:01:09.770
+As the provider, select the overlay network you just created. This binds the subnet to it.
+
+00:01:09.770 --> 00:01:15.730
+Leave the gateway IP empty. Kube-OVN uses the first address of the block.
+
+00:01:15.730 --> 00:01:23.080
+Enable DHCP, so virtual machines on this network receive their addresses automatically.
+
+00:01:23.080 --> 00:01:25.520
+Select Create.
+
+00:01:25.520 --> 00:01:33.360
+The subnet is active, with its CIDR block and the overlay network as its provider.
+
+00:01:33.360 --> 00:01:43.385
+Virtual machines can now attach to the demo-overlay network and get addresses from its subnet. Next, you hot-plug a network interface.

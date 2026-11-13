@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.770
+In this video, you create a Windows Server virtual machine from a prepared image, using the built-in Windows template so the Windows-specific settings are already in place.
+
+00:00:12.770 --> 00:00:16.730
+From the Virtual Machines page, select Create.
+
+00:00:16.730 --> 00:00:19.700
+Choose the namespace.
+
+00:00:19.700 --> 00:00:22.340
+Give the virtual machine a name.
+
+00:00:22.340 --> 00:00:25.910
+Select Use the virtual machine template.
+
+00:00:25.910 --> 00:00:35.880
+Choose the windows image template. It is meant for prepared, sysprepped Windows images, so no installer ISO is needed.
+
+00:00:35.880 --> 00:00:44.780
+The template sets the operating system type to Windows and turns on the USB tablet for accurate mouse input in the console.
+
+00:00:44.780 --> 00:00:48.490
+Keep the four virtual CPUs from the template.
+
+00:00:48.490 --> 00:00:52.970
+Lower the memory to eight gigabytes, enough for this test server.
+
+00:00:52.970 --> 00:00:58.050
+On the Volumes tab, the root disk from the template has no image yet.
+
+00:00:58.050 --> 00:01:00.750
+Remove this placeholder disk,
+
+00:01:00.750 --> 00:01:07.180
+and add the image as a new disk instead. Select Add a Virtual Machine Image.
+
+00:01:07.180 --> 00:01:12.890
+In the Image list, search for the prepared Windows Server 2025 image,
+
+00:01:12.890 --> 00:01:15.260
+and select it.
+
+00:01:15.260 --> 00:01:20.690
+Set the disk size to sixty-four gigabytes, the size the template suggests.
+
+00:01:20.690 --> 00:01:24.690
+Select Create.
+
+00:01:24.690 --> 00:01:34.480
+SUSE Virtualization copies the image into the new root disk and starts the virtual machine. It is now running.
+
+00:01:34.480 --> 00:01:43.999
+Windows Server is starting in its own virtual machine. Next, you add CPU and memory to a running virtual machine.

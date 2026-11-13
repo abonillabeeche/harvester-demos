@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.170
+In this video, you open the console of a running virtual machine and log in. The console works even before the guest has a network connection.
+
+00:00:11.170 --> 00:00:18.430
+The virtual machine demo-console is running. You open its console from the Virtual Machines list.
+
+00:00:18.430 --> 00:00:21.520
+Select Console in its row.
+
+00:00:21.520 --> 00:00:26.880
+Open in WebVNC shows the graphical screen of the virtual machine.
+
+00:00:26.880 --> 00:00:32.030
+Open in Serial Console shows its serial text terminal instead.
+
+00:00:32.030 --> 00:00:39.780
+Select Open in WebVNC. The console opens in its own browser window.
+
+00:00:39.780 --> 00:00:45.650
+The console connects and shows the login prompt of openSUSE Leap.
+
+00:00:45.650 --> 00:00:48.100
+Type the user name, sles,
+
+00:00:48.100 --> 00:00:54.200
+and the password that cloud-init set when the virtual machine first started.
+
+00:00:54.200 --> 00:01:01.390
+You are logged in. Run a command, for example, to list the network addresses.
+
+00:01:01.390 --> 00:01:09.520
+The toolbar at the top sends special keys, such as Control Alt Delete, to the virtual machine.
+
+00:01:09.520 --> 00:01:18.514
+You can now reach any running virtual machine from its console. Next, you stop, start, and restart a virtual machine.

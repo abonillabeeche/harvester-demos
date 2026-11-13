@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.920
+In this video, you find an unhealthy virtual machine in SUSE Observability, check its metrics, and open the monitor behind its health state.
+
+00:00:11.920 --> 00:00:14.640
+Open the main menu.
+
+00:00:14.640 --> 00:00:18.030
+Expand SUSE Virtualization.
+
+00:00:18.030 --> 00:00:21.190
+Select Virtual machines.
+
+00:00:21.190 --> 00:00:27.540
+This VM shows Deviating. It runs on a host of the harvester-north cluster.
+
+00:00:27.540 --> 00:00:35.230
+To the right, the CPU Usage, Memory Usage, and Disk Usage columns show current metrics for each VM.
+
+00:00:35.230 --> 00:00:38.880
+Open the Deviating VM.
+
+00:00:38.880 --> 00:00:46.320
+On the Highlights page, the Monitors card shows which check failed. Here, it is VM disk filling up.
+
+00:00:46.320 --> 00:00:52.060
+Before you open the monitor, select Metrics to see the VM's charts.
+
+00:00:52.060 --> 00:01:02.630
+Guest shows filesystem usage inside the VM, from the QEMU guest agent. Other groups cover network, storage, memory, and CPU.
+
+00:01:02.630 --> 00:01:05.530
+Return to Highlights.
+
+00:01:05.530 --> 00:01:10.640
+Select the VM disk filling up monitor.
+
+00:01:10.640 --> 00:01:19.510
+The panel explains the check. It fires when the fullest writable filesystem in the VM is more than eighty percent used.
+
+00:01:19.510 --> 00:01:27.840
+The triggering evidence plots that metric against its threshold. The health state shows Deviating since the trigger time.
+
+00:01:27.840 --> 00:01:38.160
+Below, the monitor links a remediation guide with suggested next steps. Review them against your own environment before you act.
+
+00:01:38.160 --> 00:01:42.320
+Close the panel when you are done.
+
+00:01:42.320 --> 00:01:51.242
+You traced an unhealthy virtual machine to the monitor behind its state. Next, you right-size virtual machines.
