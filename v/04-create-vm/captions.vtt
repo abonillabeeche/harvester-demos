@@ -1,37 +1,37 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:12.950
+00:00:00.000 --> 00:00:10.360
 In this video, you create a Linux virtual machine in SUSE Virtualization from a cloud image, choose how many CPUs and how much memory it gets, and watch it start.
 
-00:00:12.950 --> 00:00:16.960
+00:00:10.360 --> 00:00:14.370
 From the Virtual Machines page, select Create.
 
-00:00:16.960 --> 00:00:21.560
+00:00:14.370 --> 00:00:18.970
 Choose the namespace the virtual machine belongs to.
 
-00:00:21.560 --> 00:00:23.460
+00:00:18.970 --> 00:00:20.870
 Give it a name.
 
-00:00:23.460 --> 00:00:26.130
+00:00:20.870 --> 00:00:23.930
 Set two virtual CPUs,
 
-00:00:26.130 --> 00:00:28.780
+00:00:23.930 --> 00:00:26.580
 and four gigabytes of memory.
 
-00:00:28.780 --> 00:00:32.110
+00:00:26.580 --> 00:00:29.910
 On the Volumes tab, pick the boot disk.
 
-00:00:32.110 --> 00:00:40.710
+00:00:29.910 --> 00:00:38.510
 Select the openSUSE Leap cloud image. The root disk is created from it, ten gigabytes by default.
 
-00:00:40.710 --> 00:00:48.900
+00:00:38.510 --> 00:00:46.650
 The Networks tab already has one interface on the management network, which is enough for this virtual machine.
 
-00:00:48.900 --> 00:00:52.950
+00:00:46.650 --> 00:00:50.700
 Select Create.
 
-00:00:52.950 --> 00:01:03.660
+00:00:50.700 --> 00:01:01.410
 SUSE Virtualization pulls the image into a volume, schedules the virtual machine, and it is now running with an IP address.
 
-00:01:03.660 --> 00:01:08.623
+00:01:01.410 --> 00:01:05.547
 The virtual machine is ready. Next, you open its console.

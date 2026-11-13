@@ -1,34 +1,34 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:12.360
+00:00:00.000 --> 00:00:09.740
 In this video, you add an openSUSE Leap cloud image to SUSE Virtualization from a download URL. Virtual machines boot from images like this one.
 
-00:00:12.360 --> 00:00:15.810
+00:00:09.740 --> 00:00:13.190
 On the Images page, select Create.
 
-00:00:15.810 --> 00:00:19.380
+00:00:13.190 --> 00:00:16.760
 Choose the namespace for the image.
 
-00:00:19.380 --> 00:00:21.650
+00:00:16.760 --> 00:00:18.990
 Give the image a name.
 
-00:00:21.650 --> 00:00:29.340
+00:00:18.990 --> 00:00:26.680
 Keep URL as the source. The cluster downloads the file itself, so nothing passes through your browser.
 
-00:00:29.340 --> 00:00:35.540
+00:00:26.680 --> 00:00:32.880
 Paste the download address of the openSUSE Leap sixteen minimal cloud image.
 
-00:00:35.540 --> 00:00:41.060
+00:00:32.880 --> 00:00:38.400
 The Storage tab shows the storage class for the image. Keep the default.
 
-00:00:41.060 --> 00:00:46.520
+00:00:38.400 --> 00:00:43.860
 Virtual machine disks created from this image use the same storage class.
 
-00:00:46.520 --> 00:00:51.770
+00:00:43.860 --> 00:00:49.110
 Select Create.
 
-00:00:51.770 --> 00:01:00.910
+00:00:49.110 --> 00:00:58.130
 The download finishes and the progress column shows Completed. The image is ready for new virtual machines.
 
-00:01:00.910 --> 00:01:08.290
+00:00:58.130 --> 00:01:04.931
 The image is ready. Next, you add an SSH key so you can log in to your virtual machines.

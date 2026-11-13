@@ -1,55 +1,55 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.450
+00:00:00.000 --> 00:00:08.740
 In this video, you back up a running virtual machine to the S3 backup target and then restore that backup as a new virtual machine.
 
-00:00:10.450 --> 00:00:16.960
+00:00:08.740 --> 00:00:15.250
 On the Virtual Machines page, open the action menu of the running virtual machine.
 
-00:00:16.960 --> 00:00:19.690
+00:00:15.250 --> 00:00:17.980
 Select Take Backup.
 
-00:00:19.690 --> 00:00:21.740
+00:00:17.980 --> 00:00:20.030
 Name the backup.
 
-00:00:21.740 --> 00:00:28.960
+00:00:20.030 --> 00:00:27.210
 The guest file system is frozen for at most one second while the snapshot is taken. Keep the default.
 
-00:00:28.960 --> 00:00:31.400
+00:00:27.210 --> 00:00:29.650
 Select Create.
 
-00:00:31.400 --> 00:00:38.110
+00:00:29.650 --> 00:00:36.870
 SUSE Virtualization starts the backup. In the menu, open Backup and Snapshots,
 
-00:00:38.110 --> 00:00:41.500
+00:00:36.870 --> 00:00:40.270
 and select Virtual Machine Backups.
 
-00:00:41.500 --> 00:00:48.520
+00:00:40.270 --> 00:00:47.290
 The backup is Ready. Its data is stored in the S3 bucket of the backup target, outside the cluster.
 
-00:00:48.520 --> 00:00:52.050
+00:00:47.290 --> 00:00:50.910
 To restore it, select Restore Backup.
 
-00:00:52.050 --> 00:00:59.180
+00:00:50.910 --> 00:00:58.030
 Create new restores the backup as a separate virtual machine and leaves the original untouched.
 
-00:00:59.180 --> 00:01:02.170
+00:00:58.030 --> 00:01:01.030
 Choose the namespace,
 
-00:01:02.170 --> 00:01:04.780
+00:01:01.030 --> 00:01:03.700
 name the new virtual machine,
 
-00:01:04.780 --> 00:01:08.460
+00:01:03.700 --> 00:01:07.380
 and pick the backup to restore from.
 
-00:01:08.460 --> 00:01:15.030
+00:01:07.380 --> 00:01:13.960
 Leave both options cleared, so the copy gets a new MAC address and starts after the restore.
 
-00:01:15.030 --> 00:01:19.030
+00:01:13.960 --> 00:01:17.950
 Select Create.
 
-00:01:19.030 --> 00:01:28.860
+00:01:17.950 --> 00:01:27.790
 SUSE Virtualization restores the volumes from the backup, and the new virtual machine is running next to the original.
 
-00:01:28.860 --> 00:01:35.230
+00:01:27.790 --> 00:01:33.837
 You restored a virtual machine from a backup. Next, you create a storage class.

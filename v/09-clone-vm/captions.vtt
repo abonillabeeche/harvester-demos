@@ -1,28 +1,28 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.840
+00:00:00.000 --> 00:00:09.820
 In this video, you clone a running virtual machine, disks included, to get an identical copy for testing or scaling out without rebuilding it.
 
-00:00:10.840 --> 00:00:17.360
+00:00:09.820 --> 00:00:16.350
 On the Virtual Machines page, open the action menu of the virtual machine you want to copy.
 
-00:00:17.360 --> 00:00:19.810
+00:00:16.350 --> 00:00:18.790
 Select Clone.
 
-00:00:19.810 --> 00:00:26.610
+00:00:18.790 --> 00:00:25.600
 Keep Clone volume data selected, so the copy gets its own disks with the same contents.
 
-00:00:26.610 --> 00:00:29.830
+00:00:25.600 --> 00:00:28.810
 Enter a name for the new virtual machine.
 
-00:00:29.830 --> 00:00:34.820
+00:00:28.810 --> 00:00:33.810
 Keep the run strategy, so the clone starts as soon as it is created.
 
-00:00:34.820 --> 00:00:38.880
+00:00:33.810 --> 00:00:37.870
 Select Create.
 
-00:00:38.880 --> 00:00:49.340
+00:00:37.870 --> 00:00:48.210
 SUSE Virtualization copies the disk and starts the clone. It now runs next to the original, with its own IP address.
 
-00:00:49.340 --> 00:00:58.132
+00:00:48.210 --> 00:00:56.346
 The clone is an independent virtual machine with its own disks. Next, you create a Windows virtual machine.

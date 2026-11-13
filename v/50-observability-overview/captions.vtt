@@ -1,37 +1,37 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:13.100
+00:00:00.000 --> 00:00:10.780
 In this video, you review what SUSE Observability shows for your SUSE Virtualization clusters: health, versions, topology, and events in one place.
 
-00:00:13.100 --> 00:00:21.950
+00:00:10.780 --> 00:00:19.630
 The SUSE Virtualization Clusters view lists every cluster that reports to SUSE Observability, one row per cluster.
 
-00:00:21.950 --> 00:00:29.860
+00:00:19.630 --> 00:00:27.540
 The Health column rolls up the monitors of each cluster. A cluster with an unhealthy monitor shows Deviating.
 
-00:00:29.860 --> 00:00:39.970
+00:00:27.540 --> 00:00:37.650
 The columns show the SUSE Virtualization version, hosts, running VMs, KubeVirt and Longhorn versions, and etcd and clock checks.
 
-00:00:39.970 --> 00:00:52.450
+00:00:37.650 --> 00:00:50.130
 Select Topology to see the clusters as components on a map.
 
-00:00:52.450 --> 00:00:58.530
+00:00:50.130 --> 00:00:56.210
 Select Events to list what happened to these clusters in the selected time range.
 
-00:00:58.530 --> 00:01:05.620
+00:00:56.210 --> 00:01:03.300
 Each event names the cluster, shows the change, such as a health state transition, and when it happened.
 
-00:01:05.620 --> 00:01:12.810
+00:01:03.300 --> 00:01:10.490
 The time range at the bottom applies to every perspective. Move it back to see the clusters as they were.
 
-00:01:12.810 --> 00:01:15.660
+00:01:10.490 --> 00:01:13.300
 Open the main menu.
 
-00:01:15.660 --> 00:01:19.090
+00:01:13.300 --> 00:01:16.730
 Expand SUSE Virtualization.
 
-00:01:19.090 --> 00:01:29.020
+00:01:16.730 --> 00:01:26.660
 Besides Clusters, this section has views for hosts, virtual machines, volumes, VM networks, and VPCs.
 
-00:01:29.020 --> 00:01:37.810
+00:01:26.660 --> 00:01:33.975
 You reviewed your clusters in SUSE Observability. Next, you explore the topology of a single virtual machine.

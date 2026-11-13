@@ -1,49 +1,49 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.560
+00:00:00.000 --> 00:00:09.060
 In this video, you review the virtual machine auto balance add-on, which uses the Kubernetes Descheduler to move virtual machines away from busy hosts.
 
-00:00:11.560 --> 00:00:19.740
+00:00:09.060 --> 00:00:17.230
 On the Add-ons page, the virtual-machine-auto-balance add-on is enabled. It runs the Kubernetes Descheduler.
 
-00:00:19.740 --> 00:00:22.400
+00:00:17.230 --> 00:00:19.900
 Open the add-on,
 
-00:00:22.400 --> 00:00:26.680
+00:00:19.900 --> 00:00:24.180
 and select Show Configuration to view its settings.
 
-00:00:26.680 --> 00:00:33.220
+00:00:24.180 --> 00:00:30.710
 The descheduler policy is in the valuesContent field, further down in the YAML.
 
-00:00:34.880 --> 00:00:40.090
+00:00:32.380 --> 00:00:37.770
 The valuesContent field holds the descheduler settings and its policy.
 
-00:00:40.090 --> 00:00:43.370
+00:00:37.770 --> 00:00:41.050
 The descheduler runs every five minutes.
 
-00:00:43.370 --> 00:00:47.040
+00:00:41.050 --> 00:00:45.050
 Each run evicts at most five pods from a host.
 
-00:00:47.040 --> 00:00:56.910
+00:00:45.050 --> 00:00:54.930
 The label selector limits evictions to virt-launcher pods, so only virtual machines move. Each eviction becomes a live migration.
 
-00:00:56.910 --> 00:01:00.680
+00:00:54.930 --> 00:00:58.690
 System namespaces are excluded from eviction.
 
-00:01:00.680 --> 00:01:10.490
+00:00:58.690 --> 00:01:08.510
 The LowNodeUtilization plugin compares reserved CPU and memory. A host below thirty percent of both counts as underutilized.
 
-00:01:10.490 --> 00:01:20.720
+00:01:08.510 --> 00:01:18.740
 A host above fifty percent counts as overutilized. The descheduler evicts virtual machines from it, so they move to underutilized hosts.
 
-00:01:20.720 --> 00:01:23.160
+00:01:18.740 --> 00:01:21.170
 Close the panel.
 
-00:01:23.160 --> 00:01:29.450
+00:01:21.170 --> 00:01:27.470
 Open the Hosts page to compare these thresholds with the reserved resources.
 
-00:01:29.450 --> 00:01:39.620
+00:01:27.470 --> 00:01:37.360
 Every host reserves more than thirty percent of its CPU. No host is underutilized, so the descheduler moves nothing.
 
-00:01:39.620 --> 00:01:52.662
+00:01:37.360 --> 00:01:49.042
 The descheduler checks the hosts every five minutes and live-migrates virtual machines only when a host crosses the thresholds. Next, you connect the cluster to SUSE Observability.

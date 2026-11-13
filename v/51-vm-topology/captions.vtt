@@ -1,28 +1,28 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:12.800
+00:00:00.000 --> 00:00:11.340
 In this video, you open a virtual machine in SUSE Observability and follow its relations to its host, storage, and network in the Topology perspective.
 
-00:00:12.800 --> 00:00:15.460
+00:00:11.340 --> 00:00:14.000
 Open the main menu.
 
-00:00:15.460 --> 00:00:18.880
+00:00:14.000 --> 00:00:17.420
 Expand SUSE Virtualization.
 
-00:00:18.880 --> 00:00:21.930
+00:00:17.420 --> 00:00:20.470
 Select Virtual machines.
 
-00:00:21.930 --> 00:00:31.810
+00:00:20.470 --> 00:00:30.350
 The view lists the VMs of every connected cluster. Open the VM named kasm, which runs on the far-edge cluster.
 
-00:00:31.810 --> 00:00:42.580
+00:00:30.350 --> 00:00:41.120
 Highlights opens first. The About card shows the VM's status, host, IP address, vCPUs, memory, and guest operating system.
 
-00:00:42.580 --> 00:00:52.370
+00:00:41.120 --> 00:00:50.910
 Related resources lists what the VM uses, such as its VM network, its disks, the Longhorn volume, and the virt-launcher pod.
 
-00:00:52.370 --> 00:01:19.430
+00:00:50.910 --> 00:01:17.970
 Select Topology to draw these relations as a map.
 
-00:01:19.430 --> 00:01:30.263
+00:01:17.970 --> 00:01:27.603
 Each virtual machine is a component with relations to its host, storage, and network. Next, you investigate an unhealthy virtual machine.

@@ -1,46 +1,46 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.440
+00:00:00.000 --> 00:00:09.380
 In this video, you generate a template from an existing virtual machine and use it to create a new one, so every copy starts with the same configuration.
 
-00:00:11.440 --> 00:00:17.460
+00:00:09.380 --> 00:00:15.400
 On the Virtual Machines page, open the action menu of the source virtual machine.
 
-00:00:17.460 --> 00:00:20.430
+00:00:15.400 --> 00:00:18.370
 Select Generate Template.
 
-00:00:20.430 --> 00:00:27.910
+00:00:18.370 --> 00:00:25.850
 Leave With Data cleared. The template then points to the original image instead of copying the disk contents.
 
-00:00:27.910 --> 00:00:29.970
+00:00:25.850 --> 00:00:27.880
 Name the template.
 
-00:00:29.970 --> 00:00:32.760
+00:00:27.880 --> 00:00:30.670
 Select Create.
 
-00:00:32.760 --> 00:00:39.650
+00:00:30.670 --> 00:00:37.560
 The template appears under Advanced, Templates. It has one version, which is also its default.
 
-00:00:39.650 --> 00:00:46.040
+00:00:37.560 --> 00:00:43.950
 To use it, create a new virtual machine in the same namespace as the template.
 
-00:00:46.040 --> 00:00:47.940
+00:00:43.950 --> 00:00:45.850
 Give it a name.
 
-00:00:47.940 --> 00:00:51.520
+00:00:45.850 --> 00:00:49.590
 Select Use the virtual machine template.
 
-00:00:51.520 --> 00:00:56.830
+00:00:49.590 --> 00:00:54.910
 Choose the template. Its default version is selected for you.
 
-00:00:56.830 --> 00:01:03.590
+00:00:54.910 --> 00:01:02.070
 The CPU, memory, disks, and network now come from the template. You can still change them here.
 
-00:01:03.590 --> 00:01:07.590
+00:01:02.070 --> 00:01:06.060
 Select Create.
 
-00:01:07.590 --> 00:01:14.630
+00:01:06.060 --> 00:01:12.990
 The new virtual machine is running, with the same configuration as its source.
 
-00:01:14.630 --> 00:01:23.237
+00:01:12.990 --> 00:01:19.354
 You can now create identical virtual machines from the template. Next, you clone an existing virtual machine.

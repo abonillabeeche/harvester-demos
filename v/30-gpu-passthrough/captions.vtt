@@ -1,0 +1,64 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.540
+In this video, you review a GPU that is enabled for PCI passthrough and attach it to a virtual machine, giving the guest direct access to the physical device.
+
+00:00:09.540 --> 00:00:16.610
+Under Advanced, PCI Devices lists every PCI device on each host. Filter the list for NVIDIA.
+
+00:00:16.610 --> 00:00:23.910
+This NVIDIA Quadro P1000 GPU has passthrough enabled. The host no longer uses it, so a virtual machine can.
+
+00:00:23.910 --> 00:00:31.340
+The GPU's audio function sits in the same IOMMU group, so it is enabled too. Pass both to the same virtual machine.
+
+00:00:31.340 --> 00:00:39.280
+An enabled device's action menu offers Disable Passthrough. Other devices offer Enable Passthrough, which is how this GPU was claimed.
+
+00:00:41.240 --> 00:00:46.520
+On the Virtual Machines page, open the action menu of demo-gpu,
+
+00:00:46.520 --> 00:00:49.110
+and select Edit Config.
+
+00:00:49.110 --> 00:00:51.870
+Select the PCI Devices tab.
+
+00:00:51.870 --> 00:00:56.340
+In Available PCI Devices, choose the GPU,
+
+00:00:56.340 --> 00:00:59.690
+and its audio function.
+
+00:01:01.370 --> 00:01:08.290
+Both devices sit on host p5820, so the form lists it as the compatible host. The virtual machine will run there.
+
+00:01:08.290 --> 00:01:10.640
+Select Save.
+
+00:01:10.640 --> 00:01:16.660
+A PCI device is attached at boot, so select Save and Restart.
+
+00:01:16.660 --> 00:01:23.010
+The virtual machine restarted on host p5820 and is running again, now with the GPU attached.
+
+00:01:23.010 --> 00:01:26.830
+To check from inside the guest, open the console,
+
+00:01:26.830 --> 00:01:30.180
+in WebVNC.
+
+00:01:30.180 --> 00:01:32.080
+Log in as sles,
+
+00:01:32.080 --> 00:01:35.820
+with the password that cloud-init set.
+
+00:01:35.820 --> 00:01:40.820
+List the PCI devices of the guest and filter for NVIDIA.
+
+00:01:40.820 --> 00:01:49.710
+The guest lists the Quadro P1000 GPU and its audio function as its own PCI devices.
+
+00:01:49.710 --> 00:01:56.117
+The virtual machine runs with the physical GPU passed through. Next, you use local LVM storage.

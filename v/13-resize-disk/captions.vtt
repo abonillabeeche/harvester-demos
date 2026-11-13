@@ -1,46 +1,46 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:12.390
+00:00:00.000 --> 00:00:09.990
 In this video, you expand the disk of a running virtual machine without stopping it, then grow the partition and filesystem inside the guest so the new space is usable.
 
-00:00:12.390 --> 00:00:20.450
+00:00:09.990 --> 00:00:18.060
 The virtual machine demo-resize is running. Its root disk, demo-resize-disk-0, is ten gigabytes.
 
-00:00:20.450 --> 00:00:24.870
+00:00:18.060 --> 00:00:22.480
 On the Volumes page, open the disk's action menu,
 
-00:00:24.870 --> 00:00:29.770
+00:00:22.480 --> 00:00:27.370
 and select Edit Config. You don't stop the virtual machine.
 
-00:00:29.770 --> 00:00:35.070
+00:00:27.370 --> 00:00:32.680
 Change the size to twelve gigabytes. A disk can grow but never shrink.
 
-00:00:35.070 --> 00:00:41.870
+00:00:32.680 --> 00:00:39.470
 Select Save. Longhorn expands the volume while the virtual machine keeps running.
 
-00:00:41.870 --> 00:00:45.280
+00:00:39.470 --> 00:00:42.880
 The volume now shows twelve gigabytes.
 
-00:00:45.280 --> 00:00:51.790
+00:00:42.880 --> 00:00:49.400
 The guest still sees the old partition size. Open the virtual machine's console,
 
-00:00:51.790 --> 00:00:55.470
+00:00:49.400 --> 00:00:53.080
 in WebVNC.
 
-00:00:55.470 --> 00:00:57.650
+00:00:53.080 --> 00:00:55.250
 Log in as sles,
 
-00:00:57.650 --> 00:01:01.580
+00:00:55.250 --> 00:00:59.180
 with the password set by cloud-init.
 
-00:01:01.580 --> 00:01:12.200
+00:00:59.180 --> 00:01:09.810
 lsblk shows the disk is now twelve gigabytes, but the root partition, vda3, still has the old size.
 
-00:01:12.200 --> 00:01:26.550
+00:01:09.810 --> 00:01:24.160
 Grow partition three into the free space, then grow the X F S root filesystem. Both work while it is mounted.
 
-00:01:26.550 --> 00:01:36.530
+00:01:24.160 --> 00:01:34.140
 The root filesystem now has the extra space, and the virtual machine never stopped.
 
-00:01:36.530 --> 00:01:43.509
+00:01:34.140 --> 00:01:40.361
 You expanded a disk online. Next, you take and restore a virtual machine snapshot.

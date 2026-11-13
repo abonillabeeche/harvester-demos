@@ -1,52 +1,52 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:12.230
+00:00:00.000 --> 00:00:10.140
 In this video, you configure the backup target in SUSE Virtualization: an S3-compatible bucket that stores virtual machine backups outside the cluster.
 
-00:00:12.230 --> 00:00:18.870
+00:00:10.140 --> 00:00:16.780
 In Advanced, Settings, the backup-target setting is empty, so backups have nowhere to go yet.
 
-00:00:18.870 --> 00:00:21.570
+00:00:16.780 --> 00:00:19.490
 Open its action menu,
 
-00:00:21.570 --> 00:00:24.380
+00:00:19.490 --> 00:00:22.350
 and select Edit Setting.
 
-00:00:24.380 --> 00:00:29.770
+00:00:22.350 --> 00:00:27.740
 Choose S3 as the type. NFS is the other option.
 
-00:00:29.770 --> 00:00:36.340
+00:00:27.740 --> 00:00:34.270
 Enter the endpoint of the S3-compatible object store, here a Ceph object gateway.
 
-00:00:36.340 --> 00:00:39.410
+00:00:34.270 --> 00:00:37.340
 Enter the name of an existing bucket,
 
-00:00:39.410 --> 00:00:41.400
+00:00:37.340 --> 00:00:39.560
 and its region.
 
-00:00:41.400 --> 00:00:46.150
+00:00:39.560 --> 00:00:44.310
 Enter the access key ID of an account that can write to the bucket,
 
-00:00:46.150 --> 00:00:49.970
+00:00:44.310 --> 00:00:48.080
 and its secret access key. The field is masked.
 
-00:00:49.970 --> 00:00:57.190
+00:00:48.080 --> 00:00:55.270
 Keep Virtual Hosted-Style set to False, because this gateway uses path-style bucket URLs.
 
-00:00:57.190 --> 00:01:00.920
+00:00:55.270 --> 00:00:58.990
 Select Save.
 
-00:01:00.920 --> 00:01:09.240
+00:00:58.990 --> 00:01:07.320
 Back on the settings list, the setting is tagged Modified. Select Test connection to check that the bucket is reachable.
 
-00:01:09.240 --> 00:01:11.840
+00:01:07.320 --> 00:01:09.920
 The connection test succeeds.
 
-00:01:11.840 --> 00:01:16.160
+00:01:09.920 --> 00:01:14.230
 Select Show backup-target to review the saved value.
 
-00:01:16.160 --> 00:01:24.390
+00:01:14.230 --> 00:01:22.360
 It lists the endpoint, bucket, and region. The keys are kept separately in a Kubernetes secret.
 
-00:01:24.390 --> 00:01:32.107
+00:01:22.360 --> 00:01:28.920
 The backup target is configured. Next, you back up a virtual machine and restore it from that backup.

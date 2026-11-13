@@ -1,0 +1,61 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.730
+In this video, you take a snapshot of a volume, restore it to a new volume, and export the volume to an image for new virtual machines.
+
+00:00:08.730 --> 00:00:15.040
+On the Volumes page, open the action menu of the two gigabyte volume demo-data.
+
+00:00:15.040 --> 00:00:17.630
+Select Take Snapshot.
+
+00:00:17.630 --> 00:00:20.500
+Name the snapshot demo-data-snap,
+
+00:00:20.500 --> 00:00:23.250
+and select Create.
+
+00:00:23.250 --> 00:00:26.790
+Open the volume to see its snapshots.
+
+00:00:26.790 --> 00:00:29.900
+Select the Snapshots tab.
+
+00:00:29.900 --> 00:00:35.180
+The snapshot is ready to use. Open its action menu.
+
+00:00:35.180 --> 00:00:37.380
+Select Restore.
+
+00:00:37.380 --> 00:00:43.330
+Restoring creates a new volume and leaves the original untouched. Name it demo-data-restored.
+
+00:00:43.330 --> 00:00:46.160
+Keep the default storage class.
+
+00:00:46.160 --> 00:00:48.590
+Select Create.
+
+00:00:48.590 --> 00:00:55.140
+On the Volumes page, the restored two gigabyte volume demo-data-restored sits next to the original.
+
+00:00:55.140 --> 00:01:00.760
+Next, export the original volume to an image. Open its action menu,
+
+00:01:00.760 --> 00:01:03.360
+and select Export Image.
+
+00:01:03.360 --> 00:01:08.950
+Keep the namespace demo, and name the image demo-data-image.
+
+00:01:08.950 --> 00:01:13.530
+Choose the storage class for the image, here longhorn-v2.
+
+00:01:13.530 --> 00:01:17.750
+Select Create to start the export.
+
+00:01:17.750 --> 00:01:26.660
+On the Images page, demo-data-image is active. You can now create new virtual machines from it, or download it.
+
+00:01:26.660 --> 00:01:34.299
+You now have a snapshot, a restored copy, and an image of the volume. Next, you control where virtual machines run.

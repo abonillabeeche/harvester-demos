@@ -1,61 +1,61 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.770
+00:00:00.000 --> 00:00:09.930
 In this video, you move the disk of a running virtual machine from Longhorn to Portworx with storage migration. The guest keeps running while its data moves.
 
-00:00:11.770 --> 00:00:21.580
+00:00:09.930 --> 00:00:19.740
 The running virtual machine demo-smig boots from demo-smig-disk-0. Its storage class is a Longhorn class, made for the image.
 
-00:00:21.580 --> 00:00:25.910
+00:00:19.740 --> 00:00:24.070
 First, create the target volume. Select Create.
 
-00:00:25.910 --> 00:00:30.340
+00:00:24.070 --> 00:00:28.500
 Use the same namespace as the virtual machine,
 
-00:00:30.340 --> 00:00:33.470
+00:00:28.500 --> 00:00:32.420
 and name the volume demo-smig-px.
 
-00:00:33.470 --> 00:00:38.760
+00:00:32.420 --> 00:00:37.700
 Choose the Portworx storage class px-csi-replicated.
 
-00:00:38.760 --> 00:00:43.390
+00:00:37.700 --> 00:00:42.340
 Set the size to ten gigabytes, the same as the source volume.
 
-00:00:43.390 --> 00:00:45.880
+00:00:42.340 --> 00:00:44.830
 Select Create.
 
-00:00:45.880 --> 00:00:50.730
+00:00:44.830 --> 00:00:49.680
 The new volume is ready and not attached to any virtual machine.
 
-00:00:50.730 --> 00:00:54.080
+00:00:49.680 --> 00:00:53.030
 Now open the Virtual Machines page.
 
-00:00:54.080 --> 00:00:57.620
+00:00:53.030 --> 00:00:56.570
 Open the actions menu for demo-smig,
 
-00:00:57.620 --> 00:01:00.870
+00:00:56.570 --> 00:00:59.780
 and select Storage Migration.
 
-00:01:00.870 --> 00:01:05.630
+00:00:59.780 --> 00:01:04.540
 For the source volume, choose demo-smig-disk-0.
 
-00:01:05.630 --> 00:01:14.600
+00:01:04.540 --> 00:01:13.510
 For the target volume, choose demo-smig-px. The list shows only volumes that no virtual machine uses.
 
-00:01:14.600 --> 00:01:17.750
+00:01:13.510 --> 00:01:16.660
 Select Apply.
 
-00:01:17.750 --> 00:01:27.430
+00:01:16.660 --> 00:01:26.340
 SUSE Virtualization live-migrates the virtual machine to another node and copies the disk to the new volume.
 
-00:01:27.430 --> 00:01:34.170
+00:01:26.340 --> 00:01:33.080
 The migration is complete. The virtual machine kept running and now runs on a different node.
 
-00:01:34.170 --> 00:01:36.990
+00:01:33.080 --> 00:01:35.900
 Check the Volumes page.
 
-00:01:36.990 --> 00:01:44.380
+00:01:35.900 --> 00:01:43.280
 demo-smig-px, on the Portworx storage class, is now the disk of demo-smig.
 
-00:01:44.380 --> 00:01:52.578
+00:01:43.280 --> 00:01:49.596
 The virtual machine now runs from a Portworx volume and never stopped. Next, you hot-plug a CD-ROM.

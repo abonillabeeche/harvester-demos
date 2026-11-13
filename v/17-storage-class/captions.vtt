@@ -1,34 +1,34 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:13.430
+00:00:00.000 --> 00:00:10.460
 In this video, you create a Longhorn storage class with a single replica. Storage classes decide how new volumes are provisioned, so a one-node cluster needs one that fits.
 
-00:00:13.430 --> 00:00:20.740
+00:00:10.460 --> 00:00:17.770
 The Storage Classes page, under Advanced, lists every class with its provisioner and number of replicas.
 
-00:00:20.740 --> 00:00:23.210
+00:00:17.770 --> 00:00:20.190
 Select Create.
 
-00:00:23.210 --> 00:00:25.810
+00:00:20.190 --> 00:00:22.800
 Give the storage class a name.
 
-00:00:25.810 --> 00:00:29.690
+00:00:22.800 --> 00:00:26.680
 Keep the Longhorn V1 provisioner, the default.
 
-00:00:29.690 --> 00:00:36.940
+00:00:26.680 --> 00:00:33.930
 Set the number of replicas to one. With a single node, Longhorn has nowhere to place a second copy.
 
-00:00:36.940 --> 00:00:40.140
+00:00:33.930 --> 00:00:37.130
 Keep the other parameters at their defaults.
 
-00:00:40.140 --> 00:00:42.600
+00:00:37.130 --> 00:00:39.590
 Select Create.
 
-00:00:42.600 --> 00:00:47.110
+00:00:39.590 --> 00:00:44.090
 The new storage class appears in the list with one replica.
 
-00:00:47.110 --> 00:00:55.590
+00:00:44.090 --> 00:00:52.470
 When you create a volume, the new storage class is now one of the choices.
 
-00:00:55.590 --> 00:01:04.581
+00:00:52.470 --> 00:00:59.730
 The storage class is ready. Volumes and virtual machine disks can now use it. Next, you set up cluster networking.
