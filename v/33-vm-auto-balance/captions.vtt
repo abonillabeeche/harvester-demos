@@ -45,5 +45,5 @@ Open the Hosts page to compare these thresholds with the reserved resources.
 00:01:27.470 --> 00:01:37.360
 Every host reserves more than thirty percent of its CPU. No host is underutilized, so the descheduler moves nothing.
 
-00:01:37.360 --> 00:01:49.042
+00:01:37.360 --> 00:01:49.642
 The descheduler checks the hosts every five minutes and live-migrates virtual machines only when a host crosses the thresholds. Next, you connect the cluster to SUSE Observability.

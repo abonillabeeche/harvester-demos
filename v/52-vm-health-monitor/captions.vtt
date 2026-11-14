@@ -1,52 +1,52 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.420
+00:00:00.000 --> 00:00:10.020
 In this video, you find an unhealthy virtual machine in SUSE Observability, check its metrics, and open the monitor behind its health state.
 
-00:00:10.420 --> 00:00:13.130
+00:00:10.020 --> 00:00:12.730
 Open the main menu.
 
-00:00:13.130 --> 00:00:16.520
+00:00:12.730 --> 00:00:16.120
 Expand SUSE Virtualization.
 
-00:00:16.520 --> 00:00:19.680
+00:00:16.120 --> 00:00:19.280
 Select Virtual machines.
 
-00:00:19.680 --> 00:00:26.030
+00:00:19.280 --> 00:00:25.630
 This VM shows Deviating. It runs on a host of the harvester-north cluster.
 
-00:00:26.030 --> 00:00:33.730
+00:00:25.630 --> 00:00:33.330
 To the right, the CPU Usage, Memory Usage, and Disk Usage columns show current metrics for each VM.
 
-00:00:33.730 --> 00:00:37.380
+00:00:33.330 --> 00:00:36.980
 Open the Deviating VM.
 
-00:00:37.380 --> 00:00:44.810
+00:00:36.980 --> 00:00:44.410
 On the Highlights page, the Monitors card shows which check failed. Here, it is VM disk filling up.
 
-00:00:44.810 --> 00:00:50.550
+00:00:44.410 --> 00:00:50.150
 Before you open the monitor, select Metrics to see the VM's charts.
 
-00:00:50.550 --> 00:01:01.120
+00:00:50.150 --> 00:01:00.720
 Guest shows filesystem usage inside the VM, from the QEMU guest agent. Other groups cover network, storage, memory, and CPU.
 
-00:01:01.120 --> 00:01:04.020
+00:01:00.720 --> 00:01:03.620
 Return to Highlights.
 
-00:01:04.020 --> 00:01:09.100
+00:01:03.620 --> 00:01:08.700
 Select the VM disk filling up monitor.
 
-00:01:09.100 --> 00:01:17.970
+00:01:08.700 --> 00:01:17.570
 The panel explains the check. It fires when the fullest writable filesystem in the VM is more than eighty percent used.
 
-00:01:17.970 --> 00:01:26.300
+00:01:17.570 --> 00:01:25.900
 The triggering evidence plots that metric against its threshold. The health state shows Deviating since the trigger time.
 
-00:01:26.300 --> 00:01:36.580
+00:01:25.900 --> 00:01:36.180
 Below, the monitor links a remediation guide with suggested next steps. Review them against your own environment before you act.
 
-00:01:36.580 --> 00:01:40.740
+00:01:36.180 --> 00:01:40.340
 Close the panel when you are done.
 
-00:01:40.740 --> 00:01:48.236
+00:01:40.340 --> 00:01:47.836
 You traced an unhealthy virtual machine to the monitor behind its state. Next, you right-size virtual machines.

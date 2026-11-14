@@ -90,59 +90,59 @@ Next, give the gateway an external IP. Select External IPs,
 00:02:43.880 --> 00:02:46.280
 and then Create.
 
-00:02:46.280 --> 00:02:48.820
+00:02:46.280 --> 00:02:48.540
 Name it demo-eip.
 
-00:02:48.820 --> 00:02:53.270
+00:02:48.540 --> 00:02:52.990
 Select the NAT gateway demo-gw,
 
-00:02:53.270 --> 00:03:00.310
+00:02:52.990 --> 00:03:00.030
 and the external subnet. Leave V4 IP empty to take the next free address.
 
-00:03:00.310 --> 00:03:02.770
+00:03:00.030 --> 00:03:02.490
 Select Create.
 
-00:03:02.770 --> 00:03:07.950
+00:03:02.490 --> 00:03:07.670
 Finally, add a source NAT rule. Select Source Rules,
 
-00:03:07.950 --> 00:03:10.350
+00:03:07.670 --> 00:03:10.070
 and then Create.
 
-00:03:10.350 --> 00:03:12.610
+00:03:10.070 --> 00:03:12.330
 Name it demo-snat.
 
-00:03:12.610 --> 00:03:16.490
+00:03:12.330 --> 00:03:16.210
 Select the external IP demo-eip.
 
-00:03:16.490 --> 00:03:26.660
+00:03:16.210 --> 00:03:26.380
 Enter the subnet CIDR, 172.31.10.0/24. Traffic from it leaves with the external IP as its source.
 
-00:03:26.660 --> 00:03:30.700
+00:03:26.380 --> 00:03:30.420
 Select Create.
 
-00:03:30.700 --> 00:03:42.010
+00:03:30.420 --> 00:03:41.730
 To test the path, a small virtual machine, demo-vpc-vm, was attached to the overlay network demo-vpc-net. Open Virtual Machines.
 
-00:03:42.010 --> 00:03:48.880
+00:03:41.730 --> 00:03:48.600
 Its address comes from demo-vpc-subnet, assigned by the subnet's DHCP service.
 
-00:03:48.880 --> 00:03:51.470
+00:03:48.600 --> 00:03:51.190
 Open its console,
 
-00:03:51.470 --> 00:03:55.230
+00:03:51.190 --> 00:03:54.950
 in WebVNC.
 
-00:03:55.230 --> 00:03:57.400
+00:03:54.950 --> 00:03:57.120
 Log in as sles,
 
-00:03:57.400 --> 00:04:01.330
+00:03:57.120 --> 00:04:01.050
 with the password that cloud-init set.
 
-00:04:01.330 --> 00:04:11.290
+00:04:01.050 --> 00:04:11.010
 Ping a public address on the internet, 8.8.8.8.
 
-00:04:11.290 --> 00:04:21.440
+00:04:11.010 --> 00:04:21.160
 The replies arrive. Traffic leaves the VPC through demo-gw, with demo-eip as its source address.
 
-00:04:21.440 --> 00:04:28.875
+00:04:21.160 --> 00:04:28.595
 The virtual machine in demo-vpc reaches the internet through the NAT gateway. Next, you manage hosts out of band.

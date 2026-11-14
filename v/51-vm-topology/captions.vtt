@@ -1,37 +1,37 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.340
+00:00:00.000 --> 00:00:10.260
 In this video, you open a virtual machine in SUSE Observability and follow its relations to its host, storage, and network in the Topology perspective.
 
-00:00:11.340 --> 00:00:14.000
+00:00:10.260 --> 00:00:12.920
 Open the main menu.
 
-00:00:14.000 --> 00:00:17.420
+00:00:12.920 --> 00:00:16.340
 Expand SUSE Virtualization.
 
-00:00:17.420 --> 00:00:20.470
+00:00:16.340 --> 00:00:19.390
 Select Virtual machines.
 
-00:00:20.470 --> 00:00:30.350
+00:00:19.390 --> 00:00:29.270
 The view lists the VMs of every connected cluster. Open the VM named kasm, which runs on the far-edge cluster.
 
-00:00:30.350 --> 00:00:41.120
+00:00:29.270 --> 00:00:40.040
 Highlights opens first. The About card shows the VM's status, host, IP address, vCPUs, memory, and guest operating system.
 
-00:00:41.120 --> 00:00:50.910
+00:00:40.040 --> 00:00:49.830
 Related resources lists what the VM uses, such as its VM network, its disks, the Longhorn volume, and the virt-launcher pod.
 
-00:00:50.910 --> 00:00:55.430
+00:00:49.830 --> 00:00:54.350
 Select Topology to draw these relations as a map.
 
-00:00:55.430 --> 00:01:05.410
+00:00:54.350 --> 00:01:04.330
 The VM sits in the Selection row. Its outgoing relations point to its VM network, its host, and its persistent volume claim.
 
-00:01:05.410 --> 00:01:13.730
+00:01:04.330 --> 00:01:12.650
 Each component is colored by its health, so a problem in the storage or on the host shows next to the VM.
 
-00:01:13.730 --> 00:01:20.350
+00:01:12.650 --> 00:01:19.270
 A VM that Rancher creates for a guest cluster is also a Kubernetes node, so its map shows the pods inside.
 
-00:01:20.350 --> 00:01:29.986
+00:01:19.270 --> 00:01:28.913
 Each virtual machine is a component with relations to its host, storage, and network. Next, you investigate an unhealthy virtual machine.

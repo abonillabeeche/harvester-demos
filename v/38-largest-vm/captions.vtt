@@ -21,8 +21,14 @@ and a name.
 00:00:37.150 --> 00:00:44.940
 Enter five hundred twelve CPUs. That is the hard ceiling of the ARM64 virt machine type, even on a host with fewer cores.
 
-00:00:44.940 --> 00:01:03.080
+00:00:44.940 --> 00:00:49.520
 Enter one hundred sixty gigabytes of memory, more than the host can allocate.
+
+00:00:49.520 --> 00:00:56.580
+Memory is admitted against node allocatable times the memory overcommit ratio, one hundred fifty percent by default.
+
+00:00:56.580 --> 00:01:03.080
+So the virtual machine requests about one hundred seven gigabytes, plus its overhead, which still fits on one host.
 
 00:01:03.080 --> 00:01:04.920
 On the Volumes tab,
@@ -36,23 +42,26 @@ On Advanced Options,
 00:01:12.460 --> 00:01:18.080
 select a cloud configuration template that creates a demo user with a console password.
 
-00:01:18.080 --> 00:01:21.710
+00:01:18.080 --> 00:01:21.930
 Select Create.
 
-00:01:21.710 --> 00:01:29.010
+00:01:21.930 --> 00:01:29.240
 The virtual machine is running with five hundred twelve CPUs and one hundred sixty gigabytes, on a single host.
 
-00:01:29.010 --> 00:01:32.650
+00:01:29.240 --> 00:01:32.870
 The guest has finished booting. Open its console.
 
-00:01:35.950 --> 00:01:38.340
+00:01:36.180 --> 00:01:38.560
 Log in as the demo user
 
-00:01:38.340 --> 00:01:43.400
+00:01:38.560 --> 00:01:43.630
 and the password from the template.
 
-00:01:43.400 --> 00:01:55.230
+00:01:43.630 --> 00:01:48.330
 Check the processor count and the memory.
 
-00:01:55.230 --> 00:02:05.839
+00:01:48.330 --> 00:01:55.460
+The guest reports five hundred twelve processors and about one hundred sixty gigabytes of memory.
+
+00:01:55.460 --> 00:02:06.061
 The host has only one hundred sixty cores, so these CPUs are overcommitted and suit testing more than production. Next, you pack many small virtual machines onto the cluster with overcommit.

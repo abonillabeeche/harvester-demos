@@ -33,29 +33,29 @@ Restoring creates a new volume and leaves the original untouched. Name it demo-d
 00:00:43.330 --> 00:00:46.160
 Keep the default storage class.
 
-00:00:46.160 --> 00:00:48.590
+00:00:46.160 --> 00:00:48.820
 Select Create.
 
-00:00:48.590 --> 00:00:55.140
+00:00:48.820 --> 00:00:55.370
 On the Volumes page, the restored two gigabyte volume demo-data-restored sits next to the original.
 
-00:00:55.140 --> 00:01:00.760
+00:00:55.370 --> 00:01:00.990
 Next, export the original volume to an image. Open its action menu,
 
-00:01:00.760 --> 00:01:03.360
+00:01:00.990 --> 00:01:03.590
 and select Export Image.
 
-00:01:03.360 --> 00:01:08.950
+00:01:03.590 --> 00:01:09.180
 Keep the namespace demo, and name the image demo-data-image.
 
-00:01:08.950 --> 00:01:13.530
+00:01:09.180 --> 00:01:13.760
 Choose the storage class for the image, here longhorn-v2.
 
-00:01:13.530 --> 00:01:17.750
+00:01:13.760 --> 00:01:17.980
 Select Create to start the export.
 
-00:01:17.750 --> 00:01:26.660
+00:01:17.980 --> 00:01:26.890
 On the Images page, demo-data-image is active. You can now create new virtual machines from it, or download it.
 
-00:01:26.660 --> 00:01:34.299
+00:01:26.890 --> 00:01:34.527
 You now have a snapshot, a restored copy, and an image of the volume. Next, you control where virtual machines run.

@@ -24,23 +24,23 @@ Paste the public key. You can also load it from a file with Read from File.
 00:00:33.600 --> 00:00:36.050
 Select Create.
 
-00:00:36.050 --> 00:00:41.480
+00:00:36.050 --> 00:00:41.210
 SUSE Virtualization validates the key and shows its fingerprint.
 
-00:00:41.480 --> 00:00:44.930
+00:00:41.210 --> 00:00:44.660
 To use the key, go to Virtual Machines
 
-00:00:44.930 --> 00:00:47.500
+00:00:44.660 --> 00:00:47.230
 and select Create.
 
-00:00:47.500 --> 00:00:50.540
+00:00:47.230 --> 00:00:50.260
 In the same namespace,
 
-00:00:50.540 --> 00:00:56.120
+00:00:50.260 --> 00:00:55.840
 open the SSH key list on the Basics tab and pick the key.
 
-00:00:56.120 --> 00:01:04.310
+00:00:55.840 --> 00:01:04.030
 When the virtual machine starts, cloud-init adds this key to the default user's authorized keys.
 
-00:01:04.310 --> 00:01:10.993
+00:01:04.030 --> 00:01:10.719
 Your SSH key is stored and ready to use. Next, you create a Linux virtual machine.

@@ -1,37 +1,37 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.020
+00:00:00.000 --> 00:00:11.660
 In this video, you use the VM right-sizing dashboard in SUSE Observability to find virtual machines that are oversized, undersized, or idle.
 
-00:00:11.020 --> 00:00:20.570
+00:00:11.660 --> 00:00:21.210
 This dashboard compares the vCPUs and memory each VM is allocated with what it uses, and what the difference costs.
 
-00:00:20.570 --> 00:00:29.190
+00:00:21.210 --> 00:00:29.830
 The Cluster and VM filters scope every panel. Here, it covers all VMs of the harvester-north cluster.
 
-00:00:29.190 --> 00:00:38.020
+00:00:29.830 --> 00:00:38.660
 The Savings row estimates the monthly saving from right-sizing running VMs and from removing idle and stopped ones.
 
-00:00:38.020 --> 00:00:41.640
+00:00:38.660 --> 00:00:42.280
 Scroll down for the numbers behind the savings.
 
-00:00:43.640 --> 00:00:52.560
+00:00:44.280 --> 00:00:53.200
 The dashboard counts the vCPUs and memory to give back, and the VMs that are undersized, idle, or stopped.
 
-00:00:52.560 --> 00:00:59.020
+00:00:53.200 --> 00:00:59.660
 Days of data shows how long the measurements cover. Less than a week can miss weekly peaks.
 
-00:00:59.020 --> 00:01:06.600
+00:00:59.660 --> 00:01:07.240
 Per VM, you see allocated and recommended vCPUs and what to give back, with memory below.
 
-00:01:06.600 --> 00:01:08.830
+00:01:07.240 --> 00:01:09.470
 Scroll further down.
 
-00:01:10.780 --> 00:01:19.010
+00:01:11.420 --> 00:01:19.650
 The evidence panels show the measurements behind each recommendation, such as CPU at the ninety-fifth percentile.
 
-00:01:20.960 --> 00:01:29.830
+00:01:21.600 --> 00:01:30.470
 At the bottom, charts plot utilisation per VM over time against amber and red threshold lines.
 
-00:01:29.830 --> 00:01:37.159
+00:01:30.470 --> 00:01:37.792
 To apply a recommendation, edit the VM's CPU and memory in SUSE Virtualization, then restart the VM.

@@ -1,76 +1,76 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.140
+00:00:00.000 --> 00:00:10.180
 In this video, you enable the harvester-seeder add-on and give a host its BMC address and credentials, so that SUSE Virtualization can manage the hardware out of band.
 
-00:00:10.140 --> 00:00:14.900
+00:00:10.180 --> 00:00:14.940
 Under Advanced, Add-ons, open the action menu of harvester-seeder.
 
-00:00:14.900 --> 00:00:23.670
+00:00:14.940 --> 00:00:23.710
 Select Enable. Seeder talks to the baseboard management controller of each host, over IPMI and Redfish.
 
-00:00:23.670 --> 00:00:27.000
+00:00:23.710 --> 00:00:27.040
 The add-on reports Deploy Successful.
 
-00:00:27.000 --> 00:00:32.310
+00:00:27.040 --> 00:00:32.350
 On the Hosts page, open the action menu of r640-1,
 
-00:00:32.310 --> 00:00:34.910
+00:00:32.350 --> 00:00:34.950
 and select Edit Config.
 
-00:00:34.910 --> 00:00:40.240
+00:00:34.950 --> 00:00:40.280
 Open the Out-of-band Access tab. The tab appears once the add-on is enabled.
 
-00:00:40.240 --> 00:00:42.680
+00:00:40.280 --> 00:00:42.720
 Select Enabled.
 
-00:00:42.680 --> 00:00:47.740
+00:00:42.720 --> 00:00:47.780
 Enter the address of the host's BMC, here a Dell iDRAC nine.
 
-00:00:47.740 --> 00:00:51.410
+00:00:47.780 --> 00:00:51.450
 Enter port six two three, the IPMI over LAN port.
 
-00:00:51.410 --> 00:00:56.760
+00:00:51.450 --> 00:00:56.800
 Select Insecure TLS, because this iDRAC uses a self-signed certificate.
 
-00:00:56.760 --> 00:01:02.700
+00:00:56.800 --> 00:01:02.740
 The credentials live in a secret. Open the Secret list and choose Create a New.
 
-00:01:02.700 --> 00:01:08.740
+00:01:02.740 --> 00:01:08.780
 Name the secret demo-idrac-r640. It is created in the default namespace.
 
-00:01:08.740 --> 00:01:12.770
+00:01:08.780 --> 00:01:12.810
 Enter the user name of a BMC account that may control power,
 
-00:01:12.770 --> 00:01:14.440
+00:01:12.810 --> 00:01:14.480
 and its password.
 
-00:01:14.440 --> 00:01:16.710
+00:01:14.480 --> 00:01:16.750
 Save the secret.
 
-00:01:16.710 --> 00:01:21.840
+00:01:16.750 --> 00:01:21.880
 Event is Enabled, so Seeder polls Redfish for hardware events every hour.
 
-00:01:21.840 --> 00:01:25.620
+00:01:21.880 --> 00:01:25.660
 Select Save.
 
-00:01:25.620 --> 00:01:31.400
+00:01:25.660 --> 00:01:31.440
 The host details now show the manufacturer, serial number, and model that Seeder read from the BMC over Redfish.
 
-00:01:31.400 --> 00:01:36.480
+00:01:31.440 --> 00:01:36.520
 The Out-of-band Access tab shows the saved BMC connection.
 
-00:01:36.480 --> 00:01:39.020
+00:01:36.520 --> 00:01:39.060
 Open the Events tab.
 
-00:01:39.020 --> 00:01:47.470
+00:01:39.060 --> 00:01:47.510
 It lists the hardware events that Seeder reads from Redfish, such as temperature health and failed components. Events are kept for one hour.
 
-00:01:47.470 --> 00:01:50.380
+00:01:47.510 --> 00:01:50.420
 Open the action menu of the host again.
 
-00:01:50.380 --> 00:01:58.000
+00:01:50.420 --> 00:01:58.040
 Shut Down, Power On, and Reboot over IPMI appear here once the host is in maintenance mode. This single-node cluster stays running.
 
-00:02:00.980 --> 00:02:13.381
+00:02:01.020 --> 00:02:13.421
 The host is connected to its BMC. SUSE Virtualization now shows hardware details and events, and offers out-of-band power actions for hosts in maintenance mode.

@@ -1,91 +1,91 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.350
+00:00:00.000 --> 00:00:11.110
 In this video, you migrate a Linux virtual machine from VMware vSphere to SUSE Virtualization with a cold migration plan in the SUSE VM Migration Toolkit add-on.
 
-00:00:11.350 --> 00:00:18.290
+00:00:11.110 --> 00:00:18.050
 The SUSE VM Migration Toolkit add-on adds the Virtual Machine Migration menu.
 
-00:00:18.290 --> 00:00:20.980
+00:00:18.050 --> 00:00:20.740
 Select Providers.
 
-00:00:20.980 --> 00:00:28.940
+00:00:20.740 --> 00:00:28.700
 The vsphere provider connects to vCenter and is Ready. The host provider is this cluster, the migration target.
 
-00:00:28.940 --> 00:00:33.240
+00:00:28.700 --> 00:00:33.000
 Expand the Virtual Machine Migration menu again,
 
-00:00:33.240 --> 00:00:38.180
+00:00:33.000 --> 00:00:37.940
 open Migration Overview, which lists the migration plans,
 
-00:00:38.180 --> 00:00:41.300
+00:00:37.940 --> 00:00:41.060
 and select Create Migration.
 
-00:00:41.300 --> 00:00:48.120
+00:00:41.060 --> 00:00:47.880
 In step one, select the existing provider vsphere instead of creating a new one.
 
-00:00:48.120 --> 00:00:55.330
+00:00:47.880 --> 00:00:55.090
 The form fills in the vCenter URL and credentials from the provider. Select Proceed.
 
-00:00:55.330 --> 00:01:02.000
+00:00:55.090 --> 00:01:01.760
 Step two lists the virtual machines in vCenter. Search for ubuntu-nfs-src,
 
-00:01:02.000 --> 00:01:11.210
+00:01:01.760 --> 00:01:10.970
 a small, powered-off Ubuntu virtual machine with one CPU, two gigabytes of memory, and a ten gigabyte disk. Select it.
 
-00:01:11.210 --> 00:01:13.820
+00:01:10.970 --> 00:01:13.580
 Select Proceed.
 
-00:01:13.820 --> 00:01:23.810
+00:01:13.580 --> 00:01:23.570
 Step three maps vSphere resources to SUSE Virtualization. Map the port group VM Network to the management network,
 
-00:01:23.810 --> 00:01:29.750
+00:01:23.570 --> 00:01:29.510
 and the datastore ssd to the harvester-longhorn storage class.
 
-00:01:29.750 --> 00:01:36.280
+00:01:29.510 --> 00:01:36.040
 The mapping defaults to Filesystem volumes. Select Edit to change the volume mode.
 
-00:01:36.280 --> 00:01:47.090
+00:01:36.040 --> 00:01:46.850
 Choose Block, the volume mode that SUSE Virtualization virtual machine disks normally use. Keep ReadWriteMany for live migration.
 
-00:01:47.090 --> 00:01:49.630
+00:01:46.850 --> 00:01:49.390
 Select Apply Override.
 
-00:01:49.630 --> 00:01:52.250
+00:01:49.390 --> 00:01:52.010
 Select Proceed.
 
-00:01:52.250 --> 00:01:56.670
+00:01:52.010 --> 00:01:56.430
 Step four reviews the plan. Name it demo-ubuntu-plan,
 
-00:01:56.670 --> 00:02:01.240
+00:01:56.430 --> 00:02:01.000
 and create the virtual machine in the namespace demo.
 
-00:02:01.240 --> 00:02:09.250
+00:02:01.000 --> 00:02:09.010
 This is a cold migration. Source virtual machines are powered off during the copy. This one is already off.
 
-00:02:09.250 --> 00:02:12.300
+00:02:09.010 --> 00:02:12.060
 Select Create and Start.
 
-00:02:12.300 --> 00:02:21.180
+00:02:12.060 --> 00:02:20.940
 The plan starts. Its row shows each step, from disk allocation and guest conversion to the disk copy.
 
-00:02:21.180 --> 00:02:28.490
+00:02:20.940 --> 00:02:28.250
 After the copy, the plan shows Succeeded, and the virtual machine exists in SUSE Virtualization.
 
-00:02:28.490 --> 00:02:31.450
+00:02:28.250 --> 00:02:31.210
 Open Virtual Machines.
 
-00:02:31.450 --> 00:02:38.220
+00:02:31.210 --> 00:02:37.980
 ubuntu-nfs-src is in the namespace demo. It is off, like its source in vSphere.
 
-00:02:38.220 --> 00:02:41.040
+00:02:37.980 --> 00:02:40.800
 Open its actions menu,
 
-00:02:41.040 --> 00:02:45.020
+00:02:40.800 --> 00:02:44.780
 and select Start.
 
-00:02:45.020 --> 00:02:55.180
+00:02:44.780 --> 00:02:54.940
 The migrated Ubuntu virtual machine is running in SUSE Virtualization, converted by virt-v2v for KubeVirt.
 
-00:02:55.180 --> 00:03:03.652
+00:02:54.940 --> 00:03:03.018
 The virtual machine from vSphere now runs in SUSE Virtualization. Next, you find the largest virtual machine you can run.

@@ -1,46 +1,46 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:08.520
+00:00:00.000 --> 00:00:08.800
 In this video, you enable the monitoring add-on in SUSE Virtualization, then view the metrics that it collects for a running virtual machine.
 
-00:00:08.520 --> 00:00:15.670
+00:00:08.800 --> 00:00:15.950
 Add-ons, under Advanced, lists optional components. The rancher-monitoring add-on is disabled.
 
-00:00:15.670 --> 00:00:18.500
+00:00:15.950 --> 00:00:18.780
 Open its actions menu.
 
-00:00:18.500 --> 00:00:27.620
+00:00:18.780 --> 00:00:27.900
 Select Enable. SUSE Virtualization deploys Prometheus, Grafana, and Alertmanager into the cluster.
 
-00:00:27.620 --> 00:00:33.870
+00:00:27.900 --> 00:00:34.150
 After a few minutes, the add-on state changes to Deploy Successful.
 
-00:00:33.870 --> 00:00:37.010
+00:00:34.150 --> 00:00:37.290
 Next, open Virtual Machines.
 
-00:00:37.010 --> 00:00:41.260
+00:00:37.290 --> 00:00:41.540
 Select the running virtual machine demo-metrics.
 
-00:00:41.260 --> 00:00:48.200
+00:00:41.540 --> 00:00:48.480
 A new Virtual Machine Metrics tab is now available. Select it.
 
-00:00:48.200 --> 00:00:59.450
+00:00:48.480 --> 00:00:59.730
 Grafana panels show this virtual machine's CPU and memory usage, and its storage traffic, latency, and IOPS.
 
-00:00:59.450 --> 00:01:04.870
+00:00:59.730 --> 00:01:05.150
 The cluster dashboard also gains metrics. Open Dashboard.
 
-00:01:04.870 --> 00:01:10.690
+00:01:05.150 --> 00:01:10.970
 Below the capacity summary, select Cluster Metrics.
 
-00:01:10.690 --> 00:01:17.920
+00:01:10.970 --> 00:01:18.200
 Cluster Metrics charts CPU utilization, load average, and memory utilization of the hosts.
 
-00:01:17.920 --> 00:01:25.300
+00:01:18.200 --> 00:01:25.580
 Virtual Machine Metrics compares resource usage across virtual machines.
 
-00:01:25.300 --> 00:01:32.970
+00:01:25.580 --> 00:01:33.250
 The charts show CPU, memory, and storage usage for up to ten virtual machines.
 
-00:01:32.970 --> 00:01:39.965
+00:01:33.250 --> 00:01:40.258
 Monitoring is enabled and the virtual machine reports its metrics. Next, you balance virtual machines automatically.

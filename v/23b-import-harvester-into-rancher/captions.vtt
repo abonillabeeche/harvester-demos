@@ -1,43 +1,43 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.930
+00:00:00.000 --> 00:00:10.690
 In this video, you import a SUSE Virtualization cluster into Rancher. Once imported, you manage it from Virtualization Management and can provision Kubernetes clusters on it.
 
-00:00:11.930 --> 00:00:18.030
+00:00:10.690 --> 00:00:16.790
 In Rancher, open Virtualization Management and select Import Existing.
 
-00:00:18.030 --> 00:00:21.390
+00:00:16.790 --> 00:00:20.150
 Name the cluster as it should appear in Rancher.
 
-00:00:21.390 --> 00:00:25.550
+00:00:20.150 --> 00:00:24.310
 Add a description, for example the hardware it runs on.
 
-00:00:25.550 --> 00:00:28.170
+00:00:24.310 --> 00:00:26.930
 Select Create.
 
-00:00:28.170 --> 00:00:34.970
+00:00:26.930 --> 00:00:33.730
 Rancher shows the steps and a registration URL for this cluster. Copy the URL.
 
-00:00:34.970 --> 00:00:43.060
+00:00:33.730 --> 00:00:41.820
 Now open the SUSE Virtualization UI of the cluster you are importing, and go to Advanced, Settings.
 
-00:00:43.060 --> 00:00:48.230
+00:00:41.820 --> 00:00:46.990
 Find the cluster registration URL setting and open its menu.
 
-00:00:48.230 --> 00:00:50.970
+00:00:46.990 --> 00:00:49.730
 Select Edit Setting.
 
-00:00:50.970 --> 00:00:59.050
+00:00:49.730 --> 00:00:57.810
 Paste the registration URL. Leave TLS verification on, because Rancher has a trusted certificate.
 
-00:00:59.050 --> 00:01:01.550
+00:00:57.810 --> 00:01:00.310
 Select Save.
 
-00:01:01.550 --> 00:01:11.670
+00:01:00.310 --> 00:01:10.430
 A tip explains how to remove the cluster from Rancher later. Select OK, and the cluster starts connecting to Rancher.
 
-00:01:11.670 --> 00:01:23.530
+00:01:10.430 --> 00:01:22.290
 Back in Virtualization Management, the cluster is active and shows its SUSE Virtualization version and nodes. You can now manage it from Rancher.
 
-00:01:23.530 --> 00:01:29.056
+00:01:22.290 --> 00:01:27.816
 The cluster is imported. Next, you provision a Kubernetes guest cluster on it from Rancher.

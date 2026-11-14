@@ -33,92 +33,92 @@ Change the provisioner from Longhorn to LVM.
 00:00:57.170 --> 00:01:01.480
 For Volume Group, select Create New.
 
-00:01:01.480 --> 00:01:04.480
+00:01:01.480 --> 00:01:04.580
 Name the volume group demo-vg,
 
-00:01:04.480 --> 00:01:06.750
+00:01:04.580 --> 00:01:06.850
 and select Create.
 
-00:01:06.750 --> 00:01:14.170
+00:01:06.850 --> 00:01:13.910
 Select Save. SUSE Virtualization adds the disk to the new volume group.
 
-00:01:14.170 --> 00:01:16.700
+00:01:13.910 --> 00:01:16.440
 Open the host,
 
-00:01:16.700 --> 00:01:19.350
+00:01:16.440 --> 00:01:19.090
 and its Storage tab.
 
-00:01:19.350 --> 00:01:28.280
+00:01:19.090 --> 00:01:28.020
 The disk /dev/sdc is now provisioned with LVM. Next, create a storage class on the volume group.
 
-00:01:28.280 --> 00:01:32.230
+00:01:28.020 --> 00:01:31.980
 On the Storage Classes page, select Create.
 
-00:01:32.230 --> 00:01:34.660
+00:01:31.980 --> 00:01:34.400
 Name it demo-lvm.
 
-00:01:34.660 --> 00:01:38.380
+00:01:34.400 --> 00:01:38.130
 Choose the LVM provisioner.
 
-00:01:38.380 --> 00:01:46.780
+00:01:38.130 --> 00:01:46.530
 LVM volumes are local, so the class is tied to one host. Choose node p5820,
 
-00:01:46.780 --> 00:01:50.560
+00:01:46.530 --> 00:01:50.310
 and the volume group demo-vg.
 
-00:01:50.560 --> 00:01:58.770
+00:01:50.310 --> 00:01:58.510
 Keep the volume group type dm-thin. Thin volumes allocate space on write and support snapshots and clones.
 
-00:01:58.770 --> 00:02:01.230
+00:01:58.510 --> 00:02:00.980
 Select Create.
 
-00:02:01.230 --> 00:02:05.640
+00:02:00.980 --> 00:02:05.390
 The new storage class uses the LVM provisioner.
 
-00:02:05.640 --> 00:02:12.900
+00:02:05.390 --> 00:02:12.640
 Now create a virtual machine that uses it. On the Virtual Machines page, select Create.
 
-00:02:12.900 --> 00:02:16.400
+00:02:12.640 --> 00:02:16.140
 Choose the namespace demo,
 
-00:02:16.400 --> 00:02:19.180
+00:02:16.140 --> 00:02:19.560
 and name it demo-lvm-vm.
 
-00:02:19.180 --> 00:02:21.590
+00:02:19.560 --> 00:02:21.970
 Give it one CPU
 
-00:02:21.590 --> 00:02:24.180
+00:02:21.970 --> 00:02:24.560
 and two gigabytes of memory.
 
-00:02:24.180 --> 00:02:26.630
+00:02:24.560 --> 00:02:27.020
 On the Volumes tab,
 
-00:02:26.630 --> 00:02:31.240
+00:02:27.020 --> 00:02:31.620
 pick the openSUSE Leap image for the root disk.
 
-00:02:31.240 --> 00:02:34.750
+00:02:31.620 --> 00:02:35.130
 Then select Add Volume for a second disk.
 
-00:02:34.750 --> 00:02:39.150
+00:02:35.130 --> 00:02:39.530
 Set its storage class to demo-lvm,
 
-00:02:39.150 --> 00:02:41.980
+00:02:39.530 --> 00:02:42.360
 and its size to two gigabytes.
 
-00:02:41.980 --> 00:02:46.050
+00:02:42.360 --> 00:02:46.430
 Select Create.
 
-00:02:46.050 --> 00:02:53.750
+00:02:46.430 --> 00:02:54.130
 The virtual machine is scheduled on host p5820, where the volume group lives, and it is running.
 
-00:02:53.750 --> 00:02:56.640
+00:02:54.130 --> 00:02:57.020
 Open the virtual machine,
 
-00:02:56.640 --> 00:02:59.670
+00:02:57.020 --> 00:03:00.050
 and its Volumes tab.
 
-00:02:59.670 --> 00:03:10.240
+00:03:00.050 --> 00:03:10.630
 Below the root disk, the two gigabyte data volume comes from demo-lvm, a thin logical volume on the local disk.
 
-00:03:10.240 --> 00:03:18.089
+00:03:10.630 --> 00:03:18.466
 The virtual machine runs with a local LVM volume. Next, you monitor virtual machine metrics.

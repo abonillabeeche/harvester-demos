@@ -40,7 +40,7 @@ Select Install.
 Open Workloads. The new AI workload is listed, and Fleet rolls out the three components to demo-ai.
 
 00:01:25.680 --> 00:01:36.340
-The GPU Operator built the NVIDIA driver on the GPU worker, and vLLM downloaded the model and loaded it onto the A2. The workload is Running.
+The GPU Operator installed the NVIDIA driver on the GPU worker, and vLLM loaded the model onto the A2. The workload is Running.
 
 00:01:36.340 --> 00:01:41.980
 Select Open in Rancher to open the suse-ai namespace on demo-ai.

@@ -57,38 +57,38 @@ Set its storage class to netapp-iscsi,
 00:01:17.510 --> 00:01:19.820
 and its size to one gigabyte.
 
-00:01:19.820 --> 00:01:23.510
+00:01:19.820 --> 00:01:23.720
 Select Create.
 
-00:01:23.510 --> 00:01:27.490
+00:01:23.720 --> 00:01:27.710
 Trident creates the volume on ONTAP, and the virtual machine is running.
 
-00:01:27.490 --> 00:01:29.930
+00:01:27.710 --> 00:01:30.140
 Open the virtual machine,
 
-00:01:29.930 --> 00:01:33.000
+00:01:30.140 --> 00:01:33.210
 and its Volumes tab.
 
-00:01:33.000 --> 00:01:39.750
+00:01:33.210 --> 00:01:39.970
 The one gigabyte data disk comes from netapp-iscsi, a LUN on the NetApp storage system.
 
-00:01:39.750 --> 00:01:45.740
+00:01:39.970 --> 00:01:45.960
 Now grow the NetApp disk while the virtual machine runs. On the Volumes page, open its action menu,
 
-00:01:45.740 --> 00:01:48.380
+00:01:45.960 --> 00:01:48.590
 and select Edit Config.
 
-00:01:48.380 --> 00:01:50.960
+00:01:48.590 --> 00:01:51.170
 Change the size to two gigabytes.
 
-00:01:50.960 --> 00:01:57.980
+00:01:51.170 --> 00:01:58.200
 Select Save. Trident grows the LUN on ONTAP, and the virtual machine keeps running.
 
-00:01:57.980 --> 00:02:01.760
+00:01:58.200 --> 00:02:01.970
 The NetApp volume now shows two gigabytes.
 
-00:02:01.760 --> 00:02:08.790
+00:02:01.970 --> 00:02:09.010
 On the Virtual Machines page, demo-netapp is still running. The disk grew without a restart.
 
-00:02:08.790 --> 00:02:16.549
+00:02:09.010 --> 00:02:16.749
 The NetApp volume grew while the virtual machine kept running. Next, you fail over virtual machines to another cluster with harvey.
