@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.320
+In this video, you protect a virtual machine with harvey, a command-line disaster recovery tool, and fail it over to a second SUSE Virtualization cluster.
+
+00:00:09.320 --> 00:00:15.920
+On the retail-store cluster, the virtual machine demo-harvey is running. Its disk is a Longhorn volume.
+
+00:00:15.920 --> 00:00:25.300
+In a terminal, run harvey protect for demo-harvey. harvey runs on your workstation and talks to both clusters.
+
+00:00:25.300 --> 00:00:31.290
+harvey takes a first backup to a shared S3 target and waits until the disaster-recovery cluster restores it.
+
+00:00:31.290 --> 00:00:37.920
+The source volume now backs up every five minutes. On the other cluster, a standby DR volume keeps restoring each backup.
+
+00:00:37.920 --> 00:00:44.540
+harvey also copies the virtual machine and its cloud-init secret. The replica is created stopped.
+
+00:00:44.540 --> 00:00:49.730
+On the disaster-recovery cluster, filter the virtual machine list for demo-harvey.
+
+00:00:49.730 --> 00:00:55.070
+The replica is there, and Off. It uses no compute until you fail over.
+
+00:00:55.070 --> 00:01:02.580
+harvey replication status shows the DR volume in standby and up to date. Lag is the data you would lose right now.
+
+00:01:02.580 --> 00:01:08.250
+Now run a planned failover of demo-harvey to the disaster-recovery cluster.
+
+00:01:08.250 --> 00:01:14.710
+harvey stops the VM, takes a final backup, waits for its restore, then promotes the DR volume and starts the VM.
+
+00:01:14.710 --> 00:01:21.850
+The summary shows the total recovery time, split by phase, and a recovery point of zero seconds: no data lost.
+
+00:01:21.850 --> 00:01:26.250
+Back on the disaster-recovery cluster, filter for demo-harvey again.
+
+00:01:26.250 --> 00:01:31.190
+The virtual machine is Running here now, on the restored Longhorn volume.
+
+00:01:31.190 --> 00:01:39.530
+On retail-store, the original is Off, so only one copy runs. harvey reprotect later replicates back the other way.
+
+00:01:39.530 --> 00:01:48.085
+demo-harvey now runs on the disaster-recovery cluster, with no data lost. Next, you protect virtual machines with CloudCasa.

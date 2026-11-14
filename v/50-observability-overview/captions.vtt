@@ -12,8 +12,11 @@ The Health column rolls up the monitors of each cluster. A cluster with an unhea
 00:00:27.540 --> 00:00:37.650
 The columns show the SUSE Virtualization version, hosts, running VMs, KubeVirt and Longhorn versions, and etcd and clock checks.
 
-00:00:37.650 --> 00:00:50.130
+00:00:37.650 --> 00:00:42.840
 Select Topology to see the clusters as components on a map.
+
+00:00:42.840 --> 00:00:50.130
+Each tile is a cluster, colored by its health state, so an unhealthy cluster stands out at a glance.
 
 00:00:50.130 --> 00:00:56.210
 Select Events to list what happened to these clusters in the selected time range.

@@ -1,0 +1,121 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.300
+In this video, you use Rancher to create an RKE2 cluster on SUSE Virtualization with a GPU worker pool. Each worker virtual machine gets an NVIDIA GPU by PCI passthrough.
+
+00:00:12.300 --> 00:00:16.680
+In Rancher, open Cluster Management and select Create.
+
+00:00:16.680 --> 00:00:20.850
+Select Harvester, the provider for SUSE Virtualization.
+
+00:00:20.850 --> 00:00:26.950
+Choose the cloud credential for harvester-ai, the SUSE Virtualization cluster with the GPUs.
+
+00:00:29.070 --> 00:00:31.820
+Name the cluster demo-ai.
+
+00:00:31.820 --> 00:00:39.090
+The first pool runs etcd, the control plane and regular workloads. Give it four CPUs,
+
+00:00:39.090 --> 00:00:41.350
+and eight gigabytes of memory.
+
+00:00:41.350 --> 00:00:45.290
+Place the virtual machines in the demo namespace,
+
+00:00:45.290 --> 00:00:49.160
+set the default user of the Ubuntu cloud image,
+
+00:00:49.160 --> 00:00:52.930
+pick the Ubuntu 24.04 image,
+
+00:00:52.930 --> 00:00:55.240
+give it a forty gigabyte disk,
+
+00:00:55.240 --> 00:00:59.010
+and attach it to a VM network that reaches Rancher.
+
+00:00:59.010 --> 00:01:06.070
+The DHCP pool of this lab network is full, so each pool gets a fixed address. Select Show Advanced,
+
+00:01:06.070 --> 00:01:14.600
+and enter cloud-init network data with a static address, gateway and DNS servers for the control plane machine.
+
+00:01:14.600 --> 00:01:17.520
+Add a second machine pool for the GPU workers.
+
+00:01:17.520 --> 00:01:19.700
+Name it gpu.
+
+00:01:19.700 --> 00:01:26.050
+Start the pool at zero machines. You attach the GPU to its machine configuration first, then scale it up.
+
+00:01:26.050 --> 00:01:28.470
+Clear the etcd role,
+
+00:01:28.470 --> 00:01:32.170
+and the control plane role, so the pool only runs workloads.
+
+00:01:32.170 --> 00:01:35.690
+Give the GPU workers eight CPUs,
+
+00:01:35.690 --> 00:01:38.040
+twenty-four gigabytes of memory,
+
+00:01:38.040 --> 00:01:43.500
+and an eighty gigabyte disk for the GPU driver, the inference images and the model files.
+
+00:01:43.500 --> 00:01:51.310
+Under Show Advanced, the Rancher 2.15 form offers vGPU profiles only. It has no picker for whole PCI devices yet.
+
+00:01:51.310 --> 00:01:56.660
+So you leave this empty and add the GPU to the machine configuration after the cluster exists.
+
+00:01:56.660 --> 00:02:05.190
+The pool copied the network data of the first pool. Give the GPU worker its own address.
+
+00:02:05.190 --> 00:02:11.460
+Under Cluster Configuration, keep the default RKE2 version and the Harvester cloud provider.
+
+00:02:11.460 --> 00:02:15.070
+Select Create.
+
+00:02:15.070 --> 00:02:23.480
+Rancher created the control plane virtual machine on harvester-ai, installed RKE2 and registered the node. The cluster is now Active.
+
+00:02:23.480 --> 00:02:30.240
+Each machine pool has a machine configuration in the local cluster. Open HarvesterConfigs under More Resources.
+
+00:02:30.240 --> 00:02:34.430
+They live in the fleet-default namespace. Filter the list for it.
+
+00:02:38.120 --> 00:02:43.390
+Open the actions of the gpu pool's configuration and select Edit YAML.
+
+00:02:45.460 --> 00:02:50.980
+The hostDeviceInfo field passes PCI devices to every machine of the pool. It is empty.
+
+00:02:55.950 --> 00:03:02.750
+Request the NVIDIA A2 by its device resource name. Any host that has a free A2 can run the machine.
+
+00:03:02.750 --> 00:03:05.960
+Save the configuration.
+
+00:03:05.960 --> 00:03:12.560
+Back in Cluster Management, open demo-ai. The Machine Pools tab lists both pools.
+
+00:03:12.560 --> 00:03:18.960
+Select the plus button of the gpu pool to add one GPU worker.
+
+00:03:18.960 --> 00:03:26.220
+Rancher created the worker virtual machine with the A2 passed through, installed RKE2 and joined it to the cluster.
+
+00:03:26.220 --> 00:03:34.140
+In Virtualization Management, harvester-ai runs both node virtual machines in the demo namespace. Open the GPU worker.
+
+00:03:36.210 --> 00:03:44.260
+Its device allocation annotation shows the NVIDIA A2 that SUSE Virtualization passed through from the host.
+
+00:03:44.260 --> 00:03:53.251
+The cluster has a control plane node and a GPU worker that owns the NVIDIA A2. Next, you deploy SUSE AI on it.

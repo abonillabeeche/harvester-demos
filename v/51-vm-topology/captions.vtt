@@ -21,8 +21,17 @@ Highlights opens first. The About card shows the VM's status, host, IP address, 
 00:00:41.120 --> 00:00:50.910
 Related resources lists what the VM uses, such as its VM network, its disks, the Longhorn volume, and the virt-launcher pod.
 
-00:00:50.910 --> 00:01:17.970
+00:00:50.910 --> 00:00:55.430
 Select Topology to draw these relations as a map.
 
-00:01:17.970 --> 00:01:27.603
+00:00:55.430 --> 00:01:05.410
+The VM sits in the Selection row. Its outgoing relations point to its VM network, its host, and its persistent volume claim.
+
+00:01:05.410 --> 00:01:13.730
+Each component is colored by its health, so a problem in the storage or on the host shows next to the VM.
+
+00:01:13.730 --> 00:01:20.350
+A VM that Rancher creates for a guest cluster is also a Kubernetes node, so its map shows the pods inside.
+
+00:01:20.350 --> 00:01:29.986
 Each virtual machine is a component with relations to its host, storage, and network. Next, you investigate an unhealthy virtual machine.

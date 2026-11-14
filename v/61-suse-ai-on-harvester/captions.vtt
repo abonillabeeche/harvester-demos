@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.060
+In this video, you use SUSE AI Factory in Rancher to deploy an AI stack on the GPU cluster: the NVIDIA GPU Operator, vLLM serving a model, and Open WebUI.
+
+00:00:12.060 --> 00:00:20.060
+In Rancher, SUSE AI Factory deploys AI stacks from blueprints. Each blueprint bundles Helm charts with tested values.
+
+00:00:20.060 --> 00:00:23.660
+Show all catalogs, including custom blueprints,
+
+00:00:23.660 --> 00:00:26.900
+and search for the blueprint prepared for this lab.
+
+00:00:26.900 --> 00:00:35.010
+It bundles the NVIDIA GPU Operator, vLLM from the SUSE Application Collection serving Qwen 2.5 3B Instruct, and Open WebUI.
+
+00:00:35.010 --> 00:00:37.310
+Select Install.
+
+00:00:37.310 --> 00:00:41.580
+Keep the instance name and deploy into the suse-ai namespace.
+
+00:00:43.620 --> 00:00:49.180
+Fleet deploys the bundle to the clusters you select. Clear the cluster the wizard preselects,
+
+00:00:49.180 --> 00:00:54.130
+and select demo-ai, the GPU cluster on SUSE Virtualization.
+
+00:00:56.240 --> 00:01:02.230
+You can override each component's Helm values here. Keep the blueprint defaults.
+
+00:01:04.330 --> 00:01:13.680
+Review the plan. The GPU Operator goes to its own namespace, vLLM and Open WebUI to suse-ai, all on demo-ai.
+
+00:01:13.680 --> 00:01:17.930
+Select Install.
+
+00:01:17.930 --> 00:01:25.680
+Open Workloads. The new AI workload is listed, and Fleet rolls out the three components to demo-ai.
+
+00:01:25.680 --> 00:01:36.340
+The GPU Operator built the NVIDIA driver on the GPU worker, and vLLM downloaded the model and loaded it onto the A2. The workload is Running.
+
+00:01:36.340 --> 00:01:41.980
+Select Open in Rancher to open the suse-ai namespace on demo-ai.
+
+00:01:41.980 --> 00:01:44.760
+Open its Workloads tab.
+
+00:01:44.760 --> 00:01:54.800
+The vLLM engine for Qwen 2.5 3B Instruct is Active, with the image from the SUSE Application Collection, next to the router and Open WebUI.
+
+00:01:54.800 --> 00:02:04.807
+SUSE AI runs on the guest cluster and vLLM serves the model on the passed-through GPU. Next, you query it and watch its metrics.

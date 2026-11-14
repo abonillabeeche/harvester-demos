@@ -1,0 +1,94 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.580
+In this video, you give a virtual machine a disk on NetApp ONTAP storage through the Trident CSI driver, then expand that disk while the virtual machine keeps running.
+
+00:00:10.580 --> 00:00:20.630
+Trident, the NetApp CSI driver, is installed on this cluster. Its storage class netapp-iscsi creates volumes on ONTAP over iSCSI.
+
+00:00:20.630 --> 00:00:29.420
+By default, SUSE Virtualization expands disks of running virtual machines only for Longhorn. The setting csi-online-expand-validation controls this.
+
+00:00:29.420 --> 00:00:31.810
+Open its action menu,
+
+00:00:31.810 --> 00:00:34.760
+and select Edit Setting.
+
+00:00:34.760 --> 00:00:37.100
+Select Add.
+
+00:00:37.100 --> 00:00:42.500
+For the new provisioner, choose csi.trident.netapp.io,
+
+00:00:42.500 --> 00:00:44.520
+and keep the value True.
+
+00:00:44.520 --> 00:00:47.100
+Select Save.
+
+00:00:47.100 --> 00:00:52.660
+Now create a virtual machine. On the Virtual Machines page, select Create.
+
+00:00:52.660 --> 00:00:55.550
+Choose the namespace demo,
+
+00:00:55.550 --> 00:00:57.930
+and name it demo-netapp.
+
+00:00:57.930 --> 00:00:59.920
+Give it one CPU
+
+00:00:59.920 --> 00:01:02.260
+and two gigabytes of memory.
+
+00:01:02.260 --> 00:01:04.110
+On the Volumes tab,
+
+00:01:04.110 --> 00:01:10.250
+pick the openSUSE Leap image for the root disk. The root disk stays on Longhorn.
+
+00:01:10.250 --> 00:01:13.570
+Then select Add Volume for a data disk.
+
+00:01:13.570 --> 00:01:17.510
+Set its storage class to netapp-iscsi,
+
+00:01:17.510 --> 00:01:19.820
+and its size to one gigabyte.
+
+00:01:19.820 --> 00:01:23.510
+Select Create.
+
+00:01:23.510 --> 00:01:27.490
+Trident creates the volume on ONTAP, and the virtual machine is running.
+
+00:01:27.490 --> 00:01:29.930
+Open the virtual machine,
+
+00:01:29.930 --> 00:01:33.000
+and its Volumes tab.
+
+00:01:33.000 --> 00:01:39.750
+The one gigabyte data disk comes from netapp-iscsi, a LUN on the NetApp storage system.
+
+00:01:39.750 --> 00:01:45.740
+Now grow the NetApp disk while the virtual machine runs. On the Volumes page, open its action menu,
+
+00:01:45.740 --> 00:01:48.380
+and select Edit Config.
+
+00:01:48.380 --> 00:01:50.960
+Change the size to two gigabytes.
+
+00:01:50.960 --> 00:01:57.980
+Select Save. Trident grows the LUN on ONTAP, and the virtual machine keeps running.
+
+00:01:57.980 --> 00:02:01.760
+The NetApp volume now shows two gigabytes.
+
+00:02:01.760 --> 00:02:08.790
+On the Virtual Machines page, demo-netapp is still running. The disk grew without a restart.
+
+00:02:08.790 --> 00:02:16.549
+The NetApp volume grew while the virtual machine kept running. Next, you fail over virtual machines to another cluster with harvey.
