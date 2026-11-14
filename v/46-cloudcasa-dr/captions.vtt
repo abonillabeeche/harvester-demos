@@ -1,0 +1,103 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:17.990
+In this video, you define DR clusters and a DR plan in CloudCasa, then fail a virtual machine over to a second cluster. CloudCasa also brokers DR with HPE and Dell storage replication, which this lab cannot show, so the video uses Longhorn disaster recovery volumes.
+
+00:00:17.990 --> 00:00:27.800
+On far-edge, the source cluster, demo-ccdr runs on a Longhorn volume. Longhorn backs it up every five minutes to an S3 target that harvester-ai also reads.
+
+00:00:27.800 --> 00:00:33.390
+Open the CloudCasa console, where the DR clusters, storage systems, plans and recovery jobs live.
+
+00:00:33.390 --> 00:00:36.050
+Sign in with your CloudCasa account.
+
+00:00:41.310 --> 00:00:51.030
+The DR Clusters page lists both clusters, registered with CloudCasa DR enabled: demo-far-edge as the source and demo-harvester-ai as the target.
+
+00:00:51.030 --> 00:00:56.000
+Open demo-far-edge to link the storage system that holds its volumes.
+
+00:00:56.000 --> 00:01:01.890
+Select Link storage system. Each cluster's Longhorn was added earlier as a storage system.
+
+00:01:01.890 --> 00:01:07.690
+Open the list and choose demo-lh-far-edge, the Longhorn of the source cluster,
+
+00:01:09.330 --> 00:01:13.250
+and select Save to link it to the cluster.
+
+00:01:13.250 --> 00:01:17.280
+Do the same for demo-harvester-ai, the target cluster.
+
+00:01:19.330 --> 00:01:24.870
+This time, choose its own Longhorn system, demo-lh-harvester-ai, and save.
+
+00:01:28.590 --> 00:01:33.020
+Both clusters now know which storage replicates their volumes.
+
+00:01:33.020 --> 00:01:37.360
+Next, on the Plans page, select Add DR plan.
+
+00:01:37.360 --> 00:01:40.880
+Choose demo-far-edge as the source cluster,
+
+00:01:42.520 --> 00:01:47.430
+and its Longhorn storage system, demo-lh-far-edge.
+
+00:01:51.130 --> 00:01:55.600
+Select Next, then choose demo-harvester-ai as the destination,
+
+00:01:57.250 --> 00:02:01.280
+with its storage system, demo-lh-harvester-ai.
+
+00:02:04.960 --> 00:02:13.810
+In Selections, open the VMs tab. A plan can also protect whole namespaces, deployments, or stateful sets.
+
+00:02:13.810 --> 00:02:17.800
+Select demo-ccdr in the demo-ccdr namespace.
+
+00:02:19.840 --> 00:02:24.750
+Select Next, and name the plan demo-ccdr-plan.
+
+00:02:24.750 --> 00:02:33.490
+The inventory PVC, prepared in the cloudcasa-io namespace on the same Longhorn class, records the plan's resources and replicates with them.
+
+00:02:33.490 --> 00:02:41.200
+Select Create. CloudCasa starts its DR agent on far-edge and takes a first inventory.
+
+00:02:41.200 --> 00:02:47.490
+The inventory is complete, and the next Longhorn backups have brought the DR volumes on harvester-ai up to date.
+
+00:02:47.490 --> 00:02:53.400
+Now fail over. On the Recovery jobs page, select Add DR recovery,
+
+00:02:53.400 --> 00:02:57.870
+and pick the plan demo-ccdr-plan.
+
+00:02:59.920 --> 00:03:07.550
+Select Next and open VM options. The run strategy is Halted by default, which would leave the VM stopped.
+
+00:03:07.550 --> 00:03:14.980
+Open the list and choose Use strategy from backup, so demo-ccdr starts on harvester-ai.
+
+00:03:18.710 --> 00:03:22.770
+Select Next, and name the job demo-ccdr-failover.
+
+00:03:22.770 --> 00:03:29.040
+Keep Stop workloads before failover on, so CloudCasa shuts down demo-ccdr on far-edge first.
+
+00:03:29.040 --> 00:03:33.270
+Turn on Run now, then select Create to start the failover.
+
+00:03:36.510 --> 00:03:43.490
+The recovery job has stopped the source VM, activated the DR volumes on harvester-ai, and restored the VM there.
+
+00:03:43.490 --> 00:03:50.060
+On harvester-ai, the target cluster, demo-ccdr is running from its activated Longhorn DR volume.
+
+00:03:50.060 --> 00:03:57.250
+Back on far-edge, the original demo-ccdr is off, so only one copy of the VM runs.
+
+00:03:57.250 --> 00:04:06.933
+The virtual machine now runs on harvester-ai from its replicated Longhorn volume. To fail back, set up Longhorn replication in the other direction and create a new plan.
