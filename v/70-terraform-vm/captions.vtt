@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:14.570
+In this video, you describe an image, a network and a virtual machine as code with the Harvester Terraform provider, create them in SUSE Virtualization, change the virtual machine with a plan, and remove everything again.
+
+00:00:14.570 --> 00:00:22.750
+main.tf pins the Harvester provider and points it at a kubeconfig. Here it belongs to an account that can only use the demo namespace.
+
+00:00:22.750 --> 00:00:29.740
+The first resource is an image. The cluster downloads the openSUSE Leap cloud image from this address.
+
+00:00:29.740 --> 00:00:36.480
+The second is a VLAN network, VLAN one hundred on the management cluster network, with its subnet and gateway.
+
+00:00:36.480 --> 00:00:46.620
+The virtual machine uses both. One CPU, two gigabytes of memory, a ten gigabyte disk from the image, a NIC on the network, and cloud-init user data.
+
+00:00:46.620 --> 00:00:52.840
+terraform init downloads the provider version that main.tf asks for.
+
+00:00:52.840 --> 00:00:58.910
+terraform apply first computes a plan. Each plus sign is an attribute of a resource that does not exist yet.
+
+00:00:58.910 --> 00:01:06.210
+The plan adds three resources. Terraform creates the network and the image first, then the virtual machine that needs them.
+
+00:01:06.210 --> 00:01:13.340
+In the UI, demo-tf-vm is running with one CPU and two gigabytes of memory, just as main.tf describes it.
+
+00:01:13.340 --> 00:01:19.630
+The Virtual Machine Networks page lists demo-tf-net, the VLAN network with VLAN ID one hundred.
+
+00:01:19.630 --> 00:01:26.900
+Now change the code. In main.tf, the CPU count goes from one to two, and the memory from two to four gigabytes.
+
+00:01:26.900 --> 00:01:34.920
+terraform plan compares the code with the cluster. The tilde marks an in-place update of the virtual machine: CPU and memory.
+
+00:01:34.920 --> 00:01:40.470
+Nothing is added or destroyed. One resource changes.
+
+00:01:40.470 --> 00:01:48.280
+terraform apply makes the change. Because restart_after_update is set, the provider restarts the virtual machine so the new size takes effect.
+
+00:01:48.280 --> 00:01:57.840
+In the UI, the details of demo-tf-vm now show two virtual CPUs and four gigabytes of memory, after the restart.
+
+00:01:57.840 --> 00:02:05.850
+When you no longer need it, terraform destroy removes the virtual machine, its disk, the network and the image.
+
+00:02:05.850 --> 00:02:16.034
+One file now describes the image, the network and the virtual machine, and Terraform keeps the cluster in line with it. Next, you bootstrap a Linux virtual machine with cloud-init.

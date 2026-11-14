@@ -1,67 +1,79 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:09.620
-In this video, you raise the overcommit ratios in SUSE Virtualization and create ten small virtual machines at once, so each one reserves less of its host.
+00:00:00.000 --> 00:00:10.990
+In this video, you raise the overcommit ratios in SUSE Virtualization and add tiny virtual machines in batches of ten until a single host refuses to take more.
 
-00:00:09.620 --> 00:00:17.530
+00:00:10.990 --> 00:00:18.910
 In Advanced, Settings, overcommit-config sets how much CPU, memory, and storage the scheduler may promise beyond physical capacity.
 
-00:00:17.530 --> 00:00:19.930
-Open its action menu,
+00:00:18.910 --> 00:00:23.500
+Open its action menu and select Edit Setting to change the defaults.
 
-00:00:19.930 --> 00:00:22.850
-and select Edit Setting.
+00:00:25.570 --> 00:00:30.000
+For this demo, raise CPU from one thousand to two thousand percent,
 
-00:00:22.850 --> 00:00:27.240
-For this demo, raise CPU from one thousand to four thousand percent,
+00:00:30.000 --> 00:00:35.920
+and memory from one hundred fifty to four hundred percent, so each small virtual machine reserves very little.
 
-00:00:27.240 --> 00:00:30.320
-memory from one hundred fifty to three hundred percent,
+00:00:35.920 --> 00:00:39.900
+Select Save to apply the new ratios.
 
-00:00:30.320 --> 00:00:34.790
-and storage to four hundred percent. These values are deliberately exaggerated.
+00:00:39.900 --> 00:00:43.840
+Now go to Virtual Machines and select Create.
 
-00:00:34.790 --> 00:00:37.270
-Select Save.
+00:00:45.840 --> 00:00:51.030
+Select Multiple Instance to create several virtual machines from one form.
 
-00:00:37.270 --> 00:00:39.770
-Now go to Virtual Machines
+00:00:51.030 --> 00:00:54.200
+Choose the demo namespace,
 
-00:00:39.770 --> 00:00:50.020
-and select Create.
+00:00:54.200 --> 00:00:57.350
+the name prefix demo-dense,
 
-00:00:50.020 --> 00:00:52.690
-Select Multiple Instance.
-
-00:00:52.690 --> 00:00:55.590
-Choose the namespace,
-
-00:00:55.590 --> 00:00:57.450
-a name prefix,
-
-00:00:57.450 --> 00:01:00.720
+00:00:57.350 --> 00:01:00.620
 and a count of ten, the most the form creates at once.
 
-00:01:00.720 --> 00:01:02.990
-Give each one CPU
+00:01:00.620 --> 00:01:03.370
+Give each virtual machine one CPU
 
-00:01:02.990 --> 00:01:05.530
+00:01:03.370 --> 00:01:05.870
 and one gigabyte of memory.
 
-00:01:05.530 --> 00:01:07.380
+00:01:05.870 --> 00:01:07.680
 On the Volumes tab,
 
-00:01:07.380 --> 00:01:12.450
-select the openSUSE Leap ARM64 image
+00:01:07.680 --> 00:01:16.380
+select the small SLES sixteen minimal image. Its LVM thin storage clones each root disk from a snapshot in seconds.
 
-00:01:12.450 --> 00:01:19.230
-and shrink the root disk to two gigabytes. Volumes are thin-provisioned, so they hold only what the guest writes.
+00:01:16.380 --> 00:01:21.950
+The Networks tab keeps the default management network, so no addresses come from the lab DHCP pool.
 
-00:01:19.230 --> 00:01:26.500
+00:01:21.950 --> 00:01:29.440
 Select Create. The form creates the ten virtual machines one after another.
 
-00:01:26.500 --> 00:01:35.610
-All ten virtual machines are running. With three hundred percent memory overcommit, each one requests only a third of its memory from the scheduler.
+00:01:29.440 --> 00:01:32.350
+The first ten virtual machines are running.
 
-00:01:35.610 --> 00:01:46.262
-Overcommit lets each host admit more small virtual machines, at the cost of contention under load. Restore the default ratios when you finish testing.
+00:01:32.350 --> 00:01:38.520
+Repeat the form for batch two, with the prefix demo-dense-b and the same tiny settings.
+
+00:01:56.980 --> 00:02:03.720
+Twenty virtual machines are running. From here on, the video cuts between batches.
+
+00:02:03.720 --> 00:02:12.030
+Cut. Two more batches of ten, created off camera with the same settings: forty virtual machines are running.
+
+00:02:12.030 --> 00:02:19.370
+Cut again. After two more batches, sixty small virtual machines are running on this one host.
+
+00:02:19.370 --> 00:02:25.240
+Cut. In the seventh batch, eight virtual machines start, but the host refuses the other two.
+
+00:02:25.240 --> 00:02:32.180
+Their pods are rejected for too many pods. Each virtual machine runs in its own pod, and the host allows two hundred.
+
+00:02:32.180 --> 00:02:40.590
+The final count is sixty-eight running virtual machines. The pod limit, not CPU or memory, stopped this host.
+
+00:02:40.590 --> 00:02:50.801
+Overcommit lets a host admit many small virtual machines, at the cost of contention under load. Check the pod limit too, and restore the default ratios when you finish testing.

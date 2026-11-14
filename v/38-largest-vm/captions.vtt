@@ -63,5 +63,110 @@ Check the processor count and the memory.
 00:01:48.330 --> 00:01:55.460
 The guest reports five hundred twelve processors and about one hundred sixty gigabytes of memory.
 
-00:01:55.460 --> 00:02:06.061
-The host has only one hundred sixty cores, so these CPUs are overcommitted and suit testing more than production. Next, you pack many small virtual machines onto the cluster with overcommit.
+00:01:55.460 --> 00:02:07.720
+Part two runs on a single x86 host. You raise the overcommit ratios, then boot one virtual machine with one thousand twenty-four CPUs and another with eight terabytes of memory.
+
+00:02:07.720 --> 00:02:16.460
+This host is a Dell PowerEdge R640 with ninety-six CPU threads and about six hundred twenty-six gigabytes of allocatable memory.
+
+00:02:16.460 --> 00:02:22.880
+In Advanced, Settings, open the action menu of overcommit-config, which still holds the defaults,
+
+00:02:22.880 --> 00:02:27.130
+and select Edit Setting to change how much the scheduler may promise.
+
+00:02:27.130 --> 00:02:35.640
+The scheduler reserves the CPU count divided by the ratio. Raise CPU to two thousand percent, so a thousand-CPU VM reserves about fifty-one cores.
+
+00:02:35.640 --> 00:02:41.590
+Raise memory to fifteen hundred percent, so eight terabytes reserve about five hundred forty-six gigabytes.
+
+00:02:41.590 --> 00:02:45.570
+Select Save to apply the new ratios.
+
+00:02:45.570 --> 00:02:50.770
+Now go to Virtual Machines and select Create for the first virtual machine.
+
+00:02:52.760 --> 00:02:55.790
+Choose the demo namespace
+
+00:02:55.790 --> 00:02:59.250
+and name it demo-largest-cpu.
+
+00:02:59.250 --> 00:03:07.600
+Enter one thousand twenty-four CPUs. Unlike ARM64, the x86 machine type has no five hundred twelve CPU wall.
+
+00:03:07.600 --> 00:03:13.150
+Give it sixteen gigabytes of memory, and keep the default CPU model and BIOS firmware.
+
+00:03:14.800 --> 00:03:22.450
+On the Volumes tab, select the SLES sixteen minimal cloud image on LVM thin storage.
+
+00:03:24.150 --> 00:03:31.250
+On Advanced Options, select a cloud configuration template that creates a demo user with a console password.
+
+00:03:31.250 --> 00:03:35.510
+Select Create to submit the first virtual machine.
+
+00:03:35.510 --> 00:03:43.440
+Select Create again for the second virtual machine. In this lab, UEFI firmware did not start with a thousand CPUs.
+
+00:03:45.820 --> 00:03:50.010
+In the demo namespace, name it demo-largest-mem.
+
+00:03:50.010 --> 00:03:53.070
+Sixteen CPUs are enough for this one.
+
+00:03:53.070 --> 00:03:58.340
+Enter eight thousand one hundred ninety-two gigabytes, which is eight terabytes of memory.
+
+00:03:58.340 --> 00:04:06.140
+Above about one terabyte, the default CPU model's address width is too narrow, so choose host-passthrough.
+
+00:04:06.140 --> 00:04:12.850
+Also select Booting in EFI mode. Legacy BIOS can hang while it builds a multi-terabyte memory map.
+
+00:04:14.510 --> 00:04:19.080
+Select the same SLES image on the Volumes tab,
+
+00:04:20.730 --> 00:04:24.880
+and the same login template on Advanced Options.
+
+00:04:24.880 --> 00:04:31.470
+Select Create to submit the second virtual machine.
+
+00:04:31.470 --> 00:04:38.020
+Both virtual machines are running on the one host. The guests need a few minutes to initialize.
+
+00:04:38.020 --> 00:04:42.440
+The guest of demo-largest-cpu has finished booting. Open its console.
+
+00:04:45.720 --> 00:04:48.100
+Log in as the demo user
+
+00:04:48.100 --> 00:04:53.280
+with the password from the template.
+
+00:04:53.280 --> 00:04:57.990
+Check the processor count and the memory.
+
+00:04:57.990 --> 00:05:03.520
+The guest reports one thousand twenty-four processors on a host with ninety-six threads.
+
+00:05:03.520 --> 00:05:08.590
+The guest of demo-largest-mem has finished booting. Open its console.
+
+00:05:11.820 --> 00:05:14.210
+Log in as the demo user
+
+00:05:14.210 --> 00:05:19.390
+with the password from the template.
+
+00:05:19.390 --> 00:05:23.820
+Run the same check in this guest.
+
+00:05:23.820 --> 00:05:31.030
+This guest reports about eight terabytes of memory, on a host with seven hundred fifty-four gigabytes of RAM.
+
+00:05:31.030 --> 00:05:44.328
+Only a fraction of that memory can ever be backed by real RAM, and those CPUs share ninety-six threads, so treat these values as limits to know, not a sizing target. Next, you pack many small virtual machines onto one host.
