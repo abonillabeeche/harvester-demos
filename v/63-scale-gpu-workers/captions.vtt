@@ -1,0 +1,58 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.740
+In this video, you grow the demo-ai cluster from one GPU worker to two. The host's second GPU is an NVIDIA A2, a different model than the T400, so it gets its own machine pool.
+
+00:00:11.740 --> 00:00:17.810
+demo-ai has a control plane node and one GPU worker, which owns the host's NVIDIA T400.
+
+00:00:17.810 --> 00:00:23.370
+To add GPU capacity, open the cluster's action menu and select Edit Config.
+
+00:00:25.420 --> 00:00:29.320
+The A2 is a different GPU model, so add a new machine pool for it.
+
+00:00:29.320 --> 00:00:32.900
+Name the pool gpu-a2 and keep one machine.
+
+00:00:32.900 --> 00:00:37.370
+The new pool gets only the Worker role, which is what a GPU worker needs.
+
+00:00:37.370 --> 00:00:40.040
+Give the worker eight CPUs,
+
+00:00:40.040 --> 00:00:42.590
+sixteen gigabytes of memory,
+
+00:00:42.590 --> 00:00:46.700
+and an eighty gigabyte disk for the driver and the model files.
+
+00:00:48.400 --> 00:00:53.960
+Under the advanced settings, the PCI Devices picker lists the GPUs that are free on the host.
+
+00:00:53.960 --> 00:00:56.580
+Add a row to the device list,
+
+00:00:56.580 --> 00:01:03.240
+and pick the NVIDIA A2. It is alone in its IOMMU group, so one row is enough.
+
+00:01:03.240 --> 00:01:11.570
+The pool copied the network data of another pool. The lab's DHCP pool is full, so give this worker its own static address.
+
+00:01:11.570 --> 00:01:18.950
+Save the configuration. Rancher scales the cluster from one GPU worker to two.
+
+00:01:18.950 --> 00:01:26.080
+Rancher created the worker virtual machine with the A2 passed through, installed RKE2 and joined it to demo-ai.
+
+00:01:26.080 --> 00:01:32.100
+demo-ai now runs two GPU workers next to its control plane node, one per GPU model.
+
+00:01:32.100 --> 00:01:37.660
+In SUSE Virtualization, open the new worker's virtual machine on harvester-ai.
+
+00:01:37.660 --> 00:01:45.870
+Its device allocation annotation shows the NVIDIA A2, passed through from the host to the new worker.
+
+00:01:45.870 --> 00:01:56.663
+demo-ai now has two GPU workers, one with the T400 and one with the A2, both passed through from SUSE Virtualization. You manage GPU capacity from Rancher.

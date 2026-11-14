@@ -1,0 +1,97 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.680
+In this video, you export a virtual machine backup with Veeam Kasten on one SUSE Virtualization cluster, then import it on a second cluster and restore the virtual machine there.
+
+00:00:13.370 --> 00:00:21.110
+Kasten runs on the source cluster, harvester-ai. The namespace demo-k10dr holds a running virtual machine and its disk.
+
+00:00:21.110 --> 00:00:26.140
+Open the options menu of the namespace and select Create a Policy.
+
+00:00:28.150 --> 00:00:34.800
+The form fills in the name demo-k10dr-backup. For this demo, set the frequency to On Demand.
+
+00:00:34.800 --> 00:00:39.740
+Turn on Backups via Snapshot Exports, so the backup leaves the cluster.
+
+00:00:39.740 --> 00:00:43.140
+Open the export location profile list,
+
+00:00:43.140 --> 00:00:48.330
+and choose object-store, an S3 bucket that the second cluster can reach too.
+
+00:00:48.330 --> 00:00:53.750
+Submit the policy. Kasten creates it and generates the import data for other clusters.
+
+00:00:53.750 --> 00:00:58.540
+Open the actions of the new policy and select Run Once.
+
+00:01:00.580 --> 00:01:09.380
+Confirm. Kasten snapshots the disk and exports the snapshot and the virtual machine to the bucket.
+
+00:01:09.380 --> 00:01:15.040
+When the export is done, open the policy actions again and select View Import Data.
+
+00:01:17.160 --> 00:01:24.320
+The import token tells another Kasten instance where the exported data is and how to decrypt it. Copy it.
+
+00:01:26.000 --> 00:01:32.450
+Now switch to Kasten on the second cluster, far-edge. On the Policies page, select Create New Policy.
+
+00:01:32.450 --> 00:01:35.720
+Name the policy demo-k10dr-import,
+
+00:01:35.720 --> 00:01:39.060
+and choose the Import action instead of Snapshot.
+
+00:01:39.060 --> 00:01:43.670
+Run it on demand as well. A schedule would keep importing new restore points.
+
+00:01:43.670 --> 00:01:47.420
+Paste the import token into Config Data for Import.
+
+00:01:47.420 --> 00:01:52.540
+For the profile, choose demo-object-store, which points at the same bucket.
+
+00:01:54.180 --> 00:01:57.130
+Submit the import policy.
+
+00:01:57.130 --> 00:02:02.480
+Open its actions and select Run Once to import the restore point.
+
+00:02:04.560 --> 00:02:08.200
+Confirm the run.
+
+00:02:08.200 --> 00:02:13.540
+In Restore Points, the imported restore point of demo-k10dr is ready on far-edge.
+
+00:02:13.540 --> 00:02:17.180
+Open its actions and select Restore.
+
+00:02:19.220 --> 00:02:24.660
+Keep the namespace demo-k10dr. Kasten creates it on this cluster.
+
+00:02:24.660 --> 00:02:31.530
+The disk used the lvm-thin class, which far-edge doesn't have. Turn on transforms for the restored resources,
+
+00:02:31.530 --> 00:02:35.210
+and add a reference to an existing transform set.
+
+00:02:37.290 --> 00:02:42.830
+Pick demo-to-longhorn. It moves every restored volume to the harvester-longhorn storage class.
+
+00:02:44.470 --> 00:02:50.970
+In the artifact list, deselect the lvm-thin storage class itself. This cluster can't use it.
+
+00:02:50.970 --> 00:02:53.430
+Select Restore,
+
+00:02:53.430 --> 00:03:00.940
+and confirm. Kasten copies the disk data from the bucket and recreates the virtual machine.
+
+00:03:00.940 --> 00:03:09.990
+In SUSE Virtualization on far-edge, demo-k10dr is running, restored from the backup that harvester-ai exported.
+
+00:03:09.990 --> 00:03:18.728
+The virtual machine runs on the second cluster, restored from the exported backup in the shared bucket. Next, you run a DR plan with CloudCasa.
