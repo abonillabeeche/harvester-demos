@@ -1,0 +1,109 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.370
+In this video, you back up a SUSE Virtualization virtual machine with CloudCasa, a backup service, and restore it after it is deleted.
+
+00:00:09.370 --> 00:00:15.980
+On the Virtual Machines page, demo-cc is running in its own namespace, also named demo-cc.
+
+00:00:15.980 --> 00:00:23.730
+Open the CloudCasa console. CloudCasa by Catalogic is a backup service for Kubernetes and its virtual machines.
+
+00:00:23.730 --> 00:00:26.390
+Sign in with your CloudCasa account.
+
+00:00:31.740 --> 00:00:38.600
+The VMs page lists the virtual machines of every connected cluster. Filter for demo-cc.
+
+00:00:38.600 --> 00:00:45.270
+Its cluster, harvester-ai, was registered earlier as demo-harvester-ai, and the CloudCasa agent runs on it.
+
+00:00:45.270 --> 00:00:50.380
+Point to the actions of demo-cc, then select Define backup.
+
+00:00:52.490 --> 00:00:56.000
+The backup panel opens with demo-cc already selected.
+
+00:00:56.000 --> 00:01:02.780
+Keep Copy to backup storage. CloudCasa snapshots the disk first, then copies its data off the cluster.
+
+00:01:02.780 --> 00:01:06.680
+Open Advanced options to choose where the copy goes,
+
+00:01:06.680 --> 00:01:12.280
+and choose CloudCasa storage, which the service provides, so you need no bucket of your own.
+
+00:01:12.280 --> 00:01:15.780
+Then pick a provider and a region for the stored copy.
+
+00:01:21.130 --> 00:01:25.280
+Select Next to go to the policy step.
+
+00:01:25.280 --> 00:01:31.150
+Keep the policy at None, so the backup runs once, on demand. A policy would run it on a schedule.
+
+00:01:31.150 --> 00:01:34.230
+Select Next again to reach the summary.
+
+00:01:34.230 --> 00:01:38.530
+In the summary, name the backup demo-cc-backup,
+
+00:01:38.530 --> 00:01:41.640
+and keep it for one day. Run now is on.
+
+00:01:41.640 --> 00:01:46.380
+Select Create and Run to start the backup now.
+
+00:01:48.480 --> 00:01:55.410
+When the job finishes, Recovery points lists a copy of demo-cc on demo-harvester-ai, kept for one day.
+
+00:01:55.410 --> 00:02:01.890
+Now simulate a loss. Back on the Virtual Machines page, open the actions of demo-cc,
+
+00:02:01.890 --> 00:02:05.000
+and select Delete from the menu.
+
+00:02:05.000 --> 00:02:10.040
+The disk volume is selected too. Select Delete.
+
+00:02:10.040 --> 00:02:15.760
+Back in CloudCasa, point to the actions of the recovery point and select Restore.
+
+00:02:17.840 --> 00:02:21.110
+The restore wizard includes demo-cc from the recovery point.
+
+00:02:21.110 --> 00:02:25.480
+Select Next to choose the destination.
+
+00:02:25.480 --> 00:02:29.710
+The destination is the original cluster, demo-harvester-ai.
+
+00:02:29.710 --> 00:02:33.580
+Select Next to see the restore transforms.
+
+00:02:33.580 --> 00:02:38.170
+Leave the namespace unchanged, so the virtual machine returns to demo-cc.
+
+00:02:38.170 --> 00:02:42.250
+Then open VM options to check how the virtual machine starts.
+
+00:02:42.250 --> 00:02:47.870
+The run strategy is Halted by default, which would leave it stopped. Open the list,
+
+00:02:47.870 --> 00:02:52.550
+and choose Use strategy from backup, so demo-cc starts again as it ran before.
+
+00:02:52.550 --> 00:02:56.080
+Select Next to reach the summary.
+
+00:02:56.080 --> 00:03:00.350
+Name the restore demo-cc-restore. Run now is on.
+
+00:03:00.350 --> 00:03:05.320
+Select Save and Restore to start the restore job.
+
+00:03:05.320 --> 00:03:13.760
+When the restore job finishes, demo-cc is running again on the Virtual Machines page, with its disk restored from CloudCasa.
+
+00:03:13.760 --> 00:03:21.423
+The virtual machine is back, restored from CloudCasa storage. Next, you use NetApp storage with Trident.

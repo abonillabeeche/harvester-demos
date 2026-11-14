@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.740
+In this video, you resize a virtual machine on SUSE Virtualization through Git: the change is reviewed and merged, and Rancher Fleet applies it with CPU and memory hot-plug.
+
+00:00:11.740 --> 00:00:20.350
+The virtual machine demo-web-01 runs with one vCPU and two gigabytes of memory. Rancher Fleet created it from a manifest in Git.
+
+00:00:20.350 --> 00:00:27.730
+In the Git repository, the request form turned a resize request into this pull request, opened by the GitHub Actions bot.
+
+00:00:27.730 --> 00:00:32.160
+Open the pull request to see what was asked for, and by whom.
+
+00:00:32.160 --> 00:00:38.030
+The request records who asked, the change ticket with its reason, and that it applies when the pull request merges.
+
+00:00:38.030 --> 00:00:44.020
+The code owners file routes the review to the team that owns the virtual machines, here the repository owner.
+
+00:00:44.020 --> 00:00:51.960
+The validate check tested the manifest against the policy limits and posted a plan: two vCPUs and four gigabytes after the merge.
+
+00:00:51.960 --> 00:00:56.760
+Open Files changed to see the exact edit to the manifest.
+
+00:00:56.760 --> 00:01:04.100
+Only two lines change: CPU sockets go from one to two, and guest memory from two to four gigabytes.
+
+00:01:04.100 --> 00:01:11.110
+Return to the conversation. In the meantime, the code owner reviewed the change from their own account.
+
+00:01:11.110 --> 00:01:17.790
+The approval, with its comment, is now part of the pull request's history, next to the plan and the passing check.
+
+00:01:17.790 --> 00:01:24.090
+The code owner then merged it into the branch that Fleet watches. That commit is now the desired state.
+
+00:01:24.090 --> 00:01:32.300
+In Rancher, Continuous Delivery shows the repository at the new merge commit. Fleet picked up the change and is applying it to the cluster.
+
+00:01:32.300 --> 00:01:40.680
+Back on the virtual machine, the flavor now reads two vCPUs and four gigabytes. The cluster adds them with a live migration.
+
+00:01:40.680 --> 00:01:45.740
+Open the Migration tab to see how the new size reached the running virtual machine.
+
+00:01:45.740 --> 00:01:55.900
+An automated workload update live-migrated the virtual machine to another node with the extra CPU and memory. It never restarted.
+
+00:01:55.900 --> 00:02:05.226
+The resize went from a reviewed pull request to the running virtual machine without a reboot. Git keeps the record of who asked, who approved, and what changed.

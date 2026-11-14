@@ -1,0 +1,85 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.370
+In this video, you add access control rules to a Kube-OVN subnet on SUSE Virtualization, so that one virtual machine reaches another only on a single port.
+
+00:00:09.370 --> 00:00:15.320
+demo-web, at 10.220.0.10, serves a small web page on ports 80 and 8080.
+
+00:00:15.320 --> 00:00:23.870
+demo-client, at 10.220.0.20, sits on the same overlay subnet, demo-seg-subnet. No rule limits traffic between them yet.
+
+00:00:23.870 --> 00:00:29.260
+Open the console of demo-client in WebVNC to test the connection first.
+
+00:00:32.050 --> 00:00:35.670
+Log in as sles, with the password that cloud-init set.
+
+00:00:38.280 --> 00:00:46.450
+Without rules, both ping and the web page on port 8080 answer.
+
+00:00:46.450 --> 00:00:51.880
+On the Virtual Private Cloud page, open the action menu of demo-seg-subnet,
+
+00:00:51.880 --> 00:00:55.340
+and select Edit Config to change the subnet.
+
+00:00:55.340 --> 00:01:01.180
+The Access Control List tab holds OVN rules that the subnet's virtual switch applies to every port.
+
+00:01:01.180 --> 00:01:04.030
+Add the first rule, which lets web traffic through.
+
+00:01:04.030 --> 00:01:09.170
+Choose the action Allow-related, so that the replies come back too,
+
+00:01:09.170 --> 00:01:14.590
+and the direction To-lport, for traffic going to a virtual machine's port.
+
+00:01:14.590 --> 00:01:18.660
+Give it priority 1010. Higher priorities win.
+
+00:01:18.660 --> 00:01:22.960
+The match selects traffic from demo-client to demo-web on TCP port 80.
+
+00:01:22.960 --> 00:01:27.030
+Add a second rule that drops everything else between the two machines.
+
+00:01:27.030 --> 00:01:30.770
+Choose the action Drop,
+
+00:01:30.770 --> 00:01:34.260
+the same direction, To-lport,
+
+00:01:34.260 --> 00:01:38.120
+and the lower priority 1000, so the port 80 rule is checked first.
+
+00:01:38.120 --> 00:01:44.430
+This match covers all traffic from demo-client to demo-web, any protocol, any port.
+
+00:01:44.430 --> 00:01:50.140
+Select Save. The rules apply right away, with no restart of either machine.
+
+00:01:50.140 --> 00:01:54.960
+Go back to Virtual Machines and open the console of demo-client again.
+
+00:01:59.750 --> 00:02:06.860
+The session is still logged in. Ping demo-web again.
+
+00:02:06.860 --> 00:02:10.840
+All three packets are lost. The drop rule matches ICMP.
+
+00:02:10.840 --> 00:02:14.830
+Now request the web page on port 80.
+
+00:02:14.830 --> 00:02:20.970
+The page arrives. The higher-priority allow rule lets port 80 through, and its replies come back.
+
+00:02:20.970 --> 00:02:28.550
+Finally, try port 8080, which answered before the rules.
+
+00:02:28.550 --> 00:02:37.480
+The connection times out. Only port 80 passes between the two machines; everything else is dropped.
+
+00:02:37.480 --> 00:02:45.663
+The subnet's access control list now drops everything from demo-client to demo-web except web traffic on port 80.

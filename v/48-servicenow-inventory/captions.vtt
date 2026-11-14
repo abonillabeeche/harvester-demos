@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.290
+In this video, you find your SUSE Virtualization VMs in the ServiceNow CMDB, and use that inventory to reclaim storage and give incidents real context.
+
+00:00:12.290 --> 00:00:20.710
+Virtual Machine Instances lists every VM from your clusters. A script syncs it; the ServiceNow Kubernetes Visibility Agent is the supported path.
+
+00:00:20.710 --> 00:00:26.440
+Grouped by state, the list shows thirty-eight stopped VMs and seventeen running ones.
+
+00:00:26.440 --> 00:00:32.980
+The stopped group lists each VM with its CPUs, memory, disks, and disk size, straight from the cluster.
+
+00:00:32.980 --> 00:00:43.320
+This report sums disk size by power state. Stopped VMs hold one thousand five hundred eighty-seven gigabytes, running VMs only six hundred forty-one.
+
+00:00:43.320 --> 00:00:52.820
+This report ranks the stopped VMs that hold the most storage, a short list to review with their owners before you reclaim space.
+
+00:00:52.820 --> 00:01:03.650
+VMs by guest OS helps with patching and licensing. Empty means the VM runs no guest agent, so its operating system is unknown.
+
+00:01:03.650 --> 00:01:10.520
+The form for the VM sqlfci-n1 shows its Runs on relation, the host that runs it right now.
+
+00:01:10.520 --> 00:01:18.330
+The Tasks list ties an open incident to this VM, so the service desk sees the affected VM and its host at once.
+
+00:01:18.330 --> 00:01:26.200
+The dependency map draws the same chain, from the VM down to its host, and flags the open incident with a warning icon.
+
+00:01:26.200 --> 00:01:35.290
+The tags carry the labels from the cluster, such as operating system, namespace, KubeVirt status, cluster, and node.
+
+00:01:35.290 --> 00:01:43.101
+The same inventory now drives storage cleanup, reports, and incident triage, without anyone typing VM records by hand.

@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.910
+In this video, you chat with the model that vLLM serves on the GPU cluster, then follow the GPU and vLLM metrics of that work in SUSE Observability.
+
+00:00:10.910 --> 00:00:16.330
+Open WebUI from the SUSE AI stack greets you with its release notes. Close them.
+
+00:00:16.330 --> 00:00:23.510
+Open WebUI runs on demo-ai and talks to the vLLM router. The model it offers is Qwen 2.5 0.5B Instruct.
+
+00:00:23.510 --> 00:00:28.630
+Ask the model a question and press Enter.
+
+00:00:28.630 --> 00:00:36.100
+vLLM generates the answer on the NVIDIA T400 that SUSE Virtualization passes through to the GPU worker.
+
+00:00:36.100 --> 00:00:39.960
+Send a second, longer prompt to give the GPU more work.
+
+00:00:39.960 --> 00:00:48.340
+The second answer streams in the same way.
+
+00:00:48.340 --> 00:00:58.640
+An OpenTelemetry Collector on demo-ai sends vLLM and GPU metrics to SUSE Observability. Under SUSE AI, the vLLM engine of demo-ai is listed.
+
+00:00:58.640 --> 00:01:04.990
+In the metrics explorer, query the GPU memory in use that the NVIDIA DCGM exporter reports for demo-ai.
+
+00:01:08.700 --> 00:01:12.000
+Narrow the time range to the last fifteen minutes.
+
+00:01:13.740 --> 00:01:20.210
+vLLM keeps a little over three of the T400's four gigabytes in use, for the model weights and its KV cache.
+
+00:01:20.210 --> 00:01:24.360
+Now query vLLM's own metric, the generated tokens per second.
+
+00:01:27.610 --> 00:01:35.400
+The token rate rises while the model generates the answers you just sent, and falls back to zero when it is idle.
+
+00:01:35.400 --> 00:01:44.790
+The model answers from the passed-through GPU, and SUSE Observability shows the GPU and vLLM metrics. Next, you add a GPU worker.
