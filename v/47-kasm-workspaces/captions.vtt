@@ -1,0 +1,76 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.780
+In this video, you see how Kasm Workspaces runs on SUSE Virtualization virtual machines, then log in and stream a terminal, a Windows desktop and a browser.
+
+00:00:10.780 --> 00:00:18.380
+Kasm is already installed on this cluster. On the Virtual Machines page, filter for kasm to see the virtual machines it uses.
+
+00:00:18.380 --> 00:00:26.920
+The control plane is one Ubuntu virtual machine named kasm. It runs the Kasm database, API, manager and proxy.
+
+00:00:26.920 --> 00:00:37.080
+The kasm-dynamic-agent virtual machines in the kasm-autoscale namespace were not created by hand. Kasm creates and deletes them through its Harvester provider.
+
+00:00:37.080 --> 00:00:43.130
+To see how the control plane was installed, open the Advanced Options of the kasm virtual machine.
+
+00:00:43.130 --> 00:00:51.710
+Its cloud-init user data downloads Kasm 1.19 and runs the single-server installer. The passwords on the installer line are blurred.
+
+00:00:51.710 --> 00:00:59.800
+New agents are cloned from images in the kasm-autoscale namespace, like this Linux agent image with the workspaces already pulled.
+
+00:00:59.800 --> 00:01:03.670
+Now open the Kasm portal and log in as the demo user.
+
+00:01:03.670 --> 00:01:07.530
+The password is typed into the masked field, then you select Login.
+
+00:01:09.570 --> 00:01:16.230
+The dashboard lists the workspaces this user may start: browsers, Linux desktops, a terminal and Windows Server.
+
+00:01:16.230 --> 00:01:20.080
+Select the Terminal workspace to open its launch dialog.
+
+00:01:20.080 --> 00:01:28.210
+Then select Launch Session. Kasm starts a container on a Linux agent virtual machine.
+
+00:01:28.210 --> 00:01:35.960
+The terminal streams into the browser tab. Check the kernel, the CPUs and the memory that the session sees.
+
+00:01:35.960 --> 00:01:39.960
+When you are done, open the Kasm control panel on the left edge,
+
+00:01:39.960 --> 00:01:44.350
+select Delete Session, and confirm that you want to delete it.
+
+00:01:46.420 --> 00:01:51.490
+Next, select the Windows Server 2025 workspace and launch it.
+
+00:01:51.490 --> 00:01:58.980
+Kasm hands you a ready Windows virtual machine and connects to it over RDP.
+
+00:01:58.980 --> 00:02:03.560
+The Windows desktop runs in the same browser tab, with no client to install.
+
+00:02:03.560 --> 00:02:07.820
+End it the same way, from the control panel with Delete Session.
+
+00:02:09.870 --> 00:02:14.960
+Kasm deletes this Windows virtual machine and prepares a fresh one for the next user.
+
+00:02:14.960 --> 00:02:19.680
+Next, select the Chrome workspace and launch an isolated browser.
+
+00:02:22.980 --> 00:02:28.970
+Chrome runs in a container on the Linux agent. Select the Web Store shortcut on the new tab page.
+
+00:02:28.970 --> 00:02:36.970
+The page loads inside the session, so nothing from the website runs on your own computer.
+
+00:02:36.970 --> 00:02:41.770
+Delete this session too when you finish, so its resources go back to the pool.
+
+00:02:47.890 --> 00:02:55.851
+Kasm streams each workspace from virtual machines on the cluster, and adds or removes agent virtual machines as demand changes.

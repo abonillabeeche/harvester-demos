@@ -36,17 +36,14 @@ The approval, with its comment, is now part of the pull request's history, next 
 00:01:17.790 --> 00:01:24.090
 The code owner then merged it into the branch that Fleet watches. That commit is now the desired state.
 
-00:01:24.090 --> 00:01:32.300
-In Rancher, Continuous Delivery shows the repository at the new merge commit. Fleet picked up the change and is applying it to the cluster.
-
-00:01:32.300 --> 00:01:40.680
+00:01:24.090 --> 00:01:32.470
 Back on the virtual machine, the flavor now reads two vCPUs and four gigabytes. The cluster adds them with a live migration.
 
-00:01:40.680 --> 00:01:45.740
+00:01:32.470 --> 00:01:37.520
 Open the Migration tab to see how the new size reached the running virtual machine.
 
-00:01:45.740 --> 00:01:55.900
+00:01:37.520 --> 00:01:47.680
 An automated workload update live-migrated the virtual machine to another node with the extra CPU and memory. It never restarted.
 
-00:01:55.900 --> 00:02:05.226
+00:01:47.680 --> 00:01:56.993
 The resize went from a reviewed pull request to the running virtual machine without a reboot. Git keeps the record of who asked, who approved, and what changed.

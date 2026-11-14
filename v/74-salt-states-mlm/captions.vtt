@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.900
+In this video, a new virtual machine on SUSE Virtualization registers itself with Multi-Linux Manager, gets WordPress from an existing Salt state, and has a manual change corrected.
+
+00:00:11.900 --> 00:00:20.200
+demo-wp-01 is a new Leap 16.1 virtual machine with two CPUs and four gigabytes of memory. Nobody has logged in to it.
+
+00:00:20.200 --> 00:00:25.180
+Open Advanced Options to see the cloud-init user data that ran on its first boot.
+
+00:00:25.180 --> 00:00:33.950
+It writes Salt grains, then runs the bootstrap script from Multi-Linux Manager, which registers the machine with activation key 1-wordpress.
+
+00:00:33.950 --> 00:00:42.130
+In Multi-Linux Manager, the Salt Keys page lists the new minion as pending. Nothing is managed until an administrator accepts its key.
+
+00:00:42.130 --> 00:00:49.840
+Accept the key to approve this machine. Registration and the first Salt run start right away.
+
+00:00:49.840 --> 00:00:57.540
+The machine is now a registered Salt system. Its base channel, the WordPress channel for SLES 16.1, comes from the activation key.
+
+00:00:59.530 --> 00:01:05.140
+Open the Events tab and its History to see what happened after you accepted the key.
+
+00:01:07.130 --> 00:01:14.270
+Right after registration, the server applied the highstate by itself, so the wordpress state ran without any extra step.
+
+00:01:14.270 --> 00:01:20.800
+WordPress now runs on the virtual machine, built entirely by the Salt state. Note the site title in the header.
+
+00:01:22.790 --> 00:01:28.760
+To simulate a manual change on the machine, open Remote Command on the system's Details tab.
+
+00:01:28.760 --> 00:01:35.190
+The script changes the site title with the WordPress command line tool, as an administrator logged in to the machine might.
+
+00:01:35.190 --> 00:01:40.490
+Schedule it to run now. Salt runs the script on the machine within seconds.
+
+00:01:40.490 --> 00:01:45.860
+The site title changed. The machine has drifted from what the Salt state describes.
+
+00:01:47.870 --> 00:01:54.380
+To correct it, open the States tab. The Highstate page shows the wordpress state assigned to this system.
+
+00:01:54.380 --> 00:02:02.940
+Select Apply Highstate. Salt compares the machine with the state and changes only what differs.
+
+00:02:02.940 --> 00:02:09.730
+The managed title is back. The highstate found the difference and set the title to the value in the state.
+
+00:02:09.730 --> 00:02:20.437
+The same Salt state built the site and put it back after a manual change, and the system history records each run. Schedule the highstate as a recurring action to correct drift on its own.
