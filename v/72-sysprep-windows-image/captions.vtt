@@ -1,0 +1,178 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.020
+In this video, you build a generalized Windows image in SUSE Virtualization: an answer file installs and syspreps a build machine, you export its disk, and deploy a new machine from it.
+
+00:00:12.020 --> 00:00:17.800
+Start with a build virtual machine. On the create page, choose the demo namespace,
+
+00:00:17.800 --> 00:00:20.340
+and name the machine demo-win-build.
+
+00:00:20.340 --> 00:00:26.160
+Select Use the virtual machine template to start from a ready layout.
+
+00:00:26.160 --> 00:00:36.200
+Choose windows-iso-medium-template. It brings the installer CD-ROM, the VMDP driver CD, a root disk and the Hyper-V settings.
+
+00:00:36.200 --> 00:00:39.870
+Lower the memory to eight gigabytes, which is enough for the build.
+
+00:00:39.870 --> 00:00:47.070
+Set OS Type to Windows. This adds the Windows Unattended and Sysprep section to Advanced Options.
+
+00:00:47.070 --> 00:00:50.760
+Open Advanced Options and scroll to the Windows sysprep section.
+
+00:00:50.760 --> 00:00:59.540
+Select demo-unattend. It holds the self-contained Server 2025 answer file from the harvester-windows-cloudbase repository, unchanged.
+
+00:00:59.540 --> 00:01:10.010
+The answer file installs Windows, then a first-logon script adds the VMDP drivers and Cloudbase-Init, cleans up, and runs sysprep.
+
+00:01:10.010 --> 00:01:14.210
+On the Volumes tab, set the installer image and the root disk size.
+
+00:01:14.210 --> 00:01:21.530
+On this release, the template's CD-ROM slot doesn't keep the ISO's storage class, so remove this placeholder CD-ROM
+
+00:01:21.530 --> 00:01:25.290
+and add the installer as a new image volume instead.
+
+00:01:25.290 --> 00:01:28.830
+Set its type to CD-ROM,
+
+00:01:28.830 --> 00:01:34.130
+then search the Image list for the Windows Server 2025 evaluation ISO
+
+00:01:34.130 --> 00:01:38.810
+and select it. It was uploaded under Images earlier.
+
+00:01:38.810 --> 00:01:44.080
+Move the new CD-ROM up with its arrow button, so the machine boots the installer first.
+
+00:01:44.080 --> 00:01:48.890
+One more move up, and the installer is the first boot device again.
+
+00:01:48.890 --> 00:01:56.530
+Shrink the root disk to thirty-six gigabytes. The image keeps this size, and drive C grows on every deployed copy.
+
+00:01:56.530 --> 00:02:02.910
+Select Create, and the build runs on its own from here, without any clicks.
+
+00:02:02.910 --> 00:02:10.330
+demo-win-build is running. Windows Setup reads the answer file from a small CD that the cluster attached.
+
+00:02:10.330 --> 00:02:14.930
+To watch the install, open the Console menu of demo-win-build
+
+00:02:14.930 --> 00:02:20.860
+and select Open in WebVNC to see the Windows screen.
+
+00:02:20.860 --> 00:02:31.880
+Windows Setup installs the operating system with no questions on screen, because the answer file already answers them.
+
+00:02:31.880 --> 00:02:40.650
+After about twenty minutes, sysprep generalized the system and shut it down. The machine is off, and its disk is the golden image.
+
+00:02:40.650 --> 00:02:45.730
+On the Volumes page, open the action menu of the build machine's root disk.
+
+00:02:45.730 --> 00:02:50.210
+Select Export Image to copy this disk into a new image.
+
+00:02:50.210 --> 00:02:54.700
+In the dialog, choose the demo namespace for the new image,
+
+00:02:54.700 --> 00:02:59.160
+and name the image demo-win-golden, short and without spaces.
+
+00:02:59.160 --> 00:03:05.250
+Set the storage class explicitly to lvm-thin, or the image lands on the default class.
+
+00:03:05.250 --> 00:03:10.950
+Then select Create to start copying the disk into the image.
+
+00:03:10.950 --> 00:03:16.660
+The image is ready. Now create a virtual machine from it, again in the demo namespace,
+
+00:03:16.660 --> 00:03:21.210
+and name it demo-win-web. This name becomes the Windows hostname.
+
+00:03:21.210 --> 00:03:24.200
+Use a virtual machine template again,
+
+00:03:24.200 --> 00:03:31.950
+this time windows-image-template, made for prepared Windows images. It needs no installer ISO.
+
+00:03:31.950 --> 00:03:35.620
+Lower the memory to eight gigabytes for this test server.
+
+00:03:35.620 --> 00:03:39.850
+On the Volumes tab, the root disk from the template has no image yet.
+
+00:03:39.850 --> 00:03:42.360
+Remove this placeholder disk,
+
+00:03:42.360 --> 00:03:47.670
+and add the image as a new disk instead. Select Add a Virtual Machine Image.
+
+00:03:47.670 --> 00:03:52.370
+In the Image list, search for demo-win-golden, the image you just exported,
+
+00:03:52.370 --> 00:03:55.310
+and select it for the new root disk.
+
+00:03:55.310 --> 00:04:01.930
+In Advanced Options, the template's cloud-config is already filled in. Cloudbase-Init reads it on the first boot.
+
+00:04:01.930 --> 00:04:08.800
+It sets the time zone to UTC. Cloudbase-Init takes the hostname from the virtual machine name, and grows drive C to the disk.
+
+00:04:08.800 --> 00:04:16.540
+Select Create. The cluster clones the image into the new root disk and starts the machine.
+
+00:04:16.540 --> 00:04:26.130
+demo-win-web is running. Windows finishes setup on its own, and Cloudbase-Init applies the hostname and the cloud-config.
+
+00:04:26.130 --> 00:04:31.200
+When setup is done, open the Console menu of demo-win-web
+
+00:04:31.200 --> 00:04:37.970
+and select Open in WebVNC. No setup screens are waiting, only the lock screen.
+
+00:04:37.970 --> 00:04:41.530
+Send Control Alt Delete from the toolbar to open the sign-in,
+
+00:04:41.530 --> 00:04:46.830
+and confirm it in the dialog.
+
+00:04:46.830 --> 00:04:53.060
+The generalized image has no Administrator password yet, so Windows asks you to set one at the first sign-in.
+
+00:04:53.060 --> 00:04:59.140
+Press Enter to accept, and Windows shows the new password fields.
+
+00:04:59.140 --> 00:05:01.170
+Type a new password,
+
+00:05:01.170 --> 00:05:03.690
+move to the confirmation field,
+
+00:05:03.690 --> 00:05:09.630
+and type it again, then press Enter.
+
+00:05:09.630 --> 00:05:15.550
+Windows confirms that the password changed. Press Enter to sign in.
+
+00:05:15.550 --> 00:05:20.820
+You are on the desktop. Open the Run dialog with Windows plus R.
+
+00:05:20.820 --> 00:05:25.880
+Run a command prompt that prints the computer name.
+
+00:05:25.880 --> 00:05:34.520
+The computer name is demo-win-web, the name you gave the virtual machine. Setup finished without any prompts.
+
+00:05:34.520 --> 00:05:45.277
+The new virtual machine came from the generalized image and finished setup on its own, with the hostname from its name. Next, you resize virtual machines through GitOps.
