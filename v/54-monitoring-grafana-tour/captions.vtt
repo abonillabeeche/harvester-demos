@@ -1,0 +1,91 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.130
+In this video, you turn on the monitoring stack, let it collect metrics for a while, and then tour what it gives you: metrics in the UI, dashboards in Grafana, and queries in Prometheus.
+
+00:00:11.130 --> 00:00:15.600
+Under Advanced, Add-ons, the rancher-monitoring add-on is disabled.
+
+00:00:15.600 --> 00:00:17.990
+Open its action menu,
+
+00:00:17.990 --> 00:00:28.020
+and select Enable. It deploys Prometheus, Grafana, Alertmanager, and the exporters that collect host and virtual machine metrics.
+
+00:00:28.020 --> 00:00:33.880
+A few minutes later, the add-on reports Deploy Successful.
+
+00:00:33.880 --> 00:00:41.610
+Let it collect for about ten minutes, the part of the recording that was fast-forwarded. Then open Dashboard.
+
+00:00:41.610 --> 00:00:47.370
+Below the capacity summary, select Cluster Metrics.
+
+00:00:47.370 --> 00:00:57.160
+The panels chart the hosts' CPU utilization, load average, and memory over the last few minutes. These panels come from Grafana, embedded in the UI.
+
+00:00:57.160 --> 00:01:03.660
+Virtual Machine Metrics puts the busiest virtual machines side by side.
+
+00:01:03.660 --> 00:01:13.350
+CPU, memory, and storage traffic for each virtual machine. demo-load runs a cycle of CPU, memory, and disk work, so its lines rise and fall.
+
+00:01:13.350 --> 00:01:17.730
+For a single virtual machine, open demo-load from Virtual Machines,
+
+00:01:17.730 --> 00:01:22.530
+and select its Virtual Machine Metrics tab.
+
+00:01:22.530 --> 00:01:33.350
+Gauges show its current CPU and memory use, and the graphs show storage traffic, latency, and operations per second. The bursts of disk writes are easy to spot.
+
+00:01:33.350 --> 00:01:40.800
+To work with the dashboards directly, open the add-on's configuration, under Add-ons, Edit Config, and select the Grafana tab.
+
+00:01:40.800 --> 00:01:45.100
+The link opens Grafana in a new window.
+
+00:01:45.100 --> 00:01:52.780
+This Grafana instance comes with the monitoring stack, with dashboards for virtual machines, hosts, Kubernetes, and the monitoring stack itself.
+
+00:01:52.780 --> 00:01:56.690
+Open Harvester VM Dashboard.
+
+00:01:56.690 --> 00:02:00.600
+It charts CPU usage for every virtual machine in the cluster,
+
+00:02:00.600 --> 00:02:02.320
+memory usage,
+
+00:02:02.320 --> 00:02:08.660
+and storage and network traffic further down. The repeating pattern of demo-load stands out among the other workloads.
+
+00:02:08.660 --> 00:02:14.010
+For the hosts, go to Dashboards and search for Node Exporter, Nodes.
+
+00:02:14.010 --> 00:02:17.100
+Open it.
+
+00:02:17.100 --> 00:02:22.650
+Node Exporter reports what the host's operating system sees, CPU usage and load,
+
+00:02:22.650 --> 00:02:24.300
+memory,
+
+00:02:24.300 --> 00:02:28.180
+and disk and network activity, for each host in the cluster.
+
+00:02:28.180 --> 00:02:40.450
+Behind every panel is a PromQL query. Prometheus, linked from the add-on's Prometheus tab, has its own query page. This query adds up the CPU each virtual machine used over the last five minutes.
+
+00:02:40.450 --> 00:02:42.320
+Select Execute,
+
+00:02:42.320 --> 00:02:44.670
+and switch to Graph.
+
+00:02:44.670 --> 00:02:51.870
+One line per virtual machine, in CPU cores. Any metric in Grafana can be explored this way.
+
+00:02:51.870 --> 00:02:59.605
+Monitoring is on, and the same metrics are available in the UI, in Grafana dashboards, and in Prometheus queries.
