@@ -1,40 +1,40 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.220
-In this video, you add a policy route to a VPC. Policy routes act on the VPC router itself, so a single rule can block one subnet from another, for every virtual machine on them.
+00:00:00.000 --> 00:00:10.420
+Learn how to add a policy route to a VPC. Policy routes act on the VPC router itself, so a single rule can block one subnet from another, for every virtual machine on them.
 
-00:00:11.220 --> 00:00:21.070
+00:00:10.420 --> 00:00:20.270
 The VPC demo-3tier routes between its web, app, and database subnets. Policy routes have no form field yet, so add one in the VPC's YAML.
 
-00:00:21.070 --> 00:00:24.470
+00:00:20.270 --> 00:00:23.670
 Open the action menu of demo-3tier,
 
-00:00:24.470 --> 00:00:27.230
+00:00:23.670 --> 00:00:26.430
 and select Edit YAML.
 
-00:00:27.230 --> 00:00:31.460
+00:00:26.430 --> 00:00:31.850
 The VPC's spec is still empty. It has no static routes and no policies.
 
-00:00:31.460 --> 00:00:42.740
+00:00:31.850 --> 00:00:45.330
 Add a policy route. Its action is drop, and its match selects traffic from the web subnet, 10.230.1.0/24, to the database subnet, 10.230.3.0/24.
 
-00:00:42.740 --> 00:00:50.330
+00:00:45.330 --> 00:00:52.910
 The priority must be higher than 31000, the priority of the routes that Kube-OVN adds for each subnet, or those routes win.
 
-00:00:50.330 --> 00:00:52.910
+00:00:52.910 --> 00:00:55.690
 Select Save.
 
-00:00:52.910 --> 00:00:56.020
+00:00:55.690 --> 00:00:58.810
 Open the console of demo-web.
 
-00:00:58.850 --> 00:01:02.470
+00:01:01.630 --> 00:01:05.690
 Log in as sles, with the password that cloud-init set.
 
-00:01:05.070 --> 00:01:11.700
+00:01:08.290 --> 00:01:14.930
 Request the app tier, then the database.
 
-00:01:11.700 --> 00:01:20.590
+00:01:14.930 --> 00:01:23.810
 The app tier answers, and the database request times out. The VPC router drops it before it reaches the database subnet.
 
-00:01:20.590 --> 00:01:28.176
+00:01:23.810 --> 00:01:31.229
 One policy route on the VPC router keeps the web tier away from the database, while the rest of the VPC routes as before.

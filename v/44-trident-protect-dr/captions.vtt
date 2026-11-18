@@ -1,52 +1,52 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.780
-In this video, you replicate a virtual machine's NetApp volume to a second SUSE Virtualization cluster with Trident Protect and SnapMirror, then fail the virtual machine over.
+00:00:00.000 --> 00:00:11.100
+This video shows how to replicate a virtual machine's NetApp volume to a second SUSE Virtualization cluster with Trident Protect and SnapMirror, then fail the virtual machine over.
 
-00:00:10.780 --> 00:00:19.560
+00:00:11.100 --> 00:00:19.880
 On the retail-store cluster, the virtual machine demo-tp is running. A small service inside writes a timestamp every five seconds.
 
-00:00:19.560 --> 00:00:29.020
+00:00:19.880 --> 00:00:29.540
 Its only disk, demo-tp-root, is a NetApp iSCSI volume that Trident provisions on the ONTAP system.
 
-00:00:29.020 --> 00:00:37.140
+00:00:29.540 --> 00:00:37.650
 Trident Protect, a NetApp product, works with applications. Define the VM as one, and snapshot it every five minutes.
 
-00:00:37.140 --> 00:00:46.530
+00:00:37.650 --> 00:00:47.670
 After applying both, take a first snapshot right away. It captures the volume and stores the VM definition in the S3 AppVault.
 
-00:00:46.530 --> 00:00:55.190
+00:00:47.670 --> 00:00:56.340
 On the disaster-recovery cluster, an AppMirrorRelationship names the source application and the same AppVault, and maps the storage class.
 
-00:00:55.190 --> 00:01:03.060
+00:00:56.340 --> 00:01:04.920
 After the baseline transfer, the relationship is Established. The DR cluster holds a replica volume, but no virtual machine yet.
 
-00:01:03.060 --> 00:01:10.680
+00:01:04.920 --> 00:01:12.540
 On the DR ONTAP system, the volume is a SnapMirror destination, snapmirrored and healthy.
 
-00:01:10.680 --> 00:01:17.150
+00:01:12.540 --> 00:01:19.010
 For a planned failover, first disable the schedule on retail-store, so no newer snapshot overtakes the final one.
 
-00:01:17.150 --> 00:01:24.130
+00:01:19.010 --> 00:01:26.150
 Then take a ShutdownSnapshot. It stops the VM, takes a final snapshot and removes the VM from retail-store.
 
-00:01:24.130 --> 00:01:31.880
+00:01:26.150 --> 00:01:33.900
 On the disaster-recovery cluster, promote the relationship with that snapshot. Trident Protect breaks the mirror and recreates the VM.
 
-00:01:31.880 --> 00:01:38.130
+00:01:33.900 --> 00:01:40.150
 The summary lists how long each phase took, from the first command until the VM runs on the DR site.
 
-00:01:38.130 --> 00:01:43.260
+00:01:40.150 --> 00:01:45.710
 On the disaster-recovery cluster, filter the virtual machine list for demo-tp.
 
-00:01:43.260 --> 00:01:50.320
+00:01:45.710 --> 00:01:52.770
 demo-tp is Running here now, recreated from the AppVault on the replicated NetApp volume.
 
-00:01:50.320 --> 00:01:58.780
+00:01:52.770 --> 00:02:02.020
 Inside the guest, the timestamps stop when the ShutdownSnapshot stopped the VM and resume after the boot on the DR site. Nothing is missing.
 
-00:01:58.780 --> 00:02:06.750
+00:02:02.020 --> 00:02:10.190
 Back on retail-store, the virtual machine is gone, so only one copy runs. Its retained volume stays for a later failback.
 
-00:02:06.750 --> 00:02:14.527
+00:02:10.190 --> 00:02:17.594
 demo-tp now runs on the disaster-recovery cluster, with no data lost. Failback works the same way, in the other direction.

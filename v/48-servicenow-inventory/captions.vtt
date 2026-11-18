@@ -1,52 +1,37 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:12.290
-In this video, you find your SUSE Virtualization VMs in the ServiceNow CMDB, and use that inventory to reclaim storage and give incidents real context.
+00:00:00.000 --> 00:00:09.810
+Find your SUSE Virtualization VMs in the ServiceNow CMDB, and use that inventory to reclaim storage and give incidents real context.
 
-00:00:12.290 --> 00:00:20.710
+00:00:09.810 --> 00:00:18.820
 Virtual Machine Instances lists every VM from your clusters. A script syncs it; the ServiceNow Kubernetes Visibility Agent is the supported path.
 
-00:00:20.710 --> 00:00:26.440
+00:00:18.820 --> 00:00:24.910
 Grouped by state, the list shows thirty-eight stopped VMs and seventeen running ones.
 
-00:00:26.440 --> 00:00:32.980
+00:00:24.910 --> 00:00:31.890
 The stopped group lists each VM with its CPUs, memory, disks, and disk size, straight from the cluster.
 
-00:00:32.980 --> 00:00:43.320
+00:00:31.890 --> 00:00:42.230
 This report sums disk size by power state. Stopped VMs hold one thousand five hundred eighty-seven gigabytes, running VMs only six hundred forty-one.
 
-00:00:43.320 --> 00:00:52.820
+00:00:42.230 --> 00:00:51.730
 This report ranks the stopped VMs that hold the most storage, a short list to review with their owners before you reclaim space.
 
-00:00:52.820 --> 00:01:03.650
+00:00:51.730 --> 00:01:02.570
 VMs by guest OS helps with patching and licensing. Empty means the VM runs no guest agent, so its operating system is unknown.
 
-00:01:03.650 --> 00:01:10.520
+00:01:02.570 --> 00:01:09.430
 The form for the VM sqlfci-n1 shows its Runs on relation, the host that runs it right now.
 
-00:01:10.520 --> 00:01:18.330
+00:01:09.430 --> 00:01:17.240
 The Tasks list ties an open incident to this VM, so the service desk sees the affected VM and its host at once.
 
-00:01:18.330 --> 00:01:26.200
+00:01:17.240 --> 00:01:25.110
 The dependency map draws the same chain, from the VM down to its host, and flags the open incident with a warning icon.
 
-00:01:26.200 --> 00:01:35.290
+00:01:25.110 --> 00:01:34.240
 The tags carry the labels from the cluster, such as operating system, namespace, KubeVirt status, cluster, and node.
 
-00:01:35.290 --> 00:01:46.350
-Part two uses the ServiceNow Kubernetes Visibility Agent, the supported way to bring KubeVirt inventory into the CMDB. It now runs on all four clusters.
-
-00:01:46.350 --> 00:01:56.920
-Kubernetes Informers lists one informer for each cluster, far-edge, retail-store, disaster-recovery, and harvester-ai. Each one has completed a full discovery.
-
-00:01:56.920 --> 00:02:06.250
-KubeVirt Virtual Machines lists the VMs the agent discovered, with their cluster, namespace, and Kubernetes UID, and whether each one is running.
-
-00:02:06.250 --> 00:02:15.400
-The CPUs, Disks, and Memory columns come straight from each VM's spec, so the sizing stays current without a separate sync.
-
-00:02:15.400 --> 00:02:27.340
-The agent's record for sqlfci-n1 uses the KubeVirt UID as its object ID, the same key as the record the script created in part one. Both describe the same VM.
-
-00:02:27.340 --> 00:02:35.916
-The agent keeps the KubeVirt inventory current on its own. Its records are the same VMs that the script fed in part one.
+00:01:34.240 --> 00:01:41.936
+The same inventory now drives storage cleanup, reports, and incident triage, without anyone typing VM records by hand.

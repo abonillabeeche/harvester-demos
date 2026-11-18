@@ -1,52 +1,52 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:07.430
-In this video, you make the database subnet of a VPC private, so that only the app tier can reach it.
+00:00:00.000 --> 00:00:05.950
+Make the database subnet of a VPC private, so that only the app tier can reach it.
 
-00:00:07.430 --> 00:00:17.230
+00:00:05.950 --> 00:00:16.050
 The VPC demo-3tier has a web, an app, and a database subnet, with one virtual machine in each. Right now, every subnet reaches every other one.
 
-00:00:17.230 --> 00:00:21.820
+00:00:16.050 --> 00:00:20.640
 Open the action menu of the demo-db subnet,
 
-00:00:21.820 --> 00:00:24.390
+00:00:20.640 --> 00:00:23.450
 and select Edit Config.
 
-00:00:24.390 --> 00:00:30.730
+00:00:23.450 --> 00:00:30.070
 Under Private Subnet, select Enabled. A private subnet drops all traffic that comes from outside the subnet.
 
-00:00:30.730 --> 00:00:34.030
+00:00:30.070 --> 00:00:33.690
 Add an exception for the subnets that may still connect.
 
-00:00:34.030 --> 00:00:40.420
+00:00:33.690 --> 00:00:41.510
 Enter the app subnet, 10.230.2.0/24. The web subnet is not on the list.
 
-00:00:40.420 --> 00:00:48.240
+00:00:41.510 --> 00:00:49.330
 Select Save. Kube-OVN updates the subnet's rules at once, without restarting any virtual machine.
 
-00:00:48.240 --> 00:00:52.120
+00:00:49.330 --> 00:00:53.340
 Go to Virtual Machines and open the console of demo-web.
 
-00:00:56.940 --> 00:01:00.560
+00:00:58.160 --> 00:01:02.220
 Log in as sles, with the password that cloud-init set.
 
-00:01:03.160 --> 00:01:10.460
+00:01:04.820 --> 00:01:12.130
 Request the database tier's port 5432.
 
-00:01:10.460 --> 00:01:15.520
+00:01:12.130 --> 00:01:17.660
 The connection times out. The web subnet is not allowed into the private subnet.
 
-00:01:15.520 --> 00:01:18.580
+00:01:17.660 --> 00:01:20.720
 Now open the console of demo-app.
 
-00:01:21.380 --> 00:01:23.170
+00:01:23.520 --> 00:01:25.460
 Log in the same way.
 
-00:01:25.830 --> 00:01:29.580
+00:01:28.130 --> 00:01:31.880
 Send the same request.
 
-00:01:29.580 --> 00:01:36.500
+00:01:31.880 --> 00:01:40.560
 The answer arrives. The app subnet is on the allow list, so the app tier still reaches the database.
 
-00:01:36.500 --> 00:01:45.732
+00:01:40.560 --> 00:01:51.149
 The database subnet is private: the app tier still reaches it, the web tier is dropped. Next, you limit traffic down to single ports with access control lists.

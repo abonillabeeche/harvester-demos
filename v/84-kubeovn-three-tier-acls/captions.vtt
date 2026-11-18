@@ -1,76 +1,76 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:11.410
-In this video, you microsegment a three-tier application. Access control lists on two subnets let each tier talk to the next one on a single port, and drop everything else.
+00:00:00.000 --> 00:00:12.130
+Here, you microsegment a three-tier application. Access control lists on two subnets let each tier talk to the next one on a single port, and drop everything else.
 
-00:00:11.410 --> 00:00:25.200
+00:00:12.130 --> 00:00:27.500
 The VPC demo-3tier holds a web, an app, and a database subnet, one virtual machine each. The goal: web may reach app only on port 8080, app may reach the database only on port 5432, and nothing else crosses tiers.
 
-00:00:25.200 --> 00:00:32.830
+00:00:27.500 --> 00:00:35.850
 Start with the app tier. Open the action menu of demo-app and select Edit Config, then the Access Control List tab.
 
-00:00:36.500 --> 00:00:38.290
+00:00:39.510 --> 00:00:41.310
 Add the first rule.
 
-00:00:38.290 --> 00:00:42.860
+00:00:41.310 --> 00:00:45.880
 Choose Allow-related, so replies come back,
 
-00:00:42.860 --> 00:00:47.480
+00:00:45.880 --> 00:00:50.500
 and To-lport, for traffic arriving at the subnet's ports.
 
-00:00:49.090 --> 00:00:54.270
+00:00:52.110 --> 00:00:57.530
 With priority 1010, the match lets the web subnet in on TCP port 8080.
 
-00:00:54.270 --> 00:00:58.140
+00:00:57.530 --> 00:01:01.400
 Add a second rule, with the action Drop and the same direction,
 
-00:01:04.570 --> 00:01:09.270
+00:01:07.830 --> 00:01:12.530
 with the lower priority 1000, for all other traffic from the web subnet.
 
-00:01:09.270 --> 00:01:11.850
+00:01:12.530 --> 00:01:15.310
 Select Save.
 
-00:01:11.850 --> 00:01:19.800
+00:01:15.310 --> 00:01:24.090
 Now the database tier. Edit demo-db the same way, and add two rules on its Access Control List tab.
 
-00:01:31.530 --> 00:01:37.670
+00:01:35.820 --> 00:01:41.960
 The first rule allows the app subnet on TCP port 5432, at priority 1010.
 
-00:01:45.720 --> 00:01:51.120
+00:01:50.020 --> 00:01:55.420
 The second drops everything else from the web and app subnets, at priority 1000.
 
-00:01:51.120 --> 00:01:53.700
+00:01:55.420 --> 00:01:58.190
 Select Save.
 
-00:01:53.700 --> 00:01:56.810
+00:01:58.190 --> 00:02:01.300
 Open the console of demo-web.
 
-00:01:59.660 --> 00:02:03.280
+00:02:04.160 --> 00:02:08.220
 Log in as sles, with the password that cloud-init set.
 
-00:02:05.890 --> 00:02:09.550
+00:02:10.820 --> 00:02:14.480
 Request the app tier on port 8080.
 
-00:02:09.550 --> 00:02:13.530
+00:02:14.480 --> 00:02:18.470
 The app answers. This is the one path the web tier is allowed.
 
-00:02:13.530 --> 00:02:23.800
+00:02:18.470 --> 00:02:28.730
 Now ping the app tier, and try the database directly.
 
-00:02:23.800 --> 00:02:29.410
+00:02:28.730 --> 00:02:34.460
 Both fail. Ping to the app tier is dropped, and the web tier can't reach the database at all.
 
-00:02:29.410 --> 00:02:32.610
+00:02:34.460 --> 00:02:37.650
 Then open the console of demo-app.
 
-00:02:35.400 --> 00:02:39.020
+00:02:40.450 --> 00:02:44.510
 Log in as sles, with the password that cloud-init set.
 
-00:02:41.630 --> 00:02:49.290
+00:02:47.110 --> 00:02:54.770
 Request the database on port 5432, then ping it.
 
-00:02:49.290 --> 00:02:58.700
+00:02:54.770 --> 00:03:04.780
 The database answers on port 5432, and the ping is dropped. Each tier reaches the next one on one port only.
 
-00:02:58.700 --> 00:03:09.731
+00:03:04.780 --> 00:03:15.236
 Each tier now reaches the next one on exactly one port, and the web tier can't touch the database. Next, you publish a virtual machine to the outside with a DNAT rule.
