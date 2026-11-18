@@ -18,131 +18,131 @@ In the demo-vpc-a group, select Create Subnet.
 00:00:31.390 --> 00:00:34.180
 Name the subnet demo-subnet-a.
 
-00:00:34.180 --> 00:00:39.930
+00:00:34.180 --> 00:00:39.060
 Use the CIDR block 10.210.1.0/24.
 
-00:00:39.930 --> 00:00:48.030
+00:00:39.060 --> 00:00:47.160
 As the provider, select the overlay network demo-net-a. The VPC is already set to demo-vpc-a.
 
-00:00:48.030 --> 00:00:52.340
+00:00:47.160 --> 00:00:51.910
 Set the gateway IP to 10.210.1.1.
 
-00:00:52.340 --> 00:00:59.360
+00:00:51.910 --> 00:00:58.930
 Enable DHCP, so that virtual machines on this subnet get an address and a default route automatically.
 
-00:00:59.360 --> 00:01:02.620
+00:00:58.930 --> 00:01:02.180
 Select Create to save the subnet.
 
-00:01:02.620 --> 00:01:07.530
+00:01:02.180 --> 00:01:07.100
 Now create the second VPC, which points its peering at the first one.
 
-00:01:07.530 --> 00:01:10.390
+00:01:07.100 --> 00:01:09.960
 Name it demo-vpc-b.
 
-00:01:10.390 --> 00:01:13.660
+00:01:09.960 --> 00:01:13.220
 Open the VPC Peerings tab and add a peering.
 
-00:01:13.660 --> 00:01:17.840
+00:01:13.220 --> 00:01:17.400
 Each side of a peering gets a connect address from a small link network.
 
-00:01:17.840 --> 00:01:25.700
+00:01:17.400 --> 00:01:26.700
 Enter the local connect IP, 169.254.210.2/30, for demo-vpc-b's end of the link.
 
-00:01:25.700 --> 00:01:29.780
+00:01:26.700 --> 00:01:30.790
 As the remote VPC, select demo-vpc-a.
 
-00:01:29.780 --> 00:01:35.720
+00:01:30.790 --> 00:01:36.730
 The peering alone carries no traffic. On the Static Routes tab, add a route to the other VPC.
 
-00:01:35.720 --> 00:01:39.590
+00:01:36.730 --> 00:01:40.600
 The route sends traffic for demo-subnet-a across the link.
 
-00:01:39.590 --> 00:01:45.700
+00:01:40.600 --> 00:01:48.060
 Enter the destination, demo-subnet-a's CIDR block, 10.210.1.0/24,
 
-00:01:45.700 --> 00:01:53.770
+00:01:48.060 --> 00:01:56.010
 and the next hop, 169.254.210.1, which is demo-vpc-a's end of the peering.
 
-00:01:53.770 --> 00:01:58.640
+00:01:56.010 --> 00:02:00.880
 Select Create to save demo-vpc-b with its peering and route.
 
-00:01:58.640 --> 00:02:04.810
+00:02:00.880 --> 00:02:07.050
 Add a subnet to demo-vpc-b the same way. Select Create Subnet in its group.
 
-00:02:04.810 --> 00:02:07.590
+00:02:07.050 --> 00:02:09.840
 Name it demo-subnet-b,
 
-00:02:07.590 --> 00:02:12.970
+00:02:09.840 --> 00:02:14.380
 with the CIDR block 10.210.2.0/24,
 
-00:02:12.970 --> 00:02:16.890
+00:02:14.380 --> 00:02:18.300
 the overlay network demo-net-b as the provider,
 
-00:02:16.890 --> 00:02:20.750
+00:02:18.300 --> 00:02:22.160
 and the gateway IP 10.210.2.1.
 
-00:02:20.750 --> 00:02:24.290
+00:02:22.160 --> 00:02:25.700
 Enable DHCP here as well, then save.
 
-00:02:24.290 --> 00:02:27.900
+00:02:25.700 --> 00:02:29.310
 Select Create to save demo-subnet-b.
 
-00:02:27.900 --> 00:02:33.520
+00:02:29.310 --> 00:02:34.930
 A peering needs both sides. Open the action menu of demo-vpc-a,
 
-00:02:33.520 --> 00:02:37.660
+00:02:34.930 --> 00:02:39.070
 and select Edit Config to add the matching peering.
 
-00:02:37.660 --> 00:02:41.620
+00:02:39.070 --> 00:02:43.020
 On the VPC Peerings tab, add the other end of the link.
 
-00:02:41.620 --> 00:02:45.300
+00:02:43.020 --> 00:02:46.710
 This side uses the first address of the same link network.
 
-00:02:45.300 --> 00:02:51.610
+00:02:46.710 --> 00:02:54.100
 Enter 169.254.210.1/30 as the local connect IP,
 
-00:02:51.610 --> 00:02:55.910
+00:02:54.100 --> 00:02:58.400
 and select demo-vpc-b as the remote VPC.
 
-00:02:55.910 --> 00:02:59.020
+00:02:58.400 --> 00:03:01.510
 Then add the route back on the Static Routes tab.
 
-00:02:59.020 --> 00:03:03.040
+00:03:01.510 --> 00:03:05.530
 This route sends traffic for demo-subnet-b across the link.
 
-00:03:03.040 --> 00:03:08.900
+00:03:05.530 --> 00:03:10.790
 The destination is 10.210.2.0/24,
 
-00:03:08.900 --> 00:03:16.400
+00:03:10.790 --> 00:03:17.850
 and the next hop is demo-vpc-b's connect IP, 169.254.210.2.
 
-00:03:16.400 --> 00:03:22.350
+00:03:17.850 --> 00:03:23.800
 Select Save to apply the peering and the route.
 
-00:03:22.350 --> 00:03:30.500
+00:03:23.800 --> 00:03:31.940
 To test the peering, two small virtual machines were attached, demo-vm-a to demo-net-a and demo-vm-b to demo-net-b.
 
-00:03:30.500 --> 00:03:36.680
+00:03:31.940 --> 00:03:38.680
 demo-vm-a got 10.210.1.2 from demo-subnet-a's DHCP service,
 
-00:03:36.680 --> 00:03:44.550
+00:03:38.680 --> 00:03:46.430
 and demo-vm-b got 10.210.2.2 from demo-subnet-b. Nobody configured either address by hand.
 
-00:03:44.550 --> 00:03:48.570
+00:03:46.430 --> 00:03:50.460
 Open the console of demo-vm-a in WebVNC.
 
-00:03:51.660 --> 00:03:55.720
+00:03:53.550 --> 00:03:57.610
 Log in as sles, with the password that cloud-init set.
 
-00:03:58.330 --> 00:04:05.790
+00:04:00.210 --> 00:04:07.680
 The address and the default route through 10.210.1.1 both came from DHCP.
 
-00:04:05.790 --> 00:04:16.460
+00:04:07.680 --> 00:04:18.340
 Now ping demo-vm-b, 10.210.2.2, in the other VPC.
 
-00:04:16.460 --> 00:04:25.940
+00:04:18.340 --> 00:04:27.830
 The replies arrive. Traffic leaves through demo-vpc-a's router, crosses the peering, and reaches demo-vpc-b.
 
-00:04:25.940 --> 00:04:36.381
+00:04:27.830 --> 00:04:38.244
 The two VPCs stay isolated from everything else, but their subnets now reach each other through the peering. Next, you isolate virtual machines with microsegmentation.
