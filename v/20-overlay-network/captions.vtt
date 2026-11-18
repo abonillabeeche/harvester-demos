@@ -1,55 +1,55 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.540
-In this video, you create an overlay virtual machine network and a Kube-OVN subnet for it. Overlay traffic is tunneled between hosts, so the switches need no VLANs.
+00:00:00.000 --> 00:00:10.300
+Here, you create an overlay virtual machine network and a Kube-OVN subnet for it. Overlay traffic is tunneled between hosts, so the switches need no VLANs.
 
-00:00:10.540 --> 00:00:15.160
+00:00:10.300 --> 00:00:15.010
 Under Networks, Virtual Machine Networks, select Create.
 
-00:00:15.160 --> 00:00:18.150
+00:00:15.010 --> 00:00:18.000
 Choose the namespace,
 
-00:00:18.150 --> 00:00:20.590
+00:00:18.000 --> 00:00:20.510
 and give the network a name.
 
-00:00:20.590 --> 00:00:28.880
+00:00:20.510 --> 00:00:28.810
 Set the type to OverlayNetwork. An overlay network needs no VLAN ID and no cluster network.
 
-00:00:28.880 --> 00:00:31.350
+00:00:28.810 --> 00:00:31.280
 Select Create.
 
-00:00:31.350 --> 00:00:37.950
+00:00:31.280 --> 00:00:37.880
 The network exists, but it has no IP range yet. A Kube-OVN subnet provides one.
 
-00:00:37.950 --> 00:00:40.970
+00:00:37.880 --> 00:00:40.730
 Open Overlay Networks,
 
-00:00:40.970 --> 00:00:48.720
+00:00:40.730 --> 00:00:48.470
 and select Virtual Private Cloud. The default VPC, ovn-cluster, holds the built-in subnets.
 
-00:00:48.720 --> 00:00:53.310
+00:00:48.470 --> 00:00:53.070
 In the ovn-cluster VPC, select Create Subnet.
 
-00:00:53.310 --> 00:00:55.290
+00:00:53.070 --> 00:00:55.050
 Name the subnet.
 
-00:00:55.290 --> 00:01:00.280
+00:00:55.050 --> 00:01:00.030
 Enter a CIDR block that does not overlap with other networks.
 
-00:01:00.280 --> 00:01:07.550
+00:01:00.030 --> 00:01:07.300
 As the provider, select the overlay network you just created. This binds the subnet to it.
 
-00:01:07.550 --> 00:01:13.500
+00:01:07.300 --> 00:01:13.250
 Leave the gateway IP empty. Kube-OVN uses the first address of the block.
 
-00:01:13.500 --> 00:01:20.850
+00:01:13.250 --> 00:01:20.610
 Enable DHCP, so virtual machines on this network receive their addresses automatically.
 
-00:01:20.850 --> 00:01:23.300
+00:01:20.610 --> 00:01:23.050
 Select Create.
 
-00:01:23.300 --> 00:01:31.130
+00:01:23.050 --> 00:01:30.890
 The subnet is active, with its CIDR block and the overlay network as its provider.
 
-00:01:31.130 --> 00:01:42.071
+00:01:30.890 --> 00:01:40.220
 Virtual machines can now attach to the demo-overlay network and get addresses from its subnet. Next, you hot-plug a network interface.

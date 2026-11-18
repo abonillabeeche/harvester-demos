@@ -1,7 +1,7 @@
 WEBVTT
 
 00:00:00.000 --> 00:00:09.600
-In this video, you create a virtual machine with two scheduling rules: a node rule limits its hosts, and an anti-affinity rule keeps it apart from another virtual machine.
+Learn how to create a virtual machine with two scheduling rules: a node rule limits its hosts, and an anti-affinity rule keeps it apart from another virtual machine.
 
 00:00:09.600 --> 00:00:18.000
 The virtual machine demo-sched-1 runs on ser5-green. The second virtual machine must not share its host.
@@ -12,65 +12,65 @@ Select Create.
 00:00:20.430 --> 00:00:23.720
 Choose the demo namespace,
 
-00:00:23.720 --> 00:00:26.590
+00:00:23.720 --> 00:00:26.390
 and name it demo-sched-2.
 
-00:00:26.590 --> 00:00:28.990
+00:00:26.390 --> 00:00:28.790
 Give it one CPU
 
-00:00:28.990 --> 00:00:31.590
+00:00:28.790 --> 00:00:31.390
 and two gigabytes of memory.
 
-00:00:31.590 --> 00:00:33.970
+00:00:31.390 --> 00:00:33.770
 On the Volumes tab,
 
-00:00:33.970 --> 00:00:38.610
+00:00:33.770 --> 00:00:38.410
 select the openSUSE Leap image for the boot disk.
 
-00:00:38.610 --> 00:00:45.880
+00:00:38.410 --> 00:00:45.680
 Open the Node Scheduling tab. By default, the virtual machine can run on any available node.
 
-00:00:45.880 --> 00:00:50.730
+00:00:45.680 --> 00:00:50.570
 Select Run virtual machine on nodes matching scheduling rules.
 
-00:00:50.730 --> 00:00:56.930
+00:00:50.570 --> 00:00:56.780
 Add a node selector. Its priority stays Required, so the rule must be met.
 
-00:00:56.930 --> 00:00:59.210
+00:00:56.780 --> 00:00:59.060
 Add a rule.
 
-00:00:59.210 --> 00:01:04.140
+00:00:59.060 --> 00:01:03.980
 For the key, use the node label kubernetes.io/hostname.
 
-00:01:04.140 --> 00:01:13.320
+00:01:03.980 --> 00:01:13.160
 Keep the operator in list, and enter ser5-green and ser5-purple. The virtual machine can run only on these two hosts.
 
-00:01:13.320 --> 00:01:16.990
+00:01:13.160 --> 00:01:16.830
 Next, open the Virtual Machine Scheduling tab.
 
-00:01:16.990 --> 00:01:19.800
+00:01:16.830 --> 00:01:19.640
 Add a workload selector.
 
-00:01:19.800 --> 00:01:25.150
+00:01:19.640 --> 00:01:24.990
 Set the type to Anti-Affinity, and keep the priority Required.
 
-00:01:25.150 --> 00:01:29.110
+00:01:24.990 --> 00:01:28.950
 Add a rule that selects the other virtual machine.
 
-00:01:29.110 --> 00:01:35.110
+00:01:28.950 --> 00:01:34.950
 Every virtual machine carries the label harvesterhci.io/vmName.
 
-00:01:35.110 --> 00:01:38.030
+00:01:34.950 --> 00:01:38.260
 Set its value to demo-sched-1.
 
-00:01:38.030 --> 00:01:45.210
+00:01:38.260 --> 00:01:45.440
 With the topology key kubernetes.io/hostname, the two virtual machines never share a host.
 
-00:01:45.210 --> 00:01:49.230
+00:01:45.440 --> 00:01:49.460
 Select Create.
 
-00:01:49.230 --> 00:02:01.510
+00:01:49.460 --> 00:02:01.740
 demo-sched-2 runs on ser5-purple. The node rule allowed ser5-green and ser5-purple, and anti-affinity ruled out ser5-green.
 
-00:02:01.510 --> 00:02:10.182
+00:02:01.740 --> 00:02:10.954
 Both rules are part of the virtual machine and also apply when it restarts or migrates. Next, you put a host into maintenance mode.

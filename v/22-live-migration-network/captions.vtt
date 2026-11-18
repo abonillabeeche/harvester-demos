@@ -1,43 +1,43 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.580
-In this video, you give live migration traffic its own network in SUSE Virtualization, so moving virtual machines does not compete with other management traffic.
+00:00:00.000 --> 00:00:10.260
+This video shows how to give live migration traffic its own network in SUSE Virtualization, so moving virtual machines does not compete with other management traffic.
 
-00:00:10.580 --> 00:00:19.210
+00:00:10.260 --> 00:00:18.890
 Under Advanced, Settings, find vm-migration-network. It has no value, so migrations share the management network.
 
-00:00:19.210 --> 00:00:22.060
+00:00:18.890 --> 00:00:21.740
 Open its actions menu,
 
-00:00:22.060 --> 00:00:24.920
+00:00:21.740 --> 00:00:25.040
 and select Edit Setting.
 
-00:00:24.920 --> 00:00:27.490
+00:00:25.040 --> 00:00:27.610
 Select Enabled.
 
-00:00:27.490 --> 00:00:36.580
+00:00:27.610 --> 00:00:36.700
 Choose the cluster network that carries the traffic. These nodes have one network interface, so pick mgmt.
 
-00:00:36.580 --> 00:00:43.420
+00:00:36.700 --> 00:00:43.540
 Enter a VLAN ID that the physical switch carries between all nodes, here nine nine nine.
 
-00:00:43.420 --> 00:00:50.020
+00:00:43.540 --> 00:00:50.140
 Enter an unused IP range. Each node gets an address from it for migration traffic.
 
-00:00:50.020 --> 00:00:54.260
+00:00:50.140 --> 00:00:54.380
 Optionally, exclude addresses that are already in use,
 
-00:00:54.260 --> 00:00:56.710
+00:00:54.380 --> 00:00:56.830
 such as a gateway address.
 
-00:00:56.710 --> 00:00:59.130
+00:00:56.830 --> 00:00:59.250
 Select Save.
 
-00:00:59.130 --> 00:01:04.580
+00:00:59.250 --> 00:01:05.040
 The setting is now marked Modified. Select Show to see its value.
 
-00:01:04.580 --> 00:01:14.640
+00:01:05.040 --> 00:01:15.100
 The setting now shows the cluster network, VLAN, and IP range. New live migrations use this dedicated network.
 
-00:01:14.640 --> 00:01:21.309
+00:01:15.100 --> 00:01:21.742
 Live migrations now use the dedicated network. Next, you live-migrate a virtual machine.

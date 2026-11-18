@@ -1,46 +1,46 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:08.800
-In this video, you enable the monitoring add-on in SUSE Virtualization, then view the metrics that it collects for a running virtual machine.
+00:00:00.000 --> 00:00:07.680
+Here, you enable the monitoring add-on in SUSE Virtualization, then view the metrics that it collects for a running virtual machine.
 
-00:00:08.800 --> 00:00:15.950
+00:00:07.680 --> 00:00:14.830
 Add-ons, under Advanced, lists optional components. The rancher-monitoring add-on is disabled.
 
-00:00:15.950 --> 00:00:18.780
+00:00:14.830 --> 00:00:17.660
 Open its actions menu.
 
-00:00:18.780 --> 00:00:27.900
+00:00:17.660 --> 00:00:26.780
 Select Enable. SUSE Virtualization deploys Prometheus, Grafana, and Alertmanager into the cluster.
 
-00:00:27.900 --> 00:00:34.150
+00:00:26.780 --> 00:00:33.030
 After a few minutes, the add-on state changes to Deploy Successful.
 
-00:00:34.150 --> 00:00:37.290
+00:00:33.030 --> 00:00:36.170
 Next, open Virtual Machines.
 
-00:00:37.290 --> 00:00:41.540
+00:00:36.170 --> 00:00:40.420
 Select the running virtual machine demo-metrics.
 
-00:00:41.540 --> 00:00:48.480
+00:00:40.420 --> 00:00:47.360
 A new Virtual Machine Metrics tab is now available. Select it.
 
-00:00:48.480 --> 00:00:59.730
+00:00:47.360 --> 00:00:58.610
 Grafana panels show this virtual machine's CPU and memory usage, and its storage traffic, latency, and IOPS.
 
-00:00:59.730 --> 00:01:05.150
+00:00:58.610 --> 00:01:04.030
 The cluster dashboard also gains metrics. Open Dashboard.
 
-00:01:05.150 --> 00:01:10.970
+00:01:04.030 --> 00:01:09.850
 Below the capacity summary, select Cluster Metrics.
 
-00:01:10.970 --> 00:01:18.200
+00:01:09.850 --> 00:01:17.080
 Cluster Metrics charts CPU utilization, load average, and memory utilization of the hosts.
 
-00:01:18.200 --> 00:01:25.580
+00:01:17.080 --> 00:01:24.460
 Virtual Machine Metrics compares resource usage across virtual machines.
 
-00:01:25.580 --> 00:01:33.250
+00:01:24.460 --> 00:01:31.950
 The charts show CPU, memory, and storage usage for up to ten virtual machines.
 
-00:01:33.250 --> 00:01:40.258
+00:01:31.950 --> 00:01:39.140
 Monitoring is enabled and the virtual machine reports its metrics. Next, you balance virtual machines automatically.

@@ -1,43 +1,43 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:08.620
-In this video, you take a snapshot of a running virtual machine and restore it as a new one. Snapshots give you a quick way back to a known state.
+00:00:00.000 --> 00:00:08.980
+This video shows how to take a snapshot of a running virtual machine and restore it as a new one. Snapshots give you a quick way back to a known state.
 
-00:00:08.620 --> 00:00:14.770
+00:00:08.980 --> 00:00:15.130
 On the Virtual Machines page, open the action menu of the running virtual machine.
 
-00:00:14.770 --> 00:00:18.300
+00:00:15.130 --> 00:00:18.840
 Select Take Virtual Machine Snapshot.
 
-00:00:18.300 --> 00:00:20.470
+00:00:18.840 --> 00:00:21.010
 Name the snapshot.
 
-00:00:20.470 --> 00:00:28.650
+00:00:21.010 --> 00:00:29.190
 Keep the default file system freeze deadline, the longest time the guest file system may stay frozen for the snapshot.
 
-00:00:28.650 --> 00:00:31.650
+00:00:29.190 --> 00:00:32.180
 Select Create.
 
-00:00:31.650 --> 00:00:37.950
+00:00:32.180 --> 00:00:38.490
 Under Backup and Snapshots, Virtual Machine Snapshots, the snapshot is ready to use.
 
-00:00:37.950 --> 00:00:41.610
+00:00:38.490 --> 00:00:42.150
 To restore it, open the snapshot's action menu.
 
-00:00:41.610 --> 00:00:47.580
+00:00:42.150 --> 00:00:48.120
 Select Restore New, which leaves the original virtual machine untouched.
 
-00:00:47.580 --> 00:00:51.110
+00:00:48.120 --> 00:00:51.650
 Enter a name for the restored virtual machine.
 
-00:00:51.110 --> 00:00:57.030
+00:00:51.650 --> 00:00:57.570
 Leave Keep powered off cleared, so the new virtual machine starts after the restore.
 
-00:00:57.030 --> 00:01:00.670
+00:00:57.570 --> 00:01:01.200
 Select Create.
 
-00:01:00.670 --> 00:01:09.250
+00:01:01.200 --> 00:01:09.780
 The restored virtual machine is running next to the original, with the disk contents from the snapshot.
 
-00:01:09.250 --> 00:01:16.147
+00:01:09.780 --> 00:01:17.846
 You can now return to this point in time whenever you need to. Next, you configure a backup target for off-cluster copies.

@@ -1,64 +1,64 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.440
-In this video, you stop, start, restart, pause, and unpause a virtual machine from the Virtual Machines list, and see how its state changes.
+00:00:00.000 --> 00:00:09.040
+This video shows how to stop, start, restart, pause, and unpause a virtual machine from the Virtual Machines list, and how its state changes.
 
-00:00:10.440 --> 00:00:18.140
+00:00:09.040 --> 00:00:16.740
 The virtual machine demo-power is running. Its power actions are in the action menu at the end of the row.
 
-00:00:18.140 --> 00:00:20.870
+00:00:16.740 --> 00:00:19.470
 Open the action menu.
 
-00:00:20.870 --> 00:00:23.370
+00:00:19.470 --> 00:00:21.970
 Select Stop.
 
-00:00:23.370 --> 00:00:29.900
+00:00:21.970 --> 00:00:28.500
 Confirm with Apply. The guest operating system receives a shutdown request.
 
-00:00:29.900 --> 00:00:37.700
+00:00:28.500 --> 00:00:36.300
 The virtual machine is now Off. It keeps its disks and configuration but uses no CPU or memory.
 
-00:00:37.700 --> 00:00:41.510
+00:00:36.300 --> 00:00:40.110
 To turn it back on, open the action menu
 
-00:00:41.510 --> 00:00:45.840
+00:00:40.110 --> 00:00:44.340
 and select Start.
 
-00:00:45.840 --> 00:00:48.880
+00:00:44.340 --> 00:00:47.380
 The virtual machine is running again.
 
-00:00:48.880 --> 00:00:53.770
+00:00:47.380 --> 00:00:52.270
 Restart stops and starts the virtual machine in one step.
 
-00:00:53.770 --> 00:00:56.400
+00:00:52.270 --> 00:00:54.900
 Select Restart,
 
-00:00:56.400 --> 00:01:00.750
+00:00:54.900 --> 00:00:59.370
 and confirm with Apply.
 
-00:01:00.750 --> 00:01:04.930
+00:00:59.370 --> 00:01:03.550
 After a short stop, the virtual machine is running again.
 
-00:01:04.930 --> 00:01:10.400
+00:01:03.550 --> 00:01:09.020
 Pause freezes the virtual machine in memory without shutting it down.
 
-00:01:10.400 --> 00:01:12.950
+00:01:09.020 --> 00:01:11.570
 Select Pause.
 
-00:01:12.950 --> 00:01:15.630
+00:01:11.570 --> 00:01:14.250
 Confirm with Apply.
 
-00:01:15.630 --> 00:01:20.980
+00:01:14.250 --> 00:01:19.600
 The state changes to Paused. The guest stops running but keeps its memory.
 
-00:01:20.980 --> 00:01:23.900
+00:01:19.600 --> 00:01:22.520
 Open the action menu again
 
-00:01:23.900 --> 00:01:26.620
+00:01:22.520 --> 00:01:25.270
 and select Unpause.
 
-00:01:26.620 --> 00:01:32.260
+00:01:25.270 --> 00:01:30.800
 The virtual machine continues exactly where it stopped.
 
-00:01:32.260 --> 00:01:39.106
+00:01:30.800 --> 00:01:38.100
 You can now control the power state of any virtual machine. Next, you use a cloud configuration template.

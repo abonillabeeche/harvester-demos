@@ -1,58 +1,58 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:10.230
-In this video, you ask Liz, the AI assistant in Rancher, to troubleshoot a virtual machine, read a log, and create a new VM on SUSE Virtualization.
+00:00:00.000 --> 00:00:09.350
+Ask Liz, the AI assistant in Rancher, to troubleshoot a virtual machine, read a log, and create a new VM on SUSE Virtualization.
 
-00:00:10.230 --> 00:00:17.950
+00:00:09.350 --> 00:00:17.340
 This is the harvester-ai cluster inside Rancher. Filter the virtual machine list for the two demo VMs.
 
-00:00:17.950 --> 00:00:24.030
+00:00:17.340 --> 00:00:23.430
 The VM demo-liz-app does not start. It stays Pending, and the list does not show the reason.
 
-00:00:24.030 --> 00:00:31.270
+00:00:23.430 --> 00:00:30.780
 Open Liz from the header. Liz calls MCP tools that read and change resources with your own Rancher permissions.
 
-00:00:31.270 --> 00:00:39.620
+00:00:30.780 --> 00:00:40.560
 Choose the Virtualization agent. Its tools list and inspect VMs, volumes, images, and networks, and create or delete VMs.
 
-00:00:41.300 --> 00:00:48.380
+00:00:42.250 --> 00:00:49.320
 Ask Liz why demo-liz-app does not start, and name the namespace and the cluster.
 
-00:00:48.380 --> 00:00:54.050
+00:00:49.320 --> 00:00:55.000
 Each button is a resource that one of Liz's tool calls returned, so you can open exactly what it looked at.
 
-00:00:54.050 --> 00:01:02.400
+00:00:55.000 --> 00:01:03.540
 Liz reads the VM conditions and the volume list. The VM's disk points at a volume, demo-liz-app-data, that does not exist.
 
-00:01:02.400 --> 00:01:10.140
+00:01:03.540 --> 00:01:11.690
 The Virtualization agent has no log tool, so switch to the Rancher agent. Its inspect pod tool returns a pod's log.
 
-00:01:11.790 --> 00:01:20.840
+00:01:13.340 --> 00:01:22.390
 Ask for the log of the virt-launcher pod, the pod that runs the VM demo-liz-web.
 
-00:01:20.840 --> 00:01:27.590
+00:01:22.390 --> 00:01:29.370
 Liz finds the pod, reads its log, and summarizes how the VM booted and whether any lines point to a problem.
 
-00:01:27.590 --> 00:01:31.820
+00:01:29.370 --> 00:01:33.760
 To create a VM, switch back to the Virtualization agent.
 
-00:01:33.470 --> 00:01:45.280
+00:01:35.410 --> 00:01:47.220
 Describe the VM you want, with one CPU, two gigabytes of memory, a ten gigabyte disk, an Ubuntu image, and a VM network.
 
-00:01:45.280 --> 00:01:53.370
+00:01:47.220 --> 00:01:55.310
 Creating a VM changes the cluster, so Liz stops and shows what the create tool will apply. Nothing happens until you confirm.
 
-00:01:53.370 --> 00:02:00.080
+00:01:55.310 --> 00:02:02.490
 Confirm the request to let Liz create the virtual machine.
 
-00:02:00.080 --> 00:02:04.550
+00:02:02.490 --> 00:02:07.070
 Liz reports the new VM with its size, disk, image, and network.
 
-00:02:04.550 --> 00:02:10.060
+00:02:07.070 --> 00:02:12.580
 Close Liz and check the result where it matters, in the virtual machine list of the cluster.
 
-00:02:10.060 --> 00:02:16.500
+00:02:12.580 --> 00:02:20.290
 The list now shows demo-liz-new, the VM that Liz created. It is Running.
 
-00:02:16.500 --> 00:02:25.482
+00:02:20.290 --> 00:02:28.561
 Liz works through MCP tools with your Rancher permissions and asks before it changes anything. Always check its answers against the cluster.

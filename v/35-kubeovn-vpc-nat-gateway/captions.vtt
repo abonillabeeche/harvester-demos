@@ -1,148 +1,148 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:09.520
-In this video, you create a virtual private cloud with a subnet, then add a VPC NAT gateway so that virtual machines in the VPC can reach the internet.
+00:00:00.000 --> 00:00:08.760
+Learn how to create a virtual private cloud with a subnet, then add a VPC NAT gateway so that virtual machines in the VPC can reach the internet.
 
-00:00:09.520 --> 00:00:16.420
+00:00:08.760 --> 00:00:15.610
 Under Overlay Networks, Virtual Private Cloud lists the VPCs. Select Create.
 
-00:00:16.420 --> 00:00:19.470
+00:00:15.610 --> 00:00:18.660
 Name the VPC demo-vpc.
 
-00:00:19.470 --> 00:00:22.760
+00:00:18.660 --> 00:00:21.950
 On the Static Routes tab, select Add.
 
-00:00:22.760 --> 00:00:28.690
+00:00:21.950 --> 00:00:27.880
 Route all destinations, zero dot zero dot zero dot zero slash zero,
 
-00:00:28.690 --> 00:00:38.000
+00:00:27.880 --> 00:00:37.190
 to 172.31.10.254. The NAT gateway uses this address inside the VPC.
 
-00:00:38.000 --> 00:00:42.380
+00:00:37.190 --> 00:00:41.570
 Select Create.
 
-00:00:42.380 --> 00:00:47.670
+00:00:41.570 --> 00:00:46.860
 In the demo-vpc group, select Create Subnet.
 
-00:00:47.670 --> 00:00:52.170
+00:00:46.860 --> 00:00:50.480
 Name the subnet demo-vpc-subnet.
 
-00:00:52.170 --> 00:00:58.160
+00:00:50.480 --> 00:00:56.470
 Enter the CIDR block 172.31.10.0/24.
 
-00:00:58.160 --> 00:01:07.450
+00:00:56.470 --> 00:01:05.760
 As the provider, select the overlay network demo-vpc-net. The VPC is already set to demo-vpc.
 
-00:01:07.450 --> 00:01:12.150
+00:01:05.760 --> 00:01:10.950
 Set the gateway IP to 172.31.10.1.
 
-00:01:12.150 --> 00:01:18.320
+00:01:10.950 --> 00:01:17.110
 Enable DHCP, so that virtual machines get an address and a default route.
 
-00:01:18.320 --> 00:01:24.500
+00:01:17.110 --> 00:01:23.290
 Enable NAT Outgoing, as the documentation recommends for tenant subnets.
 
-00:01:24.500 --> 00:01:26.950
+00:01:23.290 --> 00:01:25.750
 Select Create.
 
-00:01:26.950 --> 00:01:35.080
+00:01:25.750 --> 00:01:33.880
 demo-vpc-subnet now belongs to demo-vpc. Without a gateway, it has no route out of the VPC.
 
-00:01:35.080 --> 00:01:40.080
+00:01:33.880 --> 00:01:38.870
 Next, open NAT and Internet, under Overlay Networks.
 
-00:01:40.080 --> 00:01:42.700
+00:01:38.870 --> 00:01:41.500
 Select Gateways,
 
-00:01:42.700 --> 00:01:45.090
+00:01:41.500 --> 00:01:43.880
 and then Create.
 
-00:01:45.090 --> 00:01:48.030
+00:01:43.880 --> 00:01:47.000
 Name the gateway demo-gw.
 
-00:01:48.030 --> 00:01:52.990
+00:01:47.000 --> 00:01:51.960
 Select the internal tenant network demo-vpc-net,
 
-00:01:52.990 --> 00:01:56.650
+00:01:51.960 --> 00:01:55.630
 the VPC demo-vpc,
 
-00:01:56.650 --> 00:02:00.830
+00:01:55.630 --> 00:01:59.810
 and the subnet demo-vpc-subnet.
 
-00:02:00.830 --> 00:02:10.780
+00:01:59.810 --> 00:02:09.760
 The LAN IP is the gateway's address in the subnet, 172.31.10.254, the next hop of the VPC route.
 
-00:02:10.780 --> 00:02:13.670
+00:02:09.760 --> 00:02:12.640
 Open the External Subnets tab.
 
-00:02:13.670 --> 00:02:24.450
+00:02:12.640 --> 00:02:23.430
 Select the external subnet demo-ext-subnet. In this lab, it stands in for an underlay VLAN with outbound NAT through the host.
 
-00:02:24.450 --> 00:02:28.190
+00:02:23.430 --> 00:02:27.170
 Select Create.
 
-00:02:28.190 --> 00:02:36.900
+00:02:27.170 --> 00:02:35.870
 SUSE Virtualization starts the gateway as a pod with one leg in the VPC subnet and one in the external subnet.
 
-00:02:36.900 --> 00:02:43.880
+00:02:35.870 --> 00:02:41.700
 Next, give the gateway an external IP. Select External IPs,
 
-00:02:43.880 --> 00:02:46.280
+00:02:41.700 --> 00:02:44.100
 and then Create.
 
-00:02:46.280 --> 00:02:48.540
+00:02:44.100 --> 00:02:46.180
 Name it demo-eip.
 
-00:02:48.540 --> 00:02:52.990
+00:02:46.180 --> 00:02:50.620
 Select the NAT gateway demo-gw,
 
-00:02:52.990 --> 00:03:00.030
+00:02:50.620 --> 00:02:57.670
 and the external subnet. Leave V4 IP empty to take the next free address.
 
-00:03:00.030 --> 00:03:02.490
+00:02:57.670 --> 00:03:00.130
 Select Create.
 
-00:03:02.490 --> 00:03:07.670
+00:03:00.130 --> 00:03:04.910
 Finally, add a source NAT rule. Select Source Rules,
 
-00:03:07.670 --> 00:03:10.070
+00:03:04.910 --> 00:03:07.310
 and then Create.
 
-00:03:10.070 --> 00:03:12.330
+00:03:07.310 --> 00:03:09.570
 Name it demo-snat.
 
-00:03:12.330 --> 00:03:16.210
+00:03:09.570 --> 00:03:13.440
 Select the external IP demo-eip.
 
-00:03:16.210 --> 00:03:26.380
+00:03:13.440 --> 00:03:23.620
 Enter the subnet CIDR, 172.31.10.0/24. Traffic from it leaves with the external IP as its source.
 
-00:03:26.380 --> 00:03:30.420
+00:03:23.620 --> 00:03:27.660
 Select Create.
 
-00:03:30.420 --> 00:03:41.730
+00:03:27.660 --> 00:03:38.970
 To test the path, a small virtual machine, demo-vpc-vm, was attached to the overlay network demo-vpc-net. Open Virtual Machines.
 
-00:03:41.730 --> 00:03:48.600
+00:03:38.970 --> 00:03:45.840
 Its address comes from demo-vpc-subnet, assigned by the subnet's DHCP service.
 
-00:03:48.600 --> 00:03:51.190
+00:03:45.840 --> 00:03:48.430
 Open its console,
 
-00:03:51.190 --> 00:03:54.950
+00:03:48.430 --> 00:03:52.190
 in WebVNC.
 
-00:03:54.950 --> 00:03:57.120
+00:03:52.190 --> 00:03:54.360
 Log in as sles,
 
-00:03:57.120 --> 00:04:01.050
+00:03:54.360 --> 00:03:58.290
 with the password that cloud-init set.
 
-00:04:01.050 --> 00:04:11.010
+00:03:58.290 --> 00:04:08.250
 Ping a public address on the internet, 8.8.8.8.
 
-00:04:11.010 --> 00:04:21.160
+00:04:08.250 --> 00:04:18.400
 The replies arrive. Traffic leaves the VPC through demo-gw, with demo-eip as its source address.
 
-00:04:21.160 --> 00:04:28.595
+00:04:18.400 --> 00:04:27.382
 The virtual machine in demo-vpc reaches the internet through the NAT gateway. Next, you manage hosts out of band.

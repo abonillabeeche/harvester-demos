@@ -1,43 +1,43 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:09.240
-In this video, you add a second network interface to a running virtual machine. SUSE Virtualization plugs it in without a restart.
+00:00:00.000 --> 00:00:07.440
+Add a second network interface to a running virtual machine. SUSE Virtualization plugs it in without a restart.
 
-00:00:09.240 --> 00:00:13.940
+00:00:07.440 --> 00:00:12.140
 The virtual machine is running. Open its action menu,
 
-00:00:13.940 --> 00:00:16.780
+00:00:12.140 --> 00:00:14.980
 and select Edit Config.
 
-00:00:16.780 --> 00:00:19.570
+00:00:14.980 --> 00:00:17.770
 Open the Networks tab.
 
-00:00:19.570 --> 00:00:27.110
+00:00:17.770 --> 00:00:25.310
 The virtual machine has one interface, on the management network. You cannot change it while the machine runs.
 
-00:00:27.110 --> 00:00:29.750
+00:00:25.310 --> 00:00:27.950
 Select Add Network.
 
-00:00:29.750 --> 00:00:34.040
+00:00:27.950 --> 00:00:32.240
 Choose the VLAN network for the new interface.
 
-00:00:34.040 --> 00:00:40.190
+00:00:32.240 --> 00:00:38.390
 Keep the bridge type and the virtio model. Hot-plugging works with bridge interfaces.
 
-00:00:40.190 --> 00:00:42.620
+00:00:38.390 --> 00:00:40.820
 Select Save.
 
-00:00:42.620 --> 00:00:50.570
+00:00:40.820 --> 00:00:48.770
 SUSE Virtualization offers to restart the virtual machine. A new network interface does not need a restart.
 
-00:00:50.570 --> 00:00:55.800
+00:00:48.770 --> 00:00:54.360
 Select Save, not Save and Restart.
 
-00:00:55.800 --> 00:00:59.550
+00:00:54.360 --> 00:00:58.110
 Open the virtual machine's Networks tab.
 
-00:00:59.550 --> 00:01:07.230
+00:00:58.110 --> 00:01:05.790
 The virtual machine never stopped, and it now has a second interface on the VLAN network.
 
-00:01:07.230 --> 00:01:14.209
+00:01:05.790 --> 00:01:12.876
 You added a network interface without downtime. Next, you set up a dedicated network for live migration.

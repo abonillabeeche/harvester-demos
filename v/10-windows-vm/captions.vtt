@@ -1,55 +1,55 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:09.430
-In this video, you create a Windows Server virtual machine from a prepared image, using the built-in Windows template so the Windows-specific settings are already in place.
+00:00:00.000 --> 00:00:10.110
+Here, you create a Windows Server virtual machine from a prepared image, using the built-in Windows template so the Windows-specific settings are already in place.
 
-00:00:09.430 --> 00:00:13.390
+00:00:10.110 --> 00:00:14.070
 From the Virtual Machines page, select Create.
 
-00:00:13.390 --> 00:00:16.360
+00:00:14.070 --> 00:00:17.040
 Choose the namespace.
 
-00:00:16.360 --> 00:00:19.000
+00:00:17.040 --> 00:00:19.680
 Give the virtual machine a name.
 
-00:00:19.000 --> 00:00:22.750
+00:00:19.680 --> 00:00:23.250
 Select Use the virtual machine template.
 
-00:00:22.750 --> 00:00:32.710
+00:00:23.250 --> 00:00:33.220
 Choose the windows image template. It is meant for prepared, sysprepped Windows images, so no installer ISO is needed.
 
-00:00:32.710 --> 00:00:41.620
+00:00:33.220 --> 00:00:42.120
 The template sets the operating system type to Windows and turns on the USB tablet for accurate mouse input in the console.
 
-00:00:41.620 --> 00:00:45.320
+00:00:42.120 --> 00:00:45.830
 Keep the four virtual CPUs from the template.
 
-00:00:45.320 --> 00:00:49.800
+00:00:45.830 --> 00:00:50.310
 Lower the memory to eight gigabytes, enough for this test server.
 
-00:00:49.800 --> 00:00:54.880
+00:00:50.310 --> 00:00:55.390
 On the Volumes tab, the root disk from the template has no image yet.
 
-00:00:54.880 --> 00:00:57.580
+00:00:55.390 --> 00:00:58.090
 Remove this placeholder disk,
 
-00:00:57.580 --> 00:01:04.010
+00:00:58.090 --> 00:01:04.520
 and add the image as a new disk instead. Select Add a Virtual Machine Image.
 
-00:01:04.010 --> 00:01:09.720
+00:01:04.520 --> 00:01:10.230
 In the Image list, search for the prepared Windows Server 2025 image,
 
-00:01:09.720 --> 00:01:12.090
+00:01:10.230 --> 00:01:12.600
 and select it.
 
-00:01:12.090 --> 00:01:17.520
+00:01:12.600 --> 00:01:18.030
 Set the disk size to sixty-four gigabytes, the size the template suggests.
 
-00:01:17.520 --> 00:01:21.520
+00:01:18.030 --> 00:01:22.030
 Select Create.
 
-00:01:21.520 --> 00:01:31.200
+00:01:22.030 --> 00:01:31.710
 SUSE Virtualization copies the image into the new root disk and starts the virtual machine. It is now running.
 
-00:01:31.200 --> 00:01:38.289
+00:01:31.710 --> 00:01:40.258
 Windows Server is starting in its own virtual machine. Next, you add CPU and memory to a running virtual machine.
