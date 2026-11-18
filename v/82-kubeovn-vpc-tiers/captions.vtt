@@ -24,68 +24,68 @@ The web tier gets the CIDR block 10.230.1.0/24.
 00:00:40.010 --> 00:00:50.380
 As the provider, select the overlay network demo-web-net. Virtual machines attach to this network, and Kube-OVN gives them addresses from this subnet.
 
-00:00:50.380 --> 00:00:56.020
+00:00:50.380 --> 00:00:56.260
 The gateway, 10.230.1.1, is the VPC router's port in this subnet.
 
-00:00:56.020 --> 00:01:01.080
+00:00:56.260 --> 00:01:01.320
 Enable DHCP, so that virtual machines get their address and route automatically.
 
-00:01:01.080 --> 00:01:03.420
+00:01:01.320 --> 00:01:03.660
 Select Create.
 
-00:01:03.420 --> 00:01:06.150
+00:01:03.660 --> 00:01:06.390
 Add the app tier the same way,
 
-00:01:07.800 --> 00:01:13.500
+00:01:08.040 --> 00:01:14.740
 with the name demo-app, the CIDR block 10.230.2.0/24,
 
-00:01:13.500 --> 00:01:16.780
+00:01:14.740 --> 00:01:18.010
 the overlay network demo-app-net,
 
-00:01:16.780 --> 00:01:20.840
+00:01:18.010 --> 00:01:21.470
 the gateway 10.230.2.1,
 
-00:01:20.840 --> 00:01:23.040
+00:01:21.470 --> 00:01:23.670
 and DHCP enabled.
 
-00:01:25.080 --> 00:01:27.820
+00:01:25.710 --> 00:01:28.460
 Then the database tier,
 
-00:01:29.480 --> 00:01:34.220
+00:01:30.120 --> 00:01:34.860
 demo-db, with 10.230.3.0/24,
 
-00:01:34.220 --> 00:01:37.750
+00:01:34.860 --> 00:01:38.390
 the overlay network demo-db-net,
 
-00:01:37.750 --> 00:01:42.300
+00:01:38.390 --> 00:01:42.940
 the gateway 10.230.3.1,
 
-00:01:42.300 --> 00:01:44.260
+00:01:42.940 --> 00:01:44.900
 and DHCP.
 
-00:01:46.300 --> 00:01:52.760
+00:01:46.940 --> 00:01:53.400
 The demo-3tier VPC now lists its three subnets.
 
-00:01:52.760 --> 00:02:04.930
+00:01:53.400 --> 00:02:05.570
 To test the network, three small virtual machines were created with kubectl, one on each tier's overlay network. Each runs a small web service, on port 80, 8080, or 5432.
 
-00:02:04.930 --> 00:02:09.970
+00:02:05.570 --> 00:02:10.610
 demo-web got 10.230.1.10 in the web subnet,
 
-00:02:09.970 --> 00:02:14.920
+00:02:10.610 --> 00:02:15.640
 and demo-db got 10.230.3.10 in the database subnet.
 
-00:02:14.920 --> 00:02:18.830
+00:02:15.640 --> 00:02:19.540
 Open the console of demo-web in WebVNC.
 
-00:02:22.140 --> 00:02:26.200
+00:02:22.860 --> 00:02:26.640
 Log in as sles, with the password that cloud-init set.
 
-00:02:28.800 --> 00:02:36.070
+00:02:29.240 --> 00:02:36.510
 Ping demo-db, and request the page on its port 5432.
 
-00:02:36.070 --> 00:02:49.110
+00:02:36.510 --> 00:02:49.550
 Both answer. Subnets in the same VPC route to each other through the VPC router, with no extra configuration. That is convenient, but every tier also reaches the database.
 
-00:02:49.110 --> 00:02:56.871
+00:02:49.550 --> 00:02:57.315
 One VPC now holds three subnets, and its router connects them. Next, you make the database subnet private.

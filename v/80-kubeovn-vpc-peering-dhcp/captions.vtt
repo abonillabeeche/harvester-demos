@@ -132,17 +132,17 @@ and demo-vm-b got 10.210.2.2 from demo-subnet-b. Nobody configured either addres
 00:03:46.430 --> 00:03:50.460
 Open the console of demo-vm-a in WebVNC.
 
-00:03:53.550 --> 00:03:57.610
+00:03:53.550 --> 00:03:57.330
 Log in as sles, with the password that cloud-init set.
 
-00:04:00.210 --> 00:04:07.680
+00:03:59.930 --> 00:04:07.400
 The address and the default route through 10.210.1.1 both came from DHCP.
 
-00:04:07.680 --> 00:04:18.340
+00:04:07.400 --> 00:04:18.060
 Now ping demo-vm-b, 10.210.2.2, in the other VPC.
 
-00:04:18.340 --> 00:04:27.830
+00:04:18.060 --> 00:04:27.550
 The replies arrive. Traffic leaves through demo-vpc-a's router, crosses the peering, and reaches demo-vpc-b.
 
-00:04:27.830 --> 00:04:38.244
+00:04:27.550 --> 00:04:37.957
 The two VPCs stay isolated from everything else, but their subnets now reach each other through the peering. Next, you isolate virtual machines with microsegmentation.

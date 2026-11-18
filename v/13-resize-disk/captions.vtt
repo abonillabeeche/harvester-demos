@@ -27,20 +27,20 @@ The guest still sees the old partition size. Open the virtual machine's console,
 00:00:48.860 --> 00:00:52.540
 in WebVNC.
 
-00:00:52.540 --> 00:00:55.020
+00:00:52.540 --> 00:00:55.290
 Log in as sles,
 
-00:00:55.020 --> 00:00:58.950
+00:00:55.290 --> 00:00:59.220
 with the password set by cloud-init.
 
-00:00:58.950 --> 00:01:09.570
+00:00:59.220 --> 00:01:09.840
 lsblk shows the disk is now twelve gigabytes, but the root partition, vda3, still has the old size.
 
-00:01:09.570 --> 00:01:23.920
+00:01:09.840 --> 00:01:24.190
 Grow partition three into the free space, then grow the X F S root filesystem. Both work while it is mounted.
 
-00:01:23.920 --> 00:01:33.900
+00:01:24.190 --> 00:01:34.170
 The root filesystem now has the extra space, and the virtual machine never stopped.
 
-00:01:33.900 --> 00:01:39.873
+00:01:34.170 --> 00:01:40.140
 You expanded a disk online. Next, you take and restore a virtual machine snapshot.

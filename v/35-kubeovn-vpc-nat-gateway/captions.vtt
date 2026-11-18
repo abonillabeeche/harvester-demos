@@ -132,17 +132,17 @@ Open its console,
 00:03:48.750 --> 00:03:52.510
 in WebVNC.
 
-00:03:52.510 --> 00:03:54.980
+00:03:52.510 --> 00:03:55.250
 Log in as sles,
 
-00:03:54.980 --> 00:03:58.910
+00:03:55.250 --> 00:03:59.180
 with the password that cloud-init set.
 
-00:03:58.910 --> 00:04:08.870
+00:03:59.180 --> 00:04:09.140
 Ping a public address on the internet, 8.8.8.8.
 
-00:04:08.870 --> 00:04:19.020
+00:04:09.140 --> 00:04:19.290
 The replies arrive. Traffic leaves the VPC through demo-gw, with demo-eip as its source address.
 
-00:04:19.020 --> 00:04:28.008
+00:04:19.290 --> 00:04:28.275
 The virtual machine in demo-vpc reaches the internet through the NAT gateway. Next, you manage hosts out of band.

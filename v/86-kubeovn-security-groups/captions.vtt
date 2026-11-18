@@ -9,62 +9,62 @@ Kube-OVN security groups have no menu entry or form yet, but the UI lists them o
 00:00:20.680 --> 00:00:23.580
 Select Create from YAML.
 
-00:00:23.580 --> 00:00:42.320
+00:00:23.580 --> 00:00:40.560
 Paste the security group demo-db-sg. Its one ingress rule allows TCP port 5432 from the app subnet, 10.230.2.0/24. Everything else coming in is denied. The egress rule lets the machine answer and reach out.
 
-00:00:42.320 --> 00:00:44.660
+00:00:40.560 --> 00:00:42.900
 Select Create.
 
-00:00:44.660 --> 00:00:48.470
+00:00:42.900 --> 00:00:46.710
 The security group exists, but no port uses it yet.
 
-00:00:48.470 --> 00:00:54.430
+00:00:46.710 --> 00:00:52.670
 Bind it to the database virtual machine. Open the action menu of demo-db,
 
-00:00:54.430 --> 00:00:57.200
+00:00:52.670 --> 00:00:55.440
 and select Edit YAML.
 
-00:00:57.200 --> 00:01:05.670
+00:00:55.440 --> 00:01:03.910
 Kube-OVN reads per-port settings from annotations on the virtual machine template. This one already pins the address on the demo-db-net network.
 
-00:01:05.670 --> 00:01:14.410
+00:01:03.910 --> 00:01:12.650
 Add two more for the same network: port_security true turns on filtering for the port, and security_groups names demo-db-sg.
 
-00:01:14.410 --> 00:01:16.780
+00:01:12.650 --> 00:01:15.020
 Select Save.
 
-00:01:16.780 --> 00:01:23.260
+00:01:15.020 --> 00:01:21.500
 The port picks up the annotations when the virtual machine starts again, so restart demo-db.
 
-00:01:25.370 --> 00:01:29.430
+00:01:23.610 --> 00:01:27.670
 Confirm with Apply.
 
-00:01:29.430 --> 00:01:32.960
+00:01:27.670 --> 00:01:31.200
 demo-db is running again, with the same address.
 
-00:01:32.960 --> 00:01:36.070
+00:01:31.200 --> 00:01:34.310
 Open the console of demo-web.
 
-00:01:38.920 --> 00:01:43.020
+00:01:37.160 --> 00:01:40.980
 Log in as sles, with the password that cloud-init set.
 
-00:01:45.670 --> 00:01:56.700
+00:01:43.630 --> 00:01:54.660
 Ping demo-db, then request its port 5432.
 
-00:01:56.700 --> 00:02:01.430
+00:01:54.660 --> 00:01:59.390
 Both fail. The web subnet is not in the security group's rule.
 
-00:02:01.430 --> 00:02:04.620
+00:01:59.390 --> 00:02:02.580
 Then open the console of demo-app.
 
-00:02:07.350 --> 00:02:09.300
+00:02:05.310 --> 00:02:07.260
 Log in the same way.
 
-00:02:11.900 --> 00:02:19.880
+00:02:09.860 --> 00:02:17.840
 Request port 5432 from the app tier, then ping.
 
-00:02:19.880 --> 00:02:30.480
+00:02:17.840 --> 00:02:28.440
 The database answers on port 5432, and the ping is dropped. The rule follows demo-db's port, so it would protect the machine on any subnet.
 
-00:02:30.480 --> 00:02:41.891
+00:02:28.440 --> 00:02:39.844
 The security group protects demo-db's port alone: only the app subnet gets in, and only on port 5432. Next, you steer traffic for a whole VPC with policy routes.

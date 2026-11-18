@@ -21,17 +21,17 @@ Select Open in WebVNC. The console opens in its own browser window.
 00:00:36.490 --> 00:00:42.360
 The console connects and shows the login prompt of openSUSE Leap.
 
-00:00:42.360 --> 00:00:45.350
+00:00:42.360 --> 00:00:44.820
 Type the user name, sles,
 
-00:00:45.350 --> 00:00:51.450
+00:00:44.820 --> 00:00:50.910
 and the password that cloud-init set when the virtual machine first started.
 
-00:00:51.450 --> 00:00:58.640
+00:00:50.910 --> 00:00:58.100
 You are logged in. Run a command, for example, to list the network addresses.
 
-00:00:58.640 --> 00:01:06.770
+00:00:58.100 --> 00:01:06.230
 The toolbar at the top sends special keys, such as Control Alt Delete, to the virtual machine.
 
-00:01:06.770 --> 00:01:14.030
+00:01:06.230 --> 00:01:13.492
 You can now reach any running virtual machine from its console. Next, you stop, start, and restart a virtual machine.
