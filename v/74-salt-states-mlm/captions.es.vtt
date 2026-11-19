@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:14.620
+En este video, una nueva máquina virtual en SUSE Virtualization se registra sola en Multi-Linux Manager, obtiene WordPress desde un estado de Salt existente, y un cambio manual es corregido.
+
+00:00:14.620 --> 00:00:26.720
+demo-wp-01 es una nueva máquina virtual Leap 16.1 con dos CPU y cuatro gigabytes de memoria. Nadie ha iniciado sesión en ella.
+
+00:00:26.720 --> 00:00:34.740
+Abre Advanced Options para ver los datos de usuario de cloud-init que se ejecutaron en su primer arranque.
+
+00:00:34.740 --> 00:00:45.990
+Escribe los grains de Salt y luego ejecuta el script de bootstrap desde Multi-Linux Manager, que registra la máquina con la clave de activación 1-wordpress.
+
+00:00:45.990 --> 00:00:57.130
+En Multi-Linux Manager, la página Salt Keys muestra al nuevo minion como pendiente. No se gestiona nada hasta que un administrador acepta su clave.
+
+00:00:57.130 --> 00:01:06.990
+Acepta la clave para aprobar esta máquina. El registro y la primera ejecución de Salt comienzan de inmediato.
+
+00:01:06.990 --> 00:01:18.610
+La máquina es ahora un sistema Salt registrado. Su canal base, el canal de WordPress para SLES 16.1, proviene de la clave de activación.
+
+00:01:20.610 --> 00:01:27.060
+Abre la pestaña Events y su History para ver qué ocurrió después de aceptar la clave.
+
+00:01:29.050 --> 00:01:38.940
+Justo después del registro, el servidor aplicó el highstate por sí mismo, así que el estado de wordpress se ejecutó sin ningún paso adicional.
+
+00:01:38.940 --> 00:01:49.230
+WordPress ahora se ejecuta en la máquina virtual, construido completamente por el estado de Salt. Observa el título del sitio en el encabezado.
+
+00:01:51.220 --> 00:01:59.270
+Para simular un cambio manual en la máquina, abre Remote Command en la pestaña Details del sistema.
+
+00:01:59.270 --> 00:02:08.540
+El script cambia el título del sitio con la herramienta de línea de comandos de WordPress, como podría hacerlo un administrador con sesión iniciada en la máquina.
+
+00:02:08.540 --> 00:02:16.010
+Progámalo para ejecutarse ahora. Salt ejecuta el script en la máquina en cuestión de segundos.
+
+00:02:16.010 --> 00:02:22.620
+El título del sitio cambió. La máquina se ha desviado de lo que describe el estado de Salt.
+
+00:02:24.630 --> 00:02:33.540
+Para corregirlo, abre la pestaña States. La página Highstate muestra el estado de wordpress asignado a este sistema.
+
+00:02:33.540 --> 00:02:42.600
+Selecciona Apply Highstate. Salt compara la máquina con el estado y cambia solo lo que difiere.
+
+00:02:42.600 --> 00:02:51.260
+El título gestionado está de vuelta. El highstate encontró la diferencia y estableció el título con el valor del estado.
+
+00:02:51.260 --> 00:03:05.803
+El mismo estado de Salt construyó el sitio y lo restauró tras un cambio manual, y el historial del sistema registra cada ejecución. Programa el highstate como acción recurrente para corregir la desviación por sí solo.

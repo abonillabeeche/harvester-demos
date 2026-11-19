@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.140
+Aprende a encontrar una máquina virtual en mal estado en SUSE Observability, revisar sus métricas y abrir el monitor detrás de su estado de salud.
+
+00:00:12.140 --> 00:00:15.060
+Abre el menú principal.
+
+00:00:15.060 --> 00:00:19.000
+Despliega SUSE Virtualization.
+
+00:00:19.000 --> 00:00:22.710
+Selecciona Virtual machines.
+
+00:00:22.710 --> 00:00:29.810
+Esta VM muestra Deviating. Se ejecuta en un host del clúster harvester-north.
+
+00:00:29.810 --> 00:00:39.630
+A la derecha, las columnas CPU Usage, Memory Usage y Disk Usage muestran las métricas actuales de cada VM.
+
+00:00:39.630 --> 00:00:43.550
+Abre la VM en Deviating.
+
+00:00:43.550 --> 00:00:52.340
+En la página Highlights, la tarjeta Monitors muestra qué verificación falló. Aquí es VM disk filling up.
+
+00:00:52.340 --> 00:00:58.390
+Antes de abrir el monitor, selecciona Metrics para ver los gráficos de la VM.
+
+00:00:58.390 --> 00:01:09.350
+Guest muestra el uso del sistema de archivos dentro de la VM, desde el QEMU guest agent. Otros grupos cubren red, almacenamiento, memoria y CPU.
+
+00:01:09.350 --> 00:01:12.250
+Vuelve a Highlights.
+
+00:01:12.250 --> 00:01:17.320
+Selecciona el monitor VM disk filling up.
+
+00:01:17.320 --> 00:01:26.900
+El panel explica la verificación. Se activa cuando el sistema de archivos escribible más lleno de la VM está usado en más del ochenta por ciento.
+
+00:01:26.900 --> 00:01:36.750
+La evidencia de activación grafica esa métrica frente a su umbral. El estado de salud muestra Deviating desde el momento de la activación.
+
+00:01:36.750 --> 00:01:47.170
+Más abajo, el monitor enlaza una guía de remediación con los siguientes pasos sugeridos. Revísalos según tu propio entorno antes de actuar.
+
+00:01:47.170 --> 00:01:51.330
+Cierra el panel cuando termines.
+
+00:01:51.330 --> 00:02:02.008
+Rastreaste una máquina virtual en mal estado hasta el monitor detrás de su estado. A continuación, ajustas el tamaño de las máquinas virtuales.

@@ -1,0 +1,58 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.950
+Pide a Liz, el asistente de IA de Rancher, que resuelva problemas de una máquina virtual, lea un registro y cree una nueva VM en SUSE Virtualization.
+
+00:00:11.950 --> 00:00:21.260
+Este es el clúster harvester-ai dentro de Rancher. Filtra la lista de máquinas virtuales por las dos VM de demostración.
+
+00:00:21.260 --> 00:00:28.150
+La VM demo-liz-app no arranca. Permanece en Pending, y la lista no muestra el motivo.
+
+00:00:28.150 --> 00:00:38.730
+Abre Liz desde el encabezado. Liz llama a herramientas MCP que leen y modifican recursos con tus propios permisos de Rancher.
+
+00:00:38.730 --> 00:00:49.880
+Elige el Virtualization agent. Sus herramientas listan e inspeccionan VM, volúmenes, imágenes y redes, y crean o eliminan VM.
+
+00:00:51.560 --> 00:01:00.790
+Pregúntale a Liz por qué demo-liz-app no arranca, e indica el namespace y el clúster.
+
+00:01:00.790 --> 00:01:09.100
+Cada botón es un recurso que devolvió una de las llamadas a herramientas de Liz, así que puedes abrir exactamente lo que ella revisó.
+
+00:01:09.100 --> 00:01:19.080
+Liz lee las condiciones de la VM y la lista de volúmenes. El disco de la VM apunta a un volumen, demo-liz-app-data, que no existe.
+
+00:01:19.080 --> 00:01:30.070
+El Virtualization agent no tiene herramienta de registros, así que cambia al Rancher agent. Su herramienta inspect pod devuelve el registro de un pod.
+
+00:01:31.720 --> 00:01:40.770
+Pide el registro del pod virt-launcher, el pod que ejecuta la VM demo-liz-web.
+
+00:01:40.770 --> 00:01:48.670
+Liz encuentra el pod, lee su registro y resume cómo arrancó la VM y si alguna línea apunta a un problema.
+
+00:01:48.670 --> 00:01:54.540
+Para crear una VM, vuelve al Virtualization agent.
+
+00:01:56.190 --> 00:02:08.050
+Describe la VM que quieres, con una CPU, dos gigabytes de memoria, un disco de diez gigabytes, una imagen de Ubuntu y una red de VM.
+
+00:02:08.050 --> 00:02:18.890
+Crear una VM modifica el clúster, así que Liz se detiene y muestra lo que la herramienta de creación aplicará. No pasa nada hasta que confirmes.
+
+00:02:18.890 --> 00:02:27.310
+Confirma la solicitud para permitir que Liz cree la máquina virtual.
+
+00:02:27.310 --> 00:02:32.580
+Liz informa la nueva VM con su tamaño, disco, imagen y red.
+
+00:02:32.580 --> 00:02:39.320
+Cierra Liz y verifica el resultado donde importa, en la lista de máquinas virtuales del clúster.
+
+00:02:39.320 --> 00:02:47.550
+La lista ahora muestra demo-liz-new, la VM que Liz creó. Está en Running.
+
+00:02:47.550 --> 00:02:58.782
+Liz trabaja con herramientas MCP con tus permisos de Rancher y pregunta antes de cambiar nada. Verifica siempre sus respuestas contra el clúster.

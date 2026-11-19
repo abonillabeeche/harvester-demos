@@ -1,0 +1,25 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.620
+Migra en caliente una máquina virtual en ejecución a otro nodo de un clúster de SUSE Virtualization, y observa cómo sigue en ejecución mientras se mueve.
+
+00:00:10.620 --> 00:00:18.460
+La máquina virtual demo-migrate está en ejecución. La columna Node muestra que se ejecuta en ser5-blue.
+
+00:00:18.460 --> 00:00:22.570
+Abre el menú de acciones de la máquina virtual,
+
+00:00:22.570 --> 00:00:26.930
+y selecciona Virtual Machine Migration.
+
+00:00:26.930 --> 00:00:33.880
+Elige el nodo de destino, aquí ser5-green. La máquina virtual se mueve a este nodo.
+
+00:00:33.880 --> 00:00:39.930
+Selecciona Apply para iniciar la migración.
+
+00:00:39.930 --> 00:00:51.480
+SUSE Virtualization copia la memoria al nuevo nodo mientras el guest sigue en ejecución. La columna Node ahora muestra ser5-green.
+
+00:00:51.480 --> 00:01:01.882
+La máquina virtual ahora se ejecuta en otro nodo y nunca se detuvo. A continuación, aprovisionas un clúster guest desde Rancher.

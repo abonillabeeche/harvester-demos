@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.840
+Aquí vas a crear una máquina virtual Linux en SUSE Virtualization a partir de una imagen de nube, elegir cuántas CPU y cuánta memoria recibe, y verla arrancar.
+
+00:00:12.840 --> 00:00:17.570
+Desde la página Virtual Machines, selecciona Create.
+
+00:00:17.570 --> 00:00:22.180
+Elige el namespace al que pertenece la máquina virtual.
+
+00:00:22.180 --> 00:00:24.080
+Dale un nombre.
+
+00:00:24.080 --> 00:00:26.980
+Asigna dos CPU virtuales,
+
+00:00:26.980 --> 00:00:29.760
+y cuatro gigabytes de memoria.
+
+00:00:29.760 --> 00:00:33.910
+En la pestaña Volumes, elige el disco de arranque.
+
+00:00:33.910 --> 00:00:43.330
+Selecciona la imagen de nube de openSUSE Leap. El disco raíz se crea a partir de ella, con diez gigabytes por defecto.
+
+00:00:43.330 --> 00:00:51.480
+La pestaña Networks ya tiene una interfaz en la red de administración, suficiente para esta máquina virtual.
+
+00:00:51.480 --> 00:00:56.300
+Selecciona Create.
+
+00:00:56.300 --> 00:01:07.110
+SUSE Virtualization descarga la imagen en un volumen, programa la máquina virtual, y ahora está en ejecución con una dirección IP.
+
+00:01:07.110 --> 00:01:13.230
+La máquina virtual está lista. A continuación, abres su consola.

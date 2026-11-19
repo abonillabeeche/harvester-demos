@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:15.370
+Aprende a describir una imagen, una red y una máquina virtual como código con el provider de Terraform de Harvester, crearlos en SUSE Virtualization, cambiar la máquina virtual con un plan y eliminar todo de nuevo.
+
+00:00:15.370 --> 00:00:25.990
+main.tf fija el provider de Harvester y lo apunta a un kubeconfig. Aquí pertenece a una cuenta que solo puede usar el namespace demo.
+
+00:00:25.990 --> 00:00:34.860
+El primer recurso es una imagen. El clúster descarga la imagen de nube de openSUSE Leap desde esta dirección.
+
+00:00:34.860 --> 00:00:44.200
+El segundo es una red VLAN, la VLAN cien en la red del clúster de administración, con su subred y su gateway.
+
+00:00:44.200 --> 00:00:56.890
+La máquina virtual usa ambos. Una CPU, dos gigabytes de memoria, un disco de diez gigabytes a partir de la imagen, una NIC en la red y datos de usuario de cloud-init.
+
+00:00:56.890 --> 00:01:04.030
+terraform init descarga la versión del provider que main.tf pide.
+
+00:01:04.030 --> 00:01:12.330
+terraform apply primero calcula un plan. Cada signo más es un atributo de un recurso que aún no existe.
+
+00:01:12.330 --> 00:01:21.580
+El plan agrega tres recursos. Terraform crea primero la red y la imagen, y luego la máquina virtual que las necesita.
+
+00:01:21.580 --> 00:01:31.390
+En la UI, demo-tf-vm está en ejecución con una CPU y dos gigabytes de memoria, tal como lo describe main.tf.
+
+00:01:31.390 --> 00:01:40.350
+La página Virtual Machine Networks lista demo-tf-net, la red VLAN con VLAN ID cien.
+
+00:01:40.350 --> 00:01:50.000
+Ahora cambia el código. En main.tf, el número de CPU pasa de una a dos, y la memoria de dos a cuatro gigabytes.
+
+00:01:50.000 --> 00:02:00.340
+terraform plan compara el código con el clúster. La tilde marca una actualización en el lugar de la máquina virtual: CPU y memoria.
+
+00:02:00.340 --> 00:02:06.440
+No se agrega ni se destruye nada. Un recurso cambia.
+
+00:02:06.440 --> 00:02:18.490
+terraform apply hace el cambio. Como restart_after_update está configurado, el provider reinicia la máquina virtual para que el nuevo tamaño surta efecto.
+
+00:02:18.490 --> 00:02:29.390
+En la UI, los detalles de demo-tf-vm ahora muestran dos CPU virtuales y cuatro gigabytes de memoria, después del reinicio.
+
+00:02:29.390 --> 00:02:39.360
+Cuando ya no la necesites, terraform destroy elimina la máquina virtual, su disco, la red y la imagen.
+
+00:02:39.360 --> 00:02:53.275
+Un archivo ahora describe la imagen, la red y la máquina virtual, y Terraform mantiene el clúster acorde a él. A continuación, inicializas una máquina virtual Linux con cloud-init.

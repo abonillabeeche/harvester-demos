@@ -1,0 +1,76 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:14.260
+En este video, ves cómo Kasm Workspaces se ejecuta en máquinas virtuales de SUSE Virtualization, inicias sesión y transmites una terminal, un escritorio Windows y un navegador.
+
+00:00:14.260 --> 00:00:23.340
+Kasm ya está instalado en este clúster. En la página Virtual Machines, filtra por kasm para ver las máquinas virtuales que usa.
+
+00:00:23.340 --> 00:00:34.030
+El plano de control es una máquina virtual Ubuntu llamada kasm. Ejecuta la base de datos, la API, el manager y el proxy de Kasm.
+
+00:00:34.030 --> 00:00:47.220
+Las máquinas virtuales kasm-dynamic-agent del namespace kasm-autoscale no se crearon a mano. Kasm las crea y las elimina a través de su provider de Harvester.
+
+00:00:47.220 --> 00:00:54.740
+Para ver cómo se instaló el plano de control, abre las Advanced Options de la máquina virtual kasm.
+
+00:00:54.740 --> 00:01:08.710
+Su user data de cloud-init descarga Kasm 1.19 y ejecuta el instalador de servidor único. Las contraseñas de la línea del instalador están difuminadas.
+
+00:01:08.710 --> 00:01:20.200
+Los nuevos agentes se clonan a partir de imágenes del namespace kasm-autoscale, como esta imagen de agente Linux con los workspaces ya descargados.
+
+00:01:20.200 --> 00:01:25.390
+Ahora abre el portal de Kasm e inicia sesión como el usuario demo.
+
+00:01:25.390 --> 00:01:30.970
+La contraseña se escribe en el campo enmascarado y luego seleccionas Login.
+
+00:01:33.010 --> 00:01:42.550
+El dashboard lista los workspaces que este usuario puede iniciar: navegadores, escritorios Linux, una terminal y Windows Server.
+
+00:01:42.550 --> 00:01:48.810
+Selecciona el workspace Terminal para abrir su diálogo de lanzamiento.
+
+00:01:48.810 --> 00:01:59.230
+Luego selecciona Launch Session. Kasm inicia un contenedor en una máquina virtual agente Linux.
+
+00:01:59.230 --> 00:02:07.050
+La terminal se transmite a la pestaña del navegador. Revisa el kernel, las CPU y la memoria que la sesión ve.
+
+00:02:07.050 --> 00:02:14.360
+Cuando termines, abre el panel de control de Kasm en el borde izquierdo,
+
+00:02:14.360 --> 00:02:19.500
+selecciona Delete Session y confirma que quieres eliminarla.
+
+00:02:21.570 --> 00:02:28.880
+A continuación, selecciona el workspace Windows Server 2025 y lánzalo.
+
+00:02:28.880 --> 00:02:38.240
+Kasm te entrega una máquina virtual Windows lista y se conecta a ella por RDP.
+
+00:02:38.240 --> 00:02:45.220
+El escritorio Windows se ejecuta en la misma pestaña del navegador, sin ningún cliente que instalar.
+
+00:02:45.220 --> 00:02:51.010
+Termínala de la misma manera, desde el panel de control con Delete Session.
+
+00:02:53.050 --> 00:02:59.420
+Kasm elimina esta máquina virtual Windows y prepara una nueva para el siguiente usuario.
+
+00:02:59.420 --> 00:03:06.970
+A continuación, selecciona el workspace Chrome y lanza un navegador aislado.
+
+00:03:10.260 --> 00:03:19.970
+Chrome se ejecuta en un contenedor en el agente Linux. Selecciona el acceso directo Web Store en la página de nueva pestaña.
+
+00:03:19.970 --> 00:03:27.970
+La página carga dentro de la sesión, así que nada del sitio web se ejecuta en tu propia computadora.
+
+00:03:27.970 --> 00:03:34.240
+Elimina también esta sesión cuando termines, para que sus recursos vuelvan al pool.
+
+00:03:40.360 --> 00:03:50.643
+Kasm transmite cada workspace desde máquinas virtuales del clúster, y agrega o elimina máquinas virtuales agente según cambia la demanda.

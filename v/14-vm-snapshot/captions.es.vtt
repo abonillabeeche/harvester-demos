@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.060
+Este video muestra cómo tomar una instantánea de una máquina virtual en ejecución y restaurarla como una nueva. Las instantáneas te dan una forma rápida de volver a un estado conocido.
+
+00:00:13.060 --> 00:00:20.170
+En la página Virtual Machines, abre el menú de acciones de la máquina virtual en ejecución.
+
+00:00:20.170 --> 00:00:24.750
+Selecciona Take Virtual Machine Snapshot.
+
+00:00:24.750 --> 00:00:27.610
+Ponle un nombre a la instantánea.
+
+00:00:27.610 --> 00:00:38.810
+Deja la fecha límite de congelación del sistema de archivos por defecto, el tiempo máximo que el sistema de archivos del invitado puede permanecer congelado para la instantánea.
+
+00:00:38.810 --> 00:00:42.570
+Selecciona Create.
+
+00:00:42.570 --> 00:00:50.190
+En Backup and Snapshots, Virtual Machine Snapshots, la instantánea está lista para usarse.
+
+00:00:50.190 --> 00:00:55.210
+Para restaurarla, abre el menú de acciones de la instantánea.
+
+00:00:55.210 --> 00:01:01.800
+Selecciona Restore New, que deja la máquina virtual original intacta.
+
+00:01:01.800 --> 00:01:05.740
+Escribe un nombre para la máquina virtual restaurada.
+
+00:01:05.740 --> 00:01:13.560
+Deja Keep powered off sin marcar, para que la nueva máquina virtual arranque después de la restauración.
+
+00:01:13.560 --> 00:01:17.980
+Selecciona Create.
+
+00:01:17.980 --> 00:01:27.340
+La máquina virtual restaurada está en ejecución junto a la original, con el contenido del disco de la instantánea.
+
+00:01:27.340 --> 00:01:37.973
+Ahora puedes volver a este punto en el tiempo cuando lo necesites. A continuación, configuras un destino de respaldo para copias fuera del clúster.

@@ -1,0 +1,103 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:22.470
+Aprende a definir clústeres de DR y un plan de DR en CloudCasa, y luego hacer failover de una máquina virtual a un segundo clúster. CloudCasa también intermedia el DR con replicación de almacenamiento de HPE y Dell, lo que este laboratorio no puede mostrar, así que el video usa volúmenes de recuperación ante desastres de Longhorn.
+
+00:00:22.470 --> 00:00:36.440
+En far-edge, el clúster de origen, demo-ccdr se ejecuta en un volumen de Longhorn. Longhorn lo respalda cada cinco minutos en un destino S3 que harvester-ai también lee.
+
+00:00:36.440 --> 00:00:46.740
+Abre la consola de CloudCasa, donde viven los clústeres de DR, los sistemas de almacenamiento, los planes y los trabajos de recuperación.
+
+00:00:46.740 --> 00:00:50.120
+Inicia sesión con tu cuenta de CloudCasa.
+
+00:00:55.380 --> 00:01:08.170
+La página DR Clusters lista ambos clústeres, registrados con CloudCasa DR habilitado: demo-far-edge como origen y demo-harvester-ai como destino.
+
+00:01:08.170 --> 00:01:14.840
+Abre demo-far-edge para vincular el sistema de almacenamiento que contiene sus volúmenes.
+
+00:01:14.840 --> 00:01:23.020
+Selecciona Link storage system. El Longhorn de cada clúster se agregó antes como sistema de almacenamiento.
+
+00:01:23.020 --> 00:01:29.690
+Abre la lista y elige demo-lh-far-edge, el Longhorn del clúster de origen,
+
+00:01:31.330 --> 00:01:36.440
+y selecciona Save para vincularlo al clúster.
+
+00:01:36.440 --> 00:01:42.070
+Haz lo mismo para demo-harvester-ai, el clúster de destino.
+
+00:01:44.110 --> 00:01:51.820
+Esta vez, elige su propio sistema Longhorn, demo-lh-harvester-ai, y guarda.
+
+00:01:55.530 --> 00:02:01.120
+Ambos clústeres ahora saben qué almacenamiento replica sus volúmenes.
+
+00:02:01.120 --> 00:02:06.990
+Después, en la página Plans, selecciona Add DR plan.
+
+00:02:06.990 --> 00:02:11.250
+Elige demo-far-edge como clúster de origen,
+
+00:02:12.890 --> 00:02:18.520
+y su sistema de almacenamiento Longhorn, demo-lh-far-edge.
+
+00:02:22.220 --> 00:02:27.760
+Selecciona Next, y elige demo-harvester-ai como destino,
+
+00:02:29.400 --> 00:02:35.270
+con su sistema de almacenamiento, demo-lh-harvester-ai.
+
+00:02:38.950 --> 00:02:49.270
+En Selections, abre la pestaña VMs. Un plan también puede proteger namespaces completos, deployments o stateful sets.
+
+00:02:49.270 --> 00:02:54.530
+Selecciona demo-ccdr en el namespace demo-ccdr.
+
+00:02:56.580 --> 00:03:01.480
+Selecciona Next, y nombra el plan demo-ccdr-plan.
+
+00:03:01.480 --> 00:03:11.340
+El PVC de inventario, preparado en el namespace cloudcasa-io en la misma clase de Longhorn, registra los recursos del plan y se replica con ellos.
+
+00:03:11.340 --> 00:03:21.760
+Selecciona Create. CloudCasa inicia su agente de DR en far-edge y toma un primer inventario.
+
+00:03:21.760 --> 00:03:30.660
+El inventario está completo, y los siguientes respaldos de Longhorn han puesto al día los volúmenes de DR en harvester-ai.
+
+00:03:30.660 --> 00:03:38.680
+Ahora haz el failover. En la página Recovery jobs, selecciona Add DR recovery,
+
+00:03:38.680 --> 00:03:43.150
+y elige el plan demo-ccdr-plan.
+
+00:03:45.200 --> 00:03:55.700
+Selecciona Next y abre VM options. La estrategia de ejecución es Halted por defecto, lo que dejaría la máquina virtual detenida.
+
+00:03:55.700 --> 00:04:03.730
+Abre la lista y elige Use strategy from backup, para que demo-ccdr arranque en harvester-ai.
+
+00:04:07.460 --> 00:04:12.680
+Selecciona Next, y nombra el trabajo demo-ccdr-failover.
+
+00:04:12.680 --> 00:04:20.340
+Deja activado Stop workloads before failover, para que CloudCasa apague primero demo-ccdr en far-edge.
+
+00:04:20.340 --> 00:04:26.400
+Activa Run now, y luego selecciona Create para iniciar el failover.
+
+00:04:29.640 --> 00:04:40.250
+El trabajo de recuperación detuvo la máquina virtual de origen, activó los volúmenes de DR en harvester-ai y restauró la máquina virtual allí.
+
+00:04:40.250 --> 00:04:49.660
+En harvester-ai, el clúster de destino, demo-ccdr se ejecuta desde su volumen de DR de Longhorn activado.
+
+00:04:49.660 --> 00:05:00.890
+De vuelta en far-edge, el demo-ccdr original está apagado, así que solo se ejecuta una copia de la máquina virtual.
+
+00:05:00.890 --> 00:05:15.413
+La máquina virtual ahora se ejecuta en harvester-ai desde su volumen de Longhorn replicado. Para hacer failback, configura la replicación de Longhorn en la dirección opuesta y crea un plan nuevo.

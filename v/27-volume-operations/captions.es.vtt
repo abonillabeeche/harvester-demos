@@ -1,0 +1,61 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.090
+Este video muestra cómo tomar un snapshot de un volumen, restaurarlo en un volumen nuevo y exportar el volumen a una imagen para nuevas máquinas virtuales.
+
+00:00:11.090 --> 00:00:18.160
+En la página Volumes, abre el menú de acciones del volumen demo-data de dos gigabytes.
+
+00:00:18.160 --> 00:00:21.790
+Selecciona Take Snapshot.
+
+00:00:21.790 --> 00:00:25.450
+Nombra el snapshot demo-data-snap,
+
+00:00:25.450 --> 00:00:28.580
+y selecciona Create.
+
+00:00:28.580 --> 00:00:32.210
+Abre el volumen para ver sus snapshots.
+
+00:00:32.210 --> 00:00:36.350
+Selecciona la pestaña Snapshots.
+
+00:00:36.350 --> 00:00:41.890
+El snapshot está listo para usar. Abre su menú de acciones.
+
+00:00:41.890 --> 00:00:45.120
+Selecciona Restore.
+
+00:00:45.120 --> 00:00:52.580
+Restaurar crea un volumen nuevo y deja el original intacto. Nómbralo demo-data-restored.
+
+00:00:52.580 --> 00:00:55.850
+Conserva la storage class por defecto.
+
+00:00:55.850 --> 00:00:59.420
+Selecciona Create.
+
+00:00:59.420 --> 00:01:07.970
+En la página Volumes, el volumen restaurado demo-data-restored de dos gigabytes aparece junto al original.
+
+00:01:07.970 --> 00:01:15.200
+Ahora, exporta el volumen original a una imagen. Abre su menú de acciones,
+
+00:01:15.200 --> 00:01:18.260
+y selecciona Export Image.
+
+00:01:18.260 --> 00:01:23.850
+Conserva el namespace demo y nombra la imagen demo-data-image.
+
+00:01:23.850 --> 00:01:29.120
+Elige la storage class para la imagen, aquí longhorn-v2.
+
+00:01:29.120 --> 00:01:34.500
+Selecciona Create para iniciar la exportación.
+
+00:01:34.500 --> 00:01:45.380
+En la página Images, demo-data-image está activa. Ahora puedes crear nuevas máquinas virtuales a partir de ella o descargarla.
+
+00:01:45.380 --> 00:01:56.136
+Ahora tienes un snapshot, una copia restaurada y una imagen del volumen. A continuación, controlas dónde se ejecutan las máquinas virtuales.

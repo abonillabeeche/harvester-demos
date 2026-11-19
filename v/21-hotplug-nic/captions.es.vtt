@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.160
+Agrega una segunda interfaz de red a una máquina virtual en ejecución. SUSE Virtualization la conecta sin reiniciar.
+
+00:00:10.160 --> 00:00:15.870
+La máquina virtual está en ejecución. Abre su menú de acciones,
+
+00:00:15.870 --> 00:00:19.380
+y selecciona Edit Config.
+
+00:00:19.380 --> 00:00:22.920
+Abre la pestaña Networks.
+
+00:00:22.920 --> 00:00:31.640
+La máquina virtual tiene una interfaz, en la red de administración. No puedes cambiarla mientras la máquina está en ejecución.
+
+00:00:31.640 --> 00:00:34.940
+Selecciona Add Network.
+
+00:00:34.940 --> 00:00:39.230
+Elige la red VLAN para la nueva interfaz.
+
+00:00:39.230 --> 00:00:46.810
+Conserva el tipo bridge y el modelo virtio. La conexión en caliente funciona con interfaces bridge.
+
+00:00:46.810 --> 00:00:50.040
+Selecciona Save.
+
+00:00:50.040 --> 00:00:58.300
+SUSE Virtualization ofrece reiniciar la máquina virtual. Una nueva interfaz de red no necesita reinicio.
+
+00:00:58.300 --> 00:01:04.480
+Selecciona Save, no Save and Restart.
+
+00:01:04.480 --> 00:01:09.550
+Abre la pestaña Networks de la máquina virtual.
+
+00:01:09.550 --> 00:01:17.220
+La máquina virtual nunca se detuvo, y ahora tiene una segunda interfaz en la red VLAN.
+
+00:01:17.220 --> 00:01:26.891
+Agregaste una interfaz de red sin tiempo de inactividad. A continuación, configuras una red dedicada para la migración en vivo.

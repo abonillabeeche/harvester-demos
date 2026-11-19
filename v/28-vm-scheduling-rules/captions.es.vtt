@@ -1,0 +1,76 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.200
+Aprende a crear una máquina virtual con dos reglas de programación: una regla de nodo limita sus hosts, y una regla de anti-afinidad la mantiene separada de otra máquina virtual.
+
+00:00:13.200 --> 00:00:21.600
+La máquina virtual demo-sched-1 se ejecuta en ser5-green. La segunda máquina virtual no debe compartir su host.
+
+00:00:21.600 --> 00:00:24.810
+Selecciona Create.
+
+00:00:24.810 --> 00:00:28.090
+Elige el namespace demo,
+
+00:00:28.090 --> 00:00:30.700
+y nómbrala demo-sched-2.
+
+00:00:30.700 --> 00:00:33.100
+Asigna una CPU
+
+00:00:33.100 --> 00:00:35.970
+y dos gigabytes de memoria.
+
+00:00:35.970 --> 00:00:38.340
+En la pestaña Volumes,
+
+00:00:38.340 --> 00:00:43.610
+selecciona la imagen de openSUSE Leap para el disco de arranque.
+
+00:00:43.610 --> 00:00:52.440
+Abre la pestaña Node Scheduling. Por defecto, la máquina virtual puede ejecutarse en cualquier nodo disponible.
+
+00:00:52.440 --> 00:00:58.530
+Selecciona Run virtual machine on nodes matching scheduling rules.
+
+00:00:58.530 --> 00:01:06.470
+Agrega un selector de nodo. Su prioridad se mantiene en Required, así que la regla debe cumplirse.
+
+00:01:06.470 --> 00:01:09.380
+Agrega una regla.
+
+00:01:09.380 --> 00:01:15.440
+Como clave, usa la etiqueta de nodo kubernetes.io/hostname.
+
+00:01:15.440 --> 00:01:26.070
+Deja el operador en list, e ingresa ser5-green y ser5-purple. La máquina virtual solo puede ejecutarse en estos dos hosts.
+
+00:01:26.070 --> 00:01:31.510
+A continuación, abre la pestaña Virtual Machine Scheduling.
+
+00:01:31.510 --> 00:01:34.980
+Agrega un selector de carga de trabajo.
+
+00:01:34.980 --> 00:01:41.000
+Establece el tipo en Anti-Affinity, y mantén la prioridad en Required.
+
+00:01:41.000 --> 00:01:45.820
+Agrega una regla que seleccione la otra máquina virtual.
+
+00:01:45.820 --> 00:01:52.530
+Cada máquina virtual lleva la etiqueta harvesterhci.io/vmName.
+
+00:01:52.530 --> 00:01:56.200
+Establece su valor en demo-sched-1.
+
+00:01:56.200 --> 00:02:04.830
+Con la clave de topología kubernetes.io/hostname, las dos máquinas virtuales nunca comparten un host.
+
+00:02:04.830 --> 00:02:09.600
+Selecciona Create.
+
+00:02:09.600 --> 00:02:23.840
+demo-sched-2 se ejecuta en ser5-purple. La regla de nodo permitía ser5-green y ser5-purple, y la anti-afinidad descartó ser5-green.
+
+00:02:23.840 --> 00:02:34.802
+Ambas reglas forman parte de la máquina virtual y también se aplican cuando se reinicia o migra. A continuación, pones un host en modo de mantenimiento.

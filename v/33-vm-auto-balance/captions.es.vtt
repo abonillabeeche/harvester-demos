@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.180
+Este video revisa el add-on de auto balance de máquinas virtuals, que usa el Descheduler de Kubernetes para mover máquinas virtuals fuera de los hosts ocupados.
+
+00:00:12.180 --> 00:00:22.580
+En la página Add-ons, el add-on virtual-machine-auto-balance está habilitado. Ejecuta el Descheduler de Kubernetes.
+
+00:00:22.580 --> 00:00:25.240
+Abre el add-on,
+
+00:00:25.240 --> 00:00:29.880
+y selecciona Show Configuration para ver sus ajustes.
+
+00:00:29.880 --> 00:00:37.210
+La política del descheduler está en el campo valuesContent, más abajo en el YAML.
+
+00:00:38.870 --> 00:00:45.020
+El campo valuesContent contiene los ajustes del descheduler y su política.
+
+00:00:45.020 --> 00:00:49.330
+El descheduler se ejecuta cada cinco minutos.
+
+00:00:49.330 --> 00:00:53.820
+Cada ejecución expulsa como máximo cinco pods de un host.
+
+00:00:53.820 --> 00:01:05.500
+El selector de etiquetas limita las expulsiones a los pods virt-launcher, así que solo se mueven máquinas virtuals. Cada expulsión se convierte en una migración en vivo.
+
+00:01:05.500 --> 00:01:10.090
+Los namespaces de sistema quedan excluidos de la expulsión.
+
+00:01:10.090 --> 00:01:21.550
+El plugin LowNodeUtilization compara la CPU y la memoria reservadas. Un host por debajo del treinta por ciento de ambas se considera subutilizado.
+
+00:01:21.550 --> 00:01:34.640
+Un host por encima del cincuenta por ciento se considera sobreutilizado. El descheduler expulsa máquinas virtuals de él, para que se muevan a hosts subutilizados.
+
+00:01:34.640 --> 00:01:37.070
+Cierra el panel.
+
+00:01:37.070 --> 00:01:43.360
+Abre la página Hosts para comparar estos umbrales con los recursos reservados.
+
+00:01:43.360 --> 00:01:54.140
+Cada host reserva más del treinta por ciento de su CPU. Ningún host está subutilizado, así que el descheduler no mueve nada.
+
+00:01:54.140 --> 00:02:08.211
+El descheduler revisa los hosts cada cinco minutos y solo migra en vivo máquinas virtuals cuando un host supera los umbrales. A continuación, conectas el clúster a SUSE Observability.

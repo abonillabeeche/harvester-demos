@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.820
+Aquí usas el dashboard de VM right-sizing de SUSE Observability para encontrar máquinas virtuales sobredimensionadas, subdimensionadas o inactivas.
+
+00:00:13.820 --> 00:00:23.370
+Este dashboard compara los vCPU y la memoria asignados a cada máquina virtual con lo que usa, y lo que cuesta la diferencia.
+
+00:00:23.370 --> 00:00:32.970
+Los filtros Cluster y VM delimitan todos los paneles. Aquí cubre todas las máquinas virtuales del clúster harvester-north.
+
+00:00:32.970 --> 00:00:42.880
+La fila Savings estima el ahorro mensual al ajustar el tamaño de las máquinas virtuales en ejecución y al eliminar las inactivas y detenidas.
+
+00:00:42.880 --> 00:00:48.100
+Desplázate hacia abajo para ver las cifras detrás de los ahorros.
+
+00:00:50.100 --> 00:00:59.440
+El dashboard cuenta los vCPU y la memoria que se pueden devolver, y las máquinas virtuales subdimensionadas, inactivas o detenidas.
+
+00:00:59.440 --> 00:01:07.880
+Days of data muestra cuánto tiempo cubren las mediciones. Menos de una semana puede omitir picos semanales.
+
+00:01:07.880 --> 00:01:16.540
+Por máquina virtual, ves los vCPU asignados y recomendados y cuánto devolver, con la memoria debajo.
+
+00:01:16.540 --> 00:01:19.760
+Desplázate más hacia abajo.
+
+00:01:21.710 --> 00:01:30.370
+Los paneles de evidencia muestran las mediciones detrás de cada recomendación, como la CPU en el percentil noventa y cinco.
+
+00:01:32.320 --> 00:01:43.060
+Abajo, unos gráficos muestran la utilización de cada máquina virtual a lo largo del tiempo frente a líneas de umbral ámbar y rojas.
+
+00:01:43.060 --> 00:01:52.575
+Para aplicar una recomendación, edita la CPU y la memoria de la máquina virtual en SUSE Virtualization y reiníciala.

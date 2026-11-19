@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.060
+Aprende a crear una red de máquina virtual que coloca las máquinas virtuales en la VLAN cien de la red de clúster de administración.
+
+00:00:09.060 --> 00:00:15.480
+En Networks, Virtual Machine Networks, selecciona Create.
+
+00:00:15.480 --> 00:00:19.800
+Elige el namespace al que pertenece la red.
+
+00:00:19.800 --> 00:00:21.720
+Dale un nombre.
+
+00:00:21.720 --> 00:00:28.750
+El tipo es L2VlanNetwork, una red de capa dos etiquetada con un VLAN ID.
+
+00:00:28.750 --> 00:00:35.170
+Deja Access mode, para que cada interfaz de máquina virtual lleve esta única VLAN.
+
+00:00:35.170 --> 00:00:38.680
+Ingresa el VLAN ID cien.
+
+00:00:38.680 --> 00:00:46.650
+Selecciona la red de clúster que lleva la VLAN. Aquí es mgmt, la red de administración.
+
+00:00:46.650 --> 00:00:49.870
+Selecciona Create.
+
+00:00:49.870 --> 00:01:00.760
+La nueva red aparece en la lista con su tipo, VLAN ID y red de clúster. Las máquinas virtuales ya pueden conectarse a ella.
+
+00:01:00.760 --> 00:01:11.711
+Las máquinas virtuales ya pueden usar la VLAN cien. A continuación, creas una red overlay que no necesita VLAN en el switch.

@@ -1,0 +1,85 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.290
+Aprende a añadir reglas de control de acceso a una subred de Kube-OVN en SUSE Virtualization, de modo que una máquina virtual alcance a otra solo en un único puerto.
+
+00:00:13.290 --> 00:00:22.870
+demo-web, en 10.220.0.10, sirve una pequeña página web en los puertos 80 y 8080.
+
+00:00:22.870 --> 00:00:35.050
+demo-client, en 10.220.0.20, está en la misma subred overlay, demo-seg-subnet. Aún ninguna regla limita el tráfico entre ellas.
+
+00:00:35.050 --> 00:00:41.880
+Abre la consola de demo-client en WebVNC para probar primero la conexión.
+
+00:00:44.670 --> 00:00:50.210
+Inicia sesión como sles, con la contraseña que cloud-init estableció.
+
+00:00:52.810 --> 00:01:00.990
+Sin reglas, tanto el ping como la página web en el puerto 8080 responden.
+
+00:01:00.990 --> 00:01:07.810
+En la página Virtual Private Cloud, abre el menú de acciones de demo-seg-subnet,
+
+00:01:07.810 --> 00:01:12.340
+y selecciona Edit Config para cambiar la subred.
+
+00:01:12.340 --> 00:01:21.450
+La pestaña Access Control List contiene reglas de OVN que el conmutador virtual de la subred aplica a cada puerto.
+
+00:01:21.450 --> 00:01:26.350
+Añade la primera regla, que deja pasar el tráfico web.
+
+00:01:26.350 --> 00:01:31.890
+Elige la acción Allow-related, para que las respuestas también vuelvan,
+
+00:01:31.890 --> 00:01:38.870
+y la dirección To-lport, para el tráfico que va hacia el puerto de una máquina virtual.
+
+00:01:38.870 --> 00:01:44.370
+Dale la prioridad 1010. Las prioridades más altas ganan.
+
+00:01:44.370 --> 00:01:51.750
+El match selecciona el tráfico de demo-client a demo-web en el puerto TCP 80.
+
+00:01:51.750 --> 00:01:57.290
+Añade una segunda regla que descarte todo lo demás entre las dos máquinas.
+
+00:01:57.290 --> 00:02:01.030
+Elige la acción Drop,
+
+00:02:01.030 --> 00:02:04.520
+la misma dirección, To-lport,
+
+00:02:04.520 --> 00:02:10.820
+y la prioridad más baja, 1000, para que la regla del puerto 80 se evalúe primero.
+
+00:02:10.820 --> 00:02:18.040
+Este match cubre todo el tráfico de demo-client a demo-web, cualquier protocolo, cualquier puerto.
+
+00:02:18.040 --> 00:02:25.830
+Selecciona Save. Las reglas se aplican de inmediato, sin reiniciar ninguna de las dos máquinas.
+
+00:02:25.830 --> 00:02:31.400
+Vuelve a Virtual Machines y abre de nuevo la consola de demo-client.
+
+00:02:36.190 --> 00:02:43.300
+La sesión sigue iniciada. Haz ping a demo-web otra vez.
+
+00:02:43.300 --> 00:02:49.680
+Los tres paquetes se pierden. La regla de descarte coincide con ICMP.
+
+00:02:49.680 --> 00:02:53.940
+Ahora solicita la página web en el puerto 80.
+
+00:02:53.940 --> 00:03:02.520
+La página llega. La regla allow de mayor prioridad deja pasar el puerto 80, y sus respuestas vuelven.
+
+00:03:02.520 --> 00:03:10.100
+Por último, prueba el puerto 8080, que respondía antes de las reglas.
+
+00:03:10.100 --> 00:03:20.110
+La conexión agota el tiempo de espera. Solo el puerto 80 pasa entre las dos máquinas; todo lo demás se descarta.
+
+00:03:20.110 --> 00:03:30.626
+La lista de control de acceso de la subred ahora descarta todo de demo-client a demo-web, excepto el tráfico web en el puerto 80.

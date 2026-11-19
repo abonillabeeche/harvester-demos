@@ -1,0 +1,91 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.510
+Migra una máquina virtual Linux desde VMware vSphere a SUSE Virtualization con un plan de migración en frío en el add-on SUSE VM Migration Toolkit.
+
+00:00:12.510 --> 00:00:20.360
+El add-on SUSE VM Migration Toolkit añade el menú Virtual Machine Migration.
+
+00:00:20.360 --> 00:00:23.580
+Selecciona Providers.
+
+00:00:23.580 --> 00:00:33.870
+El proveedor vsphere se conecta a vCenter y está Ready. El proveedor host es este clúster, el destino de la migración.
+
+00:00:33.870 --> 00:00:39.500
+Despliega de nuevo el menú Virtual Machine Migration,
+
+00:00:39.500 --> 00:00:45.240
+abre Migration Overview, que lista los planes de migración,
+
+00:00:45.240 --> 00:00:48.870
+y selecciona Create Migration.
+
+00:00:48.870 --> 00:00:56.050
+En el paso uno, selecciona el proveedor existente vsphere en lugar de crear uno nuevo.
+
+00:00:56.050 --> 00:01:04.230
+El formulario completa la URL de vCenter y las credenciales del proveedor. Selecciona Proceed.
+
+00:01:04.230 --> 00:01:11.890
+El paso dos lista las máquinas virtuales en vCenter. Busca ubuntu-nfs-src,
+
+00:01:11.890 --> 00:01:21.430
+una máquina virtual Ubuntu pequeña, apagada, con una CPU, dos gigabytes de memoria y un disco de diez gigabytes. Selecciónala.
+
+00:01:21.430 --> 00:01:24.420
+Selecciona Proceed.
+
+00:01:24.420 --> 00:01:34.400
+El paso tres mapea los recursos de vSphere a SUSE Virtualization. Mapea el port group VM Network a la red de administración,
+
+00:01:34.400 --> 00:01:40.350
+y el datastore ssd a la storage class harvester-longhorn.
+
+00:01:40.350 --> 00:01:48.440
+El mapeo usa por defecto volúmenes Filesystem. Selecciona Edit para cambiar el modo de volumen.
+
+00:01:48.440 --> 00:02:00.260
+Elige Block, el modo de volumen que normalmente usan los discos de las máquinas virtuales de SUSE Virtualization. Mantén ReadWriteMany para la migración en caliente.
+
+00:02:00.260 --> 00:02:03.610
+Selecciona Apply Override.
+
+00:02:03.610 --> 00:02:06.590
+Selecciona Proceed.
+
+00:02:06.590 --> 00:02:12.420
+El paso cuatro revisa el plan. Nómbralo demo-ubuntu-plan,
+
+00:02:12.420 --> 00:02:16.980
+y crea la máquina virtual en el namespace demo.
+
+00:02:16.980 --> 00:02:25.220
+Esta es una migración en frío. Las máquinas virtuales de origen se apagan durante la copia. Esta ya está apagada.
+
+00:02:25.220 --> 00:02:29.190
+Selecciona Create and Start.
+
+00:02:29.190 --> 00:02:40.330
+El plan se inicia. Su fila muestra cada paso, desde la asignación de discos y la conversión del guest hasta la copia del disco.
+
+00:02:40.330 --> 00:02:47.630
+Tras la copia, el plan muestra Succeeded, y la máquina virtual existe en SUSE Virtualization.
+
+00:02:47.630 --> 00:02:50.590
+Abre Virtual Machines.
+
+00:02:50.590 --> 00:02:58.650
+ubuntu-nfs-src está en el namespace demo. Está apagada, como su origen en vSphere.
+
+00:02:58.650 --> 00:03:01.560
+Abre su menú de acciones,
+
+00:03:01.560 --> 00:03:05.980
+y selecciona Start.
+
+00:03:05.980 --> 00:03:16.140
+La máquina virtual Ubuntu migrada se ejecuta en SUSE Virtualization, convertida por virt-v2v para KubeVirt.
+
+00:03:16.140 --> 00:03:27.271
+La máquina virtual de vSphere ahora se ejecuta en SUSE Virtualization. A continuación, encuentras la máquina virtual más grande que puedes ejecutar.

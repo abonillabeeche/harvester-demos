@@ -1,0 +1,61 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.290
+Aquí vas a mover el disco de una máquina virtual en ejecución de Longhorn a Portworx con migración de almacenamiento. El invitado sigue en ejecución mientras se mueven sus datos.
+
+00:00:12.290 --> 00:00:23.050
+La máquina virtual demo-smig en ejecución arranca desde demo-smig-disk-0. Su storage class es una clase de Longhorn, creada para la imagen.
+
+00:00:23.050 --> 00:00:28.360
+Primero, crea el volumen de destino. Selecciona Create.
+
+00:00:28.360 --> 00:00:32.790
+Usa el mismo namespace que la máquina virtual,
+
+00:00:32.790 --> 00:00:37.070
+y nombra el volumen demo-smig-px.
+
+00:00:37.070 --> 00:00:43.310
+Elige la storage class de Portworx px-csi-replicated.
+
+00:00:43.310 --> 00:00:48.960
+Asigna el tamaño de diez gigabytes, el mismo que el volumen de origen.
+
+00:00:48.960 --> 00:00:52.190
+Selecciona Create.
+
+00:00:52.190 --> 00:00:57.610
+El nuevo volumen está listo y no está conectado a ninguna máquina virtual.
+
+00:00:57.610 --> 00:01:01.340
+Ahora abre la página Virtual Machines.
+
+00:01:01.340 --> 00:01:05.130
+Abre el menú de acciones de demo-smig,
+
+00:01:05.130 --> 00:01:08.680
+y selecciona Storage Migration.
+
+00:01:08.680 --> 00:01:14.270
+Para el volumen de origen, elige demo-smig-disk-0.
+
+00:01:14.270 --> 00:01:23.230
+Para el volumen de destino, elige demo-smig-px. La lista muestra solo volúmenes que ninguna máquina virtual usa.
+
+00:01:23.230 --> 00:01:26.730
+Selecciona Apply.
+
+00:01:26.730 --> 00:01:36.410
+SUSE Virtualization migra la máquina virtual en vivo a otro nodo y copia el disco al nuevo volumen.
+
+00:01:36.410 --> 00:01:43.910
+La migración está completa. La máquina virtual siguió en ejecución y ahora se ejecuta en un nodo diferente.
+
+00:01:43.910 --> 00:01:47.140
+Revisa la página Volumes.
+
+00:01:47.140 --> 00:01:55.780
+demo-smig-px, en la storage class de Portworx, es ahora el disco de demo-smig.
+
+00:01:55.780 --> 00:02:06.446
+La máquina virtual ahora se ejecuta desde un volumen de Portworx y nunca se detuvo. A continuación, conectas en caliente una CD-ROM.

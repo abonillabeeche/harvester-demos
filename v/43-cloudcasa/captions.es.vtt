@@ -1,0 +1,109 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.610
+Aquí vas a hacer una copia de seguridad de una máquina virtual de SUSE Virtualization con CloudCasa, un servicio de copias de seguridad, y a restaurarla después de eliminarla.
+
+00:00:12.610 --> 00:00:21.940
+En la página Virtual Machines, demo-cc está en ejecución en su propio namespace, también llamado demo-cc.
+
+00:00:21.940 --> 00:00:31.480
+Abre la consola de CloudCasa. CloudCasa by Catalogic es un servicio de copias de seguridad para Kubernetes y sus máquinas virtuales.
+
+00:00:31.480 --> 00:00:34.860
+Inicia sesión con tu cuenta de CloudCasa.
+
+00:00:40.210 --> 00:00:49.120
+La página VMs lista las máquinas virtuales de todos los clústeres conectados. Filtra por demo-cc.
+
+00:00:49.120 --> 00:00:57.620
+Su clúster, harvester-ai, se registró antes como demo-harvester-ai, y el agente de CloudCasa se ejecuta en él.
+
+00:00:57.620 --> 00:01:02.730
+Señala las acciones de demo-cc y selecciona Define backup.
+
+00:01:04.840 --> 00:01:10.060
+Se abre el panel de copia de seguridad con demo-cc ya seleccionada.
+
+00:01:10.060 --> 00:01:19.400
+Deja Copy to backup storage. CloudCasa primero toma una instantánea del disco y luego copia sus datos fuera del clúster.
+
+00:01:19.400 --> 00:01:24.390
+Abre Advanced options para elegir a dónde va la copia,
+
+00:01:24.390 --> 00:01:32.580
+y elige CloudCasa storage, que el servicio proporciona, así que no necesitas un bucket propio.
+
+00:01:32.580 --> 00:01:37.640
+Luego elige un proveedor y una región para la copia almacenada.
+
+00:01:43.000 --> 00:01:47.340
+Selecciona Next para ir al paso de política.
+
+00:01:47.340 --> 00:01:57.250
+Deja la política en None, para que la copia de seguridad se ejecute una sola vez, bajo demanda. Una política la ejecutaría según un programa.
+
+00:01:57.250 --> 00:02:01.990
+Selecciona Next otra vez para llegar al resumen.
+
+00:02:01.990 --> 00:02:07.250
+En el resumen, nombra la copia de seguridad demo-cc-backup,
+
+00:02:07.250 --> 00:02:12.470
+y consérvala durante un día. Run now está activado.
+
+00:02:12.470 --> 00:02:19.290
+Selecciona Create and Run para iniciar la copia de seguridad ahora.
+
+00:02:21.390 --> 00:02:32.080
+Cuando el trabajo termine, Recovery points lista una copia de demo-cc en demo-harvester-ai, conservada durante un día.
+
+00:02:32.080 --> 00:02:39.550
+Ahora simula una pérdida. De vuelta en la página Virtual Machines, abre las acciones de demo-cc,
+
+00:02:39.550 --> 00:02:43.230
+y selecciona Delete en el menú.
+
+00:02:43.230 --> 00:02:49.660
+El volumen del disco también está seleccionado. Selecciona Delete.
+
+00:02:49.660 --> 00:02:56.880
+De vuelta en CloudCasa, señala las acciones del punto de recuperación y selecciona Restore.
+
+00:02:58.960 --> 00:03:05.500
+El asistente de restauración incluye demo-cc desde el punto de recuperación.
+
+00:03:05.500 --> 00:03:09.870
+Selecciona Next para elegir el destino.
+
+00:03:09.870 --> 00:03:15.700
+El destino es el clúster original, demo-harvester-ai.
+
+00:03:15.700 --> 00:03:20.760
+Selecciona Next para ver las transformaciones de restauración.
+
+00:03:20.760 --> 00:03:26.820
+Deja el namespace sin cambios, para que la máquina virtual vuelva a demo-cc.
+
+00:03:26.820 --> 00:03:33.090
+Luego abre VM options para revisar cómo arranca la máquina virtual.
+
+00:03:33.090 --> 00:03:41.270
+La estrategia de ejecución es Halted por defecto, lo que la dejaría detenida. Abre la lista,
+
+00:03:41.270 --> 00:03:48.970
+y elige Use strategy from backup, para que demo-cc vuelva a arrancar como se ejecutaba antes.
+
+00:03:48.970 --> 00:03:52.680
+Selecciona Next para llegar al resumen.
+
+00:03:52.680 --> 00:03:58.670
+Nombra la restauración demo-cc-restore. Run now está activado.
+
+00:03:58.670 --> 00:04:06.130
+Selecciona Save and Restore para iniciar el trabajo de restauración.
+
+00:04:06.130 --> 00:04:18.060
+Cuando el trabajo de restauración termine, demo-cc está en ejecución otra vez en la página Virtual Machines, con su disco restaurado desde CloudCasa.
+
+00:04:18.060 --> 00:04:29.084
+La máquina virtual está de vuelta, restaurada desde el almacenamiento de CloudCasa. A continuación, usas almacenamiento NetApp con Trident.

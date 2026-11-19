@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.100
+Configura el destino de respaldo en SUSE Virtualization: un bucket compatible con S3 que almacena los respaldos de máquinas virtuales fuera del clúster.
+
+00:00:11.100 --> 00:00:20.220
+En Advanced, Settings, el ajuste backup-target está vacío, así que los respaldos todavía no tienen dónde guardarse.
+
+00:00:20.220 --> 00:00:23.120
+Abre su menú de acciones,
+
+00:00:23.120 --> 00:00:26.910
+y selecciona Edit Setting.
+
+00:00:26.910 --> 00:00:32.300
+Elige S3 como tipo. NFS es la otra opción.
+
+00:00:32.300 --> 00:00:40.080
+Ingresa el endpoint del almacén de objetos compatible con S3, aquí una pasarela de objetos de Ceph.
+
+00:00:40.080 --> 00:00:43.420
+Ingresa el nombre de un bucket existente,
+
+00:00:43.420 --> 00:00:45.370
+y su región.
+
+00:00:45.370 --> 00:00:50.310
+Ingresa el access key ID de una cuenta que pueda escribir en el bucket,
+
+00:00:50.310 --> 00:00:55.210
+y su secret access key. El campo está enmascarado.
+
+00:00:55.210 --> 00:01:02.590
+Deja Virtual Hosted-Style en False, porque esta pasarela usa URLs de bucket path-style.
+
+00:01:02.590 --> 00:01:07.120
+Selecciona Save.
+
+00:01:07.120 --> 00:01:17.550
+De vuelta en la lista de ajustes, el ajuste aparece etiquetado Modified. Selecciona Test connection para comprobar que el bucket es accesible.
+
+00:01:17.550 --> 00:01:21.130
+La prueba de conexión es exitosa.
+
+00:01:21.130 --> 00:01:26.680
+Selecciona Show backup-target para revisar el valor guardado.
+
+00:01:26.680 --> 00:01:36.180
+Muestra el endpoint, el bucket y la región. Las claves se guardan por separado en un secret de Kubernetes.
+
+00:01:36.180 --> 00:01:46.003
+El destino de respaldo está configurado. A continuación, respaldas una máquina virtual y la restauras desde ese respaldo.

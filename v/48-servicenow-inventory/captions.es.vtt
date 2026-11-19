@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.050
+Encuentra tus VM de SUSE Virtualization en el CMDB de ServiceNow, y usa ese inventario para recuperar almacenamiento y dar contexto real a los incidentes.
+
+00:00:13.050 --> 00:00:25.300
+Virtual Machine Instances enumera todas las VM de tus clústeres. Un script la sincroniza; el ServiceNow Kubernetes Visibility Agent es la vía soportada.
+
+00:00:25.300 --> 00:00:32.590
+Agrupadas por estado, la lista muestra treinta y ocho VM detenidas y diecisiete en ejecución.
+
+00:00:32.590 --> 00:00:41.610
+El grupo de detenidas enumera cada VM con sus CPU, memoria, discos y tamaño de disco, directamente del clúster.
+
+00:00:41.610 --> 00:00:54.470
+Este informe suma el tamaño de disco por estado de energía. Las VM detenidas ocupan mil quinientos ochenta y siete gigabytes, y las que están en ejecución solo seiscientos cuarenta y uno.
+
+00:00:54.470 --> 00:01:05.330
+Este informe clasifica las VM detenidas que ocupan más almacenamiento, una lista corta para revisar con sus propietarios antes de recuperar espacio.
+
+00:01:05.330 --> 00:01:19.440
+VMs by guest OS ayuda con la aplicación de parches y las licencias. Vacío significa que la VM no ejecuta ningún agente invitado, así que su sistema operativo es desconocido.
+
+00:01:19.440 --> 00:01:28.580
+El formulario de la VM sqlfci-n1 muestra su relación Runs on, el host que la ejecuta en este momento.
+
+00:01:28.580 --> 00:01:38.110
+La lista Tasks vincula un incidente abierto a esta VM, así el service desk ve de inmediato la VM afectada y su host.
+
+00:01:38.110 --> 00:01:48.330
+El mapa de dependencias dibuja la misma cadena, desde la VM hasta su host, y marca el incidente abierto con un icono de advertencia.
+
+00:01:48.330 --> 00:01:59.460
+Los tags llevan las labels del clúster, como sistema operativo, namespace, estado de KubeVirt, clúster y nodo.
+
+00:01:59.460 --> 00:02:10.921
+El mismo inventario ahora impulsa la limpieza de almacenamiento, los informes y la clasificación de incidentes, sin que nadie escriba los registros de VM a mano.

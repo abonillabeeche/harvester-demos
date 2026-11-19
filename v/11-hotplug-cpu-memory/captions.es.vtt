@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.090
+Agrega CPU y memoria a una máquina virtual en ejecución en SUSE Virtualization, sin reiniciarla, mediante el hotplug de CPU y memoria.
+
+00:00:12.090 --> 00:00:19.540
+La máquina virtual demo-hotplug-cpu está en ejecución con una CPU y dos gigabytes de memoria.
+
+00:00:19.540 --> 00:00:22.440
+Abre su menú de acciones,
+
+00:00:22.440 --> 00:00:26.020
+y selecciona Edit Config.
+
+00:00:26.020 --> 00:00:36.000
+El hotplug de CPU y memoria se habilitó cuando se creó la máquina virtual. Puede crecer hasta cuatro CPU y ocho gigabytes.
+
+00:00:36.000 --> 00:00:39.190
+Sube el número de CPU a dos,
+
+00:00:39.190 --> 00:00:42.040
+y la memoria a cuatro gigabytes.
+
+00:00:42.040 --> 00:00:51.120
+El formulario también subió los máximos. Deja Maximum CPU en cuatro, porque cambiar un máximo requiere un reinicio.
+
+00:00:51.120 --> 00:00:54.790
+Deja Maximum Memory en ocho gigabytes.
+
+00:00:54.790 --> 00:00:58.090
+Selecciona Save.
+
+00:00:58.090 --> 00:01:05.870
+El diálogo ofrece un reinicio. El hotplug no lo necesita, así que selecciona Save.
+
+00:01:05.870 --> 00:01:14.750
+SUSE Virtualization aplica la nueva CPU y memoria con una migración en vivo a otro nodo.
+
+00:01:14.750 --> 00:01:24.740
+La máquina virtual siguió en ejecución. Ahora tiene dos CPU y cuatro gigabytes de memoria, en un nodo diferente.
+
+00:01:24.740 --> 00:01:35.865
+La máquina virtual ahora tiene dos CPU y cuatro gigabytes de memoria, y nunca se reinició. A continuación, haces hot-plug de un volumen.

@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:14.540
+Aprende a agregar una policy route a una VPC. Las policy routes actúan sobre el router de la VPC, así que una sola regla puede bloquear una subred desde otra, para todas las máquinas virtuales en ellas.
+
+00:00:14.540 --> 00:00:27.830
+La VPC demo-3tier enruta entre sus subredes web, app y de base de datos. Las policy routes aún no tienen campo en el formulario, así que agrega una en el YAML de la VPC.
+
+00:00:27.830 --> 00:00:31.770
+Abre el menú de acciones de demo-3tier,
+
+00:00:31.770 --> 00:00:35.320
+y selecciona Edit YAML.
+
+00:00:35.320 --> 00:00:42.500
+El spec de la VPC todavía está vacío. No tiene rutas estáticas ni policies.
+
+00:00:42.500 --> 00:01:01.300
+Agrega una policy route. Su acción es drop, y su match selecciona el tráfico de la subred web, 10.230.1.0/24, hacia la subred de base de datos, 10.230.3.0/24.
+
+00:01:01.300 --> 00:01:11.240
+La prioridad debe ser mayor que 31000, la prioridad de las rutas que Kube-OVN agrega para cada subred, o esas rutas ganarán.
+
+00:01:11.240 --> 00:01:14.820
+Selecciona Save.
+
+00:01:14.820 --> 00:01:18.600
+Abre la consola de demo-web.
+
+00:01:21.430 --> 00:01:26.970
+Inicia sesión como sles, con la contraseña que cloud-init estableció.
+
+00:01:29.570 --> 00:01:36.200
+Solicita el nivel app, y luego la base de datos.
+
+00:01:36.200 --> 00:01:47.880
+El nivel app responde, y la solicitud a la base de datos expira. El router de la VPC la descarta antes de que llegue a la subred de base de datos.
+
+00:01:47.880 --> 00:01:58.526
+Una policy route en el router de la VPC mantiene el nivel web alejado de la base de datos, mientras el resto de la VPC se enruta como antes.

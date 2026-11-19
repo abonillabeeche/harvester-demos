@@ -1,0 +1,28 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.100
+En este video, clonas una máquina virtual en ejecución, discos incluidos, para obtener una copia idéntica para pruebas o para escalar sin tener que reconstruirla.
+
+00:00:12.100 --> 00:00:18.630
+En la página Virtual Machines, abre el menú de acciones de la máquina virtual que quieres copiar.
+
+00:00:18.630 --> 00:00:21.070
+Selecciona Clone.
+
+00:00:21.070 --> 00:00:28.900
+Deja seleccionada la opción Clone volume data, para que la copia tenga sus propios discos con el mismo contenido.
+
+00:00:28.900 --> 00:00:32.500
+Escribe un nombre para la nueva máquina virtual.
+
+00:00:32.500 --> 00:00:38.400
+Deja la estrategia de ejecución, para que el clon arranque en cuanto se cree.
+
+00:00:38.400 --> 00:00:43.230
+Selecciona Create.
+
+00:00:43.230 --> 00:00:54.070
+SUSE Virtualization copia el disco y arranca el clon. Ahora se ejecuta junto al original, con su propia dirección IP.
+
+00:00:54.070 --> 00:01:03.572
+El clon es una máquina virtual independiente con sus propios discos. A continuación, creas una máquina virtual Windows.

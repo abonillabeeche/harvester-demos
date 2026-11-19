@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.980
+Genera una plantilla a partir de una máquina virtual existente y úsala para crear una nueva, de modo que cada copia arranque con la misma configuración.
+
+00:00:10.980 --> 00:00:17.160
+En la página Virtual Machines, abre el menú de acciones de la máquina virtual de origen.
+
+00:00:17.160 --> 00:00:20.380
+Selecciona Generate Template.
+
+00:00:20.380 --> 00:00:29.750
+Deja With Data sin marcar. Así la plantilla apunta a la imagen original en lugar de copiar el contenido del disco.
+
+00:00:29.750 --> 00:00:32.570
+Ponle un nombre a la plantilla.
+
+00:00:32.570 --> 00:00:36.150
+Selecciona Create.
+
+00:00:36.150 --> 00:00:44.000
+La plantilla aparece en Advanced, Templates. Tiene una versión, que además es su predeterminada.
+
+00:00:44.000 --> 00:00:50.390
+Para usarla, crea una nueva máquina virtual en el mismo namespace que la plantilla.
+
+00:00:50.390 --> 00:00:52.290
+Dale un nombre.
+
+00:00:52.290 --> 00:00:56.550
+Selecciona Use the virtual machine template.
+
+00:00:56.550 --> 00:01:02.150
+Elige la plantilla. Su versión predeterminada queda seleccionada automáticamente.
+
+00:01:02.150 --> 00:01:10.710
+La CPU, la memoria, los discos y la red provienen ahora de la plantilla. Aún puedes cambiarlos aquí.
+
+00:01:10.710 --> 00:01:15.480
+Selecciona Create.
+
+00:01:15.480 --> 00:01:23.220
+La nueva máquina virtual está en ejecución, con la misma configuración que su origen.
+
+00:01:23.220 --> 00:01:33.453
+Ya puedes crear máquinas virtuales idénticas a partir de la plantilla. A continuación, clonas una máquina virtual existente.

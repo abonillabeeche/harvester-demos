@@ -1,0 +1,85 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.630
+Publica un servidor web que vive dentro de una nube privada virtual. Una regla de NAT de destino en la pasarela NAT de la VPC reenvía una IP y un puerto externos a la máquina virtual.
+
+00:00:13.630 --> 00:00:28.800
+En Overlay Networks, NAT and Internet, la VPC demo-3tier ya tiene la pasarela NAT demo-gw, creada como en el video de la pasarela NAT. Conecta la subred web a la subred externa.
+
+00:00:28.800 --> 00:00:35.380
+El servidor web necesita su propia IP externa. Ve a External IPs,
+
+00:00:35.380 --> 00:00:38.130
+y luego Create.
+
+00:00:38.130 --> 00:00:40.950
+Nómbrala demo-web-eip.
+
+00:00:40.950 --> 00:00:44.890
+Selecciona la pasarela NAT demo-gw,
+
+00:00:44.890 --> 00:00:47.910
+y la subred externa.
+
+00:00:47.910 --> 00:00:56.970
+Elige la dirección 172.31.250.100, para que sea fácil de recordar.
+
+00:00:56.970 --> 00:01:00.540
+Selecciona Create.
+
+00:01:00.540 --> 00:01:06.400
+La pasarela toma la dirección y responde por ella en la subred externa.
+
+00:01:06.400 --> 00:01:12.110
+Ahora reenvía un puerto. Selecciona Destination Rules,
+
+00:01:12.110 --> 00:01:14.850
+y luego Create.
+
+00:01:14.850 --> 00:01:17.590
+Nómbrala demo-web-dnat.
+
+00:01:17.590 --> 00:01:22.080
+Selecciona la IP externa demo-web-eip.
+
+00:01:22.080 --> 00:01:26.790
+Los clientes se conectan al puerto externo 8080,
+
+00:01:26.790 --> 00:01:34.530
+y la pasarela los reenvía a demo-web, 10.230.1.10,
+
+00:01:34.530 --> 00:01:37.400
+en su puerto interno 80.
+
+00:01:37.400 --> 00:01:40.180
+El protocolo es TCP.
+
+00:01:40.180 --> 00:01:43.400
+Selecciona Create.
+
+00:01:43.400 --> 00:01:47.930
+La regla muestra la IP externa en la que escucha.
+
+00:01:47.930 --> 00:02:00.970
+demo-outside está en la subred externa, fuera de la VPC. En este laboratorio, esa subred representa una VLAN de underlay, porque el host tiene solo una tarjeta de red.
+
+00:02:00.970 --> 00:02:03.270
+Abre su consola.
+
+00:02:06.010 --> 00:02:11.590
+Inicia sesión como sles, con la contraseña que cloud-init estableció.
+
+00:02:14.190 --> 00:02:23.060
+Primero, prueba la propia dirección del servidor web, 10.230.1.10.
+
+00:02:23.060 --> 00:02:28.600
+No hay ruta hacia ella desde fuera. Las direcciones de la VPC son privadas.
+
+00:02:28.600 --> 00:02:38.140
+Ahora solicita la IP externa, 172.31.250.100, en el puerto 8080.
+
+00:02:38.140 --> 00:02:48.300
+Llega la página de demo-web. La pasarela tradujo la IP y el puerto externos a la máquina virtual dentro de la VPC.
+
+00:02:48.300 --> 00:03:03.160
+El servidor web dentro de la VPC ahora responde en la IP externa, puerto 8080, y nada más de la VPC queda expuesto. A continuación, conectas dos VPCs con peering.

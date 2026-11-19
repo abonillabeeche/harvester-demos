@@ -1,0 +1,64 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.080
+Aprende a guardar los datos de usuario de cloud-init como una plantilla de configuración de nube y a aplicarla a una nueva máquina virtual, para que cada máquina arranque con la misma configuración.
+
+00:00:13.080 --> 00:00:21.260
+En Advanced, Cloud Configuration Templates muestra tus plantillas guardadas. Selecciona Create.
+
+00:00:21.260 --> 00:00:24.280
+Elige el namespace.
+
+00:00:24.280 --> 00:00:26.700
+Dale un nombre a la plantilla.
+
+00:00:26.700 --> 00:00:34.380
+Mantén el tipo de plantilla User Data. Las plantillas Network Data configuran la red del invitado.
+
+00:00:34.380 --> 00:00:45.760
+Escribe los datos de usuario de cloud-init. Establecen una contraseña para el usuario predeterminado, permiten el inicio de sesión con contraseña e instalan el paquete htop.
+
+00:00:45.760 --> 00:00:48.980
+Selecciona Create.
+
+00:00:48.980 --> 00:00:55.320
+Ahora crea una máquina virtual que use la plantilla. Ve a Virtual Machines
+
+00:00:55.320 --> 00:00:58.330
+y selecciona Create.
+
+00:00:58.330 --> 00:01:01.460
+Elige el mismo namespace,
+
+00:01:01.460 --> 00:01:03.190
+un nombre,
+
+00:01:03.190 --> 00:01:05.400
+una CPU,
+
+00:01:05.400 --> 00:01:08.220
+y dos gigabytes de memoria.
+
+00:01:08.220 --> 00:01:10.600
+En la pestaña Volumes,
+
+00:01:10.600 --> 00:01:14.570
+selecciona la imagen de openSUSE Leap.
+
+00:01:14.570 --> 00:01:18.800
+Abre la pestaña Advanced Options.
+
+00:01:18.800 --> 00:01:26.260
+En Cloud Configuration, abre User Data Template y selecciona la plantilla que creaste.
+
+00:01:26.260 --> 00:01:34.340
+El editor ahora contiene los datos de usuario de la plantilla. Aún puedes ajustarlos solo para esta máquina virtual.
+
+00:01:34.340 --> 00:01:39.110
+Selecciona Create.
+
+00:01:39.110 --> 00:01:49.300
+La máquina virtual está en ejecución. En el primer arranque, cloud-init aplica la contraseña e instala el paquete.
+
+00:01:49.300 --> 00:01:58.694
+Cada máquina virtual que use esta plantilla arranca con la misma configuración. A continuación, creas una plantilla de máquina virtual.

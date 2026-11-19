@@ -1,0 +1,70 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:15.060
+Este video muestra cómo proteger una sola máquina virtual con un grupo de seguridad de Kube-OVN. Mientras una lista de control de acceso se aplica a toda una subred, un grupo de seguridad sigue a un puerto de red.
+
+00:00:15.060 --> 00:00:30.040
+Los grupos de seguridad de Kube-OVN aún no tienen entrada de menú ni formulario, pero la interfaz los lista en su página de recursos, kubeovn.io.securitygroup, y los crea desde YAML.
+
+00:00:30.040 --> 00:00:33.910
+Selecciona Create from YAML.
+
+00:00:33.910 --> 00:00:56.050
+Pega el grupo de seguridad demo-db-sg. Su única regla de ingress permite el puerto TCP 5432 desde la subred de la aplicación, 10.230.2.0/24. Todo lo demás que entra se deniega. La regla de egress deja que la máquina responda y salga.
+
+00:00:56.050 --> 00:00:59.280
+Selecciona Create.
+
+00:00:59.280 --> 00:01:04.450
+El grupo de seguridad existe, pero ningún puerto lo usa todavía.
+
+00:01:04.450 --> 00:01:11.910
+Vincúlalo a la máquina virtual de la base de datos. Abre el menú de acciones de demo-db,
+
+00:01:11.910 --> 00:01:15.450
+y selecciona Edit YAML.
+
+00:01:15.450 --> 00:01:26.400
+Kube-OVN lee la configuración por puerto de las anotaciones en la plantilla de la máquina virtual. Esta ya fija la dirección en la red demo-db-net.
+
+00:01:26.400 --> 00:01:36.660
+Añade dos más para la misma red: port_security true activa el filtrado para el puerto, y security_groups nombra demo-db-sg.
+
+00:01:36.660 --> 00:01:39.830
+Selecciona Save.
+
+00:01:39.830 --> 00:01:48.100
+El puerto toma las anotaciones cuando la máquina virtual vuelve a arrancar, así que reinicia demo-db.
+
+00:01:50.210 --> 00:01:54.270
+Confirma con Apply.
+
+00:01:54.270 --> 00:02:00.000
+demo-db está en ejecución otra vez, con la misma dirección.
+
+00:02:00.000 --> 00:02:03.780
+Abre la consola de demo-web.
+
+00:02:06.630 --> 00:02:12.210
+Inicia sesión como sles, con la contraseña que cloud-init estableció.
+
+00:02:14.860 --> 00:02:25.890
+Haz ping a demo-db, y luego solicita su puerto 5432.
+
+00:02:25.890 --> 00:02:32.900
+Ambos fallan. La subred web no está en la regla del grupo de seguridad.
+
+00:02:32.900 --> 00:02:36.530
+Luego abre la consola de demo-app.
+
+00:02:39.260 --> 00:02:42.280
+Inicia sesión de la misma manera.
+
+00:02:44.880 --> 00:02:52.870
+Solicita el puerto 5432 desde la capa de aplicación, y luego haz ping.
+
+00:02:52.870 --> 00:03:07.350
+La base de datos responde en el puerto 5432, y el ping se descarta. La regla sigue al puerto de demo-db, así que protegería a la máquina en cualquier subred.
+
+00:03:07.350 --> 00:03:23.070
+El grupo de seguridad protege solo el puerto de demo-db: solo entra la subred de la aplicación, y solo en el puerto 5432. A continuación, diriges el tráfico de una VPC completa con rutas de política.

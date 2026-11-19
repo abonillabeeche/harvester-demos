@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.590
+Abre la consola de una máquina virtual en ejecución e inicia sesión. La consola funciona incluso antes de que el invitado tenga conexión de red.
+
+00:00:10.590 --> 00:00:18.260
+La máquina virtual demo-console está en ejecución. Abres su consola desde la lista Virtual Machines.
+
+00:00:18.260 --> 00:00:21.490
+Selecciona Console en su fila.
+
+00:00:21.490 --> 00:00:28.520
+Open in WebVNC muestra la pantalla gráfica de la máquina virtual.
+
+00:00:28.520 --> 00:00:34.130
+Open in Serial Console muestra en cambio su terminal de texto serie.
+
+00:00:34.130 --> 00:00:41.880
+Selecciona Open in WebVNC. La consola se abre en su propia ventana del navegador.
+
+00:00:41.880 --> 00:00:47.750
+La consola se conecta y muestra el prompt de inicio de sesión de openSUSE Leap.
+
+00:00:47.750 --> 00:00:51.100
+Escribe el nombre de usuario, sles,
+
+00:00:51.100 --> 00:00:57.330
+y la contraseña que cloud-init estableció cuando la máquina virtual arrancó por primera vez.
+
+00:00:57.330 --> 00:01:04.510
+Ya iniciaste sesión. Ejecuta un comando, por ejemplo, para listar las direcciones de red.
+
+00:01:04.510 --> 00:01:14.510
+La barra de herramientas de la parte superior envía teclas especiales, como Control Alt Delete, a la máquina virtual.
+
+00:01:14.510 --> 00:01:25.302
+Ya puedes acceder a cualquier máquina virtual en ejecución desde su consola. A continuación, detienes, arrancas y reinicias una máquina virtual.

@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.630
+Haz privada la subred de base de datos de una VPC, de modo que solo el nivel de app pueda alcanzarla.
+
+00:00:08.630 --> 00:00:21.490
+La VPC demo-3tier tiene una subred web, una de app y una de base de datos, con una máquina virtual en cada una. Ahora mismo, cada subred alcanza a todas las demás.
+
+00:00:21.490 --> 00:00:26.080
+Abre el menú de acciones de la subred demo-db,
+
+00:00:26.080 --> 00:00:29.570
+y selecciona Edit Config.
+
+00:00:29.570 --> 00:00:38.710
+En Private Subnet, selecciona Enabled. Una subred privada descarta todo el tráfico que proviene de fuera de la subred.
+
+00:00:38.710 --> 00:00:43.690
+Añade una excepción para las subredes que aún pueden conectarse.
+
+00:00:43.690 --> 00:00:53.870
+Ingresa la subred de app, 10.230.2.0/24. La subred web no está en la lista.
+
+00:00:53.870 --> 00:01:03.810
+Selecciona Save. Kube-OVN actualiza las reglas de la subred de inmediato, sin reiniciar ninguna máquina virtual.
+
+00:01:03.810 --> 00:01:08.500
+Ve a Virtual Machines y abre la consola de demo-web.
+
+00:01:13.320 --> 00:01:18.860
+Inicia sesión como sles, con la contraseña que cloud-init estableció.
+
+00:01:21.460 --> 00:01:28.770
+Solicita el puerto 5432 del nivel de base de datos.
+
+00:01:28.770 --> 00:01:36.340
+La conexión expira. La subred web no tiene permiso para entrar en la subred privada.
+
+00:01:36.340 --> 00:01:39.920
+Ahora abre la consola de demo-app.
+
+00:01:42.720 --> 00:01:45.740
+Inicia sesión de la misma manera.
+
+00:01:48.410 --> 00:01:52.150
+Envía la misma solicitud.
+
+00:01:52.150 --> 00:02:02.640
+La respuesta llega. La subred de app está en la lista de permitidas, así que el nivel de app todavía alcanza la base de datos.
+
+00:02:02.640 --> 00:02:15.649
+La subred de base de datos es privada: el nivel de app todavía la alcanza, el nivel web es rechazado. A continuación, limitas el tráfico a puertos individuales con listas de control de acceso.

@@ -1,0 +1,76 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:14.210
+Aquí vas a microsegmentar una aplicación de tres niveles. Listas de control de acceso en dos subredes permiten que cada nivel se comunique con el siguiente por un solo puerto, y descartan todo lo demás.
+
+00:00:14.210 --> 00:00:35.460
+La VPC demo-3tier contiene una subred web, una de app y una de base de datos, con una máquina virtual cada una. El objetivo: web puede llegar a app solo en el puerto 8080, app puede llegar a la base de datos solo en el puerto 5432, y nada más cruza entre niveles.
+
+00:00:35.460 --> 00:00:45.410
+Empieza con el nivel de la app. Abre el menú de acciones de demo-app y selecciona Edit Config, luego la pestaña Access Control List.
+
+00:00:49.070 --> 00:00:51.570
+Agrega la primera regla.
+
+00:00:51.570 --> 00:00:56.150
+Elige Allow-related, para que las respuestas regresen,
+
+00:00:56.150 --> 00:01:01.610
+y To-lport, para el tráfico que llega a los puertos de la subred.
+
+00:01:03.210 --> 00:01:11.920
+Con la prioridad 1010, la condición match permite que la subred web entre por el puerto TCP 8080.
+
+00:01:11.920 --> 00:01:16.820
+Agrega una segunda regla, con la acción Drop y la misma dirección,
+
+00:01:23.240 --> 00:01:28.620
+con la prioridad más baja, 1000, para todo el demás tráfico de la subred web.
+
+00:01:28.620 --> 00:01:32.200
+Selecciona Save.
+
+00:01:32.200 --> 00:01:42.940
+Ahora el nivel de la base de datos. Edita demo-db de la misma manera y agrega dos reglas en su pestaña Access Control List.
+
+00:01:54.670 --> 00:02:04.210
+La primera regla permite la subred de la app por el puerto TCP 5432, con la prioridad 1010.
+
+00:02:12.270 --> 00:02:19.540
+La segunda descarta todo lo demás de las subredes web y de la app, con la prioridad 1000.
+
+00:02:19.540 --> 00:02:23.110
+Selecciona Save.
+
+00:02:23.110 --> 00:02:26.900
+Abre la consola de demo-web.
+
+00:02:29.750 --> 00:02:35.290
+Inicia sesión como sles, con la contraseña que cloud-init estableció.
+
+00:02:37.890 --> 00:02:42.710
+Solicita el nivel de la app en el puerto 8080.
+
+00:02:42.710 --> 00:02:48.490
+La app responde. Este es el único camino que se le permite al nivel web.
+
+00:02:48.490 --> 00:02:58.760
+Ahora haz ping al nivel de la app y prueba la base de datos directamente.
+
+00:02:58.760 --> 00:03:08.170
+Ambos fallan. El ping al nivel de la app se descarta, y el nivel web no puede llegar a la base de datos en absoluto.
+
+00:03:08.170 --> 00:03:11.790
+Luego abre la consola de demo-app.
+
+00:03:14.580 --> 00:03:20.120
+Inicia sesión como sles, con la contraseña que cloud-init estableció.
+
+00:03:22.730 --> 00:03:30.390
+Solicita la base de datos en el puerto 5432, y luego hazle ping.
+
+00:03:30.390 --> 00:03:42.150
+La base de datos responde en el puerto 5432, y el ping se descarta. Cada nivel llega al siguiente por un solo puerto.
+
+00:03:42.150 --> 00:03:55.096
+Cada nivel ahora llega al siguiente por exactamente un puerto, y el nivel web no puede tocar la base de datos. A continuación, publicas una máquina virtual hacia el exterior con una regla DNAT.

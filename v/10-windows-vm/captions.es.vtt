@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.230
+Aquí vas a crear una máquina virtual Windows Server a partir de una imagen preparada, usando la plantilla de Windows integrada para que la configuración específica de Windows ya esté lista.
+
+00:00:13.230 --> 00:00:17.960
+Desde la página Virtual Machines, selecciona Create.
+
+00:00:17.960 --> 00:00:20.930
+Elige el namespace.
+
+00:00:20.930 --> 00:00:23.570
+Dale un nombre a la máquina virtual.
+
+00:00:23.570 --> 00:00:27.840
+Selecciona Use the virtual machine template.
+
+00:00:27.840 --> 00:00:38.730
+Elige la plantilla windows image. Está pensada para imágenes de Windows preparadas con sysprep, así que no se necesita un ISO de instalación.
+
+00:00:38.730 --> 00:00:48.080
+La plantilla establece el tipo de sistema operativo en Windows y activa la tableta USB para un movimiento preciso del ratón en la consola.
+
+00:00:48.080 --> 00:00:52.220
+Mantén las cuatro CPU virtuales de la plantilla.
+
+00:00:52.220 --> 00:00:57.890
+Reduce la memoria a ocho gigabytes, suficiente para este servidor de prueba.
+
+00:00:57.890 --> 00:01:04.200
+En la pestaña Volumes, el disco raíz de la plantilla aún no tiene imagen.
+
+00:01:04.200 --> 00:01:07.180
+Elimina este disco de marcador de posición,
+
+00:01:07.180 --> 00:01:15.840
+y en su lugar agrega la imagen como un disco nuevo. Selecciona Add a Virtual Machine Image.
+
+00:01:15.840 --> 00:01:21.910
+En la lista Image, busca la imagen preparada de Windows Server 2025,
+
+00:01:21.910 --> 00:01:24.820
+y selecciónala.
+
+00:01:24.820 --> 00:01:31.120
+Establece el tamaño del disco en sesenta y cuatro gigabytes, el tamaño que sugiere la plantilla.
+
+00:01:31.120 --> 00:01:35.890
+Selecciona Create.
+
+00:01:35.890 --> 00:01:45.700
+SUSE Virtualization copia la imagen en el nuevo disco raíz e inicia la máquina virtual. Ahora está en ejecución.
+
+00:01:45.700 --> 00:01:56.658
+Windows Server se está iniciando en su propia máquina virtual. A continuación, agregas CPU y memoria a una máquina virtual en ejecución.

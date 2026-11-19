@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.940
+Este video muestra cómo dar al tráfico de la migración en vivo su propia red en SUSE Virtualization, para que mover máquinas virtuales no compita con otro tráfico de administración.
+
+00:00:11.940 --> 00:00:20.900
+En Advanced, Settings, busca vm-migration-network. No tiene valor, así que las migraciones comparten la red de administración.
+
+00:00:20.900 --> 00:00:23.800
+Abre su menú de acciones,
+
+00:00:23.800 --> 00:00:27.580
+y selecciona Edit Setting.
+
+00:00:27.580 --> 00:00:30.810
+Selecciona Enabled.
+
+00:00:30.810 --> 00:00:39.900
+Elige la red del clúster que transporta el tráfico. Estos nodos tienen una sola interfaz de red, así que elige mgmt.
+
+00:00:39.900 --> 00:00:47.000
+Ingresa un VLAN ID que el switch físico transporte entre todos los nodos, aquí 999.
+
+00:00:47.000 --> 00:00:54.510
+Ingresa un rango de IP sin usar. Cada nodo recibe de él una dirección para el tráfico de migración.
+
+00:00:54.510 --> 00:00:59.570
+Opcionalmente, excluye las direcciones que ya estén en uso,
+
+00:00:59.570 --> 00:01:02.600
+como la dirección de una puerta de enlace.
+
+00:01:02.600 --> 00:01:05.820
+Selecciona Save.
+
+00:01:05.820 --> 00:01:13.210
+La configuración ahora aparece como Modified. Selecciona Show para ver su valor.
+
+00:01:13.210 --> 00:01:25.170
+La configuración ahora muestra la red del clúster, la VLAN y el rango de IP. Las nuevas migraciones en vivo usan esta red dedicada.
+
+00:01:25.170 --> 00:01:33.523
+Las migraciones en vivo ahora usan la red dedicada. A continuación, migras en vivo una máquina virtual.

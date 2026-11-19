@@ -1,0 +1,70 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:15.360
+Protege máquinas virtuales con harvey, una herramienta de recuperación ante desastres de línea de comandos, y hazles fail over a un segundo clúster: primero sobre Longhorn y luego sobre almacenamiento NetApp.
+
+00:00:15.360 --> 00:00:24.380
+En el clúster retail-store, la máquina virtual demo-harvey está en ejecución. Su disco es un volumen de Longhorn.
+
+00:00:24.380 --> 00:00:39.280
+harvey es una herramienta comunitaria, no una CLI con soporte de SUSE. Se ejecuta en tu estación de trabajo y se comunica con ambos clústeres. Ejecuta harvey protect para demo-harvey.
+
+00:00:39.280 --> 00:00:48.300
+harvey toma un primer respaldo hacia un destino S3 compartido y espera hasta que el clúster de recuperación ante desastres lo restaure.
+
+00:00:48.300 --> 00:00:58.450
+El volumen de origen ahora se respalda cada cinco minutos. En el otro clúster, un volumen DR en espera sigue restaurando cada respaldo.
+
+00:00:58.450 --> 00:01:06.100
+harvey también copia la máquina virtual y su secret de cloud-init. La réplica se crea detenida.
+
+00:01:06.100 --> 00:01:13.730
+En el clúster de recuperación ante desastres, filtra la lista de máquinas virtuales por demo-harvey.
+
+00:01:13.730 --> 00:01:20.980
+La réplica está ahí, en Off. No usa cómputo hasta que hagas el fail over.
+
+00:01:20.980 --> 00:01:31.480
+harvey replication status muestra el volumen DR en espera y actualizado. El lag son los datos que perderías en este momento.
+
+00:01:31.480 --> 00:01:40.700
+Ahora ejecuta un fail over planificado de demo-harvey hacia el clúster de recuperación ante desastres.
+
+00:01:40.700 --> 00:01:51.090
+harvey detiene la máquina virtual, toma un respaldo final, espera su restauración, luego promueve el volumen DR y arranca la máquina virtual.
+
+00:01:51.090 --> 00:02:01.220
+El resumen muestra el tiempo total de recuperación, dividido por fase, y un punto de recuperación de cero segundos: no se pierden datos.
+
+00:02:01.220 --> 00:02:08.370
+De vuelta en el clúster de recuperación ante desastres, filtra de nuevo por demo-harvey.
+
+00:02:08.370 --> 00:02:15.300
+La máquina virtual ahora está en Running aquí, sobre el volumen de Longhorn restaurado.
+
+00:02:15.300 --> 00:02:26.070
+En retail-store, el original está en Off, así que solo se ejecuta una copia. harvey reprotect luego replica de vuelta en la dirección contraria.
+
+00:02:26.070 --> 00:02:41.370
+harvey no está atado a Longhorn. Su página del proyecto lista tres backends: NetApp SnapMirror, Portworx async DR y Longhorn, con V2 todavía en alpha.
+
+00:02:41.370 --> 00:02:54.060
+demo-harvey-na mantiene su disco en almacenamiento NetApp. El mismo comando protect elige el backend de NetApp y espeja el disco con SnapMirror, a través de Trident.
+
+00:02:54.060 --> 00:03:06.880
+El estado de replicación ahora lista ambas máquinas virtuales, cada una con su propio backend: Longhorn para demo-harvey y NetApp para demo-harvey-na.
+
+00:03:06.880 --> 00:03:18.230
+El fail over planificado ejecuta las mismas fases: detener, una actualización final de SnapMirror, promover el volumen réplica y arrancar la máquina virtual.
+
+00:03:18.230 --> 00:03:25.800
+El resumen muestra de nuevo el tiempo de recuperación por fase y un punto de recuperación de cero segundos.
+
+00:03:25.800 --> 00:03:33.270
+En el clúster de recuperación ante desastres, filtra la lista por demo-harvey una vez más.
+
+00:03:33.270 --> 00:03:43.030
+Ambas máquinas virtuales se ejecutan aquí ahora, una sobre un volumen de Longhorn y otra sobre un volumen de NetApp.
+
+00:03:43.030 --> 00:03:57.057
+Ambas máquinas virtuales ahora se ejecutan en el clúster de recuperación ante desastres, sin pérdida de datos. A continuación, haces fail over de una máquina virtual con NetApp Trident Protect.

@@ -1,0 +1,124 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.300
+Habilita el add-on de LVM, convierte un disco libre en un volume group de LVM y dale a una máquina virtual un volumen local rápido a partir de él.
+
+00:00:12.300 --> 00:00:20.570
+En Advanced, Add-ons, abre el menú de acciones de harvester-csi-driver-lvm.
+
+00:00:20.570 --> 00:00:28.790
+Selecciona Enable. SUSE Virtualization despliega el driver CSI de LVM.
+
+00:00:28.790 --> 00:00:34.410
+El add-on reporta Deploy Successful.
+
+00:00:34.410 --> 00:00:43.640
+Ahora dale un disco a LVM. En la página Hosts, abre el menú de acciones del host p5820,
+
+00:00:43.640 --> 00:00:47.240
+y selecciona Edit Config.
+
+00:00:47.240 --> 00:00:51.020
+Selecciona la pestaña Storage.
+
+00:00:51.020 --> 00:00:53.420
+Selecciona Add Disk,
+
+00:00:53.420 --> 00:00:59.920
+y elige el disco libre, /dev/sdc, de ciento doce gigabytes.
+
+00:00:59.920 --> 00:01:04.510
+Cambia el provisioner de Longhorn a LVM.
+
+00:01:04.510 --> 00:01:08.830
+En Volume Group, selecciona Create New.
+
+00:01:08.830 --> 00:01:12.330
+Nombra el volume group demo-vg,
+
+00:01:12.330 --> 00:01:15.040
+y selecciona Create.
+
+00:01:15.040 --> 00:01:23.100
+Selecciona Save. SUSE Virtualization añade el disco al nuevo volume group.
+
+00:01:23.100 --> 00:01:25.630
+Abre el host,
+
+00:01:25.630 --> 00:01:29.010
+y su pestaña Storage.
+
+00:01:29.010 --> 00:01:38.900
+El disco /dev/sdc ahora está aprovisionado con LVM. A continuación, crea una storage class sobre el volume group.
+
+00:01:38.900 --> 00:01:43.670
+En la página Storage Classes, selecciona Create.
+
+00:01:43.670 --> 00:01:46.560
+Nómbrala demo-lvm.
+
+00:01:46.560 --> 00:01:50.290
+Elige el provisioner LVM.
+
+00:01:50.290 --> 00:01:59.550
+Los volúmenes LVM son locales, así que la clase está ligada a un host. Elige el node p5820,
+
+00:01:59.550 --> 00:02:03.330
+y el volume group demo-vg.
+
+00:02:03.330 --> 00:02:12.920
+Deja el tipo de volume group dm-thin. Los volúmenes thin asignan espacio al escribir y admiten snapshots y clones.
+
+00:02:12.920 --> 00:02:16.150
+Selecciona Create.
+
+00:02:16.150 --> 00:02:20.920
+La nueva storage class usa el provisioner LVM.
+
+00:02:20.920 --> 00:02:29.180
+Ahora crea una máquina virtual que la use. En la página Virtual Machines, selecciona Create.
+
+00:02:29.180 --> 00:02:32.680
+Elige el namespace demo,
+
+00:02:32.680 --> 00:02:36.380
+y nómbrala demo-lvm-vm.
+
+00:02:36.380 --> 00:02:38.790
+Dale una CPU
+
+00:02:38.790 --> 00:02:41.650
+y dos gigabytes de memoria.
+
+00:02:41.650 --> 00:02:44.100
+En la pestaña Volumes,
+
+00:02:44.100 --> 00:02:49.150
+elige la imagen de openSUSE Leap para el disco raíz.
+
+00:02:49.150 --> 00:02:53.610
+Luego selecciona Add Volume para un segundo disco.
+
+00:02:53.610 --> 00:02:58.020
+Asigna su storage class a demo-lvm,
+
+00:02:58.020 --> 00:03:01.290
+y su tamaño a dos gigabytes.
+
+00:03:01.290 --> 00:03:06.060
+Selecciona Create.
+
+00:03:06.060 --> 00:03:14.610
+La máquina virtual se programa en el host p5820, donde vive el volume group, y está en ejecución.
+
+00:03:14.610 --> 00:03:17.500
+Abre la máquina virtual,
+
+00:03:17.500 --> 00:03:20.410
+y su pestaña Volumes.
+
+00:03:20.410 --> 00:03:32.240
+Debajo del disco raíz, el volumen de datos de dos gigabytes proviene de demo-lvm, un volumen lógico thin en el disco local.
+
+00:03:32.240 --> 00:03:43.283
+La máquina virtual se ejecuta con un volumen LVM local. A continuación, monitoreas las métricas de las máquinas virtuales.

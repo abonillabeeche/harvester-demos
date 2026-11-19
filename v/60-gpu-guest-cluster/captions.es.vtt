@@ -1,0 +1,100 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:16.570
+Usa Rancher para crear un clúster RKE2 en SUSE Virtualization con un pool de workers con GPU. Las máquinas del pool reciben una GPU NVIDIA por PCI passthrough, elegida en el formulario de Rancher 2.16.
+
+00:00:16.570 --> 00:00:22.030
+En Rancher, abre Cluster Management y selecciona Create.
+
+00:00:22.030 --> 00:00:31.760
+Selecciona SUSE Virtualization como proveedor.
+
+00:00:31.760 --> 00:00:40.980
+Elige el cloud credential de harvester-ai, el clúster de SUSE Virtualization con las GPUs.
+
+00:00:43.170 --> 00:00:46.040
+Nombra el clúster demo-ai.
+
+00:00:46.040 --> 00:00:54.780
+El primer pool ejecuta etcd, el control plane y las cargas de trabajo normales. Dale cuatro CPUs,
+
+00:00:54.780 --> 00:00:57.650
+y ocho gigabytes de memoria.
+
+00:00:57.650 --> 00:01:02.070
+Coloca las máquinas virtuales en el namespace demo,
+
+00:01:02.070 --> 00:01:06.540
+define el usuario por defecto de la imagen de nube de Ubuntu,
+
+00:01:06.540 --> 00:01:11.960
+elige la imagen Ubuntu 24.04,
+
+00:01:11.960 --> 00:01:14.980
+dale un disco de cuarenta gigabytes,
+
+00:01:14.980 --> 00:01:19.240
+y conéctala a una red de VMs que llegue a Rancher.
+
+00:01:19.240 --> 00:01:29.910
+El pool de DHCP de esta red de laboratorio está lleno, así que cada pool recibe una dirección fija. Selecciona Show Advanced,
+
+00:01:29.910 --> 00:01:39.130
+e introduce datos de red de cloud-init con una dirección estática, gateway y servidores DNS para la máquina de control plane.
+
+00:01:39.130 --> 00:01:45.030
+Añade un segundo pool de máquinas para los workers con GPU.
+
+00:01:45.030 --> 00:01:48.590
+Nómbralo gpu y deja una sola máquina.
+
+00:01:48.590 --> 00:02:00.500
+Rancher asigna al nuevo pool solo el rol Worker. Consérvalo: los workers con GPU ejecutan cargas de trabajo, no etcd ni el control plane.
+
+00:02:00.500 --> 00:02:04.730
+Dale a los workers con GPU ocho CPUs,
+
+00:02:04.730 --> 00:02:07.360
+veinticuatro gigabytes de memoria,
+
+00:02:07.360 --> 00:02:15.190
+y un disco de ochenta gigabytes para el driver de la GPU, las imágenes de inferencia y los archivos del modelo.
+
+00:02:16.870 --> 00:02:29.050
+En la configuración avanzada, el selector PCI Devices es nuevo en Rancher 2.16. Esta grabación usa una compilación del dashboard de Rancher 2.16.
+
+00:02:29.050 --> 00:02:31.150
+Añade una fila.
+
+00:02:31.150 --> 00:02:40.980
+Elige la NVIDIA T400. La A2 del host está reservada por una máquina virtual detenida, por eso el selector no la ofrece.
+
+00:02:40.980 --> 00:02:49.010
+Los dispositivos del mismo grupo IOMMU deben seleccionarse juntos, así que añade una segunda fila
+
+00:02:49.010 --> 00:02:52.440
+para la función de audio de la T400.
+
+00:02:52.440 --> 00:03:00.740
+El pool copió los datos de red del primer pool. Dale al worker con GPU su propia dirección.
+
+00:03:00.740 --> 00:03:08.840
+En Cluster Configuration, conserva la versión por defecto de RKE2 y el cloud provider de SUSE Virtualization.
+
+00:03:08.840 --> 00:03:13.660
+Selecciona Create.
+
+00:03:13.660 --> 00:03:24.760
+Rancher creó las dos máquinas virtuales de nodo en harvester-ai, instaló RKE2 y las unió. Ambas máquinas están Running.
+
+00:03:24.760 --> 00:03:30.380
+El worker con GPU tiene solo el rol de worker.
+
+00:03:30.380 --> 00:03:40.450
+En SUSE Virtualization, harvester-ai ejecuta las dos máquinas virtuales de nodo en el namespace demo. Abre el worker con GPU.
+
+00:03:42.530 --> 00:03:53.250
+Su anotación de asignación de dispositivos muestra la NVIDIA T400 y su función de audio, pasadas desde el host.
+
+00:03:53.250 --> 00:04:05.067
+El clúster tiene un nodo de control plane y un worker con GPU que posee la NVIDIA T400. A continuación, despliegas SUSE AI en él.
