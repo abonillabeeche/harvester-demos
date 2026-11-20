@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.310
+Aqui você vai criar uma rede overlay de máquinas virtuais e uma sub-rede Kube-OVN para ela. O tráfego overlay é tunelado entre os hosts, então os switches não precisam de VLANs.
+
+00:00:12.310 --> 00:00:17.210
+Em Networks, Virtual Machine Networks, selecione Create.
+
+00:00:17.210 --> 00:00:20.200
+Escolha o namespace,
+
+00:00:20.200 --> 00:00:22.640
+e dê um nome à rede.
+
+00:00:22.640 --> 00:00:30.930
+Defina o tipo como OverlayNetwork. Uma rede overlay não precisa de VLAN ID nem de rede de cluster.
+
+00:00:30.930 --> 00:00:33.400
+Selecione Create.
+
+00:00:33.400 --> 00:00:40.090
+A rede existe, mas ainda não tem uma faixa de IP. Uma sub-rede Kube-OVN fornece uma.
+
+00:00:40.090 --> 00:00:43.520
+Abra Overlay Networks,
+
+00:00:43.520 --> 00:00:52.460
+e selecione Virtual Private Cloud. A VPC padrão, ovn-cluster, contém as sub-redes internas.
+
+00:00:52.460 --> 00:00:57.050
+Na VPC ovn-cluster, selecione Create Subnet.
+
+00:00:57.050 --> 00:00:59.380
+Dê um nome à sub-rede.
+
+00:00:59.380 --> 00:01:04.370
+Informe um bloco CIDR que não se sobreponha a outras redes.
+
+00:01:04.370 --> 00:01:11.640
+Como provider, selecione a rede overlay que você acabou de criar. Isso vincula a sub-rede a ela.
+
+00:01:11.640 --> 00:01:18.030
+Deixe o IP do gateway vazio. O Kube-OVN usa o primeiro endereço do bloco.
+
+00:01:18.030 --> 00:01:25.390
+Ative o DHCP, para que as máquinas virtuais nesta rede recebam seus endereços automaticamente.
+
+00:01:25.390 --> 00:01:27.830
+Selecione Create.
+
+00:01:27.830 --> 00:01:35.670
+A sub-rede está ativa, com seu bloco CIDR e a rede overlay como provider.
+
+00:01:35.670 --> 00:01:46.123
+As máquinas virtuais agora podem se conectar à rede demo-overlay e receber endereços da sub-rede dela. A seguir, você conecta uma interface de rede a quente.

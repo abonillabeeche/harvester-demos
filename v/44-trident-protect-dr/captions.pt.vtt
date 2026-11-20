@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.130
+Este vídeo mostra como replicar o volume NetApp de uma máquina virtual para um segundo cluster do SUSE Virtualization com Trident Protect e SnapMirror, e depois fazer o failover da máquina virtual.
+
+00:00:12.130 --> 00:00:21.710
+No cluster retail-store, a máquina virtual demo-tp está em execução. Um pequeno serviço dentro dela grava um timestamp a cada cinco segundos.
+
+00:00:21.710 --> 00:00:31.180
+O único disco dela, demo-tp-root, é um volume iSCSI NetApp que o Trident provisiona no sistema ONTAP.
+
+00:00:31.180 --> 00:00:40.170
+O Trident Protect, um produto da NetApp, trabalha com aplicações. Defina a VM como uma, e faça um snapshot a cada cinco minutos.
+
+00:00:40.170 --> 00:00:52.100
+Depois de aplicar ambos, faça um primeiro snapshot imediatamente. Ele captura o volume e armazena a definição da VM no AppVault em S3.
+
+00:00:52.100 --> 00:01:00.770
+No cluster de recuperação de desastres, um AppMirrorRelationship nomeia a aplicação de origem e o mesmo AppVault, e mapeia a storage class.
+
+00:01:00.770 --> 00:01:09.560
+Após a transferência inicial, o relacionamento fica Established. O cluster de DR tem um volume réplica, mas ainda nenhuma máquina virtual.
+
+00:01:09.560 --> 00:01:17.190
+No sistema ONTAP de DR, o volume é um destino SnapMirror, espelhado e saudável.
+
+00:01:17.190 --> 00:01:24.740
+Para um failover planejado, primeiro desative o agendamento no retail-store, para que nenhum snapshot mais novo ultrapasse o final.
+
+00:01:24.740 --> 00:01:32.050
+Depois faça um ShutdownSnapshot. Ele para a VM, faz um snapshot final e remove a VM do retail-store.
+
+00:01:32.050 --> 00:01:40.940
+No cluster de recuperação de desastres, promova o relacionamento com esse snapshot. O Trident Protect quebra o espelhamento e recria a VM.
+
+00:01:40.940 --> 00:01:48.020
+O resumo lista quanto tempo cada fase levou, do primeiro comando até a VM rodar no site de DR.
+
+00:01:48.020 --> 00:01:53.650
+No cluster de recuperação de desastres, filtre a lista de máquinas virtuais por demo-tp.
+
+00:01:53.650 --> 00:02:01.360
+demo-tp está Running aqui agora, recriada a partir do AppVault no volume NetApp replicado.
+
+00:02:01.360 --> 00:02:11.760
+Dentro do guest, os timestamps param quando o ShutdownSnapshot parou a VM e retomam após a inicialização no site de DR. Nada está faltando.
+
+00:02:11.760 --> 00:02:22.350
+De volta ao retail-store, a máquina virtual não existe mais, então apenas uma cópia roda. O volume retido dela fica guardado para um failback posterior.
+
+00:02:22.350 --> 00:02:32.102
+demo-tp agora roda no cluster de recuperação de desastres, sem perda de dados. O failback funciona da mesma forma, na direção oposta.

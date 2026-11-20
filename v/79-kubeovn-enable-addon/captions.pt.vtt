@@ -1,0 +1,28 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.910
+Este vídeo mostra onde encontrar o add-on que ativa o Kube-OVN no SUSE Virtualization e o que ele adiciona: nuvens privadas virtuais, sub-redes e gateways NAT para redes de máquinas virtuais.
+
+00:00:12.910 --> 00:00:24.200
+Em Advanced, Add-ons, o Kube-OVN vem como o add-on experimental kubeovn-operator. Neste cluster, ele já está ativado, e o estado dele é Deploy Successful.
+
+00:00:24.200 --> 00:00:26.890
+Abra o menu de ações dele.
+
+00:00:26.890 --> 00:00:42.640
+Em um cluster em que o add-on está desativado, este item mostra Enable. Ao selecioná-lo, o operador do Kube-OVN é instalado, e ele implanta o Kube-OVN ao lado da rede padrão do cluster. Aqui ele já está ativado, então feche o menu.
+
+00:00:45.300 --> 00:00:49.880
+O add-on também adiciona o menu Overlay Networks.
+
+00:00:49.880 --> 00:00:53.070
+Selecione Virtual Private Cloud.
+
+00:00:53.070 --> 00:01:09.070
+O Kube-OVN começa com a VPC padrão, ovn-cluster. A sub-rede ovn-default e a sub-rede join são criadas pelo próprio Kube-OVN. As outras VPCs e sub-redes nesta página pertencem a outras cargas de trabalho deste laboratório.
+
+00:01:09.070 --> 00:01:24.230
+A partir dessas páginas, você cria suas próprias VPCs e sub-redes, conecta VPCs com peering e dá a elas acesso à internet com gateways NAT. Os próximos vídeos mostram como criá-las passo a passo.
+
+00:01:24.230 --> 00:01:33.757
+O Kube-OVN está ativado, com sua VPC e sub-redes padrão. A seguir, você cria sua própria VPC com várias sub-redes.

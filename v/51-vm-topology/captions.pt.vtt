@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.730
+Abra uma máquina virtual no SUSE Observability e siga suas relações com o host, o armazenamento e a rede na perspectiva Topology.
+
+00:00:10.730 --> 00:00:13.390
+Abra o menu principal.
+
+00:00:13.390 --> 00:00:16.810
+Expanda SUSE Virtualization.
+
+00:00:16.810 --> 00:00:19.950
+Selecione Virtual machines.
+
+00:00:19.950 --> 00:00:29.840
+A visualização lista as VMs de todos os clusters conectados. Abra a VM chamada kasm, que roda no cluster far-edge.
+
+00:00:29.840 --> 00:00:40.610
+A aba Highlights abre primeiro. O cartão About mostra o status da VM, o host, o endereço IP, as vCPUs, a memória e o sistema operacional do guest.
+
+00:00:40.610 --> 00:00:50.400
+A lista Related resources mostra o que a VM usa, como a VM network dela, os discos, o volume do Longhorn e o pod virt-launcher.
+
+00:00:50.400 --> 00:00:54.920
+Selecione Topology para desenhar essas relações como um mapa.
+
+00:00:54.920 --> 00:01:04.900
+A VM fica na linha Selection. As relações de saída dela apontam para a VM network dela, o host dela e o persistent volume claim dela.
+
+00:01:04.900 --> 00:01:13.220
+Cada componente é colorido de acordo com a integridade, então um problema no armazenamento ou no host aparece ao lado da VM.
+
+00:01:13.220 --> 00:01:20.770
+Uma VM que o Rancher cria para um guest cluster também é um node do Kubernetes, então o mapa dela mostra os pods dentro dela.
+
+00:01:20.770 --> 00:01:30.309
+Cada máquina virtual é um componente com relações com o host, o armazenamento e a rede. A seguir, você investiga uma máquina virtual não íntegra.

@@ -1,0 +1,76 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.340
+Aqui você vai microssegmentar um aplicativo de três camadas. Listas de controle de acesso em duas sub-redes fazem com que cada camada se comunique com a seguinte em uma única porta, e descartem todo o resto.
+
+00:00:12.340 --> 00:00:31.460
+A VPC demo-3tier contém uma sub-rede web, uma de aplicativo e uma de banco de dados, com uma máquina virtual cada. O objetivo: a web pode alcançar o aplicativo apenas na porta 8080, o aplicativo pode alcançar o banco de dados apenas na porta 5432, e nada mais cruza as camadas.
+
+00:00:31.460 --> 00:00:40.260
+Comece pela camada de aplicativo. Abra o menu de ações de demo-app e selecione Edit Config, depois a aba Access Control List.
+
+00:00:43.920 --> 00:00:46.270
+Adicione a primeira regra.
+
+00:00:46.270 --> 00:00:50.850
+Escolha Allow-related, para que as respostas voltem,
+
+00:00:50.850 --> 00:00:55.470
+e To-lport, para o tráfego que chega às portas da sub-rede.
+
+00:00:57.080 --> 00:01:03.470
+Com a prioridade 1010, a condição match permite a entrada da sub-rede web na porta TCP 8080.
+
+00:01:03.470 --> 00:01:07.600
+Adicione uma segunda regra, com a ação Drop e a mesma direção,
+
+00:01:14.030 --> 00:01:19.540
+com a prioridade menor, 1000, para todo o restante do tráfego da sub-rede web.
+
+00:01:19.540 --> 00:01:22.110
+Selecione Save.
+
+00:01:22.110 --> 00:01:30.410
+Agora a camada de banco de dados. Edite demo-db da mesma forma e adicione duas regras na aba Access Control List dela.
+
+00:01:42.140 --> 00:01:50.590
+A primeira regra permite a sub-rede de aplicativo na porta TCP 5432, com prioridade 1010.
+
+00:01:58.640 --> 00:02:04.520
+A segunda descarta todo o resto das sub-redes web e de aplicativo, com prioridade 1000.
+
+00:02:04.520 --> 00:02:07.100
+Selecione Save.
+
+00:02:07.100 --> 00:02:10.210
+Abra o console de demo-web.
+
+00:02:13.060 --> 00:02:16.690
+Entre como sles, com a senha que o cloud-init definiu.
+
+00:02:19.290 --> 00:02:24.360
+Faça uma requisição à camada de aplicativo na porta 8080.
+
+00:02:24.360 --> 00:02:29.070
+O aplicativo responde. Este é o único caminho permitido à camada web.
+
+00:02:29.070 --> 00:02:39.330
+Agora faça um ping na camada de aplicativo e tente o banco de dados diretamente.
+
+00:02:39.330 --> 00:02:47.390
+Ambos falham. O ping para a camada de aplicativo é descartado, e a camada web não consegue alcançar o banco de dados de forma alguma.
+
+00:02:47.390 --> 00:02:51.010
+Em seguida, abra o console de demo-app.
+
+00:02:53.800 --> 00:02:57.420
+Entre como sles, com a senha que o cloud-init definiu.
+
+00:03:00.030 --> 00:03:07.690
+Faça uma requisição ao banco de dados na porta 5432, e depois faça um ping nele.
+
+00:03:07.690 --> 00:03:18.100
+O banco de dados responde na porta 5432, e o ping é descartado. Cada camada alcança a seguinte em apenas uma porta.
+
+00:03:18.100 --> 00:03:30.688
+Cada camada agora alcança a seguinte em exatamente uma porta, e a camada web não pode tocar no banco de dados. A seguir, você publica uma máquina virtual para o exterior com uma regra DNAT.

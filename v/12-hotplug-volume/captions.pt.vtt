@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.630
+Aprenda a criar um volume de dois gigabytes e conectá-lo a quente a uma máquina virtual em execução, adicionando armazenamento sem nenhuma interrupção.
+
+00:00:09.630 --> 00:00:15.030
+Primeiro, crie o volume. Na página Volumes, selecione Create.
+
+00:00:15.030 --> 00:00:18.990
+Escolha o namespace da máquina virtual.
+
+00:00:18.990 --> 00:00:21.080
+Dê um nome ao volume.
+
+00:00:21.080 --> 00:00:26.810
+Mantenha a origem como New, um volume vazio, e mantenha a storage class padrão.
+
+00:00:26.810 --> 00:00:29.490
+Defina o tamanho como dois gigabytes.
+
+00:00:29.490 --> 00:00:32.440
+Selecione Create.
+
+00:00:32.440 --> 00:00:38.530
+Na página Virtual Machines, abra o menu de ações da máquina virtual em execução.
+
+00:00:38.530 --> 00:00:41.400
+Selecione Add Volume.
+
+00:00:41.400 --> 00:00:45.420
+Digite um nome para o disco dentro da máquina virtual.
+
+00:00:45.420 --> 00:00:48.760
+Escolha o volume que você criou.
+
+00:00:48.760 --> 00:00:51.350
+Selecione Apply.
+
+00:00:51.350 --> 00:00:55.190
+Abra a máquina virtual para verificar o resultado.
+
+00:00:55.190 --> 00:00:58.980
+Ela continua em execução. Nada foi reiniciado.
+
+00:00:58.980 --> 00:01:01.990
+Selecione a aba Volumes.
+
+00:01:01.990 --> 00:01:09.940
+Abaixo do disco raiz, o novo volume de dois gigabytes chamado data está conectado e pronto para uso.
+
+00:01:09.940 --> 00:01:16.125
+O volume está conectado à máquina virtual em execução. A seguir, você expande um disco.

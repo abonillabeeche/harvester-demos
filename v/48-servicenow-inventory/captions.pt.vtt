@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.720
+Encontre suas VMs do SUSE Virtualization no CMDB do ServiceNow e use esse inventário para recuperar armazenamento e dar contexto real a incidentes.
+
+00:00:10.720 --> 00:00:20.980
+Virtual Machine Instances lista todas as VMs dos seus clusters. Um script faz a sincronização; o ServiceNow Kubernetes Visibility Agent é o caminho suportado.
+
+00:00:20.980 --> 00:00:27.920
+Agrupada por estado, a lista mostra trinta e oito VMs desligadas e dezessete em execução.
+
+00:00:27.920 --> 00:00:35.410
+O grupo de desligadas lista cada VM com suas CPUs, memória, discos e tamanho de disco, direto do cluster.
+
+00:00:35.410 --> 00:00:46.560
+Este relatório soma o tamanho de disco por estado de energia. As VMs desligadas ocupam mil quinhentos e oitenta e sete gigabytes, e as em execução apenas seiscentos e quarenta e um.
+
+00:00:46.560 --> 00:00:56.350
+Este relatório classifica as VMs desligadas que ocupam mais armazenamento, uma lista curta para revisar com seus responsáveis antes de recuperar o espaço.
+
+00:00:56.350 --> 00:01:08.990
+VMs by guest OS ajuda com atualizações e licenciamento. Vazio significa que a VM não executa nenhum guest agent, então o sistema operacional dela é desconhecido.
+
+00:01:08.990 --> 00:01:16.620
+O formulário da VM sqlfci-n1 mostra a relação Runs on, o host que a executa neste momento.
+
+00:01:16.620 --> 00:01:24.920
+A lista Tasks vincula um incidente aberto a esta VM, para que a central de serviços veja de imediato a VM afetada e o host dela.
+
+00:01:24.920 --> 00:01:32.790
+O mapa de dependências desenha a mesma cadeia, da VM até o host, e marca o incidente aberto com um ícone de aviso.
+
+00:01:32.790 --> 00:01:41.990
+As tags carregam os labels do cluster, como sistema operacional, namespace, status do KubeVirt, cluster e node.
+
+00:01:41.990 --> 00:01:51.858
+O mesmo inventário agora orienta a limpeza de armazenamento, relatórios e triagem de incidentes, sem que ninguém precise digitar registros de VMs manualmente.

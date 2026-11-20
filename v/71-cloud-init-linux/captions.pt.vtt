@@ -1,0 +1,67 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.150
+Forneça a uma nova máquina virtual Linux um user data do cloud-init que cria um usuário, instala pacotes e executa um comando no primeiro boot. Depois, verifique o resultado dentro do guest.
+
+00:00:13.150 --> 00:00:18.970
+Na página Virtual Machines, selecione Create para iniciar uma nova máquina virtual.
+
+00:00:18.970 --> 00:00:22.710
+Escolha o namespace demo para esta máquina virtual,
+
+00:00:22.710 --> 00:00:27.020
+e dê a ela o nome demo-cloudinit, para encontrá-la depois.
+
+00:00:27.020 --> 00:00:31.090
+Atribua à máquina virtual uma CPU virtual para começar,
+
+00:00:31.090 --> 00:00:35.160
+e dois gigabytes de memória, o suficiente para este teste pequeno.
+
+00:00:35.160 --> 00:00:38.710
+Abra a aba Volumes para escolher a imagem de inicialização.
+
+00:00:38.710 --> 00:00:48.330
+Selecione a imagem de nuvem do openSUSE Leap. Ela já vem com o cloud-init, que lê o user data no primeiro boot.
+
+00:00:48.330 --> 00:00:54.640
+Em seguida, abra Advanced Options, onde a seção Cloud Configuration contém o user data.
+
+00:00:54.640 --> 00:01:00.110
+O user data padrão apenas instala o guest agent. Substitua-o pelo seu.
+
+00:01:00.110 --> 00:01:11.680
+A chave users adiciona um usuário chamado tux com uma senha. A chave packages instala três pacotes, e runcmd grava uma mensagem de login e inicia o guest agent.
+
+00:01:11.680 --> 00:01:18.980
+Selecione Create, e o cluster cria a máquina virtual com esse user data.
+
+00:01:18.980 --> 00:01:27.590
+A máquina virtual está em execução. No primeiro boot, o cloud-init agora aplica o user data dentro do guest.
+
+00:01:27.590 --> 00:01:31.970
+Quando o primeiro boot terminar, abra o menu Console na linha dela
+
+00:01:31.970 --> 00:01:37.030
+e selecione Open in WebVNC para ver a tela do guest.
+
+00:01:37.030 --> 00:01:42.890
+No prompt de login, digite tux, o usuário que o cloud-init criou,
+
+00:01:42.890 --> 00:01:46.940
+e a senha do user data.
+
+00:01:46.940 --> 00:01:52.810
+O login funciona, e a mensagem do comando runcmd aparece logo em seguida.
+
+00:01:52.810 --> 00:02:00.100
+Agora verifique o usuário e os pacotes. tux está no grupo wheel, e os três pacotes estão instalados.
+
+00:02:00.100 --> 00:02:06.610
+O cloud-init status confirma que o primeiro boot terminou, sem erros.
+
+00:02:06.610 --> 00:02:14.880
+De volta à lista Virtual Machines, demo-cloudinit continua em execução, configurada inteiramente pelo seu user data.
+
+00:02:14.880 --> 00:02:26.223
+O cloud-init criou o usuário, instalou os pacotes e executou o comando no primeiro boot, sem etapas manuais. A seguir, você prepara uma imagem Windows com sysprep.

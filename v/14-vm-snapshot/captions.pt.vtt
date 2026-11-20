@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.830
+Este vídeo mostra como criar um snapshot de uma máquina virtual em execução e restaurá-lo como uma nova. Snapshots oferecem uma forma rápida de voltar a um estado conhecido.
+
+00:00:11.830 --> 00:00:17.980
+Na página Virtual Machines, abra o menu de ações da máquina virtual em execução.
+
+00:00:17.980 --> 00:00:21.580
+Selecione Take Virtual Machine Snapshot.
+
+00:00:21.580 --> 00:00:23.990
+Dê um nome ao snapshot.
+
+00:00:23.990 --> 00:00:32.410
+Mantenha o prazo padrão de congelamento do sistema de arquivos, o tempo máximo em que o sistema de arquivos do convidado pode ficar congelado para o snapshot.
+
+00:00:32.410 --> 00:00:35.400
+Selecione Create.
+
+00:00:35.400 --> 00:00:41.710
+Em Backup and Snapshots, Virtual Machine Snapshots, o snapshot está pronto para uso.
+
+00:00:41.710 --> 00:00:45.370
+Para restaurá-lo, abra o menu de ações do snapshot.
+
+00:00:45.370 --> 00:00:51.340
+Selecione Restore New, que deixa a máquina virtual original intacta.
+
+00:00:51.340 --> 00:00:54.870
+Informe um nome para a máquina virtual restaurada.
+
+00:00:54.870 --> 00:01:00.790
+Deixe Keep powered off desmarcado, para que a nova máquina virtual seja iniciada após a restauração.
+
+00:01:00.790 --> 00:01:04.420
+Selecione Create.
+
+00:01:04.420 --> 00:01:13.010
+A máquina virtual restaurada está em execução ao lado da original, com o conteúdo do disco do snapshot.
+
+00:01:13.010 --> 00:01:22.290
+Agora você pode retornar a esse instante sempre que precisar. A seguir, você configura um destino de backup para cópias fora do cluster.

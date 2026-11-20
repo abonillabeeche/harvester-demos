@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.370
+Aqui você ativa o add-on de monitoramento no SUSE Virtualization e depois vê as métricas que ele coleta de uma máquina virtual em execução.
+
+00:00:09.370 --> 00:00:16.520
+Add-ons, em Advanced, lista componentes opcionais. O add-on rancher-monitoring está desativado.
+
+00:00:16.520 --> 00:00:19.350
+Abra o menu de ações dele.
+
+00:00:19.350 --> 00:00:28.470
+Selecione Enable. O SUSE Virtualization implanta Prometheus, Grafana e Alertmanager no cluster.
+
+00:00:28.470 --> 00:00:34.960
+Após alguns minutos, o estado do add-on muda para Deploy Successful.
+
+00:00:34.960 --> 00:00:38.640
+Em seguida, abra Virtual Machines.
+
+00:00:38.640 --> 00:00:42.890
+Selecione a máquina virtual demo-metrics em execução.
+
+00:00:42.890 --> 00:00:50.470
+Uma nova aba Virtual Machine Metrics agora está disponível. Selecione-a.
+
+00:00:50.470 --> 00:01:01.710
+Painéis do Grafana mostram o uso de CPU e memória desta máquina virtual, e o tráfego, a latência e as IOPS de armazenamento dela.
+
+00:01:01.710 --> 00:01:07.130
+O dashboard do cluster também ganha métricas. Abra Dashboard.
+
+00:01:07.130 --> 00:01:12.950
+Abaixo do resumo de capacidade, selecione Cluster Metrics.
+
+00:01:12.950 --> 00:01:20.190
+Cluster Metrics mostra em gráficos a utilização de CPU, a carga média e a utilização de memória dos hosts.
+
+00:01:20.190 --> 00:01:27.560
+Virtual Machine Metrics compara o uso de recursos entre as máquinas virtuals.
+
+00:01:27.560 --> 00:01:35.190
+Os gráficos mostram o uso de CPU, memória e armazenamento de até dez máquinas virtuals.
+
+00:01:35.190 --> 00:01:43.571
+O monitoramento está ativado e a máquina virtual reporta suas métricas. A seguir, você balanceia máquinas virtuals automaticamente.

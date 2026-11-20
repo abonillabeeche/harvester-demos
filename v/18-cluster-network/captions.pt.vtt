@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.690
+Crie uma rede de cluster, um caminho dedicado para o tráfego de máquinas virtuais, e conecte a ela uma interface de rede livre do host.
+
+00:00:08.690 --> 00:00:17.570
+Em Networks, Cluster Network Configuration, a rede mgmt integrada carrega o tráfego de gerenciamento em todos os hosts.
+
+00:00:17.570 --> 00:00:23.270
+Para separar o tráfego de máquinas virtuais, selecione Create a Cluster Network.
+
+00:00:23.270 --> 00:00:25.660
+Dê um nome à rede de cluster.
+
+00:00:25.660 --> 00:00:28.120
+Selecione Create.
+
+00:00:28.120 --> 00:00:35.520
+A nova rede de cluster ainda não tem configuração de rede, então nenhuma interface de host carrega o tráfego dela.
+
+00:00:35.520 --> 00:00:39.110
+Selecione Create Network Configuration.
+
+00:00:39.110 --> 00:00:41.930
+Dê um nome à configuração de rede.
+
+00:00:41.930 --> 00:00:48.750
+Na aba Node Selector, mantenha Select all nodes, para que todos os hosts entrem nesta rede de cluster.
+
+00:00:48.750 --> 00:00:54.250
+Na aba Uplink, escolha as interfaces de host para a rede de cluster.
+
+00:00:54.250 --> 00:01:02.570
+Selecione uma interface de rede livre. A lista mostra apenas interfaces livres em todos os nós selecionados.
+
+00:01:02.570 --> 00:01:10.030
+A interface se torna um bond, active-backup por padrão. Adicione uma segunda NIC depois para redundância.
+
+00:01:10.030 --> 00:01:12.900
+Selecione Create.
+
+00:01:12.900 --> 00:01:23.310
+A configuração de rede está ativa. A rede de cluster agora tem um uplink em todos os hosts e está pronta para redes VLAN.
+
+00:01:23.310 --> 00:01:30.077
+A rede de cluster está pronta. A seguir, você cria nela uma rede VLAN de máquina virtual.

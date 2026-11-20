@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.510
+Aprenda a usar o Rancher para provisionar um cluster Kubernetes RKE2 no SUSE Virtualization. O Rancher cria as máquinas virtuais dos nós para você.
+
+00:00:10.510 --> 00:00:15.150
+No Rancher, abra Cluster Management e selecione Create.
+
+00:00:15.150 --> 00:00:20.040
+Selecione Harvester, o provedor do SUSE Virtualization.
+
+00:00:20.040 --> 00:00:27.620
+Escolha a cloud credential do cluster SUSE Virtualization que hospeda os nós, aqui far-edge.
+
+00:00:29.730 --> 00:00:31.830
+Dê um nome ao cluster.
+
+00:00:31.830 --> 00:00:40.520
+Um machine pool com uma máquina executa o etcd, o control plane e as cargas de trabalho. Isso é suficiente para um cluster de teste.
+
+00:00:40.520 --> 00:00:43.470
+Dê a cada máquina quatro CPUs,
+
+00:00:43.470 --> 00:00:46.060
+e oito gigabytes de memória.
+
+00:00:46.060 --> 00:00:51.970
+Escolha o namespace para as máquinas virtuais no SUSE Virtualization,
+
+00:00:51.970 --> 00:00:55.030
+e o usuário padrão da imagem de nuvem.
+
+00:00:55.030 --> 00:00:59.850
+Escolha uma imagem de nuvem Ubuntu que exista no cluster,
+
+00:00:59.850 --> 00:01:03.000
+e defina o disco raiz com vinte gigabytes.
+
+00:01:03.000 --> 00:01:08.320
+Conecte as máquinas a uma rede de VM que consiga alcançar o Rancher.
+
+00:01:08.320 --> 00:01:15.770
+Em Cluster Configuration, mantenha a versão padrão do RKE2 e o Harvester como cloud provider.
+
+00:01:15.770 --> 00:01:18.170
+Selecione Create.
+
+00:01:18.170 --> 00:01:24.350
+O cluster aparece na lista. O Rancher começa a provisioná-lo.
+
+00:01:24.350 --> 00:01:32.790
+No far-edge, o SUSE Virtualization agora executa a máquina virtual do nó criada pelo Rancher.
+
+00:01:32.790 --> 00:01:40.720
+O Rancher continua provisionando o cluster até que ele fique Active. Você o gerencia em Cluster Management como qualquer outro cluster.

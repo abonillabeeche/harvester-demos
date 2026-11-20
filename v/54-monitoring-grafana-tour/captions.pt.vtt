@@ -1,0 +1,91 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.780
+Neste vídeo, você ativa a pilha de monitoramento, deixa ela coletar métricas por um tempo e depois explora o que ela oferece: métricas na UI, painéis no Grafana e consultas no Prometheus.
+
+00:00:12.780 --> 00:00:17.710
+Em Advanced, Add-ons, o add-on rancher-monitoring está desativado.
+
+00:00:17.710 --> 00:00:20.190
+Abra o menu de ações dele,
+
+00:00:20.190 --> 00:00:31.060
+e selecione Enable. Ele implanta o Prometheus, o Grafana, o Alertmanager e os exporters que coletam métricas de hosts e de máquinas virtuais.
+
+00:00:31.060 --> 00:00:36.970
+Alguns minutos depois, o add-on informa Deploy Successful.
+
+00:00:36.970 --> 00:00:44.730
+Deixe-o coletar por cerca de dez minutos, a parte da gravação que foi acelerada. Depois, abra Dashboard.
+
+00:00:44.730 --> 00:00:50.490
+Abaixo do resumo de capacidade, selecione Cluster Metrics.
+
+00:00:50.490 --> 00:01:01.080
+Os painéis mostram a utilização de CPU dos hosts, a média de carga e a memória dos últimos minutos. Esses painéis vêm do Grafana, incorporado à UI.
+
+00:01:01.080 --> 00:01:08.290
+Virtual Machine Metrics coloca as máquinas virtuais mais ativas lado a lado.
+
+00:01:08.290 --> 00:01:19.750
+CPU, memória e tráfego de armazenamento de cada máquina virtual. A demo-load executa um ciclo de trabalho de CPU, memória e disco, então suas linhas sobem e descem.
+
+00:01:19.750 --> 00:01:24.590
+Para uma única máquina virtual, abra a demo-load em Virtual Machines,
+
+00:01:24.590 --> 00:01:30.510
+e selecione a aba Virtual Machine Metrics dela.
+
+00:01:30.510 --> 00:01:42.490
+Medidores mostram o uso atual de CPU e memória dela, e os gráficos mostram tráfego de armazenamento, latência e operações por segundo. As rajadas de gravação em disco são fáceis de identificar.
+
+00:01:42.490 --> 00:01:51.180
+Para trabalhar com os painéis diretamente, abra a configuração do add-on, em Add-ons, Edit Config, e selecione a aba Grafana.
+
+00:01:51.180 --> 00:01:55.480
+O link abre o Grafana em uma nova janela.
+
+00:01:55.480 --> 00:02:03.560
+Esta instância do Grafana vem com a pilha de monitoramento, com painéis para máquinas virtuais, hosts, Kubernetes e a própria pilha de monitoramento.
+
+00:02:03.560 --> 00:02:07.470
+Abra o Harvester VM Dashboard.
+
+00:02:07.470 --> 00:02:11.390
+Ele mostra o uso de CPU de cada máquina virtual do cluster,
+
+00:02:11.390 --> 00:02:13.590
+o uso de memória,
+
+00:02:13.590 --> 00:02:21.670
+e o tráfego de armazenamento e de rede mais abaixo. O padrão repetitivo da demo-load se destaca entre as outras cargas de trabalho.
+
+00:02:21.670 --> 00:02:27.170
+Para os hosts, vá a Dashboards e pesquise por Node Exporter, Nodes.
+
+00:02:27.170 --> 00:02:30.250
+Abra-o.
+
+00:02:30.250 --> 00:02:36.170
+O Node Exporter informa o que o sistema operacional do host enxerga, uso de CPU e carga,
+
+00:02:36.170 --> 00:02:37.820
+memória,
+
+00:02:37.820 --> 00:02:41.970
+e atividade de disco e de rede, para cada host do cluster.
+
+00:02:41.970 --> 00:02:55.940
+Por trás de cada painel há uma consulta PromQL. O Prometheus, acessado pela aba Prometheus do add-on, tem sua própria página de consultas. Esta consulta soma a CPU que cada máquina virtual usou nos últimos cinco minutos.
+
+00:02:55.940 --> 00:02:57.820
+Selecione Execute,
+
+00:02:57.820 --> 00:03:00.240
+e mude para Graph.
+
+00:03:00.240 --> 00:03:08.780
+Uma linha por máquina virtual, em núcleos de CPU. Qualquer métrica do Grafana pode ser explorada dessa forma.
+
+00:03:08.780 --> 00:03:17.280
+O monitoramento está ativo, e as mesmas métricas estão disponíveis na UI, nos painéis do Grafana e nas consultas do Prometheus.

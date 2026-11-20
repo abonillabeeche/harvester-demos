@@ -1,0 +1,58 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:14.090
+Este vídeo mostra como expandir o cluster demo-ai de um worker de GPU para dois. A segunda GPU do host é uma NVIDIA A2, um modelo diferente da T400, então ela recebe seu próprio machine pool.
+
+00:00:14.090 --> 00:00:20.730
+O demo-ai tem um nó de control plane e um worker de GPU, que é dono da NVIDIA T400 do host.
+
+00:00:20.730 --> 00:00:26.880
+Para adicionar capacidade de GPU, abra o menu de ações do cluster e selecione Edit Config.
+
+00:00:28.930 --> 00:00:34.700
+A A2 é um modelo de GPU diferente, então adicione um novo machine pool para ela.
+
+00:00:34.700 --> 00:00:38.690
+Dê ao pool o nome gpu-a2 e mantenha uma máquina.
+
+00:00:38.690 --> 00:00:43.790
+O novo pool recebe apenas a função Worker, que é o que um worker de GPU precisa.
+
+00:00:43.790 --> 00:00:46.450
+Dê ao worker oito CPUs,
+
+00:00:46.450 --> 00:00:49.210
+dezesseis gigabytes de memória,
+
+00:00:49.210 --> 00:00:53.550
+e um disco de oitenta gigabytes para o driver e os arquivos do modelo.
+
+00:00:55.250 --> 00:01:02.210
+Nas configurações avançadas, o seletor PCI Devices lista as GPUs livres no host.
+
+00:01:02.210 --> 00:01:05.420
+Adicione uma linha à lista de dispositivos,
+
+00:01:05.420 --> 00:01:12.080
+e escolha a NVIDIA A2. Ela está sozinha em seu grupo IOMMU, então uma linha é suficiente.
+
+00:01:12.080 --> 00:01:20.410
+O pool copiou os dados de rede de outro pool. O pool de DHCP do laboratório está cheio, então dê a este worker um endereço estático próprio.
+
+00:01:20.410 --> 00:01:27.790
+Salve a configuração. O Rancher escala o cluster de um worker de GPU para dois.
+
+00:01:27.790 --> 00:01:34.930
+O Rancher criou a máquina virtual do worker com a A2 em passthrough, instalou o RKE2 e a adicionou ao demo-ai.
+
+00:01:34.930 --> 00:01:42.290
+O demo-ai agora executa dois workers de GPU ao lado do nó de control plane, um por modelo de GPU.
+
+00:01:42.290 --> 00:01:47.850
+No SUSE Virtualization, abra a máquina virtual do novo worker no harvester-ai.
+
+00:01:47.850 --> 00:01:56.060
+A anotação de alocação de dispositivos mostra a NVIDIA A2, com passthrough do host para o novo worker.
+
+00:01:56.060 --> 00:02:08.395
+O demo-ai agora tem dois workers de GPU, um com a T400 e outro com a A2, ambos com passthrough do SUSE Virtualization. Você gerencia a capacidade de GPU pelo Rancher.

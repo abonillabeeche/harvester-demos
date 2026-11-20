@@ -1,0 +1,67 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.440
+Quão grande pode ficar uma máquina virtual? Você cria a maior máquina virtual que um único host ARM64 no SUSE Virtualization aceita: 512 CPUs virtuais e 160 gigabytes de memória.
+
+00:00:13.440 --> 00:00:21.760
+Cada host neste cluster é um servidor Ampere Altra com cento e sessenta núcleos e cerca de cento e vinte gigabytes de memória alocável.
+
+00:00:21.760 --> 00:00:24.500
+Vá para Virtual Machines
+
+00:00:24.500 --> 00:00:34.690
+e selecione Create.
+
+00:00:34.690 --> 00:00:37.430
+Escolha o namespace
+
+00:00:37.430 --> 00:00:39.080
+e um nome.
+
+00:00:39.080 --> 00:00:47.430
+Digite quinhentos e doze CPUs. Esse é o limite máximo do tipo de máquina virt ARM64, mesmo em um host com menos núcleos.
+
+00:00:47.430 --> 00:00:52.010
+Digite cento e sessenta gigabytes de memória, mais do que o host pode alocar.
+
+00:00:52.010 --> 00:01:00.640
+A memória é admitida com base no node allocatable vezes a proporção de overcommit de memória, cento e cinquenta por cento por padrão.
+
+00:01:00.640 --> 00:01:08.510
+Assim, a máquina virtual solicita cerca de cento e sete gigabytes, mais sua sobrecarga, o que ainda cabe em um host.
+
+00:01:08.510 --> 00:01:10.350
+Na aba Volumes,
+
+00:01:10.350 --> 00:01:15.850
+selecione a imagem de nuvem ARM64 do openSUSE Leap.
+
+00:01:15.850 --> 00:01:17.890
+Em Advanced Options,
+
+00:01:17.890 --> 00:01:23.510
+selecione um modelo de configuração de nuvem que cria um usuário demo com senha de console.
+
+00:01:23.510 --> 00:01:27.190
+Selecione Create.
+
+00:01:27.190 --> 00:01:35.540
+A máquina virtual está em execução com quinhentos e doze CPUs e cento e sessenta gigabytes, em um único host.
+
+00:01:35.540 --> 00:01:40.460
+O convidado terminou de inicializar. Abra o console dele.
+
+00:01:43.770 --> 00:01:46.320
+Faça login como o usuário demo
+
+00:01:46.320 --> 00:01:51.380
+e com a senha do modelo.
+
+00:01:51.380 --> 00:01:56.090
+Verifique a contagem de processadores e a memória.
+
+00:01:56.090 --> 00:02:03.900
+O convidado informa quinhentos e doze processadores e cerca de cento e sessenta gigabytes de memória.
+
+00:02:03.900 --> 00:02:20.727
+Apenas uma fração dessa memória pode ser suportada por RAM real, e essas CPUs compartilham noventa e seis threads, então trate esses valores como limites a conhecer, não como meta de dimensionamento. A seguir, você acomoda muitas máquinas virtuais pequenas em um host.

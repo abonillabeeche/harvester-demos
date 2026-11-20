@@ -1,0 +1,64 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.230
+Este vídeo mostra como parar, iniciar, reiniciar, pausar e retomar uma máquina virtual na lista Virtual Machines, e como o estado dela muda.
+
+00:00:10.230 --> 00:00:17.930
+A máquina virtual demo-power está em execução. As ações de energia dela estão no menu de ações no fim da linha.
+
+00:00:17.930 --> 00:00:20.810
+Abra o menu de ações.
+
+00:00:20.810 --> 00:00:23.300
+Selecione Stop.
+
+00:00:23.300 --> 00:00:30.030
+Confirme com Apply. O sistema operacional convidado recebe uma solicitação de desligamento.
+
+00:00:30.030 --> 00:00:37.830
+A máquina virtual agora está Off. Ela mantém seus discos e configuração, mas não usa CPU nem memória.
+
+00:00:37.830 --> 00:00:41.990
+Para ligá-la novamente, abra o menu de ações
+
+00:00:41.990 --> 00:00:46.050
+e selecione Start.
+
+00:00:46.050 --> 00:00:49.420
+A máquina virtual está em execução de novo.
+
+00:00:49.420 --> 00:00:54.310
+Restart para e inicia a máquina virtual em uma única etapa.
+
+00:00:54.310 --> 00:00:57.000
+Selecione Restart,
+
+00:00:57.000 --> 00:01:01.340
+e confirme com Apply.
+
+00:01:01.340 --> 00:01:05.650
+Após uma breve parada, a máquina virtual está em execução de novo.
+
+00:01:05.650 --> 00:01:11.120
+Pause congela a máquina virtual na memória sem desligá-la.
+
+00:01:11.120 --> 00:01:13.670
+Selecione Pause.
+
+00:01:13.670 --> 00:01:16.340
+Confirme com Apply.
+
+00:01:16.340 --> 00:01:21.900
+O estado muda para Paused. O convidado para de executar, mas mantém sua memória.
+
+00:01:21.900 --> 00:01:24.820
+Abra o menu de ações novamente
+
+00:01:24.820 --> 00:01:28.220
+e selecione Unpause.
+
+00:01:28.220 --> 00:01:33.750
+A máquina virtual continua exatamente de onde parou.
+
+00:01:33.750 --> 00:01:41.743
+Agora você pode controlar o estado de energia de qualquer máquina virtual. A seguir, você usa um modelo de configuração de nuvem.

@@ -1,0 +1,61 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.940
+Aqui você vai mover o disco de uma máquina virtual em execução do Longhorn para o Portworx com migração de armazenamento. O sistema convidado continua em execução enquanto os dados são movidos.
+
+00:00:12.940 --> 00:00:22.750
+A máquina virtual demo-smig em execução inicializa a partir do demo-smig-disk-0. A storage class dela é uma classe Longhorn, criada para a imagem.
+
+00:00:22.750 --> 00:00:27.300
+Primeiro, crie o volume de destino. Selecione Create.
+
+00:00:27.300 --> 00:00:31.740
+Use o mesmo namespace da máquina virtual,
+
+00:00:31.740 --> 00:00:35.350
+e dê ao volume o nome demo-smig-px.
+
+00:00:35.350 --> 00:00:40.960
+Escolha a storage class do Portworx, px-csi-replicated.
+
+00:00:40.960 --> 00:00:45.730
+Defina o tamanho como dez gigabytes, o mesmo do volume de origem.
+
+00:00:45.730 --> 00:00:48.220
+Selecione Create.
+
+00:00:48.220 --> 00:00:53.080
+O novo volume está pronto e não está anexado a nenhuma máquina virtual.
+
+00:00:53.080 --> 00:00:56.430
+Agora abra a página Virtual Machines.
+
+00:00:56.430 --> 00:00:59.970
+Abra o menu de ações da demo-smig,
+
+00:00:59.970 --> 00:01:03.370
+e selecione Storage Migration.
+
+00:01:03.370 --> 00:01:08.140
+Para o volume de origem, escolha demo-smig-disk-0.
+
+00:01:08.140 --> 00:01:17.100
+Para o volume de destino, escolha demo-smig-px. A lista mostra apenas volumes que nenhuma máquina virtual usa.
+
+00:01:17.100 --> 00:01:20.370
+Selecione Apply.
+
+00:01:20.370 --> 00:01:30.050
+O SUSE Virtualization faz a migração ao vivo da máquina virtual para outro nó e copia o disco para o novo volume.
+
+00:01:30.050 --> 00:01:36.800
+A migração está concluída. A máquina virtual continuou em execução e agora roda em um nó diferente.
+
+00:01:36.800 --> 00:01:39.620
+Verifique a página Volumes.
+
+00:01:39.620 --> 00:01:48.270
+O demo-smig-px, na storage class do Portworx, agora é o disco da demo-smig.
+
+00:01:48.270 --> 00:01:56.648
+A máquina virtual agora roda a partir de um volume Portworx e nunca parou. A seguir, você conecta um CD-ROM a quente.

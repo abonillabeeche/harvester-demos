@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.570
+Redimensione uma máquina virtual no SUSE Virtualization através do Git: a alteração é revisada e mesclada, e o Rancher Fleet a aplica com hot-plug de CPU e memória.
+
+00:00:11.570 --> 00:00:21.670
+A máquina virtual demo-web-01 está em execução com um vCPU e dois gigabytes de memória. O Rancher Fleet a criou a partir de um manifesto no Git.
+
+00:00:21.670 --> 00:00:30.160
+No repositório Git, o formulário de solicitação transformou um pedido de redimensionamento neste pull request, aberto pelo bot do GitHub Actions.
+
+00:00:30.160 --> 00:00:34.890
+Abra o pull request para ver o que foi solicitado, e por quem.
+
+00:00:34.890 --> 00:00:42.800
+A solicitação registra quem pediu, o ticket de alteração com sua justificativa, e que ela se aplica quando o pull request é mesclado.
+
+00:00:42.800 --> 00:00:50.510
+O arquivo de code owners direciona a revisão para a equipe responsável pelas máquinas virtuais, aqui o proprietário do repositório.
+
+00:00:50.510 --> 00:00:59.720
+A verificação validate testou o manifesto contra os limites de política e publicou um plano: dois vCPUs e quatro gigabytes após o merge.
+
+00:00:59.720 --> 00:01:04.520
+Abra Files changed para ver a edição exata no manifesto.
+
+00:01:04.520 --> 00:01:13.830
+Apenas duas linhas mudam: os sockets de CPU passam de um para dois, e a memória do guest de dois para quatro gigabytes.
+
+00:01:13.830 --> 00:01:20.840
+Volte à conversa. Enquanto isso, o code owner revisou a alteração com a própria conta dele.
+
+00:01:20.840 --> 00:01:28.450
+A aprovação, com seu comentário, agora faz parte do histórico do pull request, ao lado do plano e da verificação aprovada.
+
+00:01:28.450 --> 00:01:35.990
+O code owner então o mesclou no branch que o Fleet observa. Esse commit agora é o estado desejado.
+
+00:01:35.990 --> 00:01:44.370
+De volta à máquina virtual, o flavor agora mostra dois vCPUs e quatro gigabytes. O cluster os adiciona com uma live migration.
+
+00:01:44.370 --> 00:01:50.740
+Abra a aba Migration para ver como o novo tamanho chegou à máquina virtual em execução.
+
+00:01:50.740 --> 00:02:01.740
+Uma atualização automatizada de workload fez a live migration da máquina virtual para outro node com a CPU e a memória extras. Ela nunca reiniciou.
+
+00:02:01.740 --> 00:02:13.128
+O redimensionamento foi de um pull request revisado até a máquina virtual em execução, sem reinicialização. O Git mantém o registro de quem pediu, quem aprovou e o que mudou.

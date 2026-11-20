@@ -1,0 +1,97 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.390
+Exporte um backup de máquina virtual com o Veeam Kasten em um cluster do SUSE Virtualization, depois importe-o em um segundo cluster e restaure a máquina virtual lá.
+
+00:00:12.080 --> 00:00:21.670
+O Kasten está em execução no cluster de origem, harvester-ai. O namespace demo-k10dr contém uma máquina virtual em execução e o disco dela.
+
+00:00:21.670 --> 00:00:26.700
+Abra o menu de opções do namespace e selecione Create a Policy.
+
+00:00:28.700 --> 00:00:36.110
+O formulário preenche o nome demo-k10dr-backup. Para esta demonstração, defina a frequência como On Demand.
+
+00:00:36.110 --> 00:00:41.880
+Ative Backups via Snapshot Exports, para que o backup saia do cluster.
+
+00:00:41.880 --> 00:00:45.360
+Abra a lista de perfis de local de exportação,
+
+00:00:45.360 --> 00:00:50.750
+e escolha object-store, um bucket S3 que o segundo cluster também pode acessar.
+
+00:00:50.750 --> 00:00:56.430
+Envie a política. O Kasten a cria e gera os dados de importação para outros clusters.
+
+00:00:56.430 --> 00:01:01.220
+Abra as ações da nova política e selecione Run Once.
+
+00:01:03.270 --> 00:01:12.060
+Confirme. O Kasten cria um snapshot do disco e exporta o snapshot e a máquina virtual para o bucket.
+
+00:01:12.060 --> 00:01:18.540
+Quando a exportação terminar, abra as ações da política novamente e selecione View Import Data.
+
+00:01:20.650 --> 00:01:29.140
+O token de importação informa a outra instância do Kasten onde estão os dados exportados e como descriptografá-los. Copie-o.
+
+00:01:30.820 --> 00:01:38.940
+Agora vá para o Kasten no segundo cluster, far-edge. Na página Policies, selecione Create New Policy.
+
+00:01:38.940 --> 00:01:42.690
+Dê à política o nome demo-k10dr-import,
+
+00:01:42.690 --> 00:01:46.240
+e escolha a ação Import em vez de Snapshot.
+
+00:01:46.240 --> 00:01:52.570
+Execute-a também sob demanda. Um agendamento continuaria importando novos pontos de restauração.
+
+00:01:52.570 --> 00:01:57.320
+Cole o token de importação em Config Data for Import.
+
+00:01:57.320 --> 00:02:02.440
+Para o perfil, escolha demo-object-store, que aponta para o mesmo bucket.
+
+00:02:04.090 --> 00:02:07.040
+Envie a política de importação.
+
+00:02:07.040 --> 00:02:12.950
+Abra as ações dela e selecione Run Once para importar o ponto de restauração.
+
+00:02:15.030 --> 00:02:19.130
+Confirme a execução.
+
+00:02:19.130 --> 00:02:25.480
+Em Restore Points, o ponto de restauração importado de demo-k10dr está pronto no far-edge.
+
+00:02:25.480 --> 00:02:29.290
+Abra as ações dele e selecione Restore.
+
+00:02:31.340 --> 00:02:36.770
+Mantenha o namespace demo-k10dr. O Kasten o cria neste cluster.
+
+00:02:36.770 --> 00:02:43.640
+O disco usava a classe lvm-thin, que o far-edge não tem. Ative transforms para os recursos restaurados,
+
+00:02:43.640 --> 00:02:47.760
+e adicione uma referência a um conjunto de transforms existente.
+
+00:02:49.850 --> 00:02:57.740
+Escolha demo-to-longhorn. Ele move todos os volumes restaurados para a classe de armazenamento harvester-longhorn.
+
+00:02:59.370 --> 00:03:06.690
+Na lista de artefatos, desmarque a própria classe de armazenamento lvm-thin. Este cluster não pode usá-la.
+
+00:03:06.690 --> 00:03:09.150
+Selecione Restore,
+
+00:03:09.150 --> 00:03:16.660
+e confirme. O Kasten copia os dados do disco do bucket e recria a máquina virtual.
+
+00:03:16.660 --> 00:03:26.170
+No SUSE Virtualization no far-edge, demo-k10dr está em execução, restaurada do backup que o harvester-ai exportou.
+
+00:03:26.170 --> 00:03:37.329
+A máquina virtual está em execução no segundo cluster, restaurada do backup exportado no bucket compartilhado. A seguir, você executa um plano de DR com o CloudCasa.

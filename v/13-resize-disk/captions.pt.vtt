@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.200
+Expanda o disco de uma máquina virtual em execução sem pará-la e, em seguida, aumente a partição e o sistema de arquivos dentro do guest para que o novo espaço fique utilizável.
+
+00:00:11.200 --> 00:00:19.790
+A máquina virtual demo-resize está em execução. O disco raiz dela, demo-resize-disk-0, tem dez gigabytes.
+
+00:00:19.790 --> 00:00:24.210
+Na página Volumes, abra o menu de ações do disco,
+
+00:00:24.210 --> 00:00:29.960
+e selecione Edit Config. Você não precisa parar a máquina virtual.
+
+00:00:29.960 --> 00:00:35.540
+Altere o tamanho para doze gigabytes. Um disco pode crescer, mas nunca diminuir.
+
+00:00:35.540 --> 00:00:43.420
+Selecione Save. O Longhorn expande o volume enquanto a máquina virtual continua em execução.
+
+00:00:43.420 --> 00:00:46.830
+O volume agora mostra doze gigabytes.
+
+00:00:46.830 --> 00:00:53.350
+O guest ainda vê o tamanho antigo da partição. Abra o console da máquina virtual,
+
+00:00:53.350 --> 00:00:57.030
+no WebVNC.
+
+00:00:57.030 --> 00:00:59.200
+Entre como sles,
+
+00:00:59.200 --> 00:01:03.130
+com a senha definida pelo cloud-init.
+
+00:01:03.130 --> 00:01:13.760
+O lsblk mostra que o disco agora tem doze gigabytes, mas a partição raiz, vda3, ainda tem o tamanho antigo.
+
+00:01:13.760 --> 00:01:28.110
+Aumente a partição três para o espaço livre e, em seguida, aumente o sistema de arquivos raiz XFS. Ambos funcionam enquanto estão montados.
+
+00:01:28.110 --> 00:01:38.090
+O sistema de arquivos raiz agora tem o espaço extra, e a máquina virtual nunca parou.
+
+00:01:38.090 --> 00:01:44.650
+Você expandiu um disco online. A seguir, você cria e restaura um snapshot de máquina virtual.

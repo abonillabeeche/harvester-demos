@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.310
+Neste vídeo, você cria uma storage class do Longhorn com uma única réplica. As storage classes definem como novos volumes são provisionados, então um cluster de um nó precisa de uma que se encaixe.
+
+00:00:12.310 --> 00:00:19.620
+A página Storage Classes, em Advanced, lista todas as classes com o provisioner e o número de réplicas.
+
+00:00:19.620 --> 00:00:22.040
+Selecione Create.
+
+00:00:22.040 --> 00:00:24.650
+Dê um nome à storage class.
+
+00:00:24.650 --> 00:00:28.530
+Mantenha o provisioner Longhorn V1, que é o padrão.
+
+00:00:28.530 --> 00:00:35.780
+Defina o número de réplicas como uma. Com um único nó, o Longhorn não tem onde colocar uma segunda cópia.
+
+00:00:35.780 --> 00:00:38.980
+Mantenha os outros parâmetros com os valores padrão.
+
+00:00:38.980 --> 00:00:41.440
+Selecione Create.
+
+00:00:41.440 --> 00:00:46.180
+A nova storage class aparece na lista com uma réplica.
+
+00:00:46.180 --> 00:00:54.550
+Ao criar um volume, a nova storage class agora é uma das opções.
+
+00:00:54.550 --> 00:01:03.730
+A storage class está pronta. Volumes e discos de máquinas virtuais agora podem usá-la. A seguir, você configura a rede do cluster.

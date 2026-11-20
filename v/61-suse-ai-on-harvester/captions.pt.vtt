@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.390
+Aqui você usa o SUSE AI Factory no Rancher para implantar uma stack de IA no cluster de GPU: o NVIDIA GPU Operator, o vLLM servindo um modelo e o Open WebUI.
+
+00:00:12.390 --> 00:00:21.440
+No Rancher, o SUSE AI Factory implanta stacks de IA a partir de blueprints. Cada blueprint reúne Helm charts com valores testados.
+
+00:00:21.440 --> 00:00:25.680
+Mostre todos os catálogos, incluindo blueprints personalizados,
+
+00:00:25.680 --> 00:00:29.320
+e pesquise o blueprint preparado para este laboratório.
+
+00:00:29.320 --> 00:00:39.670
+Ele reúne o NVIDIA GPU Operator, o vLLM do SUSE Application Collection servindo o Qwen 2.5 0.5B Instruct, e o Open WebUI.
+
+00:00:39.670 --> 00:00:42.230
+Selecione Install.
+
+00:00:42.230 --> 00:00:46.500
+Mantenha o nome da instância e implante no namespace suse-ai.
+
+00:00:48.560 --> 00:00:55.810
+O Fleet implanta o bundle nos clusters que você selecionar. Desmarque o cluster pré-selecionado pelo assistente,
+
+00:00:55.810 --> 00:01:00.830
+e selecione demo-ai, o cluster de GPU no SUSE Virtualization.
+
+00:01:02.970 --> 00:01:08.960
+Aqui você pode sobrescrever os Helm values de cada componente. Mantenha os padrões do blueprint.
+
+00:01:11.060 --> 00:01:20.410
+Revise o plano. O GPU Operator vai para o próprio namespace, e o vLLM e o Open WebUI para o suse-ai, tudo no demo-ai.
+
+00:01:20.410 --> 00:01:22.560
+Selecione Install.
+
+00:01:24.910 --> 00:01:34.780
+Abra Workloads. O novo workload de IA aparece na lista, e o Fleet distribui os três componentes para o demo-ai.
+
+00:01:34.780 --> 00:01:45.040
+O GPU Operator instalou o driver NVIDIA no worker de GPU, e o vLLM baixou o modelo e o carregou na T400. O workload está Running.
+
+00:01:45.040 --> 00:01:50.880
+Selecione Open in Rancher para abrir o namespace suse-ai no demo-ai.
+
+00:01:50.880 --> 00:01:53.850
+Abra a aba Workloads dele.
+
+00:01:53.850 --> 00:02:05.820
+O motor vLLM do Qwen 2.5 0.5B Instruct está Active, com a imagem do SUSE Application Collection, ao lado do router e do Open WebUI.
+
+00:02:05.820 --> 00:02:16.353
+O SUSE AI roda no cluster guest e o vLLM serve o modelo na GPU com passthrough. A seguir, você faz uma consulta e acompanha as métricas dele.

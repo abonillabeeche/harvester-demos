@@ -1,0 +1,64 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.190
+Aprenda a salvar dados de usuário do cloud-init como um modelo de configuração de nuvem e aplicá-lo a uma nova máquina virtual, para que toda máquina inicie com as mesmas configurações.
+
+00:00:11.190 --> 00:00:18.520
+Em Advanced, Cloud Configuration Templates lista seus modelos salvos. Selecione Create.
+
+00:00:18.520 --> 00:00:21.540
+Escolha o namespace.
+
+00:00:21.540 --> 00:00:23.820
+Dê um nome ao modelo.
+
+00:00:23.820 --> 00:00:30.770
+Mantenha o tipo do modelo como User Data. Modelos Network Data configuram a rede do convidado.
+
+00:00:30.770 --> 00:00:40.330
+Digite os dados de usuário do cloud-init. Eles definem uma senha para o usuário padrão, permitem login por senha e instalam o pacote htop.
+
+00:00:40.330 --> 00:00:42.770
+Selecione Create.
+
+00:00:42.770 --> 00:00:49.040
+Agora crie uma máquina virtual que use o modelo. Vá para Virtual Machines
+
+00:00:49.040 --> 00:00:51.570
+e selecione Create.
+
+00:00:51.570 --> 00:00:54.690
+Escolha o mesmo namespace,
+
+00:00:54.690 --> 00:00:56.420
+um nome,
+
+00:00:56.420 --> 00:00:58.640
+uma CPU,
+
+00:00:58.640 --> 00:01:01.190
+e dois gigabytes de memória.
+
+00:01:01.190 --> 00:01:03.570
+Na aba Volumes,
+
+00:01:03.570 --> 00:01:07.540
+selecione a imagem do openSUSE Leap.
+
+00:01:07.540 --> 00:01:10.410
+Abra a aba Advanced Options.
+
+00:01:10.410 --> 00:01:17.680
+Em Cloud Configuration, abra User Data Template e selecione o modelo que você criou.
+
+00:01:17.680 --> 00:01:25.070
+O editor agora contém os dados de usuário do modelo. Você ainda pode ajustá-los apenas para esta máquina virtual.
+
+00:01:25.070 --> 00:01:29.060
+Selecione Create.
+
+00:01:29.060 --> 00:01:38.040
+A máquina virtual está em execução. Na primeira inicialização, o cloud-init aplica a senha e instala o pacote.
+
+00:01:38.040 --> 00:01:46.292
+Toda máquina virtual que usar este modelo inicia com a mesma configuração. A seguir, você cria um modelo de máquina virtual.

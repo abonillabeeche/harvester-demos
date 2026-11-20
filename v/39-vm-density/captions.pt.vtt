@@ -1,0 +1,79 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.540
+Aumente as taxas de overcommit no SUSE Virtualization e adicione pequenas máquinas virtuais em lotes de dez até que um único host se recuse a aceitar mais.
+
+00:00:10.540 --> 00:00:20.320
+Em Advanced, Settings, a opção overcommit-config define quanto de CPU, memória e armazenamento o agendador pode prometer além da capacidade física.
+
+00:00:20.320 --> 00:00:26.230
+Abra o menu de ações dela e selecione Edit Setting para alterar os padrões.
+
+00:00:28.310 --> 00:00:32.740
+Para esta demonstração, aumente a CPU de mil para dois mil por cento,
+
+00:00:32.740 --> 00:00:39.280
+e a memória de cento e cinquenta para quatrocentos por cento, para que cada máquina virtual pequena reserve muito pouco.
+
+00:00:39.280 --> 00:00:43.410
+Selecione Save para aplicar as novas taxas.
+
+00:00:43.410 --> 00:00:47.730
+Agora vá para Virtual Machines e selecione Create.
+
+00:00:49.740 --> 00:00:55.490
+Selecione Multiple Instance para criar várias máquinas virtuais a partir de um único formulário.
+
+00:00:55.490 --> 00:00:58.660
+Escolha o namespace demo,
+
+00:00:58.660 --> 00:01:01.810
+o prefixo de nome demo-dense,
+
+00:01:01.810 --> 00:01:06.140
+e uma quantidade de dez, o máximo que o formulário cria de uma vez.
+
+00:01:06.140 --> 00:01:08.890
+Dê a cada máquina virtual uma CPU
+
+00:01:08.890 --> 00:01:11.400
+e um gigabyte de memória.
+
+00:01:11.400 --> 00:01:13.200
+Na aba Volumes,
+
+00:01:13.200 --> 00:01:21.900
+selecione a imagem minimal do SLES 16. O armazenamento LVM thin clona cada disco raiz a partir de um snapshot em segundos.
+
+00:01:21.900 --> 00:01:28.910
+A aba Networks mantém a rede de gerenciamento padrão, então nenhum endereço vem do pool de DHCP do laboratório.
+
+00:01:28.910 --> 00:01:36.940
+Selecione Create. O formulário cria as dez máquinas virtuais uma após a outra.
+
+00:01:36.940 --> 00:01:40.410
+As primeiras dez máquinas virtuais estão em execução.
+
+00:01:40.410 --> 00:01:46.980
+Repita o formulário para o lote dois, com o prefixo demo-dense-b e as mesmas configurações minúsculas.
+
+00:02:05.440 --> 00:02:13.050
+Vinte máquinas virtuais estão em execução. Daqui em diante, o vídeo corta entre os lotes.
+
+00:02:13.050 --> 00:02:23.160
+Corte. Mais dois lotes de dez, criados fora de câmera com as mesmas configurações: quarenta máquinas virtuais estão em execução.
+
+00:02:23.160 --> 00:02:31.910
+Corte de novo. Depois de mais dois lotes, sessenta máquinas virtuais pequenas estão em execução neste único host.
+
+00:02:31.910 --> 00:02:38.500
+Corte. No sétimo lote, oito máquinas virtuais iniciam, mas o host recusa as outras duas.
+
+00:02:38.500 --> 00:02:46.370
+Os pods delas são rejeitados por excesso de pods. Cada máquina virtual roda em seu próprio pod, e o host permite duzentos.
+
+00:02:46.370 --> 00:02:56.150
+A contagem final é de sessenta e oito máquinas virtuais em execução. O limite de pods, e não a CPU ou a memória, deteve este host.
+
+00:02:56.150 --> 00:03:08.626
+O overcommit permite que um host aceite muitas máquinas virtuais pequenas, ao custo de contenção sob carga. Verifique também o limite de pods e restaure as taxas padrão quando terminar os testes.

@@ -1,0 +1,91 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.730
+Neste vídeo, você constrói uma nuvem privada virtual com três sub-redes, uma para cada camada de uma aplicação: web, app e banco de dados. Depois, você verifica que as camadas se alcançam dentro da VPC.
+
+00:00:13.730 --> 00:00:18.850
+Em Overlay Networks, abra Virtual Private Cloud e selecione Create.
+
+00:00:18.850 --> 00:00:28.740
+Dê à VPC o nome demo-3tier. Uma VPC é um roteador separado, e seu espaço de endereçamento fica isolado de todas as outras VPCs.
+
+00:00:28.740 --> 00:00:31.100
+Selecione Create.
+
+00:00:31.100 --> 00:00:36.880
+No grupo demo-3tier, selecione Create Subnet para adicionar a primeira camada.
+
+00:00:36.880 --> 00:00:39.310
+Dê a ela o nome demo-web.
+
+00:00:39.310 --> 00:00:46.360
+A camada web recebe o bloco CIDR 10.230.1.0/24.
+
+00:00:46.360 --> 00:00:57.350
+Como provider, selecione a rede overlay demo-web-net. As máquinas virtuais se conectam a essa rede, e o Kube-OVN fornece endereços a partir desta sub-rede.
+
+00:00:57.350 --> 00:01:04.880
+O gateway, 10.230.1.1, é a porta do roteador da VPC nesta sub-rede.
+
+00:01:04.880 --> 00:01:10.870
+Ative o DHCP, para que as máquinas virtuais recebam o endereço e a rota automaticamente.
+
+00:01:10.870 --> 00:01:13.210
+Selecione Create.
+
+00:01:13.210 --> 00:01:16.210
+Adicione a camada app da mesma forma,
+
+00:01:17.860 --> 00:01:24.330
+com o nome demo-app, o bloco CIDR 10.230.2.0/24,
+
+00:01:24.330 --> 00:01:27.600
+a rede overlay demo-app-net,
+
+00:01:27.600 --> 00:01:31.690
+o gateway 10.230.2.1,
+
+00:01:31.690 --> 00:01:34.280
+e o DHCP ativado.
+
+00:01:36.330 --> 00:01:39.270
+Depois a camada do banco de dados,
+
+00:01:40.920 --> 00:01:46.370
+demo-db, com 10.230.3.0/24,
+
+00:01:46.370 --> 00:01:49.900
+a rede overlay demo-db-net,
+
+00:01:49.900 --> 00:01:54.450
+o gateway 10.230.3.1,
+
+00:01:54.450 --> 00:01:56.160
+e o DHCP.
+
+00:01:58.200 --> 00:02:04.330
+A VPC demo-3tier agora lista suas três sub-redes.
+
+00:02:04.330 --> 00:02:18.730
+Para testar a rede, três pequenas máquinas virtuais foram criadas com o kubectl, uma na rede overlay de cada camada. Cada uma executa um pequeno serviço web, na porta 80, 8080 ou 5432.
+
+00:02:18.730 --> 00:02:23.970
+demo-web recebeu 10.230.1.10 na sub-rede web,
+
+00:02:23.970 --> 00:02:30.550
+e demo-db recebeu 10.230.3.10 na sub-rede do banco de dados.
+
+00:02:30.550 --> 00:02:34.640
+Abra o console da demo-web no WebVNC.
+
+00:02:37.950 --> 00:02:42.020
+Faça login como sles, com a senha que o cloud-init definiu.
+
+00:02:44.630 --> 00:02:51.890
+Faça ping na demo-db e solicite a página na porta 5432 dela.
+
+00:02:51.890 --> 00:03:04.940
+Ambas respondem. As sub-redes na mesma VPC se roteiam entre si pelo roteador da VPC, sem configuração extra. Isso é conveniente, mas toda camada também alcança o banco de dados.
+
+00:03:04.940 --> 00:03:13.982
+Uma VPC agora contém três sub-redes, e o roteador dela as conecta. A seguir, você torna a sub-rede do banco de dados privada.

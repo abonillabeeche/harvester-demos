@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.370
+Aqui você usa o painel de right-sizing de VMs no SUSE Observability para encontrar máquinas virtuais superdimensionadas, subdimensionadas ou ociosas.
+
+00:00:12.370 --> 00:00:21.920
+Este painel compara as vCPUs e a memória alocadas a cada VM com o que ela usa, e quanto essa diferença custa.
+
+00:00:21.920 --> 00:00:30.540
+Os filtros Cluster e VM limitam todos os painéis. Aqui, eles abrangem todas as VMs do cluster harvester-north.
+
+00:00:30.540 --> 00:00:39.370
+A linha Savings estima a economia mensal ao dimensionar VMs em execução e ao remover as ociosas e paradas.
+
+00:00:39.370 --> 00:00:42.990
+Role a página para ver os números por trás da economia.
+
+00:00:44.990 --> 00:00:53.910
+O painel mostra as vCPUs e a memória a devolver, e as VMs subdimensionadas, ociosas ou paradas.
+
+00:00:53.910 --> 00:01:01.240
+Days of data mostra por quanto tempo as medições se estendem. Menos de uma semana pode deixar de captar picos semanais.
+
+00:01:01.240 --> 00:01:08.820
+Por VM, você vê as vCPUs alocadas e recomendadas e o que devolver, com a memória abaixo.
+
+00:01:08.820 --> 00:01:11.050
+Role mais um pouco.
+
+00:01:13.010 --> 00:01:21.230
+Os painéis de evidências mostram as medições por trás de cada recomendação, como a CPU no percentil noventa e cinco.
+
+00:01:23.180 --> 00:01:32.250
+Na parte inferior, gráficos mostram a utilização de cada VM ao longo do tempo, com linhas de limite âmbar e vermelho.
+
+00:01:32.250 --> 00:01:39.293
+Para aplicar uma recomendação, edite a CPU e a memória da VM no SUSE Virtualization e reinicie a VM.

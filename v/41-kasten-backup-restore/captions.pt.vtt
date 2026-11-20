@@ -1,0 +1,79 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.800
+Aprenda a fazer backup de uma máquina virtual do SUSE Virtualization em um bucket S3 com o Veeam Kasten, um produto parceiro, e depois restaurá-la após a exclusão.
+
+00:00:12.450 --> 00:00:21.750
+O Veeam Kasten roda no cluster. A página Virtual Machines dele lista demo-k10, uma máquina virtual do SUSE Virtualization em execução.
+
+00:00:21.750 --> 00:00:29.920
+O Kasten protege aplicações por namespace. A máquina virtual tem o próprio namespace, demo-k10, que ainda não é gerenciado.
+
+00:00:29.920 --> 00:00:32.510
+Abra o menu de opções dela,
+
+00:00:32.510 --> 00:00:35.970
+e selecione Create a Policy.
+
+00:00:35.970 --> 00:00:41.600
+O formulário preenche o nome da política, demo-k10-backup, e a ação Snapshot.
+
+00:00:41.600 --> 00:00:48.510
+Para esta demonstração, defina a frequência de backup como On Demand. Em produção, você escolhe um agendamento, como Daily.
+
+00:00:48.510 --> 00:00:57.970
+Ative Backups via Snapshot Exports. Um snapshot sozinho fica no cluster; a exportação o copia para o armazenamento de objetos.
+
+00:00:57.970 --> 00:01:01.450
+Abra a lista de perfis de local de exportação,
+
+00:01:01.450 --> 00:01:07.760
+e escolha demo-s3, um perfil de local para um bucket S3 configurado anteriormente.
+
+00:01:07.760 --> 00:01:14.810
+O namespace demo-k10 já está selecionado, com todos os seus recursos, incluindo a máquina virtual e o disco dela.
+
+00:01:14.810 --> 00:01:17.720
+Selecione Submit.
+
+00:01:17.720 --> 00:01:21.520
+A política é válida. Abra as ações dela,
+
+00:01:21.520 --> 00:01:24.950
+e selecione Run Once.
+
+00:01:24.950 --> 00:01:34.370
+Confirme. O Kasten faz o snapshot do disco e depois exporta o snapshot e a definição da máquina virtual para o bucket.
+
+00:01:34.370 --> 00:01:40.990
+Em Restore Points, a execução criou um ponto de restauração exportado para o perfil demo-s3.
+
+00:01:40.990 --> 00:01:47.820
+Agora simule uma perda. No SUSE Virtualization, abra as ações de demo-k10,
+
+00:01:47.820 --> 00:01:50.640
+e selecione Delete.
+
+00:01:50.640 --> 00:01:56.320
+O volume do disco também está selecionado. Selecione Delete.
+
+00:01:56.320 --> 00:02:01.040
+De volta ao Kasten, abra as ações do ponto de restauração exportado,
+
+00:02:01.040 --> 00:02:03.980
+e selecione Restore.
+
+00:02:03.980 --> 00:02:12.330
+Mantenha o namespace original, demo-k10. O Kasten restaura todos os artefatos, incluindo o volume e a máquina virtual.
+
+00:02:12.330 --> 00:02:14.790
+Selecione Restore,
+
+00:02:14.790 --> 00:02:18.040
+e confirme.
+
+00:02:18.040 --> 00:02:25.850
+No SUSE Virtualization, demo-k10 está em execução novamente, com o disco dela restaurado do bucket.
+
+00:02:25.850 --> 00:02:33.399
+A máquina virtual está de volta, restaurada do backup exportado. A seguir, você usa armazenamento NetApp com Trident.

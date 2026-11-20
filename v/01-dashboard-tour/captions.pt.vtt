@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.100
+Neste vídeo, você conhece o painel do SUSE Virtualization e aprende onde encontrar hosts, máquinas virtuais, imagens, volumes, redes e configurações.
+
+00:00:11.100 --> 00:00:17.150
+O painel abre depois que você faz login. Ele mostra o nome e a versão do cluster.
+
+00:00:17.150 --> 00:00:23.940
+Cartões de resumo contam os hosts, máquinas virtuais, redes, imagens, volumes e discos.
+
+00:00:23.940 --> 00:00:29.990
+A seção Capacity mostra quanta CPU, memória e armazenamento estão reservados e em uso.
+
+00:00:29.990 --> 00:00:34.180
+A tabela Events lista a atividade recente no cluster.
+
+00:00:34.180 --> 00:00:39.400
+O menu à esquerda leva a todos os recursos. Selecione Hosts.
+
+00:00:39.400 --> 00:00:46.100
+Cada host mostra seu estado, endereço IP e uso de recursos. Este cluster tem um host.
+
+00:00:46.100 --> 00:00:52.620
+Virtual Machines lista cada máquina virtual com seu estado, nó e endereço IP.
+
+00:00:52.620 --> 00:00:59.070
+Images guarda as imagens de sistema operacional a partir das quais as máquinas virtuais inicializam.
+
+00:00:59.070 --> 00:01:02.340
+Volumes lista os discos virtuais.
+
+00:01:02.340 --> 00:01:10.350
+Networks agrupa as redes de máquinas virtuais, a configuração de rede do cluster e os balanceadores de carga.
+
+00:01:10.350 --> 00:01:18.420
+Advanced guarda templates, chaves SSH, templates de configuração de nuvem, storage classes e dispositivos.
+
+00:01:18.420 --> 00:01:24.880
+Settings guarda as opções de todo o cluster, como o destino de backup.
+
+00:01:24.880 --> 00:01:31.465
+Agora você sabe onde fica tudo no painel. A seguir, você envia uma imagem de máquina virtual.

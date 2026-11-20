@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.350
+Configure o destino de backup no SUSE Virtualization: um bucket compatível com S3 que armazena backups de máquinas virtuais fora do cluster.
+
+00:00:09.350 --> 00:00:16.120
+Em Advanced, Settings, a configuração backup-target está vazia, então os backups ainda não têm para onde ir.
+
+00:00:16.120 --> 00:00:18.870
+Abra o menu de ações dela,
+
+00:00:18.870 --> 00:00:22.750
+e selecione Edit Setting.
+
+00:00:22.750 --> 00:00:28.140
+Escolha S3 como o tipo. NFS é a outra opção.
+
+00:00:28.140 --> 00:00:34.670
+Informe o endpoint do armazenamento de objetos compatível com S3, aqui um Ceph object gateway.
+
+00:00:34.670 --> 00:00:37.740
+Informe o nome de um bucket existente,
+
+00:00:37.740 --> 00:00:39.770
+e a região dele.
+
+00:00:39.770 --> 00:00:44.510
+Informe o access key ID de uma conta que possa gravar no bucket,
+
+00:00:44.510 --> 00:00:48.580
+e o secret access key dela. O campo é mascarado.
+
+00:00:48.580 --> 00:00:55.760
+Mantenha Virtual Hosted-Style definido como False, porque este gateway usa URLs de bucket path-style.
+
+00:00:55.760 --> 00:00:59.490
+Selecione Save.
+
+00:00:59.490 --> 00:01:08.870
+De volta à lista de configurações, a configuração está marcada como Modified. Selecione Test connection para verificar se o bucket está acessível.
+
+00:01:08.870 --> 00:01:11.900
+O teste de conexão é bem-sucedido.
+
+00:01:11.900 --> 00:01:16.220
+Selecione Show backup-target para revisar o valor salvo.
+
+00:01:16.220 --> 00:01:24.390
+Ele lista o endpoint, o bucket e a região. As chaves são mantidas separadamente em um secret do Kubernetes.
+
+00:01:24.390 --> 00:01:32.072
+O destino de backup está configurado. A seguir, você faz backup de uma máquina virtual e a restaura a partir desse backup.

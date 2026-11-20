@@ -1,0 +1,64 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.330
+Neste vídeo, você revisa uma GPU habilitada para PCI passthrough e a anexa a uma máquina virtual, dando ao sistema convidado acesso direto ao dispositivo físico.
+
+00:00:11.330 --> 00:00:19.240
+Em Advanced, a página PCI Devices lista todos os dispositivos PCI de cada host. Filtre a lista por NVIDIA.
+
+00:00:19.240 --> 00:00:27.270
+Esta GPU NVIDIA Quadro P1000 tem o passthrough habilitado. O host não a usa mais, então uma máquina virtual pode.
+
+00:00:27.270 --> 00:00:35.350
+A função de áudio da GPU está no mesmo grupo IOMMU, por isso também está habilitada. Passe as duas para a mesma máquina virtual.
+
+00:00:35.350 --> 00:00:45.470
+O menu de ações de um dispositivo habilitado oferece Disable Passthrough. Outros dispositivos oferecem Enable Passthrough, que é como esta GPU foi habilitada.
+
+00:00:47.420 --> 00:00:52.700
+Na página Virtual Machines, abra o menu de ações de demo-gpu,
+
+00:00:52.700 --> 00:00:55.880
+e selecione Edit Config.
+
+00:00:55.880 --> 00:00:59.340
+Selecione a aba PCI Devices.
+
+00:00:59.340 --> 00:01:03.810
+Em Available PCI Devices, escolha a GPU,
+
+00:01:03.810 --> 00:01:07.160
+e a função de áudio dela.
+
+00:01:08.840 --> 00:01:16.700
+Os dois dispositivos estão no host p5820, então o formulário o lista como host compatível. A máquina virtual rodará nele.
+
+00:01:16.700 --> 00:01:19.050
+Selecione Save.
+
+00:01:19.050 --> 00:01:27.580
+Um dispositivo PCI é anexado na inicialização, então selecione Save and Restart.
+
+00:01:27.580 --> 00:01:34.910
+A máquina virtual reiniciou no host p5820 e está em execução novamente, agora com a GPU anexada.
+
+00:01:34.910 --> 00:01:39.070
+Para verificar de dentro do convidado, abra o console,
+
+00:01:39.070 --> 00:01:42.410
+no WebVNC.
+
+00:01:42.410 --> 00:01:44.310
+Entre como sles,
+
+00:01:44.310 --> 00:01:48.060
+com a senha que o cloud-init definiu.
+
+00:01:48.060 --> 00:01:53.060
+Liste os dispositivos PCI do convidado e filtre por NVIDIA.
+
+00:01:53.060 --> 00:02:01.940
+O convidado lista a GPU Quadro P1000 e sua função de áudio como seus próprios dispositivos PCI.
+
+00:02:01.940 --> 00:02:09.534
+A máquina virtual roda com a GPU física passada por passthrough. A seguir, você usa armazenamento local LVM.

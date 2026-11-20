@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.830
+Aprenda a encontrar uma máquina virtual não íntegra no SUSE Observability, verificar as métricas dela e abrir o monitor por trás do estado de integridade.
+
+00:00:10.830 --> 00:00:13.540
+Abra o menu principal.
+
+00:00:13.540 --> 00:00:16.930
+Expanda SUSE Virtualization.
+
+00:00:16.930 --> 00:00:20.160
+Selecione Virtual machines.
+
+00:00:20.160 --> 00:00:26.510
+Esta VM mostra Deviating. Ela roda em um host do cluster harvester-north.
+
+00:00:26.510 --> 00:00:34.210
+À direita, as colunas CPU Usage, Memory Usage e Disk Usage mostram as métricas atuais de cada VM.
+
+00:00:34.210 --> 00:00:37.860
+Abra a VM Deviating.
+
+00:00:37.860 --> 00:00:45.290
+Na página Highlights, o cartão Monitors mostra qual verificação falhou. Aqui, é VM disk filling up.
+
+00:00:45.290 --> 00:00:51.030
+Antes de abrir o monitor, selecione Metrics para ver os gráficos da VM.
+
+00:00:51.030 --> 00:01:01.600
+Guest mostra o uso do sistema de arquivos dentro da VM, por meio do QEMU guest agent. Outros grupos cobrem rede, armazenamento, memória e CPU.
+
+00:01:01.600 --> 00:01:04.500
+Volte para Highlights.
+
+00:01:04.500 --> 00:01:09.580
+Selecione o monitor VM disk filling up.
+
+00:01:09.580 --> 00:01:18.450
+O painel explica a verificação. Ela dispara quando o sistema de arquivos gravável mais cheio na VM está mais de oitenta por cento usado.
+
+00:01:18.450 --> 00:01:26.780
+A evidência de disparo plota essa métrica contra o limite dela. O estado de integridade mostra Deviating desde o momento do disparo.
+
+00:01:26.780 --> 00:01:37.060
+Abaixo, o monitor vincula um guia de remediação com os próximos passos sugeridos. Revise-os no seu próprio ambiente antes de agir.
+
+00:01:37.060 --> 00:01:41.550
+Feche o painel quando terminar.
+
+00:01:41.550 --> 00:01:50.249
+Você rastreou uma máquina virtual não íntegra até o monitor por trás do estado dela. A seguir, você redimensiona máquinas virtuals.

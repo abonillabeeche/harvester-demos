@@ -1,0 +1,52 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:07.560
+Torne a sub-rede de banco de dados de uma VPC privada, para que apenas a camada de app possa alcançá-la.
+
+00:00:07.560 --> 00:00:18.350
+A VPC demo-3tier tem uma sub-rede web, uma de app e uma de banco de dados, com uma máquina virtual em cada uma. Neste momento, cada sub-rede alcança todas as outras.
+
+00:00:18.350 --> 00:00:22.940
+Abra o menu de ações da sub-rede demo-db,
+
+00:00:22.940 --> 00:00:26.120
+e selecione Edit Config.
+
+00:00:26.120 --> 00:00:33.130
+Em Private Subnet, selecione Enabled. Uma sub-rede privada descarta todo o tráfego que vem de fora dela.
+
+00:00:33.130 --> 00:00:37.180
+Adicione uma exceção para as sub-redes que ainda podem se conectar.
+
+00:00:37.180 --> 00:00:45.950
+Digite a sub-rede de app, 10.230.2.0/24. A sub-rede web não está na lista.
+
+00:00:45.950 --> 00:00:54.420
+Selecione Save. O Kube-OVN atualiza as regras da sub-rede imediatamente, sem reiniciar nenhuma máquina virtual.
+
+00:00:54.420 --> 00:00:58.320
+Vá para Virtual Machines e abra o console da demo-web.
+
+00:01:03.140 --> 00:01:07.210
+Faça login como sles, com a senha que o cloud-init definiu.
+
+00:01:09.810 --> 00:01:17.120
+Solicite a porta 5432 da camada de banco de dados.
+
+00:01:17.120 --> 00:01:23.140
+A conexão expira. A sub-rede web não tem permissão para entrar na sub-rede privada.
+
+00:01:23.140 --> 00:01:26.570
+Agora abra o console da demo-app.
+
+00:01:29.370 --> 00:01:31.600
+Faça login da mesma forma.
+
+00:01:34.270 --> 00:01:38.010
+Envie a mesma solicitação.
+
+00:01:38.010 --> 00:01:47.310
+A resposta chega. A sub-rede de app está na lista de permissões, então a camada de app ainda alcança o banco de dados.
+
+00:01:47.310 --> 00:01:59.338
+A sub-rede de banco de dados está privada: a camada de app ainda a alcança, e a camada web é bloqueada. A seguir, você limita o tráfego a portas específicas com listas de controle de acesso.

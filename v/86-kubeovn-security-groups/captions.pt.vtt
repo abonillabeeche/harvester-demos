@@ -1,0 +1,70 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.370
+Este vídeo mostra como proteger uma única máquina virtual com um security group do Kube-OVN. Enquanto uma access control list se aplica a uma sub-rede inteira, um security group segue uma porta de rede.
+
+00:00:12.370 --> 00:00:24.700
+Os security groups do Kube-OVN ainda não têm entrada de menu nem formulário, mas a interface os lista na página de recurso deles, kubeovn.io.securitygroup, e os cria a partir de YAML.
+
+00:00:24.700 --> 00:00:28.500
+Selecione Create from YAML.
+
+00:00:28.500 --> 00:00:48.670
+Cole o security group demo-db-sg. Sua única regra de ingress permite a porta TCP 5432 a partir da sub-rede do app, 10.230.2.0/24. Todo o resto que entra é negado. A regra de egress deixa a máquina responder e alcançar destinos externos.
+
+00:00:48.670 --> 00:00:51.010
+Selecione Create.
+
+00:00:51.010 --> 00:00:55.670
+O security group existe, mas nenhuma porta o usa ainda.
+
+00:00:55.670 --> 00:01:01.630
+Vincule-o à máquina virtual do banco de dados. Abra o menu de ações do demo-db,
+
+00:01:01.630 --> 00:01:04.860
+e selecione Edit YAML.
+
+00:01:04.860 --> 00:01:13.600
+O Kube-OVN lê as configurações por porta das anotações no template da máquina virtual. Este já fixa o endereço na rede demo-db-net.
+
+00:01:13.600 --> 00:01:22.510
+Adicione mais duas para a mesma rede: port_security true ativa a filtragem da porta, e security_groups nomeia o demo-db-sg.
+
+00:01:22.510 --> 00:01:24.680
+Selecione Save.
+
+00:01:24.680 --> 00:01:31.390
+A porta recebe as anotações quando a máquina virtual inicia novamente, então reinicie o demo-db.
+
+00:01:33.510 --> 00:01:37.650
+Confirme com Apply.
+
+00:01:37.650 --> 00:01:42.430
+O demo-db está em execução novamente, com o mesmo endereço.
+
+00:01:42.430 --> 00:01:45.540
+Abra o console do demo-web.
+
+00:01:48.390 --> 00:01:52.500
+Faça login como sles, com a senha que o cloud-init definiu.
+
+00:01:55.150 --> 00:02:06.190
+Faça ping no demo-db, depois solicite a porta 5432 dele.
+
+00:02:06.190 --> 00:02:11.590
+Ambos falham. A sub-rede do web não está na regra do security group.
+
+00:02:11.590 --> 00:02:14.780
+Então abra o console do demo-app.
+
+00:02:17.510 --> 00:02:19.740
+Faça login da mesma forma.
+
+00:02:22.340 --> 00:02:30.330
+Solicite a porta 5432 a partir do app tier, depois faça ping.
+
+00:02:30.330 --> 00:02:43.700
+O banco de dados responde na porta 5432, e o ping é descartado. A regra segue a porta do demo-db, então protegeria a máquina em qualquer sub-rede.
+
+00:02:43.700 --> 00:02:58.065
+O security group protege apenas a porta do demo-db: só a sub-rede do app entra, e somente na porta 5432. A seguir, você direciona o tráfego de uma VPC inteira com policy routes.

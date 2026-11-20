@@ -1,0 +1,148 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.410
+Aprenda a criar uma nuvem privada virtual com uma sub-rede e, em seguida, adicionar um VPC NAT gateway para que as máquinas virtuais na VPC possam alcançar a internet.
+
+00:00:12.410 --> 00:00:19.260
+Em Overlay Networks, Virtual Private Cloud lista as VPCs. Selecione Create.
+
+00:00:19.260 --> 00:00:23.020
+Dê à VPC o nome demo-vpc.
+
+00:00:23.020 --> 00:00:26.310
+Na aba Static Routes, selecione Add.
+
+00:00:26.310 --> 00:00:32.240
+Encaminhe todos os destinos, zero ponto zero ponto zero ponto zero barra zero,
+
+00:00:32.240 --> 00:00:41.870
+para 172.31.10.254. O NAT gateway usa este endereço dentro da VPC.
+
+00:00:41.870 --> 00:00:46.250
+Selecione Create.
+
+00:00:46.250 --> 00:00:51.540
+No grupo demo-vpc, selecione Create Subnet.
+
+00:00:51.540 --> 00:00:55.140
+Dê à sub-rede o nome demo-vpc-subnet.
+
+00:00:55.140 --> 00:01:01.890
+Informe o bloco CIDR 172.31.10.0/24.
+
+00:01:01.890 --> 00:01:11.180
+Como provider, selecione a overlay network demo-vpc-net. A VPC já está definida como demo-vpc.
+
+00:01:11.180 --> 00:01:16.580
+Defina o gateway IP como 172.31.10.1.
+
+00:01:16.580 --> 00:01:22.750
+Ative o DHCP, para que as máquinas virtuais recebam um endereço e uma rota padrão.
+
+00:01:22.750 --> 00:01:28.930
+Ative o NAT Outgoing, como a documentação recomenda para sub-redes de tenant.
+
+00:01:28.930 --> 00:01:31.380
+Selecione Create.
+
+00:01:31.380 --> 00:01:39.510
+demo-vpc-subnet agora pertence a demo-vpc. Sem um gateway, ela não tem rota para fora da VPC.
+
+00:01:39.510 --> 00:01:44.510
+Em seguida, abra NAT e Internet, em Overlay Networks.
+
+00:01:44.510 --> 00:01:47.130
+Selecione Gateways,
+
+00:01:47.130 --> 00:01:49.550
+e depois Create.
+
+00:01:49.550 --> 00:01:53.070
+Dê ao gateway o nome demo-gw.
+
+00:01:53.070 --> 00:01:58.040
+Selecione a rede de tenant interna demo-vpc-net,
+
+00:01:58.040 --> 00:02:01.700
+a VPC demo-vpc,
+
+00:02:01.700 --> 00:02:05.880
+e a sub-rede demo-vpc-subnet.
+
+00:02:05.880 --> 00:02:16.010
+O LAN IP é o endereço do gateway na sub-rede, 172.31.10.254, o próximo salto da rota da VPC.
+
+00:02:16.010 --> 00:02:18.890
+Abra a aba External Subnets.
+
+00:02:18.890 --> 00:02:29.680
+Selecione a sub-rede externa demo-ext-subnet. Neste laboratório, ela representa uma VLAN de underlay com NAT de saída através do host.
+
+00:02:29.680 --> 00:02:33.420
+Selecione Create.
+
+00:02:33.420 --> 00:02:42.120
+O SUSE Virtualization inicia o gateway como um pod com uma perna na sub-rede da VPC e outra na sub-rede externa.
+
+00:02:42.120 --> 00:02:47.950
+Em seguida, dê ao gateway um IP externo. Selecione External IPs,
+
+00:02:47.950 --> 00:02:50.350
+e depois Create.
+
+00:02:50.350 --> 00:02:52.820
+Dê a ele o nome demo-eip.
+
+00:02:52.820 --> 00:02:57.270
+Selecione o NAT gateway demo-gw,
+
+00:02:57.270 --> 00:03:04.320
+e a sub-rede externa. Deixe V4 IP vazio para pegar o próximo endereço livre.
+
+00:03:04.320 --> 00:03:06.770
+Selecione Create.
+
+00:03:06.770 --> 00:03:12.030
+Por fim, adicione uma regra de source NAT. Selecione Source Rules,
+
+00:03:12.030 --> 00:03:14.420
+e depois Create.
+
+00:03:14.420 --> 00:03:17.730
+Dê a ela o nome demo-snat.
+
+00:03:17.730 --> 00:03:21.600
+Selecione o IP externo demo-eip.
+
+00:03:21.600 --> 00:03:31.780
+Informe o CIDR da sub-rede, 172.31.10.0/24. O tráfego dela sai com o IP externo como origem.
+
+00:03:31.780 --> 00:03:35.820
+Selecione Create.
+
+00:03:35.820 --> 00:03:47.130
+Para testar o caminho, uma pequena máquina virtual, demo-vpc-vm, foi anexada à overlay network demo-vpc-net. Abra Virtual Machines.
+
+00:03:47.130 --> 00:03:54.000
+O endereço dela vem de demo-vpc-subnet, atribuído pelo serviço de DHCP da sub-rede.
+
+00:03:54.000 --> 00:03:56.590
+Abra o console dela,
+
+00:03:56.590 --> 00:04:00.350
+em WebVNC.
+
+00:04:00.350 --> 00:04:02.520
+Entre como sles,
+
+00:04:02.520 --> 00:04:06.450
+com a senha que o cloud-init definiu.
+
+00:04:06.450 --> 00:04:16.410
+Pingue um endereço público na internet, 8.8.8.8.
+
+00:04:16.410 --> 00:04:26.560
+As respostas chegam. O tráfego sai da VPC através de demo-gw, com demo-eip como endereço de origem.
+
+00:04:26.560 --> 00:04:35.183
+A máquina virtual em demo-vpc alcança a internet através do NAT gateway. A seguir, você gerencia hosts fora de banda.

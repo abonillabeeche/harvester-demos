@@ -1,0 +1,76 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.450
+Aqui você vai ativar o add-on harvester-seeder e informar o endereço e as credenciais do BMC de um host, para que o SUSE Virtualization possa gerenciar o hardware fora de banda.
+
+00:00:11.450 --> 00:00:16.510
+Em Advanced, Add-ons, abra o menu de ações do harvester-seeder.
+
+00:00:16.510 --> 00:00:26.200
+Selecione Enable. O Seeder se comunica com o controlador de gerenciamento da placa-mãe de cada host, via IPMI e Redfish.
+
+00:00:26.200 --> 00:00:29.530
+O add-on informa Deploy Successful.
+
+00:00:29.530 --> 00:00:34.830
+Na página Hosts, abra o menu de ações do r640-1,
+
+00:00:34.830 --> 00:00:38.010
+e selecione Edit Config.
+
+00:00:38.010 --> 00:00:43.630
+Abra a aba Out-of-band Access. Ela aparece quando o add-on está ativado.
+
+00:00:43.630 --> 00:00:46.070
+Selecione Enabled.
+
+00:00:46.070 --> 00:00:51.140
+Digite o endereço do BMC do host, aqui um Dell iDRAC 9.
+
+00:00:51.140 --> 00:00:55.490
+Digite a porta 623, a porta do IPMI over LAN.
+
+00:00:55.490 --> 00:01:00.840
+Selecione Insecure TLS, porque este iDRAC usa um certificado autoassinado.
+
+00:01:00.840 --> 00:01:07.010
+As credenciais ficam em um secret. Abra a lista de Secrets e escolha Create a New.
+
+00:01:07.010 --> 00:01:13.530
+Dê ao secret o nome demo-idrac-r640. Ele é criado no namespace padrão.
+
+00:01:13.530 --> 00:01:18.070
+Digite o nome de usuário de uma conta do BMC que possa controlar a energia,
+
+00:01:18.070 --> 00:01:19.730
+e a senha dela.
+
+00:01:19.730 --> 00:01:22.010
+Salve o secret.
+
+00:01:22.010 --> 00:01:28.360
+Event está Enabled, então o Seeder consulta o Redfish em busca de eventos de hardware a cada hora.
+
+00:01:28.360 --> 00:01:32.140
+Selecione Save.
+
+00:01:32.140 --> 00:01:39.150
+Os detalhes do host agora mostram o fabricante, o número de série e o modelo que o Seeder leu do BMC via Redfish.
+
+00:01:39.150 --> 00:01:44.620
+A aba Out-of-band Access mostra a conexão com o BMC salva.
+
+00:01:44.620 --> 00:01:47.480
+Abra a aba Events.
+
+00:01:47.480 --> 00:01:56.600
+Ela lista os eventos de hardware que o Seeder lê do Redfish, como a saúde de temperatura e componentes com falha. Os eventos são mantidos por uma hora.
+
+00:01:56.600 --> 00:01:59.710
+Abra o menu de ações do host novamente.
+
+00:01:59.710 --> 00:02:09.220
+Shut Down, Power On e Reboot via IPMI aparecem aqui quando o host está em modo de manutenção. Este cluster de nó único continua em execução.
+
+00:02:12.200 --> 00:02:24.666
+O host está conectado ao BMC dele. O SUSE Virtualization agora mostra detalhes de hardware e eventos, e oferece ações de energia fora de banda para hosts em modo de manutenção.

@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.010
+Insira uma imagem ISO na unidade de CD-ROM de uma máquina virtual em execução e ejete-a novamente, sem reiniciar a máquina virtual.
+
+00:00:09.010 --> 00:00:14.480
+A máquina virtual demo-cdrom está em execução. Abra-a.
+
+00:00:14.480 --> 00:00:17.480
+Selecione a aba Volumes.
+
+00:00:17.480 --> 00:00:25.430
+Abaixo do disco raiz, a máquina virtual tem uma unidade de CD-ROM no barramento SATA. Ela mostra No media.
+
+00:00:25.430 --> 00:00:28.480
+Selecione Insert Image.
+
+00:00:28.480 --> 00:00:34.700
+Mantenha o nome da unidade, cdrom, e escolha a imagem ISO do Alpine Linux.
+
+00:00:34.700 --> 00:00:38.840
+Selecione Apply.
+
+00:00:38.840 --> 00:00:46.780
+A unidade agora contém a imagem ISO do Alpine. Ela foi anexada em tempo real, e a máquina virtual continua em execução.
+
+00:00:46.780 --> 00:00:51.290
+Quando não precisar mais da mídia, selecione Eject Image.
+
+00:00:51.290 --> 00:00:56.170
+Confirme que você deseja ejetar a imagem da unidade cdrom.
+
+00:00:56.170 --> 00:01:02.700
+A unidade mostra No media novamente. A unidade em si permanece no lugar, pronta para a próxima imagem.
+
+00:01:02.700 --> 00:01:08.560
+Durante as duas alterações, a máquina virtual continuou em execução.
+
+00:01:08.560 --> 00:01:18.522
+Você inseriu e ejetou uma imagem ISO enquanto a máquina virtual continuava em execução. A seguir, você trabalha com snapshots e imagens de volume.

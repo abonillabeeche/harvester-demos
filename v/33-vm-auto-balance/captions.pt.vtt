@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.330
+Este vídeo revisa o add-on de balanceamento automático de máquinas virtuals, que usa o Descheduler do Kubernetes para mover máquinas virtuals para longe de hosts ocupados.
+
+00:00:10.330 --> 00:00:18.500
+Na página Add-ons, o add-on virtual-machine-auto-balance está habilitado. Ele executa o Descheduler do Kubernetes.
+
+00:00:18.500 --> 00:00:21.170
+Abra o add-on,
+
+00:00:21.170 --> 00:00:25.540
+e selecione Show Configuration para ver as configurações.
+
+00:00:25.540 --> 00:00:32.070
+A política do descheduler está no campo valuesContent, mais abaixo no YAML.
+
+00:00:33.740 --> 00:00:39.160
+O campo valuesContent contém as configurações do descheduler e a política dele.
+
+00:00:39.160 --> 00:00:42.760
+O descheduler é executado a cada cinco minutos.
+
+00:00:42.760 --> 00:00:46.590
+Cada execução remove no máximo cinco pods de um host.
+
+00:00:46.590 --> 00:00:56.470
+O seletor de rótulos limita as remoções aos pods virt-launcher, então apenas máquinas virtuals se movem. Cada remoção se torna uma migração ao vivo.
+
+00:00:56.470 --> 00:01:00.260
+Namespaces de sistema ficam excluídos das remoções.
+
+00:01:00.260 --> 00:01:10.080
+O plugin LowNodeUtilization compara CPU e memória reservadas. Um host abaixo de trinta por cento de ambos é considerado subutilizado.
+
+00:01:10.080 --> 00:01:20.820
+Um host acima de cinquenta por cento é considerado sobrecarregado. O descheduler remove máquinas virtuals dele, para que migrem para hosts subutilizados.
+
+00:01:20.820 --> 00:01:23.250
+Feche o painel.
+
+00:01:23.250 --> 00:01:29.540
+Abra a página Hosts para comparar esses limites com os recursos reservados.
+
+00:01:29.540 --> 00:01:39.430
+Todo host reserva mais de trinta por cento da sua CPU. Nenhum host está subutilizado, então o descheduler não move nada.
+
+00:01:39.430 --> 00:01:52.905
+O descheduler verifica os hosts a cada cinco minutos e faz migração ao vivo de máquinas virtuals somente quando um host ultrapassa os limites. A seguir, você conecta o cluster ao SUSE Observability.

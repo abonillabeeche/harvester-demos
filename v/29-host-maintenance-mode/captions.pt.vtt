@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.240
+Coloque um host em modo de manutenção. As máquinas virtuais dele migram ao vivo para outros hosts, para que você possa fazer a manutenção do host sem tempo de inatividade.
+
+00:00:11.240 --> 00:00:16.440
+A máquina virtual demo-maint está em execução no host ser5-purple.
+
+00:00:16.440 --> 00:00:19.320
+Abra a página Hosts.
+
+00:00:19.320 --> 00:00:26.090
+O ser5-purple está Active. Suponha que ele precise de uma atualização de firmware ou de um hardware novo.
+
+00:00:26.090 --> 00:00:28.940
+Abra o menu de ações dele,
+
+00:00:28.940 --> 00:00:32.460
+e selecione Enable Maintenance Mode.
+
+00:00:32.460 --> 00:00:41.260
+Deixe Force desmarcado. As máquinas virtuais que podem migrar ao vivo passam para outros hosts. Force desligaria as que não podem.
+
+00:00:41.260 --> 00:00:45.400
+Selecione Apply.
+
+00:00:45.400 --> 00:00:55.030
+O SUSE Virtualization migra ao vivo as máquinas virtuais e esvazia o host. O ser5-purple agora está em modo de manutenção.
+
+00:00:55.030 --> 00:00:58.440
+De volta à página Virtual Machines,
+
+00:00:58.440 --> 00:01:03.320
+a demo-maint continuou em execução. Agora ela roda em outro host.
+
+00:01:03.320 --> 00:01:08.000
+Quando o trabalho no host terminar, volte à página Hosts,
+
+00:01:08.000 --> 00:01:12.030
+abra o menu de ações do ser5-purple,
+
+00:01:12.030 --> 00:01:15.730
+e selecione Disable Maintenance Mode.
+
+00:01:15.730 --> 00:01:24.730
+O ser5-purple está Active novamente e aceita novas cargas de trabalho. A máquina virtual permanece no novo host.
+
+00:01:24.730 --> 00:01:34.323
+O host entrou em manutenção e voltou enquanto a máquina virtual continuava em execução. A seguir, você passa uma GPU para uma máquina virtual.

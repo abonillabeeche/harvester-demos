@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.840
+Aqui você vai criar uma máquina virtual Windows Server a partir de uma imagem preparada, usando o modelo Windows embutido, de modo que as configurações específicas do Windows já estejam prontas.
+
+00:00:11.840 --> 00:00:16.340
+Na página Virtual Machines, selecione Create.
+
+00:00:16.340 --> 00:00:19.310
+Escolha o namespace.
+
+00:00:19.310 --> 00:00:21.950
+Dê um nome à máquina virtual.
+
+00:00:21.950 --> 00:00:25.530
+Selecione Use the virtual machine template.
+
+00:00:25.530 --> 00:00:35.490
+Escolha o modelo windows image. Ele é destinado a imagens Windows preparadas com sysprep, então não é necessário um ISO de instalação.
+
+00:00:35.490 --> 00:00:44.400
+O modelo define o tipo de sistema operacional como Windows e ativa o tablet USB para entrada precisa do mouse no console.
+
+00:00:44.400 --> 00:00:48.100
+Mantenha as quatro CPUs virtuais do modelo.
+
+00:00:48.100 --> 00:00:53.380
+Reduza a memória para oito gigabytes, o suficiente para este servidor de teste.
+
+00:00:53.380 --> 00:00:58.460
+Na aba Volumes, o disco raiz do modelo ainda não tem imagem.
+
+00:00:58.460 --> 00:01:01.160
+Remova este disco de espaço reservado,
+
+00:01:01.160 --> 00:01:07.590
+e adicione a imagem como um novo disco. Selecione Add a Virtual Machine Image.
+
+00:01:07.590 --> 00:01:13.300
+Na lista Image, procure a imagem preparada do Windows Server 2025,
+
+00:01:13.300 --> 00:01:15.850
+e selecione-a.
+
+00:01:15.850 --> 00:01:21.730
+Defina o tamanho do disco como sessenta e quatro gigabytes, o tamanho sugerido pelo modelo.
+
+00:01:21.730 --> 00:01:25.730
+Selecione Create.
+
+00:01:25.730 --> 00:01:35.410
+O SUSE Virtualization copia a imagem para o novo disco raiz e inicia a máquina virtual. Agora ela está em execução.
+
+00:01:35.410 --> 00:01:44.780
+O Windows Server está iniciando em sua própria máquina virtual. A seguir, você adiciona CPU e memória a uma máquina virtual em execução.

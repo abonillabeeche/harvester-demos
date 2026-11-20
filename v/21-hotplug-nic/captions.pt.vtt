@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.190
+Adicione uma segunda interface de rede a uma máquina virtual em execução. O SUSE Virtualization conecta-a sem reinicialização.
+
+00:00:09.190 --> 00:00:14.030
+A máquina virtual está em execução. Abra o menu de ações dela,
+
+00:00:14.030 --> 00:00:17.230
+e selecione Edit Config.
+
+00:00:17.230 --> 00:00:20.340
+Abra a aba Networks.
+
+00:00:20.340 --> 00:00:27.880
+A máquina virtual tem uma interface, na rede de gerenciamento. Você não pode alterá-la enquanto a máquina está em execução.
+
+00:00:27.880 --> 00:00:30.520
+Selecione Add Network.
+
+00:00:30.520 --> 00:00:34.810
+Escolha a rede VLAN para a nova interface.
+
+00:00:34.810 --> 00:00:40.960
+Mantenha o tipo bridge e o modelo virtio. A conexão a quente funciona com interfaces bridge.
+
+00:00:40.960 --> 00:00:43.390
+Selecione Save.
+
+00:00:43.390 --> 00:00:51.340
+O SUSE Virtualization oferece reiniciar a máquina virtual. Uma nova interface de rede não precisa de reinicialização.
+
+00:00:51.340 --> 00:00:56.620
+Selecione Save, e não Save and Restart.
+
+00:00:56.620 --> 00:01:00.370
+Abra a aba Networks da máquina virtual.
+
+00:01:00.370 --> 00:01:08.050
+A máquina virtual nunca parou, e agora tem uma segunda interface na rede VLAN.
+
+00:01:08.050 --> 00:01:16.510
+Você adicionou uma interface de rede sem tempo de inatividade. A seguir, você configura uma rede dedicada para live migration.

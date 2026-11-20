@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.450
+Aprenda a adicionar uma policy route a uma VPC. As policy routes atuam no próprio roteador da VPC, então uma única regra pode bloquear uma sub-rede de outra, para todas as máquinas virtuais nelas.
+
+00:00:13.450 --> 00:00:24.750
+A VPC demo-3tier faz o roteamento entre suas sub-redes web, app e de banco de dados. As policy routes ainda não têm campo no formulário, então adicione uma no YAML da VPC.
+
+00:00:24.750 --> 00:00:28.140
+Abra o menu de ações da demo-3tier,
+
+00:00:28.140 --> 00:00:31.380
+e selecione Edit YAML.
+
+00:00:31.380 --> 00:00:37.300
+A spec da VPC ainda está vazia. Ela não tem rotas estáticas nem policies.
+
+00:00:37.300 --> 00:00:53.300
+Adicione uma policy route. A ação dela é drop, e o match dela seleciona o tráfego da sub-rede web, 10.230.1.0/24, para a sub-rede de banco de dados, 10.230.3.0/24.
+
+00:00:53.300 --> 00:01:02.010
+A prioridade deve ser maior que 31000, a prioridade das rotas que o Kube-OVN adiciona para cada sub-rede, senão essas rotas vencem.
+
+00:01:02.010 --> 00:01:04.590
+Selecione Save.
+
+00:01:04.590 --> 00:01:07.700
+Abra o console da demo-web.
+
+00:01:10.530 --> 00:01:14.150
+Entre como sles, com a senha que o cloud-init definiu.
+
+00:01:16.750 --> 00:01:23.390
+Faça uma requisição à camada app, e depois ao banco de dados.
+
+00:01:23.390 --> 00:01:34.640
+A camada app responde, e a requisição ao banco de dados expira. O roteador da VPC a descarta antes de ela chegar à sub-rede de banco de dados.
+
+00:01:34.640 --> 00:01:43.940
+Uma policy route no roteador da VPC mantém a camada web longe do banco de dados, enquanto o resto da VPC é roteado como antes.

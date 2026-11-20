@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.590
+Gere um modelo a partir de uma máquina virtual existente e use-o para criar uma nova, para que cada cópia comece com a mesma configuração.
+
+00:00:08.590 --> 00:00:14.610
+Na página Virtual Machines, abra o menu de ações da máquina virtual de origem.
+
+00:00:14.610 --> 00:00:18.000
+Selecione Generate Template.
+
+00:00:18.000 --> 00:00:25.480
+Deixe With Data desmarcado. Assim, o modelo aponta para a imagem original em vez de copiar o conteúdo do disco.
+
+00:00:25.480 --> 00:00:27.510
+Dê um nome ao modelo.
+
+00:00:27.510 --> 00:00:30.300
+Selecione Create.
+
+00:00:30.300 --> 00:00:37.190
+O modelo aparece em Advanced, Templates. Ele tem uma versão, que também é a padrão.
+
+00:00:37.190 --> 00:00:43.580
+Para usá-lo, crie uma nova máquina virtual no mesmo namespace do modelo.
+
+00:00:43.580 --> 00:00:45.690
+Dê um nome a ela.
+
+00:00:45.690 --> 00:00:49.270
+Selecione Use the virtual machine template.
+
+00:00:49.270 --> 00:00:54.620
+Escolha o modelo. A versão padrão dele já vem selecionada para você.
+
+00:00:54.620 --> 00:01:01.380
+A CPU, a memória, os discos e a rede agora vêm do modelo. Você ainda pode alterá-los aqui.
+
+00:01:01.380 --> 00:01:05.380
+Selecione Create.
+
+00:01:05.380 --> 00:01:12.300
+A nova máquina virtual está em execução, com a mesma configuração da origem.
+
+00:01:12.300 --> 00:01:20.451
+Agora você pode criar máquinas virtuais idênticas a partir do modelo. A seguir, você clona uma máquina virtual existente.

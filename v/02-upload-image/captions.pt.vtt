@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.690
+Adicione uma imagem de nuvem do openSUSE Leap ao SUSE Virtualization a partir de uma URL de download. Máquinas virtuais inicializam a partir de imagens como esta.
+
+00:00:10.690 --> 00:00:14.660
+Na página Images, selecione Create.
+
+00:00:14.660 --> 00:00:18.240
+Escolha o namespace da imagem.
+
+00:00:18.240 --> 00:00:20.460
+Dê um nome à imagem.
+
+00:00:20.460 --> 00:00:28.150
+Mantenha URL como origem. O cluster baixa o arquivo por conta própria, então nada passa pelo seu navegador.
+
+00:00:28.150 --> 00:00:34.350
+Cole o endereço de download da imagem de nuvem minimal do openSUSE Leap 16.
+
+00:00:34.350 --> 00:00:39.880
+A aba Storage mostra a storage class da imagem. Mantenha o padrão.
+
+00:00:39.880 --> 00:00:45.330
+Os discos de máquinas virtuais criados a partir desta imagem usam a mesma storage class.
+
+00:00:45.330 --> 00:00:50.580
+Selecione Create.
+
+00:00:50.580 --> 00:00:59.600
+O download termina e a coluna de progresso mostra Completed. A imagem está pronta para novas máquinas virtuais.
+
+00:00:59.600 --> 00:01:07.925
+A imagem está pronta. A seguir, você adiciona uma chave SSH para poder fazer login nas suas máquinas virtuais.

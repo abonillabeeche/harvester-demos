@@ -1,0 +1,148 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.710
+Crie duas nuvens privadas virtuais com sub-redes com DHCP habilitado no SUSE Virtualization, conecte-as com peering e verifique se as máquinas virtuais de cada VPC se alcançam.
+
+00:00:11.710 --> 00:00:19.770
+A página Virtual Private Cloud lista as VPCs e suas sub-redes. Selecione Create para adicionar a primeira VPC.
+
+00:00:19.770 --> 00:00:27.070
+Dê a ela o nome demo-vpc-a. Rotas e peerings virão depois, então deixe as abas vazias por enquanto.
+
+00:00:27.070 --> 00:00:31.350
+Em seguida, selecione Create para salvar a VPC.
+
+00:00:31.350 --> 00:00:36.030
+No grupo demo-vpc-a, selecione Create Subnet.
+
+00:00:36.030 --> 00:00:39.100
+Dê à sub-rede o nome demo-subnet-a.
+
+00:00:39.100 --> 00:00:44.930
+Use o bloco CIDR 10.210.1.0/24.
+
+00:00:44.930 --> 00:00:53.020
+Como provider, selecione a rede overlay demo-net-a. A VPC já está definida como demo-vpc-a.
+
+00:00:53.020 --> 00:00:57.720
+Defina o gateway IP como 10.210.1.1.
+
+00:00:57.720 --> 00:01:04.970
+Habilite o DHCP, para que as máquinas virtuais nesta sub-rede recebam um endereço e uma rota padrão automaticamente.
+
+00:01:04.970 --> 00:01:08.670
+Selecione Create para salvar a sub-rede.
+
+00:01:08.670 --> 00:01:13.750
+Agora crie a segunda VPC, que aponta o peering dela para a primeira.
+
+00:01:13.750 --> 00:01:16.740
+Dê a ela o nome demo-vpc-b.
+
+00:01:16.740 --> 00:01:20.990
+Abra a aba VPC Peerings e adicione um peering.
+
+00:01:20.990 --> 00:01:26.040
+Cada lado de um peering recebe um endereço de conexão de uma pequena rede de enlace.
+
+00:01:26.040 --> 00:01:34.970
+Informe o IP de conexão local, 169.254.210.2/30, para o lado do enlace do demo-vpc-b.
+
+00:01:34.970 --> 00:01:39.050
+Como remote VPC, selecione demo-vpc-a.
+
+00:01:39.050 --> 00:01:45.930
+O peering sozinho não transporta tráfego. Na aba Static Routes, adicione uma rota para a outra VPC.
+
+00:01:45.930 --> 00:01:50.580
+A rota envia o tráfego destinado à demo-subnet-a através do enlace.
+
+00:01:50.580 --> 00:01:58.250
+Informe o destino, o bloco CIDR da demo-subnet-a, 10.210.1.0/24,
+
+00:01:58.250 --> 00:02:05.810
+e o next hop, 169.254.210.1, que é o lado do peering do demo-vpc-a.
+
+00:02:05.810 --> 00:02:11.510
+Selecione Create para salvar a demo-vpc-b com o peering e a rota dela.
+
+00:02:11.510 --> 00:02:18.530
+Adicione uma sub-rede à demo-vpc-b da mesma forma. Selecione Create Subnet no grupo dela.
+
+00:02:18.530 --> 00:02:21.500
+Dê a ela o nome demo-subnet-b,
+
+00:02:21.500 --> 00:02:26.810
+com o bloco CIDR 10.210.2.0/24,
+
+00:02:26.810 --> 00:02:30.730
+a rede overlay demo-net-b como provider,
+
+00:02:30.730 --> 00:02:35.280
+e o gateway IP 10.210.2.1.
+
+00:02:35.280 --> 00:02:38.780
+Habilite o DHCP aqui também, e depois salve.
+
+00:02:38.780 --> 00:02:42.900
+Selecione Create para salvar a demo-subnet-b.
+
+00:02:42.900 --> 00:02:48.520
+Um peering precisa dos dois lados. Abra o menu de ações da demo-vpc-a,
+
+00:02:48.520 --> 00:02:52.960
+e selecione Edit Config para adicionar o peering correspondente.
+
+00:02:52.960 --> 00:02:57.240
+Na aba VPC Peerings, adicione a outra ponta do enlace.
+
+00:02:57.240 --> 00:03:01.050
+Este lado usa o primeiro endereço da mesma rede de enlace.
+
+00:03:01.050 --> 00:03:09.530
+Informe 169.254.210.1/30 como o IP de conexão local,
+
+00:03:09.530 --> 00:03:13.700
+e selecione demo-vpc-b como a remote VPC.
+
+00:03:13.700 --> 00:03:17.910
+Depois adicione a rota de volta na aba Static Routes.
+
+00:03:17.910 --> 00:03:22.800
+Esta rota envia o tráfego destinado à demo-subnet-b através do enlace.
+
+00:03:22.800 --> 00:03:27.790
+O destino é 10.210.2.0/24,
+
+00:03:27.790 --> 00:03:36.520
+e o next hop é o IP de conexão da demo-vpc-b, 169.254.210.2.
+
+00:03:36.520 --> 00:03:42.470
+Selecione Save para aplicar o peering e a rota.
+
+00:03:42.470 --> 00:03:52.370
+Para testar o peering, duas pequenas máquinas virtuais foram conectadas, a demo-vm-a à demo-net-a e a demo-vm-b à demo-net-b.
+
+00:03:52.370 --> 00:03:59.500
+A demo-vm-a recebeu 10.210.1.2 do serviço DHCP da demo-subnet-a,
+
+00:03:59.500 --> 00:04:09.340
+e a demo-vm-b recebeu 10.210.2.2 da demo-subnet-b. Ninguém configurou nenhum dos endereços manualmente.
+
+00:04:09.340 --> 00:04:13.280
+Abra o console da demo-vm-a no WebVNC.
+
+00:04:16.370 --> 00:04:20.440
+Faça login como sles, com a senha que o cloud-init definiu.
+
+00:04:23.040 --> 00:04:30.800
+O endereço e a rota padrão através de 10.210.1.1 vieram ambos do DHCP.
+
+00:04:30.800 --> 00:04:41.460
+Agora faça ping na demo-vm-b, 10.210.2.2, na outra VPC.
+
+00:04:41.460 --> 00:04:50.950
+As respostas chegam. O tráfego sai pelo roteador da demo-vpc-a, atravessa o peering e chega à demo-vpc-b.
+
+00:04:50.950 --> 00:05:02.268
+As duas VPCs ficam isoladas de todo o resto, mas suas sub-redes agora se alcançam através do peering. A seguir, você isola máquinas virtuais com microssegmentação.

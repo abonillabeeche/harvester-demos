@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.150
+Conheça o add-on do agente do SUSE Observability, que conecta um cluster do SUSE Virtualization a um servidor SUSE Observability para monitoramento centralizado.
+
+00:00:10.150 --> 00:00:19.130
+Na página Add-ons, o add-on experimental suse-observability-agent está habilitado, e o estado dele é Deploy Successful.
+
+00:00:19.130 --> 00:00:22.560
+Abra o add-on para ver os detalhes dele.
+
+00:00:22.560 --> 00:00:29.370
+O add-on instala os agentes do SUSE Observability no namespace suse-observability.
+
+00:00:29.370 --> 00:00:35.140
+Selecione Show Configuration para ver o recurso do add-on como YAML.
+
+00:00:35.140 --> 00:00:43.760
+A configuração abre em um painel lateral. A última configuração aplicada mostra o add-on como foi criado inicialmente.
+
+00:00:43.760 --> 00:00:51.090
+Ele instala o chart suse-observability-agent a partir do repositório Helm do SUSE Observability.
+
+00:00:51.090 --> 00:00:57.500
+Os values dele começam com três campos vazios: apiKey, cluster name e url.
+
+00:00:57.500 --> 00:01:06.780
+Com Edit YAML, você os preenche com o token de serviço, um nome de cluster e a URL do receiver do SUSE Observability.
+
+00:01:06.780 --> 00:01:13.510
+Este cluster já está conectado, então feche o painel sem alterações.
+
+00:01:13.510 --> 00:01:24.498
+O add-on do agente está habilitado e implantado, e ele reporta este cluster ao SUSE Observability. A seguir, você cria um VPC NAT gateway com Kube-OVN.

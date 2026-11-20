@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.610
+Aprenda a adicionar uma chave pública SSH ao SUSE Virtualization. Máquinas virtuais que usam a chave permitem login sem senha.
+
+00:00:09.610 --> 00:00:13.560
+No menu de navegação, expanda Advanced,
+
+00:00:13.560 --> 00:00:17.040
+e selecione SSH Keys.
+
+00:00:17.040 --> 00:00:19.510
+Selecione Create.
+
+00:00:19.510 --> 00:00:25.450
+Escolha o namespace. Máquinas virtuais nesse namespace podem usar a chave.
+
+00:00:25.450 --> 00:00:27.570
+Dê um nome à chave.
+
+00:00:27.570 --> 00:00:32.910
+Cole a chave pública. Você também pode carregá-la de um arquivo com Read from File.
+
+00:00:32.910 --> 00:00:35.360
+Selecione Create.
+
+00:00:35.360 --> 00:00:40.510
+O SUSE Virtualization valida a chave e mostra a impressão digital dela.
+
+00:00:40.510 --> 00:00:44.130
+Para usar a chave, vá para Virtual Machines
+
+00:00:44.130 --> 00:00:46.630
+e selecione Create.
+
+00:00:46.630 --> 00:00:49.670
+No mesmo namespace,
+
+00:00:49.670 --> 00:00:55.240
+abra a lista de chaves SSH na aba Basics e escolha a chave.
+
+00:00:55.240 --> 00:01:03.430
+Quando a máquina virtual iniciar, o cloud-init adiciona essa chave às chaves autorizadas do usuário padrão.
+
+00:01:03.430 --> 00:01:10.538
+Sua chave SSH está armazenada e pronta para uso. A seguir, você cria uma máquina virtual Linux.

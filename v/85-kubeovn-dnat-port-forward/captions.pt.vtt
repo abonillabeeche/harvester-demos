@@ -1,0 +1,85 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.200
+Publique um servidor web que vive dentro de uma nuvem privada virtual. Uma regra de NAT de destino no gateway NAT da VPC encaminha um IP externo e uma porta para a máquina virtual.
+
+00:00:12.200 --> 00:00:25.660
+Em Overlay Networks, NAT and Internet, a VPC demo-3tier já tem o gateway NAT demo-gw, criado como no vídeo de gateway NAT. Ele conecta a sub-rede web à sub-rede externa.
+
+00:00:25.660 --> 00:00:31.450
+O servidor web precisa do seu próprio IP externo. Vá para External IPs,
+
+00:00:31.450 --> 00:00:33.870
+e depois Create.
+
+00:00:33.870 --> 00:00:36.940
+Dê o nome demo-web-eip.
+
+00:00:36.940 --> 00:00:40.710
+Selecione o gateway NAT demo-gw,
+
+00:00:40.710 --> 00:00:43.730
+e a sub-rede externa.
+
+00:00:43.730 --> 00:00:50.560
+Escolha o endereço 172.31.250.100, para que seja fácil de lembrar.
+
+00:00:50.560 --> 00:00:53.250
+Selecione Create.
+
+00:00:53.250 --> 00:00:57.710
+O gateway assume o endereço e responde por ele na sub-rede externa.
+
+00:00:57.710 --> 00:01:02.310
+Agora encaminhe uma porta. Selecione Destination Rules,
+
+00:01:02.310 --> 00:01:04.720
+e depois Create.
+
+00:01:04.720 --> 00:01:07.690
+Dê o nome demo-web-dnat.
+
+00:01:07.690 --> 00:01:12.170
+Selecione o IP externo demo-web-eip.
+
+00:01:12.170 --> 00:01:15.980
+Os clientes se conectam à porta externa 8080,
+
+00:01:15.980 --> 00:01:21.840
+e o gateway os encaminha para demo-web, 10.230.1.10,
+
+00:01:21.840 --> 00:01:24.400
+na porta interna 80 dela.
+
+00:01:24.400 --> 00:01:27.190
+O protocolo é TCP.
+
+00:01:27.190 --> 00:01:29.530
+Selecione Create.
+
+00:01:29.530 --> 00:01:33.390
+A regra mostra o IP externo em que ela escuta.
+
+00:01:33.390 --> 00:01:44.070
+demo-outside fica na sub-rede externa, fora da VPC. Neste laboratório, essa sub-rede representa uma VLAN de underlay, porque o host tem apenas uma placa de rede.
+
+00:01:44.070 --> 00:01:46.380
+Abra o console dela.
+
+00:01:49.110 --> 00:01:52.780
+Entre como sles, com a senha que o cloud-init definiu.
+
+00:01:55.380 --> 00:02:04.240
+Primeiro, tente o próprio endereço do servidor web, 10.230.1.10.
+
+00:02:04.240 --> 00:02:09.590
+Não há rota até ele por fora. Os endereços da VPC são privados.
+
+00:02:09.590 --> 00:02:17.300
+Agora solicite o IP externo, 172.31.250.100, na porta 8080.
+
+00:02:17.300 --> 00:02:26.870
+A página de demo-web chega. O gateway traduziu o IP externo e a porta para a máquina virtual dentro da VPC.
+
+00:02:26.870 --> 00:02:38.848
+O servidor web dentro da VPC agora responde no IP externo, porta 8080, e nada mais da VPC fica exposto. A seguir, você conecta duas VPCs com peering.

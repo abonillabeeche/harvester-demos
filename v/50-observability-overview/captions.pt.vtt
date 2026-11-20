@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.510
+Veja o que o SUSE Observability mostra para os seus clusters SUSE Virtualization: integridade, versões, topologia e eventos em um só lugar.
+
+00:00:11.510 --> 00:00:20.360
+A visualização SUSE Virtualization Clusters lista todos os clusters que reportam ao SUSE Observability, uma linha por cluster.
+
+00:00:20.360 --> 00:00:28.270
+A coluna Health consolida os monitores de cada cluster. Um cluster com um monitor insalubre mostra Deviating.
+
+00:00:28.270 --> 00:00:39.590
+As colunas mostram a versão do SUSE Virtualization, os hosts, as máquinas virtuais em execução, as versões do KubeVirt e do Longhorn, e as verificações de etcd e de relógio.
+
+00:00:39.590 --> 00:00:44.780
+Selecione Topology para ver os clusters como componentes em um mapa.
+
+00:00:44.780 --> 00:00:52.070
+Cada bloco é um cluster, colorido pelo seu estado de integridade, então um cluster insalubre se destaca de relance.
+
+00:00:52.070 --> 00:00:58.190
+Selecione Events para listar o que aconteceu com esses clusters no intervalo de tempo selecionado.
+
+00:00:58.190 --> 00:01:05.280
+Cada evento nomeia o cluster, mostra a mudança, como uma transição de estado de integridade, e quando ela aconteceu.
+
+00:01:05.280 --> 00:01:12.920
+O intervalo de tempo na parte inferior se aplica a todas as perspectivas. Mova-o para trás para ver os clusters como eles estavam.
+
+00:01:12.920 --> 00:01:15.730
+Abra o menu principal.
+
+00:01:15.730 --> 00:01:19.160
+Expanda SUSE Virtualization.
+
+00:01:19.160 --> 00:01:29.090
+Além de Clusters, esta seção tem visualizações para hosts, máquinas virtuais, volumes, redes de VM e VPCs.
+
+00:01:29.090 --> 00:01:37.089
+Você verificou seus clusters no SUSE Observability. A seguir, você explora a topologia de uma única máquina virtual.

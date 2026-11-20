@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.970
+Aqui você vai fazer o backup de uma máquina virtual em execução para o destino de backup S3 e depois restaurar esse backup como uma nova máquina virtual.
+
+00:00:09.970 --> 00:00:16.480
+Na página Virtual Machines, abra o menu de ações da máquina virtual em execução.
+
+00:00:16.480 --> 00:00:19.230
+Selecione Take Backup.
+
+00:00:19.230 --> 00:00:21.430
+Dê um nome ao backup.
+
+00:00:21.430 --> 00:00:28.760
+O sistema de arquivos do convidado fica congelado por no máximo um segundo enquanto o snapshot é capturado. Mantenha o padrão.
+
+00:00:28.760 --> 00:00:31.200
+Selecione Create.
+
+00:00:31.200 --> 00:00:37.910
+O SUSE Virtualization inicia o backup. No menu, abra Backup and Snapshots,
+
+00:00:37.910 --> 00:00:41.400
+e selecione Virtual Machine Backups.
+
+00:00:41.400 --> 00:00:48.850
+O backup está Ready. Os dados dele são armazenados no bucket S3 do destino de backup, fora do cluster.
+
+00:00:48.850 --> 00:00:52.380
+Para restaurá-lo, selecione Restore Backup.
+
+00:00:52.380 --> 00:00:59.500
+A opção Create new restaura o backup como uma máquina virtual separada e deixa a original intacta.
+
+00:00:59.500 --> 00:01:02.500
+Escolha o namespace,
+
+00:01:02.500 --> 00:01:05.110
+dê um nome à nova máquina virtual,
+
+00:01:05.110 --> 00:01:08.900
+e selecione o backup de onde restaurar.
+
+00:01:08.900 --> 00:01:15.470
+Deixe as duas opções desmarcadas, para que a cópia receba um novo endereço MAC e inicie após a restauração.
+
+00:01:15.470 --> 00:01:19.470
+Selecione Create.
+
+00:01:19.470 --> 00:01:29.300
+O SUSE Virtualization restaura os volumes a partir do backup, e a nova máquina virtual está em execução ao lado da original.
+
+00:01:29.300 --> 00:01:35.984
+Você restaurou uma máquina virtual a partir de um backup. A seguir, você cria uma storage class.
